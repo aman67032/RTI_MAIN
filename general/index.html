@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>General RTI Portal - Right to Information in India</title>
+    <link rel="icon" href="../assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="../assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png?v=2">
+    <link rel="manifest" href="../manifest.json?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        :root {
+            --portal-primary: var(--general-primary);
+            --portal-secondary: var(--general-secondary);
+            --portal-gradient: var(--general-gradient);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--secondary-color);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-button {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #1a237e, #283593);
+            color: white;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float-particle 8s infinite;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: translateX(-100%);
+            transition: 0.5s;
+        }
+
+        .feature-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 20px rgba(255,255,255,0.5);
+        }
+
+        .feature-title {
+            font-size: 1.4rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: rgba(255,255,255,0.8);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--portal-primary);
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: white;
+            border-color: white;
+            transform: translateY(-3px);
+        }
+
+        .cta-button i {
+            margin-left: 0.5rem;
+        }
+
+        .info-section {
+            background: #fff;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(26,35,126,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--portal-gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .info-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(26,35,126,0.15);
+        }
+
+        .info-icon {
+            font-size: 2.5rem;
+            color: var(--portal-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-title {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            color: var(--portal-primary);
+            transform: translateX(10px);
+        }
+
+        .info-item i {
+            color: var(--portal-primary);
+            margin-right: 1rem;
+        }
+
+        .faq-section {
+            background: #f8f9fa;
+            padding: 6rem 2rem;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 3rem;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 4rem 1rem;
+                min-height: auto;
+            }
+
+            .info-section,
+            .faq-section {
+                padding: 4rem 1rem;
+            }
+
+            .feature-card,
+            .info-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="general-theme">
+    <div id="header-container"></div>
+
+    <section class="hero-section">
+        <div class="particles">
+            <!-- Particles will be added via JavaScript -->
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Right to Information Portal</h1>
+            <p class="hero-description">Empowering citizens with knowledge and tools to exercise their right to information effectively</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-file-alt feature-icon"></i>
+                    <h3 class="feature-title">File RTI</h3>
+                    <p class="feature-description">Submit RTI applications online with guided assistance</p>
+                    <a href="file-rti.html" class="cta-button">Start Now <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-search feature-icon"></i>
+                    <h3 class="feature-title">Track Status</h3>
+                    <p class="feature-description">Monitor your RTI application progress</p>
+                    <a href="track.html" class="cta-button">Track RTI <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-book feature-icon"></i>
+                    <h3 class="feature-title">RTI Guide</h3>
+                    <p class="feature-description">Learn about RTI process and best practices</p>
+                    <a href="guide.html" class="cta-button">Read Guide <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="info-grid">
+            <div class="info-card">
+                <i class="fas fa-clipboard-list info-icon"></i>
+                <h3 class="info-title">RTI Basics</h3>
+                <ul class="info-list">
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        Understanding RTI Act
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        Rights & Responsibilities
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        Filing Process
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        Timeline & Fees
+                    </li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <i class="fas fa-tools info-icon"></i>
+                <h3 class="info-title">Resources</h3>
+                <ul class="info-list">
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        Sample RTI Templates
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        Department Directory
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        Success Stories
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        Video Tutorials
+                    </li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <i class="fas fa-hands-helping info-icon"></i>
+                <h3 class="info-title">Support</h3>
+                <ul class="info-list">
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        Help Desk
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        Community Forum
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        Legal Assistance
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        Contact Support
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="faq-container">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">What is RTI and who can file it?</div>
+                <div class="faq-answer">RTI (Right to Information) is a fundamental right that allows any Indian citizen to request information from public authorities. Any citizen can file an RTI application.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How much does it cost to file an RTI?</div>
+                <div class="faq-answer">The fee for filing an RTI application is ₹10 for central government departments. State government departments may have different fees. BPL card holders are exempt from fees.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What is the time limit for getting RTI response?</div>
+                <div class="faq-answer">Public authorities must provide the requested information within 30 days of receiving the RTI application. For matters concerning life and liberty, the time limit is 48 hours.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Can I file RTI online?</div>
+                <div class="faq-answer">Yes, you can file RTI applications online through the RTI Online Portal for central government departments and some state departments that have online facilities.</div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../shared/nav.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const headerContainer = document.getElementById('header-container');
+            headerContainer.innerHTML = Navigation.createHeader('RTI Portal');
+            new Navigation('general');
+
+            // Create particles
+            const particles = document.querySelector('.particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                particles.appendChild(particle);
+            }
+        });
+    </script>
+</body>
+</html> 

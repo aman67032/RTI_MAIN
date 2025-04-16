@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffd700">
+    <title>RTI Education Portal</title>
+    <link rel="icon" href="assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/images/favicon.png?v=2">
+    <link rel="manifest" href="manifest.json?v=2">
+
+    <link rel="stylesheet" href="Waves.css">
+    <link rel="stylesheet" href="loading-screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="decrypted-text.css">
+    <link rel="stylesheet" href="GlitchText.css">
+ 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.css">
+    <link rel="stylesheet" href="main.css">
+    <script src="FuzzyText.js"></script>
+    <script src="loading-screen.js"></script>
+    <script src="favicon-refresh.js"></script>
+    
+</head>
+<body>
+    <!-- Navbar/Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>RTI Education</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="timeline.html">Timeline</a>
+                <a href="news.html">News</a>
+                <a href="cases.html">Current Cases</a>
+            </div>
+            <div class="auth-links">
+                <a href="login.html" class="login-btn">Login</a>
+                <a href="signup.html" class="signup-btn">Sign Up</a>
+            </div>
+            <div class="mobile-menu">
+            <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Portal Selection -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Right to Information <span>(Education)</span></h1>
+            <p class="hero-subtitle">Access information, ensure transparency, and empower education through RTI</p>
+            
+            <div class="hero-description">
+                <p class="description-text">This platform is your all-in-one space to explore, learn, and take action using the Right to Information (RTI) in the field of education.</p>
+                <p class="description-text">Whether you're a student, parent, teacher, or just someone curious about how the education system works — this site helps you understand and use RTI to find answers, solve problems, and stay informed.</p>
+                <p class="description-text">You'll find guides, real case stories, current issues, useful tools, and step-by-step help to file RTI applications with confidence.</p>
+                <p class="description-text highlight">We make RTI simple, accessible, and meaningful — for everyone.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Portal Categories Section -->
+    <section class="portal-categories-section">
+        <div class="container">
+            <h2 class="section-title">Choose Your Portal</h2>
+            <p class="section-subtitle">Select the portal that best suits your needs and requirements</p>
+            
+            <div class="portal-categories">
+                <!-- Student Portal -->
+                <div class="portal-category student-portal">
+                    <div class="portal-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="portal-content">
+                        <h3 class="portal-title">👨‍🎓 Student Section</h3>
+                        <h4 class="portal-subtitle">Clarity, Control & Confidence in Your Education</h4>
+                        <p class="portal-description">Confused about your marks, re-evaluation, or how admissions work? This section helps you use RTI to ask questions, access your records, and understand how decisions are made.</p>
+                        <ul class="portal-features">
+                            <li>🔹 Get templates to ask for answer sheets, merit lists, and admission cut-offs</li>
+                            <li>🔹 Learn how students won major RTI cases (like CBSE evaluation rights)</li>
+                            <li>🔹 Follow simple steps to write and send your first RTI</li>
+                            <li>🔹 Stay updated on student-related RTI news and exam issues</li>
+                        </ul>
+                        <a href="student/index.html" class="portal-button">
+                            Go to Student Section
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Parent Portal -->
+                <div class="portal-category parent-portal">
+                    <div class="portal-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <div class="portal-content">
+                        <h3 class="portal-title">👩‍👧 Parent Section</h3>
+                        <h4 class="portal-subtitle">Make Schools Accountable and Transparent</h4>
+                        <p class="portal-description">Don't be left in the dark about what you're paying for or how your child was admitted. RTI gives you the right to ask, and this section helps you every step of the way.</p>
+                        <ul class="portal-features">
+                            <li>🔹 Access RTI samples to question fee structures, admission criteria, and seat allotment</li>
+                            <li>🔹 Learn how to send RTIs to schools or education departments</li>
+                            <li>🔹 Read real cases where parents used RTI to expose wrong practices</li>
+                            <li>🔹 Find updates on school policy changes and safety concerns</li>
+                        </ul>
+                        <a href="parent/index.html" class="portal-button">
+                            Go to Parent Section
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Teacher Portal -->
+                <div class="portal-category teacher-portal">
+                    <div class="portal-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="portal-content">
+                        <h3 class="portal-title">👩‍🏫 Teacher Section</h3>
+                        <h4 class="portal-subtitle">Be Informed, Empowered, and Heard</h4>
+                        <p class="portal-description">If you're not getting the training, materials, or policy clarity you need to teach well, RTI is your tool for change. This section shows how you can ask for what matters.</p>
+                        <ul class="portal-features">
+                            <li>🔹 Use RTI to get information on training programs, materials, and policies</li>
+                            <li>🔹 Download RTI drafts used by real teachers</li>
+                            <li>🔹 Understand curriculum changes and education reforms</li>
+                            <li>🔹 Track recent teacher-related RTI developments and decisions</li>
+                        </ul>
+                        <a href="teacher/index.html" class="portal-button">
+                            Go to Teacher Section
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RTI Education Journey -->
+    <section id="journey" class="journey-section">
+        <div class="container">
+            <h2 class="section-title">RTI Education Journey</h2>
+            <div class="journey-intro">
+                <p>Discover how RTI can transform your educational experience. Follow our comprehensive guide to navigate through the RTI process effectively.</p>
+            </div>
+            <div class="highlights-container">
+                <div class="highlights-content">
+                    <ul class="highlights-list">
+                        <li class="highlight-item">
+                            <span class="highlight-dot"></span>
+                            <div class="highlight-content">
+                                <h3>Understanding Your Rights</h3>
+                                <p>Learn about the Right to Information Act and how it applies to education:</p>
+                                <ul class="sub-points">
+                                    <li>Basic rights under RTI Act</li>
+                                    <li>Scope of RTI in education sector</li>
+                                    <li>Types of information you can request</li>
+                                    <li>Time frames and expectations</li>
+                                </ul>
+                                <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </li>
+
+                        <li class="highlight-item">
+                            <span class="highlight-dot"></span>
+                            <div class="highlight-content">
+                                <h3>Filing Applications</h3>
+                                <p>Master the RTI application process with our detailed guides:</p>
+                                <ul class="sub-points">
+                                    <li>Step-by-step application filing</li>
+                                    <li>Document requirements and formats</li>
+                                    <li>Fee structure and payment methods</li>
+                                    <li>Common mistakes to avoid</li>
+                                </ul>
+                                <a href="#" class="learn-more">Start Filing <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </li>
+
+                        <li class="highlight-item">
+                            <span class="highlight-dot"></span>
+                            <div class="highlight-content">
+                                <h3>Tracking Progress</h3>
+                                <p>Stay updated on your RTI application status:</p>
+                                <ul class="sub-points">
+                                    <li>Real-time application tracking</li>
+                                    <li>Understanding response timelines</li>
+                                    <li>Appeal process and procedures</li>
+                                    <li>Status notification system</li>
+                                </ul>
+                                <a href="#" class="learn-more">Track Now <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </li>
+
+                        <li class="highlight-item">
+                            <span class="highlight-dot"></span>
+                            <div class="highlight-content">
+                                <h3>Success Stories</h3>
+                                <p>Learn from real-world RTI success stories in education:</p>
+                                <ul class="sub-points">
+                                    <li>Student admission transparency cases</li>
+                                    <li>Scholarship disbursement inquiries</li>
+                                    <li>Infrastructure development tracking</li>
+                                    <li>Teacher appointment investigations</li>
+                                </ul>
+                                <a href="#" class="learn-more">View Stories <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </li>
+
+                        <li class="highlight-item">
+                            <span class="highlight-dot"></span>
+                            <div class="highlight-content">
+                                <h3>Expert Assistance</h3>
+                                <p>Get help from RTI experts and community:</p>
+                                <ul class="sub-points">
+                                    <li>Expert consultation services</li>
+                                    <li>Community forum discussions</li>
+                                    <li>Webinars and workshops</li>
+                                    <li>Document templates and samples</li>
+                                </ul>
+                                <a href="#" class="learn-more">Get Help <i class="fas fa-arrow-right"></i></a>
+                </div>
+                        </li>
+
+                        <li class="highlight-item">
+                            <span class="highlight-dot"></span>
+                            <div class="highlight-content">
+                                <h3>Impact Analysis</h3>
+                                <p>Understand the impact of RTI in education:</p>
+                                <ul class="sub-points">
+                                    <li>Statistical success rates</li>
+                                    <li>Policy changes achieved</li>
+                                    <li>Systemic improvements</li>
+                                    <li>Future opportunities</li>
+                                </ul>
+                                <a href="#" class="learn-more">View Impact <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="journey-cta">
+                    <h3>Ready to Start Your RTI Journey?</h3>
+                    <p>Join thousands of citizens who have successfully used RTI to bring transparency to education.</p>
+                    <div class="cta-buttons">
+                        <a href="#" class="primary-btn">File RTI Now</a>
+                        <a href="#" class="secondary-btn">Watch Tutorial</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section id="statistics" class="statistics-section">
+        <div class="container">
+            <h2 class="section-title">RTI Statistics & Insights</h2>
+            <p class="section-subtitle">Real-time data on RTI applications in the education sector</p>
+            
+            <div class="stats-grid">
+                <div class="stats-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stats-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="stats-content">
+                        <h3 class="stats-number">18,845+</h3>
+                        <p class="stats-label">RTI Applications Filed</p>
+                    </div>
+                </div>
+                <div class="stats-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stats-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="stats-content">
+                        <h3 class="stats-number">5,289</h3>
+                        <p class="stats-label">Educational Institutions</p>
+                    </div>
+                </div>
+                <div class="stats-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stats-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div class="stats-content">
+                        <h3 class="stats-number">78%</h3>
+                        <p class="stats-label">Success Rate</p>
+                    </div>
+                </div>
+                <div class="stats-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stats-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stats-content">
+                        <h3 class="stats-number">32%</h3>
+                        <p class="stats-label">Annual Increase</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stats-filters">
+                <div class="filter-group">
+                    <label for="year-filter">Filter by Year:</label>
+                    <select id="year-filter" class="filter-select">
+                        <option value="2023" selected>2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="region-filter">Filter by Region:</label>
+                    <select id="region-filter" class="filter-select">
+                        <option value="all" selected>All India</option>
+                        <option value="north">North India</option>
+                        <option value="south">South India</option>
+                        <option value="east">East India</option>
+                        <option value="west">West India</option>
+                    </select>
+                </div>
+                <button id="refreshStats" class="refresh-btn">
+                    <i class="fas fa-sync-alt"></i> Refresh Data
+                </button>
+            </div>
+            
+            <!-- Monthly Applications Chart (Full Width) -->
+            <div class="chart-section" data-aos="fade-up">
+                <div class="chart-box full-width">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Monthly Applications</h3>
+                        <div class="chart-actions">
+                            <button class="chart-action" title="Download CSV">
+                                <i class="fas fa-download"></i>
+                            </button>
+                            <button class="chart-action" title="View Fullscreen">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <canvas id="applicationsChart" height="100"></canvas>
+                </div>
+            </div>
+            
+            <!-- Category Success Rate Chart (Full Width) -->
+            <div class="chart-section" data-aos="fade-up" data-aos-delay="100">
+                <div class="chart-box full-width">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Success Rate by Category</h3>
+                        <div class="chart-actions">
+                            <button class="chart-action" title="Download CSV">
+                                <i class="fas fa-download"></i>
+                            </button>
+                            <button class="chart-action" title="View Fullscreen">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <canvas id="successRateChart" height="100"></canvas>
+                </div>
+            </div>
+            
+            <!-- Application Status Chart (Full Width) -->
+            <div class="chart-section" data-aos="fade-up" data-aos-delay="200">
+                <div class="chart-box full-width">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Application Status</h3>
+                        <div class="chart-actions">
+                            <button class="chart-action" title="Download CSV">
+                                <i class="fas fa-download"></i>
+                            </button>
+                            <button class="chart-action" title="View Fullscreen">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <canvas id="statusChart" height="100"></canvas>
+                </div>
+            </div>
+            
+            <div class="stats-highlights">
+                <div class="highlight-box">
+                    <h4>Top RTI Success Story</h4>
+                    <p>Students uncovered admission irregularities leading to policy reform across 230 institutions</p>
+                    <a href="#" class="highlight-link">Read Case Study <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="highlight-box">
+                    <h4>Most Active Region</h4>
+                    <p>Maharashtra leads with 3,245 RTI applications filed in the education sector</p>
+                    <a href="#" class="highlight-link">Regional Breakdown <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="highlight-box">
+                    <h4>Trending Topic</h4>
+                    <p>Scholarship disbursement transparency showing 47% increase in RTI queries</p>
+                    <a href="#" class="highlight-link">Topic Analysis <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Help Section -->
+    <section id="help" class="help-section">
+        <div class="container">
+            <h2 class="section-title">Help</h2>
+            <div class="help-grid">
+                <div class="help-card">
+                    <div class="help-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3>RTI Guide</h3>
+                    <p>Comprehensive guide to understanding RTI</p>
+                    <a href="#" class="help-link">Read More</a>
+                </div>
+                <div class="help-card">
+                    <div class="help-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>File RTI</h3>
+                    <p>Step-by-step process to file an RTI</p>
+                    <a href="#" class="help-link">Start Now</a>
+                </div>
+                <div class="help-card">
+                    <div class="help-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Track Status</h3>
+                    <p>Check the status of your RTI application</p>
+                    <a href="#" class="help-link">Track Now</a>
+                </div>
+                <div class="help-card">
+                    <div class="help-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Contact Support</h3>
+                    <p>Get assistance with your RTI journey</p>
+                    <a href="#" class="help-link">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sidebar information (hidden on mobile, shown on larger screens) -->
+    <aside class="sidebar">
+        <div class="sidebar-content">
+            <h3>Quick Links</h3>
+            <ul class="sidebar-links">
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#case-studies">Case Studies</a></li>
+                <li><a href="#login">Login/Signup</a></li>
+                <li><a href="#current-cases">Current Cases</a></li>
+                <li><a href="#tools">Tools</a></li>
+            </ul>
+            
+            <h3>User Portals</h3>
+            <ul class="sidebar-portals">
+                <li><a href="parent/index.html">Parent Portal</a></li>
+                <li><a href="student/index.html">Student Portal</a></li>
+                <li><a href="teacher/index.html">Teacher Portal</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Dedicated to promoting transparency in education through the Right to Information Act.</p>
+                </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                    <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="cases.html">Current Cases</a></li>
+                </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: info@rtieducation.org</p>
+                    <p>Phone: +91 1234567890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RTI Education Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <script src="script.js"></script>
+    <script src="slider.js"></script>
+</body>
+</html> 

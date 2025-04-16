@@ -1,0 +1,22 @@
+{
+  "name": "Right to Information in India",
+  "short_name": "RTI India",
+  "description": "Exploring the evolution, legal framework, and implications of information rights in India",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a1525",
+  "theme_color": "#0fe0ff",
+  "icons": [
+    {
+      "src": "assets/images/favicon.png?v=2",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/favicon.svg?v=2",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+} 

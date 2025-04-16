@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#dfb730">
+    <title>Sign Up | RTI Education Portal</title>
+    <link rel="icon" href="assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/images/favicon.png?v=2">
+    <link rel="manifest" href="manifest.json?v=2">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="main.css">
+    <style>
+        /* Page-specific styles */
+        .auth-container {
+            max-width: 550px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px var(--shadow-color);
+            padding: 3rem;
+            position: relative;
+        }
+        
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .auth-title {
+            font-size: 2.2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+        }
+        
+        .auth-subtitle {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+        
+        .form-input {
+            padding: 1rem 1.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .form-input:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(223, 183, 48, 0.2);
+            outline: none;
+        }
+        
+        .form-input.error {
+            border-color: #dc3545;
+        }
+        
+        .error-message {
+            color: #dc3545;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        .form-select {
+            padding: 1rem 1.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: white;
+            cursor: pointer;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .form-select:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(223, 183, 48, 0.2);
+            outline: none;
+        }
+        
+        .form-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        
+        .form-checkbox input {
+            margin-top: 0.3rem;
+            cursor: pointer;
+        }
+        
+        .form-checkbox label {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+        
+        .form-checkbox a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .form-checkbox a:hover {
+            text-decoration: underline;
+        }
+        
+        .password-strength {
+            display: flex;
+            margin-top: 0.5rem;
+            height: 5px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .strength-segment {
+            flex: 1;
+            height: 100%;
+            background-color: #e9ecef;
+            margin-right: 3px;
+        }
+        
+        .strength-segment:last-child {
+            margin-right: 0;
+        }
+        
+        .strength-segment.weak {
+            background-color: #dc3545;
+        }
+        
+        .strength-segment.medium {
+            background-color: #ffc107;
+        }
+        
+        .strength-segment.strong {
+            background-color: #28a745;
+        }
+        
+        .strength-text {
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+        
+        .strength-text.show {
+            display: block;
+        }
+        
+        .auth-button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 1.25rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .auth-button:hover {
+            background-color: #c9a228;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(223, 183, 48, 0.3);
+        }
+        
+        .auth-button:disabled {
+            background-color: #ccb46d;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 2rem 0;
+            color: var(--text-light);
+        }
+        
+        .auth-divider::before,
+        .auth-divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .auth-divider::before {
+            margin-right: 1rem;
+        }
+        
+        .auth-divider::after {
+            margin-left: 1rem;
+        }
+        
+        .social-login {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .social-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+        
+        .social-button.google {
+            color: #DB4437;
+        }
+        
+        .social-button.facebook {
+            color: #4267B2;
+        }
+        
+        .social-button.twitter {
+            color: #1DA1F2;
+        }
+        
+        .auth-footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+        
+        .auth-footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .auth-success {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+        
+        .auth-success.show {
+            display: block;
+        }
+        
+        .auth-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+        
+        .auth-error.show {
+            display: block;
+        }
+        
+        .auth-loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+        
+        .auth-loading.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid var(--accent-color);
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            animation: rotation 1s linear infinite;
+        }
+        
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar/Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>RTI Education</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="timeline.html">Timeline</a>
+                <a href="news.html">News</a>
+                <a href="cases.html">Current Cases</a>
+            </div>
+            <div class="auth-links">
+                <a href="login.html" class="login-btn">Login</a>
+                <a href="signup.html" class="signup-btn active">Sign Up</a>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Create Your Account</h1>
+            <p class="page-description">Join the RTI Education Portal community to access exclusive resources and services</p>
+        </div>
+    </section>
+
+    <!-- Signup Section -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-loading">
+                    <div class="loader"></div>
+                </div>
+                
+                <div class="auth-success">
+                    Account created successfully! Redirecting to login page...
+                </div>
+                
+                <div class="auth-error">
+                    An error occurred while creating your account. Please try again.
+                </div>
+                
+                <div class="auth-header">
+                    <h2 class="auth-title">Join Our Community</h2>
+                    <p class="auth-subtitle">Create your account to start your RTI journey</p>
+                </div>
+                
+                <form class="auth-form" id="signupForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" id="firstName" name="firstName" class="form-input" placeholder="Enter your first name" required>
+                            <div class="error-message" id="firstNameError">First name is required</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Enter your last name" required>
+                            <div class="error-message" id="lastNameError">Last name is required</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email address" required>
+                        <div class="error-message" id="emailError">Please enter a valid email address</div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" id="password" name="password" class="form-input" placeholder="Create a password" required>
+                            <div class="password-strength">
+                                <div class="strength-segment" id="segment1"></div>
+                                <div class="strength-segment" id="segment2"></div>
+                                <div class="strength-segment" id="segment3"></div>
+                                <div class="strength-segment" id="segment4"></div>
+                            </div>
+                            <div class="strength-text" id="strengthWeak">Weak: Add letters, numbers & symbols</div>
+                            <div class="strength-text" id="strengthMedium">Medium: Add more variety</div>
+                            <div class="strength-text" id="strengthStrong">Strong: Great password!</div>
+                            <div class="error-message" id="passwordError">Password must be at least 8 characters</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" placeholder="Confirm your password" required>
+                            <div class="error-message" id="confirmPasswordError">Passwords do not match</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="userType" class="form-label">I am a</label>
+                        <select id="userType" name="userType" class="form-select" required>
+                            <option value="" disabled selected>Select your role</option>
+                            <option value="student">Student</option>
+                            <option value="parent">Parent</option>
+                            <option value="teacher">Teacher</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <div class="error-message" id="userTypeError">Please select your role</div>
+                    </div>
+                    
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">
+                            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                            <div class="error-message" id="termsError">You must agree to the terms</div>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="auth-button" id="signupButton">Create Account</button>
+                </form>
+                
+                <div class="auth-divider">or sign up with</div>
+                
+                <div class="social-login">
+                    <a href="#" class="social-button google">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="#" class="social-button facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-button twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+                
+                <div class="auth-footer">
+                    Already have an account? <a href="login.html">Log in</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Dedicated to promoting transparency in education through the Right to Information Act.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="timeline.html">Timeline</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="cases.html">Current Cases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: info@rtieducation.org</p>
+                    <p>Phone: +91 1234567890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RTI Education Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const signupForm = document.getElementById('signupForm');
+            const firstNameInput = document.getElementById('firstName');
+            const lastNameInput = document.getElementById('lastName');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            const userTypeSelect = document.getElementById('userType');
+            const termsCheckbox = document.getElementById('terms');
+            
+            const firstNameError = document.getElementById('firstNameError');
+            const lastNameError = document.getElementById('lastNameError');
+            const emailError = document.getElementById('emailError');
+            const passwordError = document.getElementById('passwordError');
+            const confirmPasswordError = document.getElementById('confirmPasswordError');
+            const userTypeError = document.getElementById('userTypeError');
+            const termsError = document.getElementById('termsError');
+            
+            const strengthSegments = [
+                document.getElementById('segment1'),
+                document.getElementById('segment2'),
+                document.getElementById('segment3'),
+                document.getElementById('segment4')
+            ];
+            
+            const strengthWeak = document.getElementById('strengthWeak');
+            const strengthMedium = document.getElementById('strengthMedium');
+            const strengthStrong = document.getElementById('strengthStrong');
+            
+            const authLoading = document.querySelector('.auth-loading');
+            const authSuccess = document.querySelector('.auth-success');
+            const authError = document.querySelector('.auth-error');
+            
+            // Name validation
+            firstNameInput.addEventListener('input', function() {
+                if (firstNameInput.value.trim() === '') {
+                    firstNameInput.classList.add('error');
+                    firstNameError.classList.add('show');
+                } else {
+                    firstNameInput.classList.remove('error');
+                    firstNameError.classList.remove('show');
+                }
+            });
+            
+            lastNameInput.addEventListener('input', function() {
+                if (lastNameInput.value.trim() === '') {
+                    lastNameInput.classList.add('error');
+                    lastNameError.classList.add('show');
+                } else {
+                    lastNameInput.classList.remove('error');
+                    lastNameError.classList.remove('show');
+                }
+            });
+            
+            // Email validation
+            emailInput.addEventListener('input', function() {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailInput.value)) {
+                    emailInput.classList.add('error');
+                    emailError.classList.add('show');
+                } else {
+                    emailInput.classList.remove('error');
+                    emailError.classList.remove('show');
+                }
+            });
+            
+            // Password strength checker
+            passwordInput.addEventListener('input', function() {
+                const password = passwordInput.value;
+                
+                // Reset strength indicators
+                strengthSegments.forEach(segment => {
+                    segment.className = 'strength-segment';
+                });
+                
+                strengthWeak.classList.remove('show');
+                strengthMedium.classList.remove('show');
+                strengthStrong.classList.remove('show');
+                
+                if (password.length === 0) {
+                    return;
+                }
+                
+                // Check password strength
+                let strength = 0;
+                
+                // Length check
+                if (password.length >= 8) {
+                    strength += 1;
+                }
+                
+                // Lowercase and uppercase check
+                if (password.match(/[a-z]/) && password.match(/[A-Z]/)) {
+                    strength += 1;
+                }
+                
+                // Number check
+                if (password.match(/\d/)) {
+                    strength += 1;
+                }
+                
+                // Special character check
+                if (password.match(/[^a-zA-Z\d]/)) {
+                    strength += 1;
+                }
+                
+                // Update visual strength indicator
+                for (let i = 0; i < strength; i++) {
+                    if (strength === 1) {
+                        strengthSegments[i].classList.add('weak');
+                    } else if (strength === 2 || strength === 3) {
+                        strengthSegments[i].classList.add('medium');
+                    } else if (strength === 4) {
+                        strengthSegments[i].classList.add('strong');
+                    }
+                }
+                
+                // Show appropriate message
+                if (strength === 1) {
+                    strengthWeak.classList.add('show');
+                } else if (strength === 2 || strength === 3) {
+                    strengthMedium.classList.add('show');
+                } else if (strength === 4) {
+                    strengthStrong.classList.add('show');
+                }
+                
+                // Password validation
+                if (password.length < 8) {
+                    passwordInput.classList.add('error');
+                    passwordError.classList.add('show');
+                } else {
+                    passwordInput.classList.remove('error');
+                    passwordError.classList.remove('show');
+                }
+            });
+            
+            // Confirm password validation
+            confirmPasswordInput.addEventListener('input', checkPasswordMatch);
+            passwordInput.addEventListener('input', checkPasswordMatch);
+            
+            function checkPasswordMatch() {
+                if (passwordInput.value !== confirmPasswordInput.value) {
+                    confirmPasswordInput.classList.add('error');
+                    confirmPasswordError.classList.add('show');
+                } else {
+                    confirmPasswordInput.classList.remove('error');
+                    confirmPasswordError.classList.remove('show');
+                }
+            }
+            
+            // User type validation
+            userTypeSelect.addEventListener('change', function() {
+                if (userTypeSelect.value === '') {
+                    userTypeSelect.classList.add('error');
+                    userTypeError.classList.add('show');
+                } else {
+                    userTypeSelect.classList.remove('error');
+                    userTypeError.classList.remove('show');
+                }
+            });
+            
+            // Terms checkbox validation
+            termsCheckbox.addEventListener('change', function() {
+                if (!termsCheckbox.checked) {
+                    termsError.classList.add('show');
+                } else {
+                    termsError.classList.remove('show');
+                }
+            });
+            
+            // Form submission
+            signupForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Reset errors
+                authError.classList.remove('show');
+                
+                // Validate form
+                let isValid = true;
+                
+                if (firstNameInput.value.trim() === '') {
+                    firstNameInput.classList.add('error');
+                    firstNameError.classList.add('show');
+                    isValid = false;
+                }
+                
+                if (lastNameInput.value.trim() === '') {
+                    lastNameInput.classList.add('error');
+                    lastNameError.classList.add('show');
+                    isValid = false;
+                }
+                
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailInput.value)) {
+                    emailInput.classList.add('error');
+                    emailError.classList.add('show');
+                    isValid = false;
+                }
+                
+                if (passwordInput.value.length < 8) {
+                    passwordInput.classList.add('error');
+                    passwordError.classList.add('show');
+                    isValid = false;
+                }
+                
+                if (passwordInput.value !== confirmPasswordInput.value) {
+                    confirmPasswordInput.classList.add('error');
+                    confirmPasswordError.classList.add('show');
+                    isValid = false;
+                }
+                
+                if (userTypeSelect.value === '') {
+                    userTypeSelect.classList.add('error');
+                    userTypeError.classList.add('show');
+                    isValid = false;
+                }
+                
+                if (!termsCheckbox.checked) {
+                    termsError.classList.add('show');
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    // Show loading
+                    authLoading.classList.add('show');
+                    
+                    // Simulating API call
+                    setTimeout(function() {
+                        authLoading.classList.remove('show');
+                        
+                        // Simulating successful registration (in a real app, this would be an API call)
+                        const randomSuccess = Math.random() > 0.1; // 90% success rate for demo
+                        
+                        if (randomSuccess) {
+                            authSuccess.classList.add('show');
+                            
+                            // Store registration data in session storage (for demo purposes)
+                            const userData = {
+                                firstName: firstNameInput.value,
+                                lastName: lastNameInput.value,
+                                email: emailInput.value,
+                                userType: userTypeSelect.value
+                            };
+                            
+                            sessionStorage.setItem('registeredUser', JSON.stringify(userData));
+                            
+                            // Redirect after success message
+                            setTimeout(function() {
+                                window.location.href = 'login.html';
+                            }, 2000);
+                        } else {
+                            authError.classList.add('show');
+                        }
+                    }, 1500);
+                }
+            });
+            
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+            const authLinks = document.querySelector('.auth-links');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                authLinks.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html> 

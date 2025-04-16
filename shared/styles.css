@@ -1,0 +1,224 @@
+/* Theme Variables */
+:root {
+    /* Student Theme */
+    --student-primary: #0fe0ff;
+    --student-secondary: #0066ff;
+    --student-gradient: linear-gradient(135deg, var(--student-primary), var(--student-secondary));
+    
+    /* Teacher Theme */
+    --teacher-primary: #4CAF50;
+    --teacher-secondary: #2E7D32;
+    --teacher-gradient: linear-gradient(135deg, var(--teacher-primary), var(--teacher-secondary));
+    
+    /* Parent Theme */
+    --parent-primary: #FF9800;
+    --parent-secondary: #F57C00;
+    --parent-gradient: linear-gradient(135deg, var(--parent-primary), var(--parent-secondary));
+    
+    /* General Theme */
+    --general-primary: #9E9E9E;
+    --general-secondary: #616161;
+    --general-gradient: linear-gradient(135deg, var(--general-primary), var(--general-secondary));
+}
+
+/* Base Styles */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f5f5f5;
+}
+
+/* Header Styles */
+header {
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: inherit;
+}
+
+.portal-logo-text {
+    background: var(--student-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #666;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    color: #333;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+nav a.active {
+    color: #fff;
+    background: var(--student-gradient);
+}
+
+/* Theme-specific styles */
+.student-theme .portal-logo-text,
+.student-theme nav a.active {
+    background: var(--student-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.teacher-theme .portal-logo-text,
+.teacher-theme nav a.active {
+    background: var(--teacher-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.parent-theme .portal-logo-text,
+.parent-theme nav a.active {
+    background: var(--parent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.general-theme .portal-logo-text,
+.general-theme nav a.active {
+    background: var(--general-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Common Components */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    background: var(--student-gradient);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.button i {
+    margin-left: 0.5rem;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--student-primary);
+    box-shadow: 0 0 0 2px rgba(15, 224, 255, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        padding: 1rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    nav.active {
+        display: block;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+} 

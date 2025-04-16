@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher RTI Portal - Right to Information in India</title>
+    <link rel="icon" href="../assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="../assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png?v=2">
+    <link rel="manifest" href="../manifest.json?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        :root {
+            --portal-primary: var(--teacher-primary);
+            --portal-secondary: var(--teacher-secondary);
+            --portal-gradient: var(--teacher-gradient);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-button {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #004d40, #00695c);
+            color: white;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .geometric-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: 
+                linear-gradient(30deg, #ffffff 12%, transparent 12.5%, transparent 87%, #ffffff 87.5%, #ffffff),
+                linear-gradient(150deg, #ffffff 12%, transparent 12.5%, transparent 87%, #ffffff 87.5%, #ffffff),
+                linear-gradient(30deg, #ffffff 12%, transparent 12.5%, transparent 87%, #ffffff 87.5%, #ffffff),
+                linear-gradient(150deg, #ffffff 12%, transparent 12.5%, transparent 87%, #ffffff 87.5%, #ffffff),
+                linear-gradient(60deg, #ffffff 25%, transparent 25.5%, transparent 75%, #ffffff 75%, #ffffff),
+                linear-gradient(60deg, #ffffff 25%, transparent 25.5%, transparent 75%, #ffffff 75%, #ffffff);
+            background-size: 80px 140px;
+            background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+            animation: movePattern 20s linear infinite;
+        }
+
+        @keyframes movePattern {
+            0% {
+                background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+            }
+            100% {
+                background-position: 80px 140px, 80px 140px, 120px 210px, 120px 210px, 80px 140px, 120px 210px;
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .service-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: translateX(-100%);
+            transition: 0.5s;
+        }
+
+        .service-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 20px rgba(0,150,136,0.5);
+        }
+
+        .service-title {
+            font-size: 1.4rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: rgba(255,255,255,0.8);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .action-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--portal-primary);
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .action-button:hover {
+            background: transparent;
+            color: white;
+            border-color: white;
+            transform: translateY(-3px);
+        }
+
+        .action-button i {
+            margin-left: 0.5rem;
+        }
+
+        .resources-section {
+            background: #fff;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0,150,136,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resource-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--portal-gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .resource-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,150,136,0.15);
+        }
+
+        .resource-icon {
+            font-size: 2.5rem;
+            color: var(--portal-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .resource-title {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .resource-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .resource-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .resource-item:hover {
+            color: var(--portal-primary);
+            transform: translateX(10px);
+        }
+
+        .resource-item i {
+            color: var(--portal-primary);
+            margin-right: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 4rem 1rem;
+                min-height: auto;
+            }
+
+            .resources-section {
+                padding: 4rem 1rem;
+            }
+
+            .service-card,
+            .resource-card {
+                padding: 2rem;
+            }
+        }
+
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body class="teacher-theme">
+    <div id="header-container"></div>
+
+    <section class="hero-section">
+        <div class="geometric-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Teacher RTI Portal</h1>
+            <p class="hero-description">Access professional development resources and transparency tools</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-chalkboard-teacher service-icon"></i>
+                    <h3 class="service-title">Training Resources</h3>
+                    <p class="service-description">Access professional development materials and workshops</p>
+                    <a href="training.html" class="action-button">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-chart-line service-icon"></i>
+                    <h3 class="service-title">Career Progress</h3>
+                    <p class="service-description">Track your career advancement and opportunities</p>
+                    <a href="career.html" class="action-button">View Progress <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-network-wired service-icon"></i>
+                    <h3 class="service-title">Professional Network</h3>
+                    <p class="service-description">Connect with other educators and share resources</p>
+                    <a href="network.html" class="action-button">Connect <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="resources-section">
+        <div class="resources-grid">
+            <div class="resource-card">
+                <i class="fas fa-book resource-icon"></i>
+                <h3 class="resource-title">Teaching Resources</h3>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Lesson Plan Templates
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Assessment Guidelines
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Digital Learning Tools
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Educational Research
+                    </li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <i class="fas fa-clipboard-list resource-icon"></i>
+                <h3 class="resource-title">Administrative Tools</h3>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Leave Management
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Performance Reports
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Salary Information
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Benefits Overview
+                    </li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <i class="fas fa-users resource-icon"></i>
+                <h3 class="resource-title">Community Support</h3>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Mentorship Programs
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Discussion Forums
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Best Practices
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Resource Sharing
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <script src="../shared/nav.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const headerContainer = document.getElementById('header-container');
+            headerContainer.innerHTML = Navigation.createHeader('Teacher RTI Portal');
+            new Navigation('teacher');
+        });
+    </script>
+</body>
+</html> 

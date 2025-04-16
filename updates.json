@@ -1,0 +1,51 @@
+{
+  "lastUpdated": "2025-03-12T10:30:00Z",
+  "updates": [
+    {
+      "id": 1,
+      "date": "2025-03-12",
+      "title": "RTI Implementation in AI Governance",
+      "summary": "The government has issued comprehensive guidelines on applying RTI principles to AI systems used in public administration.",
+      "fullText": "The government has issued comprehensive guidelines on applying RTI principles to AI systems used in public administration. The guidelines mandate transparency in algorithmic decision-making, disclosure of AI training data sources, and citizen access to information about how AI systems affect public service delivery and policy implementation. These guidelines are the first of their kind globally and position India as a leader in AI transparency.",
+      "category": "Policy",
+      "url": "#"
+    },
+    {
+      "id": 2,
+      "date": "2025-02-15",
+      "title": "Global Transparency Index Recognition",
+      "summary": "India's RTI framework has received international recognition in the Global Transparency Index.",
+      "fullText": "India's RTI framework has received international recognition in the Global Transparency Index, with significant improvement in rankings due to recent reforms and digital initiatives. The index highlighted India's innovative approaches to information disclosure and citizen engagement in governance through the RTI mechanism. India now ranks among the top 15 countries globally for transparency in governance.",
+      "category": "Recognition",
+      "url": "#"
+    },
+    {
+      "id": 3,
+      "date": "2025-01-25",
+      "title": "National RTI Portal Integration Complete",
+      "summary": "The government has completed the integration of all state RTI portals with the National RTI Portal.",
+      "fullText": "The government has completed the integration of all state RTI portals with the National RTI Portal, creating a unified platform for citizens to file RTI applications to any public authority across the country. The integrated portal features a standardized interface, centralized tracking, and comprehensive analytics on RTI implementation. Citizens can now file and track applications through a single login across all states and central departments.",
+      "category": "Technology",
+      "url": "#"
+    },
+    {
+      "id": 4,
+      "date": "2025-03-15",
+      "title": "Upcoming: National RTI Conference 2025",
+      "summary": "The Ministry of Personnel, Public Grievances and Pensions announces the National RTI Conference 2025.",
+      "fullText": "The Ministry of Personnel, Public Grievances and Pensions has announced the National RTI Conference 2025, scheduled for April 10-12 in New Delhi. The conference will bring together Information Commissioners, government officials, civil society organizations, and RTI activists to discuss the future of transparency in the age of artificial intelligence and digital governance. Registration is now open for both in-person and virtual participation.",
+      "category": "Event",
+      "url": "#",
+      "isUpcoming": true
+    }
+  ],
+  "featuredUpdate": {
+    "id": 1,
+    "date": "2025-03-12",
+    "title": "RTI Implementation in AI Governance",
+    "summary": "The government has issued comprehensive guidelines on applying RTI principles to AI systems used in public administration.",
+    "fullText": "The government has issued comprehensive guidelines on applying RTI principles to AI systems used in public administration. The guidelines mandate transparency in algorithmic decision-making, disclosure of AI training data sources, and citizen access to information about how AI systems affect public service delivery and policy implementation. These guidelines are the first of their kind globally and position India as a leader in AI transparency.",
+    "category": "Policy",
+    "url": "#"
+  }
+} 

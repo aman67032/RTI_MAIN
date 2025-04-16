@@ -1,0 +1,8 @@
+This is a placeholder for the favicon.ico file.
+
+Since we can't directly create binary ICO files through text editing, you'll need to:
+1. Use the SVG version we created (favicon.svg)
+2. Convert it to ICO format using an online converter or image editing software
+3. Replace this file with the actual ICO version
+
+The ICO file should contain multiple sizes (16x16, 32x32, 48x48) for best compatibility across browsers. 

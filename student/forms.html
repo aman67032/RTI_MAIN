@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File RTI - Student Portal</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, #001a33, #000);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: var(--student-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .template-section {
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .template-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .template-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .template-icon {
+            font-size: 2rem;
+            color: var(--student-primary);
+            margin-bottom: 1rem;
+        }
+
+        .template-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .template-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .use-template-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            background: var(--student-gradient);
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .use-template-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .use-template-btn i {
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body class="student-theme">
+    <div id="header-container"></div>
+
+    <section class="page-header">
+        <h1 class="page-title">File RTI Application</h1>
+        <p>Choose a template or create a custom RTI application</p>
+    </section>
+
+    <section class="template-section">
+        <div class="template-grid">
+            <div class="template-card">
+                <i class="fas fa-file-alt template-icon"></i>
+                <h3 class="template-title">Answer Sheet Verification</h3>
+                <p class="template-description">Request to view and verify your exam answer sheets</p>
+                <button class="use-template-btn" data-template="answer-sheet">
+                    Use Template <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <div class="template-card">
+                <i class="fas fa-university template-icon"></i>
+                <h3 class="template-title">Admission Process</h3>
+                <p class="template-description">Inquire about admission criteria and selection process</p>
+                <button class="use-template-btn" data-template="admission">
+                    Use Template <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <div class="template-card">
+                <i class="fas fa-hand-holding-usd template-icon"></i>
+                <h3 class="template-title">Scholarship Status</h3>
+                <p class="template-description">Track your scholarship application and disbursement</p>
+                <button class="use-template-btn" data-template="scholarship">
+                    Use Template <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <div class="template-card">
+                <i class="fas fa-exclamation-circle template-icon"></i>
+                <h3 class="template-title">Exam Malpractice</h3>
+                <p class="template-description">Report examination irregularities or malpractices</p>
+                <button class="use-template-btn" data-template="malpractice">
+                    Use Template <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <div class="template-card">
+                <i class="fas fa-calculator template-icon"></i>
+                <h3 class="template-title">Fee Structure</h3>
+                <p class="template-description">Request detailed breakdown of fees and charges</p>
+                <button class="use-template-btn" data-template="fee">
+                    Use Template <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <div class="template-card">
+                <i class="fas fa-edit template-icon"></i>
+                <h3 class="template-title">Custom RTI</h3>
+                <p class="template-description">Create a custom RTI application from scratch</p>
+                <button class="use-template-btn" data-template="custom">
+                    Start Fresh <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- RTI Form will be loaded here -->
+    <div id="form-container"></div>
+
+    <script src="../shared/nav.js"></script>
+    <script src="../shared/forms.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize navigation
+            const headerContainer = document.getElementById('header-container');
+            headerContainer.innerHTML = Navigation.createHeader('Student RTI Portal');
+            new Navigation('student');
+
+            // Template data
+            const templates = {
+                'answer-sheet': {
+                    subject: 'Request for Answer Sheet Verification',
+                    description: `I would like to request access to view my answer sheet for the following examination:
+
+Exam Name: [Exam Name]
+Roll Number: [Roll Number]
+Date of Examination: [Date]
+Subject(s): [Subject Names]
+
+I am exercising my right under RTI Act to:
+1. Inspect my answer sheets
+2. Obtain photocopies of the evaluated answer sheets
+3. Know the marks given for each question
+4. View the marking scheme/solution key used for evaluation
+
+Please provide the above information within the stipulated time frame.`
+                },
+                'admission': {
+                    subject: 'Information Request Regarding Admission Process',
+                    description: `I would like to request the following information regarding the admission process:
+
+1. Complete selection criteria and weightage given to each component
+2. Cut-off marks/ranks for all categories in the last three years
+3. Total number of seats available and their category-wise distribution
+4. Number of applications received and candidates selected in each category
+5. Copy of the merit list with marks/ranks of selected candidates
+
+Please provide the above information as per RTI Act guidelines.`
+                },
+                // Add other templates...
+            };
+
+            // Handle template selection
+            document.querySelectorAll('.use-template-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const templateId = button.dataset.template;
+                    const template = templates[templateId] || { subject: '', description: '' };
+                    
+                    // Load the form
+                    fetch('../shared/forms.html')
+                        .then(response => response.text())
+                        .then(html => {
+                            const formContainer = document.getElementById('form-container');
+                            formContainer.innerHTML = html;
+                            
+                            // Pre-fill template data if available
+                            if (template.subject) {
+                                document.getElementById('subject').value = template.subject;
+                            }
+                            if (template.description) {
+                                document.getElementById('description').value = template.description;
+                            }
+
+                            // Scroll to form
+                            formContainer.scrollIntoView({ behavior: 'smooth' });
+                        });
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

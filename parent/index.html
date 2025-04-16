@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent RTI Portal - Right to Information in India</title>
+    <link rel="icon" href="../assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="../assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png?v=2">
+    <link rel="manifest" href="../manifest.json?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        :root {
+            --portal-primary: var(--parent-primary);
+            --portal-secondary: var(--parent-secondary);
+            --portal-gradient: var(--parent-gradient);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-button {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #4a1500, #ff6b00);
+            color: white;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .floating-circles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+        }
+
+        .circle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        .circle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .circle:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            top: 40%;
+            right: -200px;
+            animation-delay: -5s;
+        }
+
+        .circle:nth-child(3) {
+            width: 400px;
+            height: 400px;
+            bottom: -200px;
+            left: 30%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-30px) rotate(10deg);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 20px rgba(255,107,0,0.5);
+        }
+
+        .feature-title {
+            font-size: 1.4rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: rgba(255,255,255,0.8);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--portal-primary);
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: white;
+            border-color: white;
+            transform: translateY(-3px);
+        }
+
+        .cta-button i {
+            margin-left: 0.5rem;
+        }
+
+        .info-section {
+            background: #fff;
+            padding: 6rem 2rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255,107,0,0.1);
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255,107,0,0.15);
+        }
+
+        .info-icon {
+            font-size: 2.5rem;
+            color: var(--portal-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-title {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            color: var(--portal-primary);
+            transform: translateX(10px);
+        }
+
+        .info-item i {
+            color: var(--portal-primary);
+            margin-right: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 4rem 1rem;
+                min-height: auto;
+            }
+
+            .info-section {
+                padding: 4rem 1rem;
+            }
+
+            .feature-card,
+            .info-card {
+                padding: 2rem;
+            }
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .issues-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .issue-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 152, 0, 0.1);
+        }
+
+        .issue-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .issue-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .issue-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .action-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: background-color 0.3s, transform 0.3s;
+            font-weight: 500;
+        }
+
+        .action-button:hover {
+            background: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        .tools-section {
+            background: white;
+            padding: 4rem 0;
+            border-top: 2px solid rgba(255, 152, 0, 0.1);
+            border-bottom: 2px solid rgba(255, 152, 0, 0.1);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .tool-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            background: var(--bg-color);
+            transition: transform 0.3s;
+            border: 1px solid rgba(255, 152, 0, 0.1);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tool-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .help-section {
+            background: white;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+
+        .help-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .help-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .help-button:hover {
+            background: var(--secondary-color);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="parent-theme">
+    <div id="header-container"></div>
+
+    <section class="hero-section">
+        <div class="floating-circles">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Parent RTI Portal</h1>
+            <p class="hero-description">Stay informed about your child's education and school matters</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-file-invoice-dollar feature-icon"></i>
+                    <h3 class="feature-title">Fee Transparency</h3>
+                    <p class="feature-description">Access detailed fee structures and payment information</p>
+                    <a href="fees.html" class="cta-button">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-user-graduate feature-icon"></i>
+                    <h3 class="feature-title">Admission Updates</h3>
+                    <p class="feature-description">Track admission status and requirements</p>
+                    <a href="admissions.html" class="cta-button">Check Status <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt feature-icon"></i>
+                    <h3 class="feature-title">Safety Monitoring</h3>
+                    <p class="feature-description">Access safety protocols and compliance reports</p>
+                    <a href="safety.html" class="cta-button">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="info-grid">
+            <div class="info-card">
+                <i class="fas fa-book-open info-icon"></i>
+                <h3 class="info-title">Educational Rights</h3>
+                <ul class="info-list">
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        Right to Education Act Overview
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        School Choice Guidelines
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        Special Education Provisions
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        Parent Participation Rights
+                    </li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <i class="fas fa-clipboard-list info-icon"></i>
+                <h3 class="info-title">School Information</h3>
+                <ul class="info-list">
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        Academic Calendar
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        Curriculum Details
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        Faculty Qualifications
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        Infrastructure Facilities
+                    </li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <i class="fas fa-hands-helping info-icon"></i>
+                <h3 class="info-title">Support Services</h3>
+                <ul class="info-list">
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        Counseling Services
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        Health & Wellness Programs
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        Transportation Services
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        Emergency Protocols
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">Common Parent Concerns</h2>
+        <div class="issues-grid">
+            <div class="issue-card">
+                <i class="fas fa-rupee-sign"></i>
+                <h3>School Fee Transparency</h3>
+                <p>Get clarity on fee structure, development charges, and other costs</p>
+                <a href="#" class="action-button">Learn More</a>
+            </div>
+
+            <div class="issue-card">
+                <i class="fas fa-user-graduate"></i>
+                <h3>Admission Process</h3>
+                <p>Understand admission criteria, documentation, and selection process</p>
+                <a href="#" class="action-button">Check Details</a>
+            </div>
+
+            <div class="issue-card">
+                <i class="fas fa-utensils"></i>
+                <h3>Mid-Day Meal Scheme</h3>
+                <p>Monitor quality and implementation of government meal programs</p>
+                <a href="#" class="action-button">File RTI</a>
+            </div>
+
+            <div class="issue-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>School Safety</h3>
+                <p>Access safety reports and verify staff credentials</p>
+                <a href="#" class="action-button">View Reports</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="tools-section">
+        <div class="container">
+            <h2 class="section-title">Parent Resources</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>RTI Templates</h3>
+                    <p>Easy-to-use templates for common parent queries</p>
+                    <a href="#" class="action-button">Get Templates</a>
+                </div>
+
+                <div class="tool-card">
+                    <i class="fas fa-search"></i>
+                    <h3>School Verification</h3>
+                    <p>Check if a school is recognized and accredited</p>
+                    <a href="#" class="action-button">Verify School</a>
+                </div>
+
+                <div class="tool-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Parent Community</h3>
+                    <p>Connect with other parents and share experiences</p>
+                    <a href="#" class="action-button">Join Forum</a>
+                </div>
+
+                <div class="tool-card">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Helpline</h3>
+                    <p>Get assistance with RTI filing and follow-up</p>
+                    <a href="#" class="action-button">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="help-section">
+        <div class="container">
+            <div class="help-content">
+                <h2 class="section-title">Need Help Filing an RTI?</h2>
+                <p>Our team is here to guide you through the process and answer your questions</p>
+                <a href="#" class="help-button">Get Started <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Supporting parents in their journey to ensure quality education through transparency and accountability.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">RTI Guide</a></li>
+                    <li><a href="#">Success Stories</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> parents@righttoinformation.org</p>
+                <p><i class="fas fa-phone"></i> +91 123 456 7890</p>
+                <p><i class="fas fa-map-marker-alt"></i> New Delhi, India</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Right to Information in India. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../shared/nav.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const headerContainer = document.getElementById('header-container');
+            headerContainer.innerHTML = Navigation.createHeader('Parent RTI Portal');
+            new Navigation('parent');
+        });
+    </script>
+</body>
+</html> 

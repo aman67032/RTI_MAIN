@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0fe0ff">
+    <title>Student RTI Portal - Right to Information in India</title>
+    <link rel="icon" href="../assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="../assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png?v=2">
+    <link rel="manifest" href="../manifest.json?v=2">
+    <link rel="stylesheet" href="../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Student Portal Specific Styles */
+        :root {
+            --portal-primary: var(--student-primary);
+            --portal-secondary: var(--student-secondary);
+            --portal-gradient: var(--student-gradient);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #001a33, #000);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,224C672,213,768,171,864,149.3C960,128,1056,128,1152,149.3C1248,171,1344,213,1392,234.7L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') repeat-x;
+            background-size: 1440px 100px;
+            animation: wave 20s linear infinite;
+        }
+
+        .wave:nth-child(2) {
+            bottom: 10px;
+            opacity: 0.5;
+            animation: wave 15s linear infinite reverse;
+        }
+
+        .wave:nth-child(3) {
+            bottom: 20px;
+            opacity: 0.2;
+            animation: wave 10s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { background-position-x: 0; }
+            100% { background-position-x: 1440px; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            background: var(--portal-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(15, 224, 255, 0.2),
+                           0 0 20px rgba(15, 224, 255, 0.2),
+                           0 0 30px rgba(15, 224, 255, 0.2);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(15, 224, 255, 0.4),
+                           0 0 30px rgba(15, 224, 255, 0.4),
+                           0 0 40px rgba(15, 224, 255, 0.4);
+            }
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .action-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .action-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .action-card:hover::before {
+            left: 100%;
+        }
+
+        .action-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .action-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--portal-primary);
+            text-shadow: 0 0 20px rgba(15, 224, 255, 0.5);
+        }
+
+        .action-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        .action-description {
+            color: #ccc;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .button {
+            background: var(--portal-gradient);
+            border: none;
+            padding: 1rem 2rem;
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
+            z-index: -1;
+        }
+
+        .button:hover::before {
+            transform: translateX(100%);
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(15, 224, 255, 0.4);
+        }
+
+        .resources-section {
+            background: #fff;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .resource-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(15, 224, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resource-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--portal-gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .resource-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(15, 224, 255, 0.15);
+        }
+
+        .resource-icon {
+            font-size: 2.5rem;
+            color: var(--portal-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .resource-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .resource-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .resource-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: #666;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .resource-item:hover {
+            color: var(--portal-primary);
+            transform: translateX(10px);
+        }
+
+        .resource-item i {
+            color: var(--portal-primary);
+            margin-right: 1rem;
+            font-size: 1rem;
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, #001a33, #000);
+            color: white;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-card {
+            padding: 2rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--portal-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(15, 224, 255, 0.3);
+        }
+
+        .stat-label {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 4rem 1rem;
+                min-height: auto;
+            }
+
+            .resources-section,
+            .stats-section {
+                padding: 4rem 1rem;
+            }
+
+            .action-card,
+            .resource-card,
+            .stat-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="student-theme">
+    <div id="header-container"></div>
+
+    <section class="hero-section">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Student RTI Portal</h1>
+            <p>Access educational transparency tools and resources designed for students</p>
+            
+            <div class="quick-actions">
+                <div class="action-card">
+                    <i class="fas fa-file-alt action-icon"></i>
+                    <h3 class="action-title">File New RTI</h3>
+                    <p class="action-description">Submit a new RTI application for educational matters</p>
+                    <a href="forms.html" class="button">Start Now <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="action-card">
+                    <i class="fas fa-search action-icon"></i>
+                    <h3 class="action-title">Track Application</h3>
+                    <p class="action-description">Check the status of your RTI application</p>
+                    <a href="track.html" class="button">Track Status <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="action-card">
+                    <i class="fas fa-book action-icon"></i>
+                    <h3 class="action-title">RTI Guide</h3>
+                    <p class="action-description">Learn how to file effective RTI applications</p>
+                    <a href="guide.html" class="button">Read Guide <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="resources-section">
+        <div class="resources-grid">
+            <div class="resource-card">
+                <i class="fas fa-graduation-cap resource-icon"></i>
+                <h3 class="resource-title">Academic Resources</h3>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Answer Sheet Verification Guide
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Exam Result Appeals Process
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Sample RTIs for Results
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Marking Scheme Requests
+                    </li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <i class="fas fa-university resource-icon"></i>
+                <h3 class="resource-title">Admission Resources</h3>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Cutoff Calculation Method
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Seat Matrix Information
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Fee Structure Details
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Reservation Policy Guide
+                    </li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <i class="fas fa-hand-holding-usd resource-icon"></i>
+                <h3 class="resource-title">Scholarship Resources</h3>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Scholarship Status Check
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Disbursement Timeline
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Eligibility Criteria
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Application Process
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">5000+</div>
+                <div class="stat-label">RTIs Filed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">85%</div>
+                <div class="stat-label">Success Rate</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24hrs</div>
+                <div class="stat-label">Avg. Response Time</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">Success Stories</div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../shared/nav.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize navigation
+            const headerContainer = document.getElementById('header-container');
+            headerContainer.innerHTML = Navigation.createHeader('Student RTI Portal');
+            new Navigation('student');
+
+            // Add smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track RTI Application</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .track-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .track-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .track-form {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .track-form input {
+            flex: 1;
+        }
+
+        .status-container {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .status-container.show {
+            display: block;
+        }
+
+        .status-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            color: white;
+            font-weight: 500;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #eee;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 1rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: var(--student-primary);
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--student-primary);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-description {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .error-container {
+            display: none;
+            text-align: center;
+            color: #f44336;
+            padding: 2rem;
+        }
+
+        .error-container.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="track-container">
+            <h1 class="track-title">Track RTI Application</h1>
+            
+            <form id="trackForm" class="track-form">
+                <input type="text" 
+                       class="form-input" 
+                       id="rtiId" 
+                       name="rtiId" 
+                       placeholder="Enter your RTI ID" 
+                       required>
+                <button type="submit" class="button">
+                    Track <i class="fas fa-search"></i>
+                </button>
+            </form>
+
+            <div class="status-container">
+                <div class="status-header">
+                    <div>
+                        <h2>Application Details</h2>
+                        <p class="rti-id"></p>
+                    </div>
+                    <div class="status-badge"></div>
+                </div>
+
+                <div class="details-grid">
+                    <div class="card">
+                        <h3>Applicant Information</h3>
+                        <p><strong>Name:</strong> <span class="applicant-name"></span></p>
+                        <p><strong>Email:</strong> <span class="applicant-email"></span></p>
+                        <p><strong>Phone:</strong> <span class="applicant-phone"></span></p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Request Details</h3>
+                        <p><strong>Subject:</strong> <span class="request-subject"></span></p>
+                        <p><strong>Description:</strong> <span class="request-description"></span></p>
+                        <p><strong>Submission Date:</strong> <span class="submission-date"></span></p>
+                    </div>
+                </div>
+
+                <div class="timeline">
+                    <!-- Timeline items will be added here dynamically -->
+                </div>
+            </div>
+
+            <div class="error-container">
+                <i class="fas fa-exclamation-circle" style="font-size: 3rem; color: #f44336;"></i>
+                <h2>Application Not Found</h2>
+                <p>Please check the RTI ID and try again.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../shared/forms.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const trackForm = document.getElementById('trackForm');
+            const statusContainer = document.querySelector('.status-container');
+            const errorContainer = document.querySelector('.error-container');
+
+            function formatDate(dateString) {
+                return new Date(dateString).toLocaleDateString('en-IN', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            }
+
+            function updateStatusUI(data) {
+                // Update status badge
+                const statusBadge = document.querySelector('.status-badge');
+                statusBadge.textContent = data.status;
+                statusBadge.style.backgroundColor = RTIFormHandler.getStatusColor(data.status);
+
+                // Update application details
+                document.querySelector('.rti-id').textContent = data.rtiId;
+                document.querySelector('.applicant-name').textContent = data.name;
+                document.querySelector('.applicant-email').textContent = data.email;
+                document.querySelector('.applicant-phone').textContent = data.phone;
+                document.querySelector('.request-subject').textContent = data.subject;
+                document.querySelector('.request-description').textContent = data.description;
+                document.querySelector('.submission-date').textContent = formatDate(data.submissionDate);
+
+                // Create timeline
+                const timeline = document.querySelector('.timeline');
+                timeline.innerHTML = `
+                    <div class="timeline-item">
+                        <div class="timeline-date">${formatDate(data.submissionDate)}</div>
+                        <div class="timeline-title">Application Submitted</div>
+                        <div class="timeline-description">Your RTI application has been successfully submitted.</div>
+                    </div>
+                `;
+
+                // Show status container
+                statusContainer.classList.add('show');
+                errorContainer.classList.remove('show');
+            }
+
+            trackForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const rtiId = document.getElementById('rtiId').value;
+                const result = RTIFormHandler.trackRTI(rtiId);
+
+                if (result.success) {
+                    updateStatusUI(result.data);
+                } else {
+                    statusContainer.classList.remove('show');
+                    errorContainer.classList.add('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

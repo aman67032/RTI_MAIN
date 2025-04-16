@@ -1,0 +1,100 @@
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(5, 10, 24, 0.95);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+.loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loading-content {
+  text-align: center;
+  position: relative;
+}
+
+.loading-text-container {
+  margin-bottom: 2rem;
+}
+
+.loading-progress {
+  width: 200px;
+  height: 4px;
+  background-color: rgba(50, 205, 50, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+.loading-progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, rgba(15, 224, 255, 0.8), rgba(50, 205, 50, 0.8));
+  box-shadow: 0 0 10px rgba(50, 205, 50, 0.6);
+  transition: width 0.3s ease-out;
+}
+
+.loading-message {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: monospace;
+  letter-spacing: 1px;
+}
+
+.loading-dots {
+  display: inline-block;
+  width: 20px;
+  text-align: left;
+}
+
+/* Glowing particles */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background-color: rgba(50, 205, 50, 0.8);
+  border-radius: 50%;
+  box-shadow: 0 0 6px 2px rgba(50, 205, 50, 0.4);
+  animation: float 8s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.8;
+  }
+} 

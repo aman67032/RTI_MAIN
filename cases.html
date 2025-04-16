@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#dfb730">
+    <title>Current RTI Cases | RTI Education Portal</title>
+    <link rel="icon" href="assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/images/favicon.png?v=2">
+    <link rel="manifest" href="manifest.json?v=2">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="main.css">
+    <style>
+        /* Page-specific styles */
+        .case-tabs {
+            display: flex;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 2rem;
+            overflow-x: auto;
+        }
+        
+        .case-tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-light);
+            position: relative;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .case-tab::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .case-tab.active,
+        .case-tab:hover {
+            color: var(--accent-color);
+        }
+        
+        .case-tab.active::after,
+        .case-tab:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .case-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .case-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: transform 0.3s ease;
+        }
+        
+        .case-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .case-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+        
+        .case-number {
+            font-weight: 600;
+            color: var(--text-light);
+        }
+        
+        .case-status {
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .status-pending {
+            background-color: #FFF3CD;
+            color: #856404;
+        }
+        
+        .status-active {
+            background-color: #D1ECF1;
+            color: #0C5460;
+        }
+        
+        .status-resolved {
+            background-color: #D4EDDA;
+            color: #155724;
+        }
+        
+        .status-landmark {
+            background-color: #F8D7DA;
+            color: #721C24;
+        }
+        
+        .case-title {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .case-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .case-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .case-meta-item i {
+            color: var(--accent-color);
+        }
+        
+        .case-description {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .case-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+        }
+        
+        .case-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .case-tag {
+            background-color: #f0f0f0;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .case-details {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: gap 0.3s ease;
+        }
+        
+        .case-details:hover {
+            gap: 1rem;
+        }
+        
+        .case-details i {
+            transition: transform 0.3s ease;
+        }
+        
+        .case-details:hover i {
+            transform: translateX(5px);
+        }
+        
+        .case-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-dropdown {
+            position: relative;
+        }
+        
+        .filter-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        .case-search {
+            flex: 1;
+            position: relative;
+        }
+        
+        .case-search input {
+            width: 100%;
+            padding: 0.8rem 1.5rem 0.8rem 3rem;
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            outline: none;
+            font-size: 1rem;
+        }
+        
+        .case-search i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar/Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>RTI Education</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="timeline.html">Timeline</a>
+                <a href="news.html">News</a>
+                <a href="cases.html" class="active">Current Cases</a>
+            </div>
+            <div class="auth-links">
+                <a href="login.html" class="login-btn">Login</a>
+                <a href="signup.html" class="signup-btn">Sign Up</a>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Current RTI Cases</h1>
+            <p class="page-description">Explore ongoing and landmark RTI cases in the education sector</p>
+        </div>
+    </section>
+
+    <!-- Cases Section -->
+    <section class="cases-section">
+        <div class="container">
+            <div class="case-filters">
+                <div class="case-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search cases...">
+                </div>
+                <div class="filter-dropdown">
+                    <button class="filter-button">
+                        <i class="fas fa-filter"></i>
+                        Status
+                    </button>
+                </div>
+                <div class="filter-dropdown">
+                    <button class="filter-button">
+                        <i class="fas fa-calendar"></i>
+                        Date
+                    </button>
+                </div>
+                <div class="filter-dropdown">
+                    <button class="filter-button">
+                        <i class="fas fa-tag"></i>
+                        Category
+                    </button>
+                </div>
+            </div>
+            
+            <div class="case-tabs">
+                <div class="case-tab active">All Cases</div>
+                <div class="case-tab">Landmark Cases</div>
+                <div class="case-tab">University Cases</div>
+                <div class="case-tab">School Cases</div>
+                <div class="case-tab">Technical Education</div>
+                <div class="case-tab">Admission Related</div>
+                <div class="case-tab">Examination Related</div>
+            </div>
+            
+            <div class="case-list">
+                <!-- Case 1 -->
+                <div class="case-card">
+                    <div class="case-header">
+                        <div class="case-number">Case #RTI-EDU-2024-0125</div>
+                        <div class="case-status status-active">Active</div>
+                    </div>
+                    <h3 class="case-title">University Admission Transparency Case</h3>
+                    <div class="case-meta">
+                        <div class="case-meta-item">
+                            <i class="fas fa-user"></i>
+                            <span>Filed by: Student Group</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-building"></i>
+                            <span>Against: Delhi University</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Filed on: Feb 12, 2024</span>
+                        </div>
+                    </div>
+                    <p class="case-description">RTI filed seeking transparency in admission process and cutoff calculations across different colleges and departments. The case questions the discrepancies in merit list preparation and seat allocation.</p>
+                    <div class="case-footer">
+                        <div class="case-tags">
+                            <span class="case-tag">University</span>
+                            <span class="case-tag">Admissions</span>
+                            <span class="case-tag">Merit List</span>
+                        </div>
+                        <a href="#" class="case-details">View Details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Case 2 -->
+                <div class="case-card">
+                    <div class="case-header">
+                        <div class="case-number">Case #RTI-EDU-2024-0098</div>
+                        <div class="case-status status-pending">Pending</div>
+                    </div>
+                    <h3 class="case-title">Scholarship Disbursement Investigation</h3>
+                    <div class="case-meta">
+                        <div class="case-meta-item">
+                            <i class="fas fa-user"></i>
+                            <span>Filed by: Student Welfare Association</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-building"></i>
+                            <span>Against: Ministry of Education</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Filed on: Jan 25, 2024</span>
+                        </div>
+                    </div>
+                    <p class="case-description">RTI application filed to investigate delays and irregularities in the national scholarship disbursement for the academic year 2023-24. Seeking detailed allocation and distribution records.</p>
+                    <div class="case-footer">
+                        <div class="case-tags">
+                            <span class="case-tag">Scholarships</span>
+                            <span class="case-tag">Finance</span>
+                            <span class="case-tag">National</span>
+                        </div>
+                        <a href="#" class="case-details">View Details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Case 3 -->
+                <div class="case-card">
+                    <div class="case-header">
+                        <div class="case-number">Case #RTI-EDU-2023-0876</div>
+                        <div class="case-status status-landmark">Landmark</div>
+                    </div>
+                    <h3 class="case-title">Examination Evaluation Transparency</h3>
+                    <div class="case-meta">
+                        <div class="case-meta-item">
+                            <i class="fas fa-user"></i>
+                            <span>Filed by: Student Union</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-building"></i>
+                            <span>Against: Central Board of Secondary Education</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Filed on: Dec 5, 2023</span>
+                        </div>
+                    </div>
+                    <p class="case-description">Landmark RTI case that established students' rights to access their evaluated answer sheets and the detailed marking scheme. Led to nationwide reforms in examination transparency practices.</p>
+                    <div class="case-footer">
+                        <div class="case-tags">
+                            <span class="case-tag">Examinations</span>
+                            <span class="case-tag">Evaluation</span>
+                            <span class="case-tag">School Board</span>
+                        </div>
+                        <a href="#" class="case-details">View Details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Case 4 -->
+                <div class="case-card">
+                    <div class="case-header">
+                        <div class="case-number">Case #RTI-EDU-2024-0112</div>
+                        <div class="case-status status-resolved">Resolved</div>
+                    </div>
+                    <h3 class="case-title">Faculty Recruitment Discrepancies</h3>
+                    <div class="case-meta">
+                        <div class="case-meta-item">
+                            <i class="fas fa-user"></i>
+                            <span>Filed by: Teachers' Association</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-building"></i>
+                            <span>Against: State University</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Filed on: Jan 30, 2024</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Resolved on: Mar 15, 2024</span>
+                        </div>
+                    </div>
+                    <p class="case-description">Case seeking transparency in faculty recruitment process. Successfully revealed inconsistencies in selection criteria. Resulted in revised recruitment guidelines being issued by the university.</p>
+                    <div class="case-footer">
+                        <div class="case-tags">
+                            <span class="case-tag">Faculty</span>
+                            <span class="case-tag">Recruitment</span>
+                            <span class="case-tag">University</span>
+                        </div>
+                        <a href="#" class="case-details">View Details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Case 5 -->
+                <div class="case-card">
+                    <div class="case-header">
+                        <div class="case-number">Case #RTI-EDU-2024-0135</div>
+                        <div class="case-status status-active">Active</div>
+                    </div>
+                    <h3 class="case-title">School Infrastructure Funds Allocation</h3>
+                    <div class="case-meta">
+                        <div class="case-meta-item">
+                            <i class="fas fa-user"></i>
+                            <span>Filed by: Parent-Teacher Association</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-building"></i>
+                            <span>Against: District Education Department</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Filed on: Feb 22, 2024</span>
+                        </div>
+                    </div>
+                    <p class="case-description">RTI application seeking detailed information on allocation and utilization of infrastructure development funds across schools in the district. Questions significant disparities in fund distribution.</p>
+                    <div class="case-footer">
+                        <div class="case-tags">
+                            <span class="case-tag">Infrastructure</span>
+                            <span class="case-tag">Funding</span>
+                            <span class="case-tag">School</span>
+                        </div>
+                        <a href="#" class="case-details">View Details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="news-pagination">
+                <a href="#" class="page-link active">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <a href="#" class="page-link"><i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Dedicated to promoting transparency in education through the Right to Information Act.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="timeline.html">Timeline</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="cases.html">Current Cases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: info@rtieducation.org</p>
+                    <p>Phone: +91 1234567890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RTI Education Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

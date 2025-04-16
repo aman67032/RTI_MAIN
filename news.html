@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#dfb730">
+    <title>News | RTI Education Portal</title>
+    <link rel="icon" href="assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/images/favicon.png?v=2">
+    <link rel="manifest" href="manifest.json?v=2">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="main.css">
+    <style>
+        /* Page-specific styles */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: transform 0.3s ease;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .news-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .news-card:hover .news-image img {
+            transform: scale(1.1);
+        }
+        
+        .news-content {
+            padding: 1.5rem;
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .news-date {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+        
+        .news-category {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .news-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .news-excerpt {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .news-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: gap 0.3s ease;
+        }
+        
+        .news-link:hover {
+            gap: 1rem;
+        }
+        
+        .news-link i {
+            transition: transform 0.3s ease;
+        }
+        
+        .news-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        .news-pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+        
+        .page-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            background: white;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .page-link.active,
+        .page-link:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        /* Filter controls */
+        .news-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border: none;
+            background: white;
+            border-radius: 30px;
+            color: var(--text-color);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar/Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>RTI Education</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="timeline.html">Timeline</a>
+                <a href="news.html" class="active">News</a>
+                <a href="cases.html">Current Cases</a>
+            </div>
+            <div class="auth-links">
+                <a href="login.html" class="login-btn">Login</a>
+                <a href="signup.html" class="signup-btn">Sign Up</a>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">RTI Education News</h1>
+            <p class="page-description">Latest updates, insights, and stories about RTI in the education sector</p>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section">
+        <div class="container">
+            <div class="news-filters">
+                <button class="filter-btn active">All</button>
+                <button class="filter-btn">Policy Updates</button>
+                <button class="filter-btn">Success Stories</button>
+                <button class="filter-btn">Workshops</button>
+                <button class="filter-btn">Research</button>
+            </div>
+            
+            <div class="news-grid">
+                <!-- News Item 1 -->
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://via.placeholder.com/350x200?text=Policy+Update" alt="Policy Update">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <div class="news-date">March 20, 2024</div>
+                            <div class="news-category">Policy</div>
+                        </div>
+                        <h3 class="news-title">New RTI Guidelines for Educational Institutions</h3>
+                        <p class="news-excerpt">Ministry of Education releases comprehensive new guidelines mandating all educational institutions to establish dedicated RTI portals.</p>
+                        <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- News Item 2 -->
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://via.placeholder.com/350x200?text=Success+Story" alt="Success Story">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <div class="news-date">March 18, 2024</div>
+                            <div class="news-category">Success Story</div>
+                        </div>
+                        <h3 class="news-title">Students Win Major RTI Case</h3>
+                        <p class="news-excerpt">Group of final-year students successfully use RTI to expose irregularities in examination evaluation, leading to system-wide reforms.</p>
+                        <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- News Item 3 -->
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://via.placeholder.com/350x200?text=Workshop" alt="Workshop">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <div class="news-date">March 15, 2024</div>
+                            <div class="news-category">Workshop</div>
+                        </div>
+                        <h3 class="news-title">National RTI Workshop Series Launched</h3>
+                        <p class="news-excerpt">Free workshops to train students, teachers and parents on effective RTI filing techniques with online and offline sessions available.</p>
+                        <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- News Item 4 -->
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://via.placeholder.com/350x200?text=Digital+Platform" alt="Digital Platform">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <div class="news-date">March 12, 2024</div>
+                            <div class="news-category">Technology</div>
+                        </div>
+                        <h3 class="news-title">New RTI Mobile App Released</h3>
+                        <p class="news-excerpt">Mobile application specifically designed for educational RTI queries launched with features including instant filing and tracking.</p>
+                        <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- News Item 5 -->
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://via.placeholder.com/350x200?text=Research" alt="Research">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <div class="news-date">March 10, 2024</div>
+                            <div class="news-category">Research</div>
+                        </div>
+                        <h3 class="news-title">RTI Impact Study Released</h3>
+                        <p class="news-excerpt">New research shows RTI applications have driven significant improvements in educational transparency and institutional accountability.</p>
+                        <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- News Item 6 -->
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://via.placeholder.com/350x200?text=Legal+Update" alt="Legal Update">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <div class="news-date">March 8, 2024</div>
+                            <div class="news-category">Legal</div>
+                        </div>
+                        <h3 class="news-title">Supreme Court Ruling on Education RTIs</h3>
+                        <p class="news-excerpt">Landmark ruling affirms students' rights to access information about evaluation processes and institutional finances.</p>
+                        <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="news-pagination">
+                <a href="#" class="page-link active">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <a href="#" class="page-link"><i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Dedicated to promoting transparency in education through the Right to Information Act.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="timeline.html">Timeline</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="cases.html">Current Cases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: info@rtieducation.org</p>
+                    <p>Phone: +91 1234567890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RTI Education Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

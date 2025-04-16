@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "framer-motion": "^12.5.0",
+    "gsap": "^3.12.7",
+    "postprocessing": "^6.37.1",
+    "three": "^0.174.0"
+  }
+}

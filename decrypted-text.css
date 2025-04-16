@@ -1,0 +1,45 @@
+.decrypted-text-wrapper {
+  display: inline-block;
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* This class will be added by JavaScript after loading screen is gone */
+.decrypted-text-visible {
+  opacity: 1;
+}
+
+.decrypted-letter {
+  color: rgba(50, 205, 50, 0.9);
+  text-shadow: 0 0 5px rgba(50, 205, 50, 0.5);
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.encrypted-letter {
+  color: rgba(15, 224, 255, 0.9);
+  text-shadow: 0 0 8px rgba(15, 224, 255, 0.7);
+}
+
+.decrypted-text-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, rgba(50, 205, 50, 0.9), rgba(15, 224, 255, 0.9));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 15px rgba(50, 205, 50, 0.3);
+}
+
+.decrypted-text-subtitle {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.decrypted-text-paragraph {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+} 

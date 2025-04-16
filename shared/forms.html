@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File RTI Application</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .form-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .form-section:last-child {
+            border-bottom: none;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .error-message {
+            color: #f44336;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            background: #4CAF50;
+            color: white;
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .notification.error {
+            background: #f44336;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .success-message {
+            text-align: center;
+            padding: 2rem;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .rti-id {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--student-primary);
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1 class="form-title">File RTI Application</h1>
+            
+            <form id="rtiForm" class="fade-in">
+                <div class="form-section">
+                    <h2>Personal Information</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Full Name</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                            <div class="error-message" data-error="name"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                            <div class="error-message" data-error="email"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" required>
+                            <div class="error-message" data-error="phone"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="address">Address</label>
+                            <input type="text" id="address" name="address" class="form-input" required>
+                            <div class="error-message" data-error="address"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>RTI Request Details</h2>
+                    <div class="form-group">
+                        <label class="form-label" for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" class="form-input" required>
+                        <div class="error-message" data-error="subject"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="description">Description</label>
+                        <textarea id="description" name="description" class="form-input" rows="5" required></textarea>
+                        <div class="error-message" data-error="description"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="attachments">Attachments (if any)</label>
+                        <input type="file" id="attachments" name="attachments" class="form-input" multiple>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="form-group">
+                        <label class="form-label">
+                            <input type="checkbox" name="declaration" required>
+                            I declare that the information provided is true to the best of my knowledge
+                        </label>
+                    </div>
+                    <button type="submit" class="button">
+                        Submit Application <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </form>
+
+            <div class="success-message">
+                <i class="fas fa-check-circle" style="font-size: 3rem; color: #4CAF50;"></i>
+                <h2>Application Submitted Successfully!</h2>
+                <p>Your RTI application has been submitted. Please save your RTI ID for future reference:</p>
+                <div class="rti-id"></div>
+                <p>You can track the status of your application using this ID.</p>
+                <a href="track.html" class="button">
+                    Track Status <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../shared/forms.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('rtiForm');
+            const formHandler = new RTIFormHandler();
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                try {
+                    const result = await formHandler.submitForm(form);
+                    
+                    // Show success message
+                    form.style.display = 'none';
+                    const successMessage = document.querySelector('.success-message');
+                    const rtiIdElement = successMessage.querySelector('.rti-id');
+                    rtiIdElement.textContent = result.rtiId;
+                    successMessage.classList.add('show');
+                    
+                    RTIFormHandler.displayNotification(result.message);
+                } catch (error) {
+                    if (error.type === 'validation') {
+                        error.errors.forEach(message => {
+                            RTIFormHandler.displayNotification(message, 'error');
+                        });
+                    } else {
+                        RTIFormHandler.displayNotification(error.error, 'error');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
