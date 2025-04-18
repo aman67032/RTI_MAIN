@@ -13,29 +13,119 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="main.css">
     <style>
-        /* Page-specific styles */
+        /* Enhanced Page-specific styles */
+        .news-controls {
+            margin-bottom: 2rem;
+        }
+
+        .news-search {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+
+        .news-search input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: none;
+            border-radius: 30px;
+            background: white;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            font-size: 1rem;
+        }
+
+        .news-search i {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        .news-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+        
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            background: white;
+            border-radius: 30px;
+            color: var(--text-color);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px var(--shadow-color);
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .news-sort {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 1rem;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .sort-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .sort-select {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+            background: white;
+            box-shadow: 0 2px 8px var(--shadow-color);
+            cursor: pointer;
+        }
+
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
         
         .news-card {
             background: white;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px var(--shadow-color);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease forwards;
         }
         
         .news-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 8px 25px var(--shadow-color);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .news-image {
-            height: 200px;
+            height: 220px;
             overflow: hidden;
+            position: relative;
         }
         
         .news-image img {
@@ -48,6 +138,31 @@
         .news-card:hover .news-image img {
             transform: scale(1.1);
         }
+
+        .news-bookmark {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .news-bookmark:hover {
+            transform: scale(1.1);
+        }
+
+        .news-bookmark.active {
+            background: var(--accent-color);
+            color: white;
+        }
         
         .news-content {
             padding: 1.5rem;
@@ -56,32 +171,50 @@
         .news-meta {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.5rem;
+            align-items: center;
+            margin-bottom: 1rem;
         }
         
         .news-date {
             color: var(--accent-color);
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
         .news-category {
             background-color: var(--accent-color);
             color: white;
-            padding: 0.2rem 0.8rem;
+            padding: 0.4rem 1rem;
             border-radius: 20px;
             font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .news-category:hover {
+            transform: scale(1.05);
         }
         
         .news-title {
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--text-color);
+            line-height: 1.4;
         }
         
         .news-excerpt {
             color: var(--text-light);
             margin-bottom: 1.5rem;
             line-height: 1.6;
+        }
+
+        .news-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
         }
         
         .news-link {
@@ -91,19 +224,24 @@
             color: var(--accent-color);
             text-decoration: none;
             font-weight: 600;
-            transition: gap 0.3s ease;
+            transition: all 0.3s ease;
         }
         
         .news-link:hover {
             gap: 1rem;
         }
-        
-        .news-link i {
-            transition: transform 0.3s ease;
+
+        .news-stats {
+            display: flex;
+            gap: 1rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
         }
-        
-        .news-link:hover i {
-            transform: translateX(5px);
+
+        .news-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
         }
         
         .news-pagination {
@@ -119,43 +257,47 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 5px;
+            border-radius: 8px;
             background: white;
             color: var(--text-color);
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 8px var(--shadow-color);
         }
         
         .page-link.active,
         .page-link:hover {
             background: var(--accent-color);
             color: white;
+            transform: translateY(-2px);
         }
 
-        /* Filter controls */
-        .news-filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 2rem;
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-light);
+            font-size: 1.2rem;
         }
-        
-        .filter-btn {
-            padding: 0.5rem 1.5rem;
-            border: none;
-            background: white;
-            border-radius: 30px;
-            color: var(--text-color);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .filter-btn.active,
-        .filter-btn:hover {
-            background: var(--accent-color);
-            color: white;
+
+        @media (max-width: 768px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .news-filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-btn {
+                text-align: center;
+            }
+
+            .news-sort {
+                flex-direction: column;
+                align-items: stretch;
+            }
         }
     </style>
 </head>
@@ -187,124 +329,49 @@
     <section class="page-header">
         <div class="container">
             <h1 class="page-title">RTI Education News</h1>
-            <p class="page-description">Latest updates, insights, and stories about RTI in the education sector</p>
+            <p class="page-description">Stay informed with the latest updates, insights, and success stories in the education sector</p>
         </div>
     </section>
 
     <!-- News Section -->
     <section class="news-section">
         <div class="container">
-            <div class="news-filters">
-                <button class="filter-btn active">All</button>
-                <button class="filter-btn">Policy Updates</button>
-                <button class="filter-btn">Success Stories</button>
-                <button class="filter-btn">Workshops</button>
-                <button class="filter-btn">Research</button>
-            </div>
-            
-            <div class="news-grid">
-                <!-- News Item 1 -->
-                <div class="news-card">
-                    <div class="news-image">
-                        <img src="https://via.placeholder.com/350x200?text=Policy+Update" alt="Policy Update">
-                    </div>
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <div class="news-date">March 20, 2024</div>
-                            <div class="news-category">Policy</div>
-                        </div>
-                        <h3 class="news-title">New RTI Guidelines for Educational Institutions</h3>
-                        <p class="news-excerpt">Ministry of Education releases comprehensive new guidelines mandating all educational institutions to establish dedicated RTI portals.</p>
-                        <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
+            <div class="news-controls">
+                <!-- Search Bar -->
+                <div class="news-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="news-search" placeholder="Search news articles...">
                 </div>
-                
-                <!-- News Item 2 -->
-                <div class="news-card">
-                    <div class="news-image">
-                        <img src="https://via.placeholder.com/350x200?text=Success+Story" alt="Success Story">
-                    </div>
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <div class="news-date">March 18, 2024</div>
-                            <div class="news-category">Success Story</div>
-                        </div>
-                        <h3 class="news-title">Students Win Major RTI Case</h3>
-                        <p class="news-excerpt">Group of final-year students successfully use RTI to expose irregularities in examination evaluation, leading to system-wide reforms.</p>
-                        <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
+
+                <!-- Filters -->
+                <div class="news-filters">
+                    <button class="filter-btn active" data-category="all">All News</button>
+                    <button class="filter-btn" data-category="policy">Policy Updates</button>
+                    <button class="filter-btn" data-category="success">Success Stories</button>
+                    <button class="filter-btn" data-category="workshop">Workshops</button>
+                    <button class="filter-btn" data-category="research">Research</button>
+                    <button class="filter-btn" data-category="legal">Legal Updates</button>
+                    <button class="filter-btn" data-category="technology">Technology</button>
                 </div>
-                
-                <!-- News Item 3 -->
-                <div class="news-card">
-                    <div class="news-image">
-                        <img src="https://via.placeholder.com/350x200?text=Workshop" alt="Workshop">
-                    </div>
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <div class="news-date">March 15, 2024</div>
-                            <div class="news-category">Workshop</div>
-                        </div>
-                        <h3 class="news-title">National RTI Workshop Series Launched</h3>
-                        <p class="news-excerpt">Free workshops to train students, teachers and parents on effective RTI filing techniques with online and offline sessions available.</p>
-                        <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <!-- News Item 4 -->
-                <div class="news-card">
-                    <div class="news-image">
-                        <img src="https://via.placeholder.com/350x200?text=Digital+Platform" alt="Digital Platform">
-                    </div>
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <div class="news-date">March 12, 2024</div>
-                            <div class="news-category">Technology</div>
-                        </div>
-                        <h3 class="news-title">New RTI Mobile App Released</h3>
-                        <p class="news-excerpt">Mobile application specifically designed for educational RTI queries launched with features including instant filing and tracking.</p>
-                        <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <!-- News Item 5 -->
-                <div class="news-card">
-                    <div class="news-image">
-                        <img src="https://via.placeholder.com/350x200?text=Research" alt="Research">
-                    </div>
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <div class="news-date">March 10, 2024</div>
-                            <div class="news-category">Research</div>
-                        </div>
-                        <h3 class="news-title">RTI Impact Study Released</h3>
-                        <p class="news-excerpt">New research shows RTI applications have driven significant improvements in educational transparency and institutional accountability.</p>
-                        <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <!-- News Item 6 -->
-                <div class="news-card">
-                    <div class="news-image">
-                        <img src="https://via.placeholder.com/350x200?text=Legal+Update" alt="Legal Update">
-                    </div>
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <div class="news-date">March 8, 2024</div>
-                            <div class="news-category">Legal</div>
-                        </div>
-                        <h3 class="news-title">Supreme Court Ruling on Education RTIs</h3>
-                        <p class="news-excerpt">Landmark ruling affirms students' rights to access information about evaluation processes and institutional finances.</p>
-                        <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
+
+                <!-- Sort Options -->
+                <div class="news-sort">
+                    <span class="sort-label">Sort by:</span>
+                    <select class="sort-select" id="news-sort">
+                        <option value="latest">Latest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="popular">Most Popular</option>
+                        <option value="trending">Trending</option>
+                    </select>
                 </div>
             </div>
             
-            <div class="news-pagination">
-                <a href="#" class="page-link active">1</a>
-                <a href="#" class="page-link">2</a>
-                <a href="#" class="page-link">3</a>
-                <a href="#" class="page-link"><i class="fas fa-chevron-right"></i></a>
+            <div class="news-grid" id="news-grid">
+                <!-- News items will be dynamically populated by JavaScript -->
+            </div>
+            
+            <div class="news-pagination" id="news-pagination">
+                <!-- Pagination will be dynamically populated -->
             </div>
         </div>
     </section>
@@ -339,5 +406,258 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // News Data
+        const newsData = [
+            {
+                id: 1,
+                title: "New RTI Guidelines for Educational Institutions",
+                excerpt: "Ministry of Education releases comprehensive new guidelines mandating all educational institutions to establish dedicated RTI portals for improved transparency and accessibility.",
+                category: "policy",
+                date: "2024-03-20",
+                image: "https://via.placeholder.com/350x200?text=Policy+Update",
+                author: "Rajesh Kumar",
+                views: 1520,
+                shares: 342,
+                bookmarked: false,
+                details: "The new guidelines focus on digital transformation of RTI processes in educational institutions...",
+                tags: ["policy", "digital", "transparency"]
+            },
+            {
+                id: 2,
+                title: "Students Win Landmark RTI Case Against Top University",
+                excerpt: "Group of final-year students successfully use RTI to expose irregularities in examination evaluation, leading to system-wide reforms and policy changes.",
+                category: "success",
+                date: "2024-03-18",
+                image: "https://via.placeholder.com/350x200?text=Success+Story",
+                author: "Priya Singh",
+                views: 2150,
+                shares: 567,
+                bookmarked: false,
+                details: "The case has set a precedent for student rights and institutional accountability...",
+                tags: ["success", "students", "examination"]
+            },
+            {
+                id: 3,
+                title: "National RTI Workshop Series Launched",
+                excerpt: "Free workshops to train students, teachers and parents on effective RTI filing techniques with online and offline sessions available nationwide.",
+                category: "workshop",
+                date: "2024-03-15",
+                image: "https://via.placeholder.com/350x200?text=Workshop",
+                author: "Amit Patel",
+                views: 890,
+                shares: 234,
+                bookmarked: false,
+                details: "The workshop series aims to empower stakeholders with practical knowledge...",
+                tags: ["workshop", "training", "education"]
+            },
+            {
+                id: 4,
+                title: "AI-Powered RTI Assistant Launched",
+                excerpt: "Revolutionary AI-powered platform helps users draft effective RTI applications with smart suggestions and automated tracking features.",
+                category: "technology",
+                date: "2024-03-12",
+                image: "https://via.placeholder.com/350x200?text=Digital+Platform",
+                author: "Neha Sharma",
+                views: 1750,
+                shares: 456,
+                bookmarked: false,
+                details: "The AI assistant uses natural language processing to improve application quality...",
+                tags: ["technology", "AI", "innovation"]
+            },
+            {
+                id: 5,
+                title: "RTI Impact Study Shows Positive Trends",
+                excerpt: "Comprehensive research reveals significant improvements in educational transparency and institutional accountability through RTI implementation.",
+                category: "research",
+                date: "2024-03-10",
+                image: "https://via.placeholder.com/350x200?text=Research",
+                author: "Dr. Suresh Menon",
+                views: 1230,
+                shares: 289,
+                bookmarked: false,
+                details: "The study analyzed data from over 1000 educational institutions...",
+                tags: ["research", "impact", "analysis"]
+            },
+            {
+                id: 6,
+                title: "Supreme Court Strengthens Student RTI Rights",
+                excerpt: "Landmark ruling affirms students' rights to access information about evaluation processes and institutional finances through RTI.",
+                category: "legal",
+                date: "2024-03-08",
+                image: "https://via.placeholder.com/350x200?text=Legal+Update",
+                author: "Adv. Meera Krishnan",
+                views: 1890,
+                shares: 678,
+                bookmarked: false,
+                details: "The judgment sets new precedents for educational transparency...",
+                tags: ["legal", "rights", "judgment"]
+            },
+            {
+                id: 7,
+                title: "RTI Mobile App Revolutionizes Filing Process",
+                excerpt: "New mobile application streamlines RTI filing with features including instant submission, real-time tracking, and document scanning.",
+                category: "technology",
+                date: "2024-03-05",
+                image: "https://via.placeholder.com/350x200?text=Mobile+App",
+                author: "Tech Team",
+                views: 1450,
+                shares: 345,
+                bookmarked: false,
+                details: "The app includes innovative features for improved user experience...",
+                tags: ["technology", "mobile", "digital"]
+            },
+            {
+                id: 8,
+                title: "Education Ministry Mandates RTI Compliance Reports",
+                excerpt: "New policy requires all educational institutions to submit monthly RTI compliance reports for improved monitoring.",
+                category: "policy",
+                date: "2024-03-03",
+                image: "https://via.placeholder.com/350x200?text=Policy",
+                author: "Ministry Official",
+                views: 980,
+                shares: 234,
+                bookmarked: false,
+                details: "The compliance reports will track response times and resolution rates...",
+                tags: ["policy", "compliance", "monitoring"]
+            }
+        ];
+
+        // Function to format date
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        // Function to create news card
+        function createNewsCard(news) {
+            return `
+                <div class="news-card" data-category="${news.category}">
+                    <div class="news-image">
+                        <img src="${news.image}" alt="${news.title}">
+                        <div class="news-bookmark ${news.bookmarked ? 'active' : ''}" data-id="${news.id}">
+                            <i class="fas fa-bookmark"></i>
+                        </div>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <div class="news-date">
+                                <i class="far fa-calendar-alt"></i>
+                                ${formatDate(news.date)}
+                            </div>
+                            <div class="news-category">${news.category}</div>
+                        </div>
+                        <h3 class="news-title">${news.title}</h3>
+                        <p class="news-excerpt">${news.excerpt}</p>
+                        <div class="news-footer">
+                            <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
+                            <div class="news-stats">
+                                <div class="news-stat">
+                                    <i class="far fa-eye"></i>
+                                    <span>${news.views}</span>
+                                </div>
+                                <div class="news-stat">
+                                    <i class="far fa-share-square"></i>
+                                    <span>${news.shares}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to display news
+        function displayNews(newsItems) {
+            const newsGrid = document.getElementById('news-grid');
+            if (newsItems.length === 0) {
+                newsGrid.innerHTML = '<div class="no-results">No news articles found matching your criteria.</div>';
+                return;
+            }
+            newsGrid.innerHTML = newsItems.map(news => createNewsCard(news)).join('');
+        }
+
+        // Initialize news display
+        displayNews(newsData);
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // Filter news
+                const category = button.getAttribute('data-category');
+                const filteredNews = category === 'all' 
+                    ? newsData 
+                    : newsData.filter(news => news.category === category);
+                
+                displayNews(filteredNews);
+            });
+        });
+
+        // Search functionality
+        document.getElementById('news-search').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredNews = newsData.filter(news => 
+                news.title.toLowerCase().includes(searchTerm) ||
+                news.excerpt.toLowerCase().includes(searchTerm) ||
+                news.category.toLowerCase().includes(searchTerm) ||
+                news.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+            );
+            displayNews(filteredNews);
+        });
+
+        // Sort functionality
+        document.getElementById('news-sort').addEventListener('change', (e) => {
+            const sortBy = e.target.value;
+            let sortedNews = [...newsData];
+
+            switch(sortBy) {
+                case 'latest':
+                    sortedNews.sort((a, b) => new Date(b.date) - new Date(a.date));
+                    break;
+                case 'oldest':
+                    sortedNews.sort((a, b) => new Date(a.date) - new Date(b.date));
+                    break;
+                case 'popular':
+                    sortedNews.sort((a, b) => b.views - a.views);
+                    break;
+                case 'trending':
+                    sortedNews.sort((a, b) => b.shares - a.shares);
+                    break;
+            }
+
+            displayNews(sortedNews);
+        });
+
+        // Bookmark functionality
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.news-bookmark')) {
+                const bookmark = e.target.closest('.news-bookmark');
+                const newsId = parseInt(bookmark.getAttribute('data-id'));
+                const newsItem = newsData.find(news => news.id === newsId);
+                
+                if (newsItem) {
+                    newsItem.bookmarked = !newsItem.bookmarked;
+                    bookmark.classList.toggle('active');
+                }
+            }
+        });
+
+        // Animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.5s ease forwards';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.news-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html> 

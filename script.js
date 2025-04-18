@@ -1830,4 +1830,189 @@ document.addEventListener('DOMContentLoaded', function() {
         // Start observing
         observer.observe(element);
     });
-}); 
+});
+
+// Application Status Pie Chart
+const statusChartCtx = document.getElementById('statusChart').getContext('2d');
+new Chart(statusChartCtx, {
+    type: 'pie',
+    data: {
+        labels: ['Admissions', 'Fee Structure', 'Infrastructure', 'Faculty', 'Scholarships', 'Curriculum'],
+        datasets: [{
+            data: [25, 20, 18, 15, 12, 10],
+            backgroundColor: [
+                '#66CDAA',  // Mint green for Admissions
+                '#87CEEB',  // Sky blue for Fee Structure
+                '#FFD700',  // Gold for Infrastructure
+                '#FFA07A',  // Light salmon for Faculty
+                '#DDA0DD',  // Plum for Scholarships
+                '#FF9999'   // Light coral for Curriculum
+            ],
+            borderColor: '#ffffff',
+            borderWidth: 2
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: {
+                    padding: 20,
+                    font: {
+                        size: 14
+                    }
+                }
+            },
+            title: {
+                display: true,
+                text: 'RTI Applications by Category (%)',
+                font: {
+                    size: 16,
+                    weight: 'bold'
+                },
+                padding: {
+                    top: 10,
+                    bottom: 30
+                }
+            }
+        },
+        animation: {
+            animateScale: true,
+            animateRotate: true
+        }
+    }
+});
+
+// Monthly Applications Line Chart
+const applicationsChartCtx = document.getElementById('applicationsChart').getContext('2d');
+new Chart(applicationsChartCtx, {
+    type: 'line',
+    data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [{
+            label: 'RTI Applications Filed',
+            data: [1500, 1800, 2200, 2400, 2100, 2800, 3000, 2900, 3200, 3400, 3600, 3800],
+            borderColor: '#cb6b37',
+            backgroundColor: 'rgba(203, 107, 55, 0.1)',
+            tension: 0.4,
+            fill: true
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Monthly RTI Applications (2025)',
+                font: {
+                    size: 16,
+                    weight: 'bold'
+                },
+                padding: {
+                    top: 10,
+                    bottom: 30
+                }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+// Success Rate Chart
+const successRateChartCtx = document.getElementById('successRateChart').getContext('2d');
+new Chart(successRateChartCtx, {
+    type: 'bar',
+    data: {
+        labels: ['Admissions', 'Fee Structure', 'Infrastructure', 'Faculty', 'Scholarships', 'Curriculum'],
+        datasets: [{
+            label: 'Success Rate',
+            data: [85, 78, 72, 80, 75, 70],
+            backgroundColor: [
+                '#66CDAA',
+                '#87CEEB',
+                '#FFD700',
+                '#FFA07A',
+                '#DDA0DD',
+                '#FF9999'
+            ],
+            borderRadius: 5
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'RTI Success Rate by Category (%)',
+                font: {
+                    size: 16,
+                    weight: 'bold'
+                },
+                padding: {
+                    top: 10,
+                    bottom: 30
+                }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: 100
+            }
+        }
+    }
+});
+
+// Add event listeners for filter changes
+document.getElementById('year-filter').addEventListener('change', updateCharts);
+document.getElementById('region-filter').addEventListener('change', updateCharts);
+document.getElementById('refreshStats').addEventListener('click', refreshData);
+
+function updateCharts() {
+    // Simulate data update
+    if (applicationsChart) {
+        applicationsChart.data.datasets[0].data = applicationsChart.data.datasets[0].data.map(
+            value => value * (0.9 + Math.random() * 0.2)
+        );
+        applicationsChart.update();
+    }
+
+    if (successRateChart) {
+        successRateChart.data.datasets[0].data = successRateChart.data.datasets[0].data.map(
+            value => Math.min(100, value * (0.9 + Math.random() * 0.2))
+        );
+        successRateChart.update();
+    }
+
+    if (statusChart) {
+        statusChart.data.datasets[0].data = statusChart.data.datasets[0].data.map(
+            value => value * (0.9 + Math.random() * 0.2)
+        );
+        statusChart.update();
+    }
+
+    // Animate refresh button
+    refreshBtn.querySelector('i').style.transform = 'rotate(360deg)';
+    setTimeout(() => {
+        refreshBtn.querySelector('i').style.transform = 'rotate(0)';
+    }, 500);
+}
+
+function refreshData() {
+    // Add logic to refresh data
+    console.log('Refreshing data...');
+} 
