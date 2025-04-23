@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fee Structure RTI Template | Student RTI Portal</title>
+    <link rel="stylesheet" href="../../shared/styles.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .template-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(107, 112, 92, 0.15);
+        }
+        
+        .template-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .template-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: grid;
+            gap: 0.5rem;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .help-text {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .checkbox-group input {
+            width: auto;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn-primary {
+            background: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--secondary-color);
+        }
+        
+        .btn-secondary {
+            background: #eee;
+            color: #333;
+        }
+        
+        .btn-secondary:hover {
+            background: #ddd;
+        }
+        
+        .when-to-use {
+            background: rgba(255, 232, 214, 0.5);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .when-to-use h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .when-to-use ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .when-to-use li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .key-points {
+            background: rgba(165, 165, 141, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .key-points h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .key-points ol {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .key-points li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .success-stories {
+            margin-top: 3rem;
+        }
+        
+        .success-stories h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .story-card {
+            background: rgba(165, 165, 141, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .story-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .story-info h3 {
+            margin: 0;
+            color: var(--primary-color);
+        }
+        
+        .story-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .story-content p {
+            margin-top: 0;
+        }
+        
+        .story-result {
+            background: rgba(107, 112, 92, 0.1);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .fee-tip {
+            background: rgba(203, 153, 126, 0.1);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            font-style: italic;
+            color: var(--primary-color);
+            position: relative;
+            padding-left: 2.5rem;
+        }
+        
+        .fee-tip:before {
+            content: "💡";
+            position: absolute;
+            left: 0.75rem;
+            top: 0.75rem;
+            font-size: 1.25rem;
+        }
+        
+        .fee-sample {
+            background: rgba(107, 112, 92, 0.05);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 2rem;
+            border: 1px dashed var(--secondary-color);
+        }
+        
+        .fee-sample h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        
+        .fee-sample ol {
+            padding-left: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation from shared component -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../../assets/images/logo.png" alt="RTI Education Portal">
+                    <span>Student RTI Portal</span>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../index.html">Dashboard</a></li>
+                    <li><a href="../resources.html">Resources</a></li>
+                    <li><a href="index.html" class="active">Templates</a></li>
+                    <li><a href="../../shared/track.html">Track Applications</a></li>
+                    <li><a href="../../shared/forms.html">Submit RTI</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Fee Structure RTI Template</h1>
+                <p>Get transparency on educational fees, charges, and financial regulations</p>
+            </div>
+        </section>
+
+        <section class="template-section">
+            <div class="container">
+                <div class="when-to-use">
+                    <h2>When to Use This Template</h2>
+                    <p>This template is designed for students seeking detailed information about fee structures and financial policies of educational institutions. Use this template when:</p>
+                    <ul>
+                        <li>You need a breakdown of the total fees charged by an institution</li>
+                        <li>You want to verify if fees comply with government regulations and guidelines</li>
+                        <li>You suspect unauthorized fee hikes or additional charges</li>
+                        <li>You need information about fee waivers, scholarships, or financial assistance programs</li>
+                        <li>You require details about refund policies for various fees</li>
+                        <li>You want to understand the justification for specific fees or charges</li>
+                        <li>You need information about financial audits or regulatory compliance</li>
+                    </ul>
+                </div>
+
+                <div class="template-container">
+                    <div class="template-header">
+                        <h2>Fee Structure RTI Application</h2>
+                        <p>Fill in the details below to generate your RTI application</p>
+                    </div>
+
+                    <form class="template-form">
+                        <div class="form-group">
+                            <label for="addressee">To</label>
+                            <input type="text" id="addressee" name="addressee" placeholder="Public Information Officer" required>
+                            <div class="help-text">Usually the Public Information Officer (PIO) of the educational institution</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="institution">Institution Name</label>
+                            <input type="text" id="institution" name="institution" placeholder="e.g., College/University/School Name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="department">Department/Faculty (if applicable)</label>
+                            <input type="text" id="department" name="department" placeholder="e.g., Engineering, Medical, Arts, etc.">
+                            <div class="help-text">If your query is specific to a department, mention it here</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="course">Course/Program (if applicable)</label>
+                            <input type="text" id="course" name="course" placeholder="e.g., B.Tech, MBBS, BA, etc.">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="academic-year">Academic Year</label>
+                            <input type="text" id="academic-year" name="academic-year" placeholder="e.g., 2025-26" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applicant-name">Applicant's Name</label>
+                            <input type="text" id="applicant-name" name="applicant-name" placeholder="Your Full Name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applicant-address">Applicant's Address</label>
+                            <textarea id="applicant-address" name="applicant-address" placeholder="Your Complete Postal Address" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applicant-contact">Contact Information</label>
+                            <input type="tel" id="applicant-contact" name="applicant-contact" placeholder="Your Phone Number" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applicant-email">Email Address</label>
+                            <input type="email" id="applicant-email" name="applicant-email" placeholder="Your Email Address" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Information Requested (Select all that apply)</label>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-breakdown" name="requested-info" value="breakdown">
+                                <label for="request-breakdown">Complete fee structure breakdown for all components</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-approval" name="requested-info" value="approval">
+                                <label for="request-approval">Fee approval documents from regulatory authorities</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-changes" name="requested-info" value="changes">
+                                <label for="request-changes">History of fee changes in the last 5 years with justification</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-exemptions" name="requested-info" value="exemptions">
+                                <label for="request-exemptions">Details of fee exemptions, waivers, and scholarship criteria</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-optional" name="requested-info" value="optional">
+                                <label for="request-optional">List of all mandatory vs. optional fees</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-utilization" name="requested-info" value="utilization">
+                                <label for="request-utilization">Utilization reports for specific fee components (e.g., development fee)</label>
+                            </div>
+
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-refund" name="requested-info" value="refund">
+                                <label for="request-refund">Refund policy and procedures</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-penalty" name="requested-info" value="penalty">
+                                <label for="request-penalty">Late payment penalties and financial rules</label>
+                            </div>
+                        </div>
+
+                        <div class="fee-tip">
+                            Be specific about the academic year and courses for which you're requesting fee information. If inquiring about a particular fee component (like laboratory fees or development charges), mention it clearly in your specific requirements.
+                        </div>
+
+                        <div class="form-group">
+                            <label for="student-id">Student ID (if applicable)</label>
+                            <input type="text" id="student-id" name="student-id" placeholder="Your Student ID/Roll Number">
+                            <div class="help-text">Include if you're a current student of the institution</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="specific-info">Specific Information Required</label>
+                            <textarea id="specific-info" name="specific-info" placeholder="Provide details about the specific fee information you are seeking"></textarea>
+                            <div class="help-text">Clearly specify any particular fee components or financial policies you want information about</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time-period">Time Period</label>
+                            <input type="text" id="time-period" name="time-period" placeholder="e.g., 2023-2025">
+                            <div class="help-text">Specify the time period for which you are seeking fee information</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="application-fee">Application Fee Details</label>
+                            <select id="application-fee" name="application-fee" required>
+                                <option value="">Select Fee Payment Method</option>
+                                <option value="Cash">Cash</option>
+                                <option value="Postal Order">Indian Postal Order</option>
+                                <option value="Court Fee Stamp">Court Fee Stamp</option>
+                                <option value="Demand Draft">Demand Draft</option>
+                                <option value="Bank Transfer">Bank Transfer</option>
+                            </select>
+                            <div class="help-text">Standard RTI application fee is ₹10 for general category</div>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="bpl-category" name="bpl-category">
+                            <label for="bpl-category">I belong to Below Poverty Line (BPL) category and have attached proof</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="declaration">Declaration</label>
+                            <div class="help-text">I hereby declare that the information sought does not fall within the restrictions contained in Section 8 and 9 of the RTI Act, 2005 and to the best of my knowledge, it pertains to your institution.</div>
+                        </div>
+
+                        <div class="fee-sample">
+                            <h3>Sample Specific Information Request</h3>
+                            <p>I am requesting the following specific information regarding fees at your institution:</p>
+                            <ol>
+                                <li>A detailed breakdown of all fee components for the [COURSE NAME] program for the academic year [YEAR], including tuition fees, development charges, laboratory fees, library fees, examination fees, and any other charges collected from students.</li>
+                                <li>Certified copies of the approval documents from the relevant regulatory authorities (such as UGC/AICTE/State Government) authorizing the current fee structure.</li>
+                                <li>Year-wise fee structure for the past 5 years (from [YEAR] to [YEAR]) for the same program, along with official justification for any fee increases during this period.</li>
+                                <li>Details of any additional charges collected from students that are not mentioned in the official fee structure.</li>
+                                <li>Complete information about fee refund policies, including eligible circumstances, refund percentages, and processing timelines.</li>
+                                <li>Details of the financial assistance programs, fee waivers, and scholarship opportunities available to students, along with eligibility criteria and application procedures.</li>
+                                <li>Allocation and utilization reports for development fees and other non-tuition fee components for the last two academic years.</li>
+                            </ol>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-primary">Download as PDF</button>
+                            <button type="button" class="btn btn-secondary">Print Form</button>
+                            <button type="reset" class="btn btn-secondary">Reset Form</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="key-points">
+                    <h2>Key Points to Remember</h2>
+                    <ol>
+                        <li><strong>Be comprehensive:</strong> Request information about all fee components, not just the total amount.</li>
+                        <li><strong>Ask for approvals:</strong> Request copies of approvals from regulatory bodies that sanction the fee structure.</li>
+                        <li><strong>Historical context:</strong> Ask for previous years' fee structures to identify unauthorized increases.</li>
+                        <li><strong>Specify format:</strong> Request the information in a structured format that clearly shows each fee component.</li>
+                        <li><strong>Regulatory compliance:</strong> Inquire about compliance with specific fee regulations applicable to your institution.</li>
+                        <li><strong>Financial allocations:</strong> Ask for information about how specific fees (like development fees) are utilized.</li>
+                    </ol>
+                </div>
+
+                <div class="success-stories">
+                    <h2>Success Stories</h2>
+                    
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">NS</div>
+                            <div class="story-info">
+                                <h3>Nikhil Sharma</h3>
+                                <p>Engineering Student</p>
+                            </div>
+                        </div>
+                        <div class="story-content">
+                            <p>My college introduced a new 'infrastructure development fee' of ₹15,000 per semester with no prior notification. Through an RTI application, I discovered that this fee had never been approved by the state fee regulatory committee. When confronted with the RTI response, the college administration had to roll back the charge for all students and issue refunds to those who had already paid.</p>
+                            <div class="story-result">Result: Unauthorized fee of ₹15,000 per student refunded to over 500 students</div>
+                        </div>
+                    </div>
+                    
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">MS</div>
+                            <div class="story-info">
+                                <h3>Meera Singh</h3>
+                                <p>Law College Student</p>
+                            </div>
+                        </div>
+                        <div class="story-content">
+                            <p>Our law college was charging 'examination fees' twice - once as part of the semester fees and again before each exam. I filed an RTI requesting the breakdown of fee components and utilization reports. The response confirmed that this was double charging for the same service. The college had to issue a refund and revise their fee structure after the state education department intervened based on my RTI findings.</p>
+                            <div class="story-result">Result: Double-charged examination fees refunded and policy changed</div>
+                        </div>
+                    </div>
+                    
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">AR</div>
+                            <div class="story-info">
+                                <h3>Aditya Raj</h3>
+                                <p>Medical Student</p>
+                            </div>
+                        </div>
+                        <div class="story-content">
+                            <p>Our medical college increased the hostel fees by 200% in a single year. Through RTI, I requested the approval documents for this increase and past fee structures. The response revealed that the fee hike violated the maximum annual increase percentage set by the Medical Council. With this information, the student association collectively petitioned the college, which was compelled to reduce the increase to the permissible 10% annual limit.</p>
+                            <div class="story-result">Result: Excessive hostel fee increase rolled back, saving each student approximately ₹45,000</div>
+                        </div>
+                    </div>
+                    
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">KP</div>
+                            <div class="story-info">
+                                <h3>Kavita Patel</h3>
+                                <p>MBA Student</p>
+                            </div>
+                        </div>
+                        <div class="story-content">
+                            <p>Our business school charged a mandatory 'placement fee' regardless of whether students used the placement services. My RTI application revealed that according to university regulations, placement services should be optional. The RTI response also disclosed that the fee was being collected without providing detailed placement statistics or outcomes to students. Following this discovery, the institute was directed to make the fee optional and provide transparent placement reports to all students.</p>
+                            <div class="story-result">Result: Placement fee made optional, saving ₹25,000 for students opting out</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../../assets/images/logo.png" alt="RTI Education Portal">
+                    <p>Empowering students through information</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Dashboard</a></li>
+                        <li><a href="../resources.html">Resources</a></li>
+                        <li><a href="index.html">Templates</a></li>
+                        <li><a href="../../shared/track.html">Track Applications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p>Email: student.support@rtieducation.org</p>
+                    <p>Helpline: 1800-XXX-XXXX</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RTI Education Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../shared/nav.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form handling functionality
+            const downloadBtn = document.querySelector('.btn-primary');
+            const printBtn = document.querySelectorAll('.btn-secondary')[0];
+            
+            downloadBtn.addEventListener('click', function() {
+                alert('PDF download functionality will be integrated here. In a production environment, this would generate a formatted PDF of your RTI application.');
+            });
+            
+            printBtn.addEventListener('click', function() {
+                window.print();
+            });
+            
+            // Hide the sample text when focusing on the specific info field
+            const specificInfoField = document.getElementById('specific-info');
+            const sampleSection = document.querySelector('.fee-sample');
+            
+            specificInfoField.addEventListener('focus', function() {
+                sampleSection.style.display = 'none';
+            });
+            
+            specificInfoField.addEventListener('blur', function() {
+                if (!this.value) {
+                    sampleSection.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

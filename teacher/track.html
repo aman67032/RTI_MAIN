@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track RTI Applications - Teacher RTI Portal</title>
+    <link rel="icon" href="../assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="../assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png?v=2">
+    <link rel="manifest" href="../manifest.json?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../shared/styles.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="teacher-theme">
+    <div id="header-container"></div>
+
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-search"></i> Track RTI Applications</h1>
+            <p>Monitor the status of your RTI applications and appeals</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="search-container">
+                <h2>Track Your Application</h2>
+                <div class="track-form">
+                    <div class="form-group">
+                        <label for="registration-number">Registration Number</label>
+                        <input type="text" id="registration-number" placeholder="Enter RTI Registration Number">
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn-primary"><i class="fas fa-search"></i> Track Status</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-card">
+                <h2>Tracking Methods</h2>
+                <p>There are several ways to track the status of your RTI application:</p>
+                
+                <div class="methods-grid">
+                    <div class="method-card">
+                        <div class="method-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="method-content">
+                            <h3>Online Tracking</h3>
+                            <p>For applications filed through the RTI Online Portal, you can check status using your registration number and password.</p>
+                            <a href="https://rtionline.gov.in/" target="_blank" class="btn-link">RTI Online Portal <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="method-card">
+                        <div class="method-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="method-content">
+                            <h3>Phone Inquiry</h3>
+                            <p>Contact the concerned Public Information Officer (PIO) directly for updates on your application.</p>
+                            <a href="#" class="btn-link">PIO Contact Directory</a>
+                        </div>
+                    </div>
+                    
+                    <div class="method-card">
+                        <div class="method-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="method-content">
+                            <h3>Email Follow-up</h3>
+                            <p>Send a follow-up email to the PIO referencing your RTI application details.</p>
+                            <a href="#" class="btn-link">Email Templates</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="timeline-section">
+        <div class="container">
+            <h2>RTI Application Timeline</h2>
+            <p>Understanding the typical timeline of an RTI application can help you track its progress effectively.</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-point">1</div>
+                    <div class="timeline-content">
+                        <h3>Application Submission</h3>
+                        <p>Application is submitted to the Public Information Officer (PIO) with the requisite fee.</p>
+                        <span class="timeline-period">Day 0</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-point">2</div>
+                    <div class="timeline-content">
+                        <h3>Acknowledgment</h3>
+                        <p>PIO provides an acknowledgment receipt with a unique registration number.</p>
+                        <span class="timeline-period">Within 7 days</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-point">3</div>
+                    <div class="timeline-content">
+                        <h3>Processing</h3>
+                        <p>PIO processes the request and collects the required information from relevant departments.</p>
+                        <span class="timeline-period">Day 7-25</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-point">4</div>
+                    <div class="timeline-content">
+                        <h3>Response</h3>
+                        <p>PIO provides the requested information or reasons for denial if applicable.</p>
+                        <span class="timeline-period">Within 30 days</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-point">5</div>
+                    <div class="timeline-content">
+                        <h3>First Appeal</h3>
+                        <p>If response is unsatisfactory or not received, applicant can file a first appeal.</p>
+                        <span class="timeline-period">Within 30 days of response deadline</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-point">6</div>
+                    <div class="timeline-content">
+                        <h3>Second Appeal</h3>
+                        <p>If first appeal is unsuccessful, applicant can file a second appeal with the Information Commission.</p>
+                        <span class="timeline-period">Within 90 days of first appeal decision</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../shared/nav.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const headerContainer = document.getElementById('header-container');
+            headerContainer.innerHTML = Navigation.createHeader('Teacher RTI Portal');
+            new Navigation('teacher');
+        });
+    </script>
+</body>
+</html> 

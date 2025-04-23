@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0fe0ff">
+    <title>Admission Information RTI Template</title>
+    <link rel="stylesheet" href="../../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Student Portal Futuristic Theme Variables */
+        :root {
+            --portal-primary: #0fe0ff;
+            --portal-secondary: #0066ff;
+            --portal-accent: #ff00ee;
+            --portal-dark: #040b36;
+            --portal-light: #f0f8ff;
+            --portal-gradient: linear-gradient(135deg, var(--portal-primary), var(--portal-secondary));
+            --portal-accent-gradient: linear-gradient(135deg, var(--portal-accent), var(--portal-primary));
+            --neon-shadow: 0 0 10px rgba(15, 224, 255, 0.5), 0 0 20px rgba(15, 224, 255, 0.3), 0 0 30px rgba(15, 224, 255, 0.1);
+            --futuristic-bg: linear-gradient(180deg, #040b36 0%, #0c1e51 50%, #060b31 100%);
+        }
+
+        .template-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(107, 112, 92, 0.15);
+        }
+        
+        .template-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .template-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: grid;
+            gap: 0.5rem;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .help-text {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .checkbox-group input {
+            width: auto;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn-primary {
+            background: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--secondary-color);
+        }
+        
+        .btn-secondary {
+            background: #eee;
+            color: #333;
+        }
+        
+        .btn-secondary:hover {
+            background: #ddd;
+        }
+        
+        .when-to-use {
+            background: rgba(255, 232, 214, 0.5);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .when-to-use h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .when-to-use ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .when-to-use li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .key-points {
+            background: rgba(165, 165, 141, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .key-points h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .key-points ol {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .key-points li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .success-stories {
+            margin-top: 3rem;
+        }
+        
+        .success-stories h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .story-card {
+            background: rgba(165, 165, 141, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .story-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .story-info h3 {
+            margin: 0;
+            color: var(--primary-color);
+        }
+        
+        .story-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .story-content p {
+            margin-top: 0;
+        }
+        
+        .story-result {
+            background: rgba(107, 112, 92, 0.1);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation from shared component -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../../assets/images/logo.png" alt="RTI Education Portal">
+                    <span>Student RTI Portal</span>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../index.html">Dashboard</a></li>
+                    <li><a href="../resources.html">Resources</a></li>
+                    <li><a href="index.html" class="active">Templates</a></li>
+                    <li><a href="../../shared/track.html">Track Applications</a></li>
+                    <li><a href="../../shared/forms.html">Submit RTI</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Admission Information RTI Template</h1>
+                <p>Request transparency in educational institution admission processes</p>
+            </div>
+        </section>
+
+        <section class="template-section">
+            <div class="container">
+                <div class="when-to-use">
+                    <h2>When to Use This Template</h2>
+                    <p>This template is designed for students seeking information about admission processes in educational institutions. Use this template when:</p>
+                    <ul>
+                        <li>You need information about admission criteria and selection procedures</li>
+                        <li>You want to understand how seats are allocated, including reservation policies</li>
+                        <li>You need clarity on cutoff marks or ranking methodology</li>
+                        <li>You want information about management quotas and their allocation</li>
+                        <li>You need details about fees structures and their components</li>
+                        <li>You want to understand the waitlist process and vacant seat allocation</li>
+                    </ul>
+                </div>
+
+                <div class="template-container">
+                    <div class="template-header">
+                        <h2>Admission Information RTI Application</h2>
+                        <p>Fill in the details below to generate your RTI application</p>
+                    </div>
+
+                    <form class="template-form">
+                        <div class="form-group">
+                            <label for="addressee">To</label>
+                            <input type="text" id="addressee" name="addressee" placeholder="Public Information Officer" required>
+                            <div class="help-text">Usually the Public Information Officer (PIO) of the educational institution</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="department">Department/Institution</label>
+                            <input type="text" id="department" name="department" placeholder="e.g., Delhi University, IIT Delhi, etc." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="course">Course/Program</label>
+                            <input type="text" id="course" name="course" placeholder="e.g., B.Tech Computer Science, MBA, etc." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="admission-year">Admission Year</label>
+                            <input type="text" id="admission-year" name="admission-year" placeholder="e.g., 2025-26" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applicant-name">Applicant's Name</label>
+                            <input type="text" id="applicant-name" name="applicant-name" placeholder="Your Full Name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applicant-address">Applicant's Address</label>
+                            <textarea id="applicant-address" name="applicant-address" placeholder="Your Complete Postal Address" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applicant-contact">Contact Information</label>
+                            <input type="tel" id="applicant-contact" name="applicant-contact" placeholder="Your Phone Number" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applicant-email">Email Address</label>
+                            <input type="email" id="applicant-email" name="applicant-email" placeholder="Your Email Address" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Information Requested (Select all that apply)</label>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-criteria" name="requested-info" value="criteria">
+                                <label for="request-criteria">Admission criteria and selection procedure</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-allocation" name="requested-info" value="allocation">
+                                <label for="request-allocation">Seat allocation process and reservation policies</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-cutoff" name="requested-info" value="cutoff">
+                                <label for="request-cutoff">Cutoff marks/ranks for previous admission cycles</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-management" name="requested-info" value="management">
+                                <label for="request-management">Management quota details and allocation process</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-fees" name="requested-info" value="fees">
+                                <label for="request-fees">Fee structure and component breakdown</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-waitlist" name="requested-info" value="waitlist">
+                                <label for="request-waitlist">Waitlist process and vacant seat allocation</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="specific-info">Specific Information Required</label>
+                            <textarea id="specific-info" name="specific-info" placeholder="Provide details about the specific information you are seeking"></textarea>
+                            <div class="help-text">Be specific about the admission-related information you need</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="application-fee">Application Fee Details</label>
+                            <select id="application-fee" name="application-fee" required>
+                                <option value="">Select Fee Payment Method</option>
+                                <option value="Cash">Cash</option>
+                                <option value="Postal Order">Indian Postal Order</option>
+                                <option value="Court Fee Stamp">Court Fee Stamp</option>
+                                <option value="Demand Draft">Demand Draft</option>
+                                <option value="Bank Transfer">Bank Transfer</option>
+                            </select>
+                            <div class="help-text">Standard RTI application fee is ₹10 for general category</div>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="bpl-category" name="bpl-category">
+                            <label for="bpl-category">I belong to Below Poverty Line (BPL) category and have attached proof</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="declaration">Declaration</label>
+                            <div class="help-text">I hereby declare that the information sought does not fall within the restrictions contained in Section 8 and 9 of the RTI Act, 2005 and to the best of my knowledge, it pertains to your institution.</div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-primary">Download as PDF</button>
+                            <button type="button" class="btn btn-secondary">Print Form</button>
+                            <button type="reset" class="btn btn-secondary">Reset Form</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="key-points">
+                    <h2>Key Points to Remember</h2>
+                    <ol>
+                        <li><strong>Be specific:</strong> Clearly mention the course, year, and specific aspects of the admission process you want information about.</li>
+                        <li><strong>Request documents:</strong> Ask for certified copies of official notifications, brochures, or government orders related to the admission process.</li>
+                        <li><strong>Avoid personal information:</strong> Your RTI cannot request information about other students' personal details.</li>
+                        <li><strong>Focus on process:</strong> Ask about the process, criteria, and methodology rather than specific decisions about individuals.</li>
+                        <li><strong>Mention time period:</strong> Specify the academic year or admission cycle you are inquiring about.</li>
+                        <li><strong>Follow up:</strong> If you receive an incomplete response, you can file a first appeal within 30 days.</li>
+                    </ol>
+                </div>
+
+                <div class="success-stories">
+                    <h2>Success Stories</h2>
+                    
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">VM</div>
+                            <div class="story-info">
+                                <h3>Vikram Malhotra</h3>
+                                <p>Engineering Aspirant</p>
+                            </div>
+                        </div>
+                        <div class="story-content">
+                            <p>I was denied admission to a prestigious engineering college despite having a higher rank than many who were admitted. I filed an RTI seeking information about the selection criteria and discovered that the college had a hidden 'domicile quota' that wasn't mentioned in their prospectus. I appealed to the admission committee with this information and was granted admission in the same academic year.</p>
+                            <div class="story-result">Result: Secured admission after exposing undisclosed quota system</div>
+                        </div>
+                    </div>
+                    
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">SP</div>
+                            <div class="story-info">
+                                <h3>Sneha Patil</h3>
+                                <p>Medical College Applicant</p>
+                            </div>
+                        </div>
+                        <div class="story-content">
+                            <p>When applying to a private medical college, I was asked to pay a 'development fee' of ₹5 lakhs in addition to the regular fees. Using the RTI template, I requested information about the fee structure approved by the state fee regulatory committee. The response revealed that the college was charging ₹3 lakhs more than the approved amount. I reported this to the state education department, which led to a reduction in fees not just for me but for all students.</p>
+                            <div class="story-result">Result: ₹3 lakh fee reduction for all incoming students</div>
+                        </div>
+                    </div>
+                    
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">AR</div>
+                            <div class="story-info">
+                                <h3>Akash Raj</h3>
+                                <p>MBA Aspirant</p>
+                            </div>
+                        </div>
+                        <div class="story-content">
+                            <p>I was on the waitlist for an MBA program and received no communication despite seeing new admissions happening. Through an RTI, I discovered that the institution was admitting students with lower scores through a 'management quota' without exhausting the waitlist first, which violated their own published admission policy. With this information, I approached the university ombudsman who directed the institute to follow proper waitlist procedures, resulting in my admission.</p>
+                            <div class="story-result">Result: Policy violation exposed, waitlist properly implemented</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../../assets/images/logo.png" alt="RTI Education Portal">
+                    <p>Empowering students through information</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Dashboard</a></li>
+                        <li><a href="../resources.html">Resources</a></li>
+                        <li><a href="index.html">Templates</a></li>
+                        <li><a href="../../shared/track.html">Track Applications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p>Email: student.support@rtieducation.org</p>
+                    <p>Helpline: 1800-XXX-XXXX</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RTI Education Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../shared/nav.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form handling functionality
+            const downloadBtn = document.querySelector('.btn-primary');
+            const printBtn = document.querySelectorAll('.btn-secondary')[0];
+            
+            downloadBtn.addEventListener('click', function() {
+                alert('PDF download functionality will be integrated here. In a production environment, this would generate a formatted PDF of your RTI application.');
+            });
+            
+            printBtn.addEventListener('click', function() {
+                window.print();
+            });
+        });
+    </script>
+</body>
+</html> 

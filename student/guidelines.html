@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0fe0ff">
+    <title>RTI Portal Guidelines</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Student Portal Futuristic Theme Variables */
+        :root {
+            --portal-primary: #0fe0ff;
+            --portal-secondary: #0066ff;
+            --portal-accent: #ff00ee;
+            --portal-dark: #040b36;
+            --portal-light: #f0f8ff;
+            --portal-gradient: linear-gradient(135deg, var(--portal-primary), var(--portal-secondary));
+            --portal-accent-gradient: linear-gradient(135deg, var(--portal-accent), var(--portal-primary));
+            --neon-shadow: 0 0 10px rgba(15, 224, 255, 0.5), 0 0 20px rgba(15, 224, 255, 0.3), 0 0 30px rgba(15, 224, 255, 0.1);
+            --futuristic-bg: linear-gradient(180deg, #040b36 0%, #0c1e51 50%, #060b31 100%);
+        }
+
+        body {
+            background: var(--futuristic-bg);
+            color: var(--portal-light);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            font-size: 16px;
+            margin: 0;
+            padding: 80px 0 0;
+            min-height: 100vh;
+        }
+
+        .guidelines-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 2rem;
+        }
+
+        .guidelines-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .guidelines-header h1 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--portal-primary), var(--portal-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .guidelines-header p {
+            font-size: 1.2rem;
+            color: var(--portal-light);
+            opacity: 0.9;
+        }
+
+        .guidelines-section {
+            background: rgba(4, 11, 54, 0.8);
+            border: 1px solid rgba(15, 224, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guidelines-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(15, 224, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 0, 238, 0.1) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title i {
+            font-size: 2rem;
+            background: var(--portal-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-title h2 {
+            color: var(--portal-primary);
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .guidelines-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .guidelines-list li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .guidelines-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--portal-primary);
+        }
+
+        .important-note {
+            background: rgba(255, 0, 238, 0.1);
+            border-left: 4px solid var(--portal-accent);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .payment-method {
+            background: rgba(15, 224, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(15, 224, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .payment-method:hover {
+            transform: translateY(-5px);
+            border-color: var(--portal-primary);
+            box-shadow: var(--neon-shadow);
+        }
+
+        .payment-method i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--portal-primary);
+        }
+
+        @media (max-width: 768px) {
+            .guidelines-container {
+                padding: 1rem;
+            }
+
+            .guidelines-section {
+                padding: 1.5rem;
+            }
+
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../assets/images/logo.png" alt="RTI Education Portal">
+                    <span>Student RTI Portal</span>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="templates/index.html">Templates</a></li>
+                    <li><a href="forum.html">Forum</a></li>
+                    <li><a href="guidelines.html" class="active">Guidelines</a></li>
+                    <li><a href="../shared/track.html">Track Applications</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main class="guidelines-container">
+        <div class="guidelines-header">
+            <h1>RTI Portal Guidelines</h1>
+            <p>Essential information for filing RTI applications online</p>
+        </div>
+
+        <section class="guidelines-section">
+            <div class="section-title">
+                <i class="fas fa-info-circle"></i>
+                <h2>General Information</h2>
+            </div>
+            <ul class="guidelines-list">
+                <li>This Web Portal is exclusively for Indian citizens to file RTI applications and first appeals online.</li>
+                <li>Applications can be submitted to Ministries/Departments of Government of India.</li>
+                <li>The portal facilitates online payment for RTI applications.</li>
+            </ul>
+        </section>
+
+        <section class="guidelines-section">
+            <div class="section-title">
+                <i class="fas fa-edit"></i>
+                <h2>Application Guidelines</h2>
+            </div>
+            <ul class="guidelines-list">
+                <li>Click "Submit Request" to initiate a new RTI application.</li>
+                <li>Fields marked with * are mandatory.</li>
+                <li>Application text is limited to 3000 characters.</li>
+                <li>Allowed characters: A-Z, a-z, 0-9, and special characters (, . - _ ( ) / @ : & ? \ %)</li>
+                <li>For longer applications, use the "Supporting document" option to upload additional content.</li>
+            </ul>
+            <div class="important-note">
+                <strong>Important:</strong> Do not upload Aadhar Card, PAN Card, or any personal identification documents (except BPL Card).
+            </div>
+        </section>
+
+        <section class="guidelines-section">
+            <div class="section-title">
+                <i class="fas fa-credit-card"></i>
+                <h2>Payment Information</h2>
+            </div>
+            <p>The following payment methods are accepted for RTI applications:</p>
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <i class="fas fa-university"></i>
+                    <p>Internet Banking</p>
+                </div>
+                <div class="payment-method">
+                    <i class="fas fa-credit-card"></i>
+                    <p>Credit/Debit Card (Master/Visa)</p>
+                </div>
+                <div class="payment-method">
+                    <i class="fas fa-mobile-alt"></i>
+                    <p>UPI</p>
+                </div>
+                <div class="payment-method">
+                    <i class="fas fa-money-check"></i>
+                    <p>RuPay Card</p>
+                </div>
+            </div>
+            <div class="important-note">
+                <strong>BPL Applicants:</strong> No RTI fee is required for citizens below poverty line. Attach appropriate government certificate as proof.
+            </div>
+        </section>
+
+        <section class="guidelines-section">
+            <div class="section-title">
+                <i class="fas fa-tasks"></i>
+                <h2>Process & Tracking</h2>
+            </div>
+            <ul class="guidelines-list">
+                <li>A unique registration number is issued upon submission for future reference.</li>
+                <li>Applications are electronically routed to the concerned Ministry/Department's Nodal Officer.</li>
+                <li>Track application status through "View Status" or email notifications.</li>
+                <li>If additional fees are required, CPIO will notify through the portal.</li>
+                <li>First appeals can be filed using the "Submit First Appeal" option (no fee required).</li>
+            </ul>
+        </section>
+
+        <section class="guidelines-section">
+            <div class="section-title">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h2>Important Notes</h2>
+            </div>
+            <ul class="guidelines-list">
+                <li>After payment, wait 24-48 working hours for registration number generation.</li>
+                <li>For payment issues, email helprtionline-dopt[at]nic[dot]in with transaction details.</li>
+                <li>PDF file names should not contain spaces.</li>
+                <li>Provide mobile number for SMS alerts.</li>
+                <li>All provisions of RTI Act, 2005 regarding time limits and exemptions apply.</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../assets/images/logo.png" alt="RTI Education Portal">
+                    <p>Empowering students through information</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Dashboard</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="templates/index.html">Templates</a></li>
+                        <li><a href="../shared/track.html">Track Applications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p>Email: student.support@rtieducation.org</p>
+                    <p>Helpline: 1800-XXX-XXXX</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RTI Education Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../shared/nav.js"></script>
+</body>
+</html> 

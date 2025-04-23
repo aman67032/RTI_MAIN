@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0fe0ff">
+    <title>Exam Results RTI Template</title>
+    <link rel="stylesheet" href="../../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Student Portal Futuristic Theme Variables */
+        :root {
+            --portal-primary: #0fe0ff;
+            --portal-secondary: #0066ff;
+            --portal-accent: #ff00ee;
+            --portal-dark: #040b36;
+            --portal-light: #f0f8ff;
+            --portal-gradient: linear-gradient(135deg, var(--portal-primary), var(--portal-secondary));
+            --portal-accent-gradient: linear-gradient(135deg, var(--portal-accent), var(--portal-primary));
+            --neon-shadow: 0 0 10px rgba(15, 224, 255, 0.5), 0 0 20px rgba(15, 224, 255, 0.3), 0 0 30px rgba(15, 224, 255, 0.1);
+            --futuristic-bg: linear-gradient(180deg, #040b36 0%, #0c1e51 50%, #060b31 100%);
+        }
+
+        .template-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(107, 112, 92, 0.15);
+        }
+        
+        .template-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .template-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: grid;
+            gap: 0.5rem;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .help-text {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .checkbox-group input {
+            width: auto;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn-primary {
+            background: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--secondary-color);
+        }
+        
+        .btn-secondary {
+            background: #eee;
+            color: #333;
+        }
+        
+        .btn-secondary:hover {
+            background: #ddd;
+        }
+        
+        .when-to-use {
+            background: rgba(255, 232, 214, 0.5);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .when-to-use h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .when-to-use ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .when-to-use li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .success-stories {
+            margin-top: 3rem;
+        }
+        
+        .success-stories h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .story-card {
+            background: rgba(165, 165, 141, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .story-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .story-info h3 {
+            margin: 0;
+            color: var(--primary-color);
+        }
+        
+        .story-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .story-content p {
+            margin-top: 0;
+        }
+        
+        .story-result {
+            background: rgba(107, 112, 92, 0.1);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation from shared component -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../../assets/images/logo.png" alt="RTI Education Portal">
+                    <span>Student RTI Portal</span>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../index.html">Dashboard</a></li>
+                    <li><a href="../resources.html">Resources</a></li>
+                    <li><a href="index.html" class="active">Templates</a></li>
+                    <li><a href="../../shared/track.html">Track Applications</a></li>
+                    <li><a href="../../shared/forms.html">Submit RTI</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Exam Results RTI Template</h1>
+                <p>Request information about exam evaluation, answer sheets, and marking schemes</p>
+            </div>
+        </section>
+
+        <section class="template-section">
+            <div class="container">
+                <div class="when-to-use">
+                    <h2>When to Use This Template</h2>
+                    <p>This template is designed for students who want to inquire about various aspects of exam evaluation and results. Use this template when:</p>
+                    <ul>
+                        <li>You want to request a copy of your evaluated answer sheet</li>
+                        <li>You need information about the marking scheme applied in your exam</li>
+                        <li>You want to know about the process of re-evaluation or rechecking</li>
+                        <li>You need clarity on the moderation process used for exam results</li>
+                        <li>You want to know about any grace marks policy</li>
+                        <li>You need information about the number of students who passed/failed in a particular exam</li>
+                    </ul>
+                </div>
+
+                <div class="template-container">
+                    <div class="template-header">
+                        <h2>Exam Results RTI Application</h2>
+                        <p>Fill in the details below to generate your RTI application</p>
+                    </div>
+
+                    <form class="template-form">
+                        <div class="form-group">
+                            <label for="addressee">To</label>
+                            <input type="text" id="addressee" name="addressee" placeholder="Public Information Officer" required>
+                            <div class="help-text">Usually the Public Information Officer (PIO) of the educational institution</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="department">Department/Institution</label>
+                            <input type="text" id="department" name="department" placeholder="e.g., Board of Secondary Education, Delhi" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exam-type">Exam Type</label>
+                            <select id="exam-type" name="exam-type" required>
+                                <option value="">Select Exam Type</option>
+                                <option value="Semester Exam">Semester Exam</option>
+                                <option value="Annual Exam">Annual Exam</option>
+                                <option value="Entrance Exam">Entrance Exam</option>
+                                <option value="Competitive Exam">Competitive Exam</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exam-details">Exam Name & Date</label>
+                            <input type="text" id="exam-details" name="exam-details" placeholder="e.g., Class 12 Board Exam, March 2025" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applicant-name">Applicant's Name</label>
+                            <input type="text" id="applicant-name" name="applicant-name" placeholder="Your Full Name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="roll-number">Roll Number/Registration Number</label>
+                            <input type="text" id="roll-number" name="roll-number" placeholder="Your Exam Roll Number" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applicant-address">Applicant's Address</label>
+                            <textarea id="applicant-address" name="applicant-address" placeholder="Your Complete Postal Address" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applicant-contact">Contact Information</label>
+                            <input type="tel" id="applicant-contact" name="applicant-contact" placeholder="Your Phone Number" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applicant-email">Email Address</label>
+                            <input type="email" id="applicant-email" name="applicant-email" placeholder="Your Email Address" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Information Requested (Select all that apply)</label>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-answer-sheet" name="requested-info" value="answer-sheet">
+                                <label for="request-answer-sheet">Copy of evaluated answer sheet</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-marking-scheme" name="requested-info" value="marking-scheme">
+                                <label for="request-marking-scheme">Marking scheme used for evaluation</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-reevaluation" name="requested-info" value="reevaluation">
+                                <label for="request-reevaluation">Process and criteria for re-evaluation</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-moderation" name="requested-info" value="moderation">
+                                <label for="request-moderation">Details of any moderation applied to results</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-grace-marks" name="requested-info" value="grace-marks">
+                                <label for="request-grace-marks">Information about grace marks policy</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-statistics" name="requested-info" value="statistics">
+                                <label for="request-statistics">Statistics on passing/failing students</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="specific-info">Specific Information Required</label>
+                            <textarea id="specific-info" name="specific-info" placeholder="Provide details about the specific information you are seeking"></textarea>
+                            <div class="help-text">Be as specific as possible about what information you need</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="application-fee">Application Fee Details</label>
+                            <select id="application-fee" name="application-fee" required>
+                                <option value="">Select Fee Payment Method</option>
+                                <option value="Cash">Cash</option>
+                                <option value="Postal Order">Indian Postal Order</option>
+                                <option value="Court Fee Stamp">Court Fee Stamp</option>
+                                <option value="Demand Draft">Demand Draft</option>
+                                <option value="Bank Transfer">Bank Transfer</option>
+                            </select>
+                            <div class="help-text">Standard RTI application fee is ₹10 for general category</div>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="bpl-category" name="bpl-category">
+                            <label for="bpl-category">I belong to Below Poverty Line (BPL) category and have attached proof</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="declaration">Declaration</label>
+                            <div class="help-text">I hereby declare that the information sought does not fall within the restrictions contained in Section 8 and 9 of the RTI Act, 2005 and to the best of my knowledge, it pertains to your institution.</div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-primary">Download as PDF</button>
+                            <button type="button" class="btn btn-secondary">Print Form</button>
+                            <button type="reset" class="btn btn-secondary">Reset Form</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="success-stories">
+                    <h2>Success Stories</h2>
+                    
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">RP</div>
+                            <div class="story-info">
+                                <h3>Rahul Patel</h3>
+                                <p>Delhi University Student</p>
+                            </div>
+                        </div>
+                        <div class="story-content">
+                            <p>I was confident about my answers in the Economics final exam but was shocked to see I had barely passed. I filed an RTI using this template to get my answer sheet. When I received it, I found that two entire pages of my answers had not been evaluated! I submitted for re-evaluation and my marks increased from 58 to 79.</p>
+                            <div class="story-result">Result: Marks increased by 21 points after re-evaluation</div>
+                        </div>
+                    </div>
+                    
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">AP</div>
+                            <div class="story-info">
+                                <h3>Aisha Parveen</h3>
+                                <p>CBSE Class 12 Student</p>
+                            </div>
+                        </div>
+                        <div class="story-content">
+                            <p>Our entire batch had unexpectedly low scores in Mathematics. We suspected something was wrong with the evaluation process. I filed an RTI on behalf of our class to understand the marking scheme. The response revealed that an outdated marking scheme had been applied by mistake. The board initiated a re-evaluation for the entire batch.</p>
+                            <div class="story-result">Result: Re-evaluation ordered for the entire batch of 250+ students</div>
+                        </div>
+                    </div>
+                    
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">SK</div>
+                            <div class="story-info">
+                                <h3>Sunil Kumar</h3>
+                                <p>Engineering Entrance Exam Candidate</p>
+                            </div>
+                        </div>
+                        <div class="story-content">
+                            <p>I missed qualifying for my dream engineering college by just 2 marks. I filed an RTI to check if there was any grace marks policy or moderation that I might be eligible for. I discovered that the institute had a policy of giving 5 grace marks to students who had participated in national-level sports events, which I had! After providing the necessary documentation, I qualified for admission.</p>
+                            <div class="story-result">Result: Qualified for admission after application of eligible grace marks</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../../assets/images/logo.png" alt="RTI Education Portal">
+                    <p>Empowering students through information</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Dashboard</a></li>
+                        <li><a href="../resources.html">Resources</a></li>
+                        <li><a href="index.html">Templates</a></li>
+                        <li><a href="../../shared/track.html">Track Applications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p>Email: student.support@rtieducation.org</p>
+                    <p>Helpline: 1800-XXX-XXXX</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RTI Education Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../shared/nav.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form handling functionality
+            const downloadBtn = document.querySelector('.btn-primary');
+            const printBtn = document.querySelectorAll('.btn-secondary')[0];
+            
+            downloadBtn.addEventListener('click', function() {
+                alert('PDF download functionality will be integrated here. In a production environment, this would generate a formatted PDF of your RTI application.');
+            });
+            
+            printBtn.addEventListener('click', function() {
+                window.print();
+            });
+        });
+    </script>
+</body>
+</html> 

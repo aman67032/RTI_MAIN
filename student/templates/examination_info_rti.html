@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0fe0ff">
+    <title>Examination Information RTI Template</title>
+    <link rel="stylesheet" href="../../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Student Portal Futuristic Theme Variables */
+        :root {
+            --portal-primary: #0fe0ff;
+            --portal-secondary: #0066ff;
+            --portal-accent: #ff00ee;
+            --portal-dark: #040b36;
+            --portal-light: #f0f8ff;
+            --portal-gradient: linear-gradient(135deg, var(--portal-primary), var(--portal-secondary));
+            --portal-accent-gradient: linear-gradient(135deg, var(--portal-accent), var(--portal-primary));
+            --neon-shadow: 0 0 10px rgba(15, 224, 255, 0.5), 0 0 20px rgba(15, 224, 255, 0.3), 0 0 30px rgba(15, 224, 255, 0.1);
+            --futuristic-bg: linear-gradient(180deg, #040b36 0%, #0c1e51 50%, #060b31 100%);
+        }
+
+        body {
+            background: var(--futuristic-bg);
+            color: var(--portal-light);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            font-size: 16px;
+            margin: 0;
+            padding: 80px 0 0;
+            min-height: 100vh;
+        }
+
+        /* Futuristic Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--portal-primary);
+            border-radius: 3px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--portal-secondary);
+        }
+
+        .template-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 2rem;
+            background: rgba(4, 11, 54, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(15, 224, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .template-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(15, 224, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 0, 238, 0.1) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .template-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .template-header h1 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--portal-primary), var(--portal-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .template-header p {
+            color: var(--portal-light);
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .form-section {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 2.5rem;
+            background: rgba(4, 11, 54, 0.6);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(15, 224, 255, 0.1);
+        }
+
+        .form-section h3 {
+            color: var(--portal-primary);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            color: var(--portal-light);
+            font-size: 1.1rem;
+        }
+
+        input[type="text"], 
+        textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(4, 11, 54, 0.8);
+            border: 1px solid rgba(15, 224, 255, 0.2);
+            border-radius: 10px;
+            color: var(--portal-light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus, 
+        textarea:focus {
+            outline: none;
+            border-color: var(--portal-primary);
+            box-shadow: 0 0 15px rgba(15, 224, 255, 0.3);
+        }
+
+        .help-text {
+            font-size: 0.9rem;
+            color: var(--portal-light);
+            opacity: 0.7;
+            margin-top: 0.5rem;
+        }
+
+        .checkbox-group {
+            margin-top: 1.5rem;
+        }
+
+        .checkbox-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .checkbox-item {
+            background: rgba(15, 224, 255, 0.05);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(15, 224, 255, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-item:hover {
+            background: rgba(15, 224, 255, 0.1);
+            border-color: rgba(15, 224, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            margin-right: 1rem;
+            accent-color: var(--portal-primary);
+        }
+
+        .info-section {
+            background: rgba(15, 224, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(15, 224, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-section h3 {
+            color: var(--portal-primary);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-section li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .info-section li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--portal-primary);
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-card {
+            background: rgba(4, 11, 54, 0.6);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(15, 224, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(15, 224, 255, 0.3);
+            box-shadow: var(--neon-shadow);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--portal-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-description {
+            color: var(--portal-light);
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .key-points {
+            background: rgba(15, 224, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2.5rem;
+            border: 1px solid rgba(15, 224, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .key-points h3 {
+            color: var(--portal-primary);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .key-points ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .key-points li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .key-points li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--portal-primary);
+        }
+
+        .submit-button {
+            background: var(--portal-gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-button:hover {
+            background: var(--portal-accent-gradient);
+            transform: translateY(-2px);
+            box-shadow: var(--neon-shadow);
+        }
+
+        .submit-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
+        }
+
+        .submit-button:hover::before {
+            transform: translateX(100%);
+        }
+
+        @media (max-width: 768px) {
+            .template-container {
+                margin: 20px;
+                padding: 1.5rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .checkbox-container {
+                grid-template-columns: 1fr;
+            }
+
+            .template-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="template-container">
+        <div class="template-header">
+            <h1>Examination Information RTI Template</h1>
+            <p>Use this template to request information about examination processes, evaluation criteria, and results</p>
+        </div>
+        
+        <div class="info-section">
+            <h3>When to use this template</h3>
+            <p>This RTI template is designed for students who need transparency regarding examination processes, answer sheet evaluation, re-evaluation procedures, and result calculation. Use this template when:</p>
+            <ul>
+                <li>You want to understand the evaluation criteria for a specific examination</li>
+                <li>You need clarity on how marks are awarded or grades are calculated</li>
+                <li>You require information about examination policies and procedures</li>
+                <li>You want to verify the fairness of an examination or result</li>
+            </ul>
+        </div>
+        
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number">65%</div>
+                <div class="stat-description">of students report lack of clarity about evaluation criteria</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">43%</div>
+                <div class="stat-description">of re-evaluation requests result in mark changes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3.2L</div>
+                <div class="stat-description">examination-related RTIs filed annually across India</div>
+            </div>
+        </div>
+        
+        <form class="rti-form">
+            <div class="form-section">
+                <h3>RTI Application Details</h3>
+                
+                <div class="form-group">
+                    <label for="pio">Addressed To (PIO):</label>
+                    <input type="text" id="pio" name="pio" placeholder="Public Information Officer">
+                    <div class="help-text">Name and designation of the Public Information Officer of the institution</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="institution">Institution Name:</label>
+                    <input type="text" id="institution" name="institution" placeholder="Name of educational institution">
+                </div>
+                
+                <div class="form-group">
+                    <label for="exam-name">Examination Name/Code:</label>
+                    <input type="text" id="exam-name" name="exam-name" placeholder="e.g., Final Term Examination 2025, JEE Main 2025">
+                    <div class="help-text">Specify the exact examination name and year</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject/Paper (if applicable):</label>
+                    <input type="text" id="subject" name="subject" placeholder="e.g., Mathematics Paper II, Computer Science">
+                </div>
+                
+                <div class="form-group">
+                    <label for="roll-number">Roll Number/Registration ID:</label>
+                    <input type="text" id="roll-number" name="roll-number" placeholder="Your examination roll number or registration ID">
+                </div>
+                
+                <div class="form-group">
+                    <label for="applicant-details">Applicant Details:</label>
+                    <textarea id="applicant-details" name="applicant-details" rows="4" placeholder="Your name, current address, contact information"></textarea>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h3>Information Requested</h3>
+                <p>Please provide me with the following information under the Right to Information Act, 2005:</p>
+                
+                <div class="checkbox-group">
+                    <label>Select the information you need:</label>
+                    <div class="checkbox-container">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="evaluation-criteria" name="info-requested">
+                            <label for="evaluation-criteria">Examination evaluation criteria and marking scheme</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="answer-copy" name="info-requested">
+                            <label for="answer-copy">Certified copy of my answer sheet</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="model-answers" name="info-requested">
+                            <label for="model-answers">Model/sample answers for the examination</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="examiner-details" name="info-requested">
+                            <label for="examiner-details">Qualifications of the examiner who evaluated my answer sheet</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="reevaluation" name="info-requested">
+                            <label for="reevaluation">Re-evaluation process and timeline</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="grade-calculation" name="info-requested">
+                            <label for="grade-calculation">Method of calculating final grades/CGPA</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="cutoff" name="info-requested">
+                            <label for="cutoff">Cut-off marks/percentile for the examination</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="statistics" name="info-requested">
+                            <label for="statistics">Statistical data regarding pass/fail percentage</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="moderation" name="info-requested">
+                            <label for="moderation">Details about any moderation applied to results</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="appeals" name="info-requested">
+                            <label for="appeals">Number of appeals/challenges received for this examination</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group" style="margin-top: 20px;">
+                    <label for="additional-info">Additional Information Request:</label>
+                    <textarea id="additional-info" name="additional-info" rows="5" placeholder="Any specific details or additional information not covered in the checkboxes above"></textarea>
+                </div>
+            </div>
+            
+            <div class="key-points">
+                <h3>Key Points to Remember</h3>
+                <ul>
+                    <li><strong>Be specific</strong> - Clearly mention the examination, subject, date, and your roll number</li>
+                    <li><strong>Focus on facts</strong> - Request factual information rather than explanations</li>
+                    <li><strong>Include RTI fee</strong> - Attach the prescribed fee of ₹10 with your application</li>
+                    <li><strong>Timeline</strong> - Expect a response within 30 days of filing the RTI</li>
+                    <li><strong>Appeal rights</strong> - If unsatisfied with the response, you can file a first appeal within 30 days</li>
+                </ul>
+            </div>
+            
+            <div class="info-section" style="margin-top: 30px;">
+                <h3>Success Stories</h3>
+                <p><strong>Case 1:</strong> A B.Tech student from Delhi discovered through RTI that 15 marks were incorrectly deducted in their Engineering Mathematics paper due to an examiner error.</p>
+                <p><strong>Case 2:</strong> UPSC aspirants used RTI to access cut-off marks and evaluation criteria, helping future candidates prepare more effectively.</p>
+                <p><strong>Case 3:</strong> A group of JEE candidates filed RTI to understand the normalization process, leading to greater transparency in the examination system.</p>
+            </div>
+        </form>
+    </main>
+</body>
+</html> 

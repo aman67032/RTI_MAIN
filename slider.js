@@ -1,36 +1,41 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const sliderContainer = document.querySelector('.slider-container');
+    const slider = document.querySelector('.highlights-slider');
     const slides = document.querySelectorAll('.news-slide');
     const dots = document.querySelectorAll('.slider-dot');
     const prevBtn = document.querySelector('.slider-arrow.prev');
     const nextBtn = document.querySelector('.slider-arrow.next');
     
     let currentSlide = 0;
-    const totalSlides = slides.length;
+    let slideInterval;
+    const intervalTime = 5000;
 
-    // Initialize slider
+    // Initialize the slider
     function initSlider() {
-        sliderContainer.style.width = `${totalSlides * 100}%`;
-        slides.forEach(slide => {
-            slide.style.width = `${100 / totalSlides}%`;
-        });
+        if (slides.length === 0) return;
+        
+        // Show first slide
+        slides[0].classList.add('active');
+        dots[0].classList.add('active');
+        
+        // Start auto sliding
+        startSlideInterval();
     }
 
     // Go to specific slide
     function goToSlide(index) {
-        if (index < 0) {
-            currentSlide = totalSlides - 1;
-        } else if (index >= totalSlides) {
-            currentSlide = 0;
-        } else {
-            currentSlide = index;
-        }
-
-        // Update slider position
-        sliderContainer.style.transform = `translateX(-${(currentSlide * 100) / totalSlides}%)`;
-
-        // Update dots
-        dots.forEach(dot => dot.classList.remove('active'));
+        // Remove active class from current slide and dot
+        slides[currentSlide].classList.remove('active');
+        dots[currentSlide].classList.remove('active');
+        
+        // Update current slide index
+        currentSlide = index;
+        
+        // Handle wrap-around
+        if (currentSlide >= slides.length) currentSlide = 0;
+        if (currentSlide < 0) currentSlide = slides.length - 1;
+        
+        // Add active class to new slide and dot
+        slides[currentSlide].classList.add('active');
         dots[currentSlide].classList.add('active');
     }
 
@@ -44,54 +49,90 @@ document.addEventListener('DOMContentLoaded', function() {
         goToSlide(currentSlide - 1);
     }
 
-    // Event listeners
-    prevBtn.addEventListener('click', prevSlide);
-    nextBtn.addEventListener('click', nextSlide);
+    // Start auto sliding
+    function startSlideInterval() {
+        if (slideInterval) {
+            clearInterval(slideInterval);
+        }
+        slideInterval = setInterval(nextSlide, intervalTime);
+    }
 
-    // Dot navigation
+    // Stop auto sliding
+    function stopSlideInterval() {
+        if (slideInterval) {
+            clearInterval(slideInterval);
+        }
+    }
+
+    // Event Listeners
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            stopSlideInterval();
+            startSlideInterval();
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            stopSlideInterval();
+            startSlideInterval();
+        });
+    }
+
+    // Add click handlers to dots
     dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => goToSlide(index));
+        dot.addEventListener('click', () => {
+            goToSlide(index);
+            stopSlideInterval();
+            startSlideInterval();
+        });
     });
 
-    // Auto slide
-    let slideInterval = setInterval(nextSlide, 5000);
+    // Pause on hover
+    slider.addEventListener('mouseenter', stopSlideInterval);
+    slider.addEventListener('mouseleave', startSlideInterval);
 
-    // Pause auto slide on hover
-    const slider = document.querySelector('.highlights-slider');
-    slider.addEventListener('mouseenter', () => {
-        clearInterval(slideInterval);
-    });
-
-    slider.addEventListener('mouseleave', () => {
-        slideInterval = setInterval(nextSlide, 5000);
-    });
-
-    // Touch events for mobile
+    // Handle touch events
     let touchStartX = 0;
     let touchEndX = 0;
 
-    slider.addEventListener('touchstart', e => {
+    slider.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
+        stopSlideInterval();
     }, { passive: true });
 
-    slider.addEventListener('touchend', e => {
+    slider.addEventListener('touchend', (e) => {
         touchEndX = e.changedTouches[0].screenX;
         handleSwipe();
+        startSlideInterval();
     }, { passive: true });
 
     function handleSwipe() {
         const swipeThreshold = 50;
-        const difference = touchStartX - touchEndX;
+        const diff = touchStartX - touchEndX;
 
-        if (Math.abs(difference) > swipeThreshold) {
-            if (difference > 0) {
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                // Swiped left - next slide
                 nextSlide();
             } else {
+                // Swiped right - previous slide
                 prevSlide();
             }
         }
     }
 
-    // Initialize the slider
+    // Handle visibility change
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            stopSlideInterval();
+        } else {
+            startSlideInterval();
+        }
+    });
+
+    // Initialize slider
     initSlider();
 }); 

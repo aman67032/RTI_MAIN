@@ -10,345 +10,7 @@
     <link rel="manifest" href="../manifest.json?v=2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../shared/styles.css">
-    <style>
-        :root {
-            --portal-primary: var(--teacher-primary);
-            --portal-secondary: var(--teacher-secondary);
-            --portal-gradient: var(--teacher-gradient);
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .back-button {
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-
-        nav a:hover {
-            background-color: rgba(255,255,255,0.1);
-        }
-
-        .hero-section {
-            background: linear-gradient(135deg, #004d40, #00695c);
-            color: white;
-            padding: 6rem 2rem;
-            position: relative;
-            overflow: hidden;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .geometric-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.1;
-            background-image: 
-                linear-gradient(30deg, #ffffff 12%, transparent 12.5%, transparent 87%, #ffffff 87.5%, #ffffff),
-                linear-gradient(150deg, #ffffff 12%, transparent 12.5%, transparent 87%, #ffffff 87.5%, #ffffff),
-                linear-gradient(30deg, #ffffff 12%, transparent 12.5%, transparent 87%, #ffffff 87.5%, #ffffff),
-                linear-gradient(150deg, #ffffff 12%, transparent 12.5%, transparent 87%, #ffffff 87.5%, #ffffff),
-                linear-gradient(60deg, #ffffff 25%, transparent 25.5%, transparent 75%, #ffffff 75%, #ffffff),
-                linear-gradient(60deg, #ffffff 25%, transparent 25.5%, transparent 75%, #ffffff 75%, #ffffff);
-            background-size: 80px 140px;
-            background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
-            animation: movePattern 20s linear infinite;
-        }
-
-        @keyframes movePattern {
-            0% {
-                background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
-            }
-            100% {
-                background-position: 80px 140px, 80px 140px, 120px 210px, 120px 210px, 80px 140px, 120px 210px;
-            }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            margin-bottom: 1.5rem;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero-description {
-            font-size: 1.2rem;
-            margin-bottom: 3rem;
-            color: rgba(255,255,255,0.9);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .service-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2.5rem;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-            transform: translateX(-100%);
-            transition: 0.5s;
-        }
-
-        .service-card:hover::before {
-            transform: translateX(100%);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255,255,255,0.15);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            color: white;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0 20px rgba(0,150,136,0.5);
-        }
-
-        .service-title {
-            font-size: 1.4rem;
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .service-description {
-            color: rgba(255,255,255,0.8);
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .action-button {
-            display: inline-flex;
-            align-items: center;
-            padding: 1rem 2rem;
-            background: white;
-            color: var(--portal-primary);
-            border-radius: 30px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .action-button:hover {
-            background: transparent;
-            color: white;
-            border-color: white;
-            transform: translateY(-3px);
-        }
-
-        .action-button i {
-            margin-left: 0.5rem;
-        }
-
-        .resources-section {
-            background: #fff;
-            padding: 6rem 2rem;
-            position: relative;
-        }
-
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .resource-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
-            border: 1px solid rgba(0,150,136,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .resource-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--portal-gradient);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-        }
-
-        .resource-card:hover::after {
-            transform: scaleX(1);
-        }
-
-        .resource-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,150,136,0.15);
-        }
-
-        .resource-icon {
-            font-size: 2.5rem;
-            color: var(--portal-primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .resource-title {
-            font-size: 1.8rem;
-            color: #333;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-        }
-
-        .resource-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .resource-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-            color: #666;
-            transition: all 0.3s ease;
-        }
-
-        .resource-item:hover {
-            color: var(--portal-primary);
-            transform: translateX(10px);
-        }
-
-        .resource-item i {
-            color: var(--portal-primary);
-            margin-right: 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero-section {
-                padding: 4rem 1rem;
-                min-height: auto;
-            }
-
-            .resources-section {
-                padding: 4rem 1rem;
-            }
-
-            .service-card,
-            .resource-card {
-                padding: 2rem;
-            }
-        }
-
-        footer {
-            background: var(--secondary-color);
-            color: white;
-            padding: 3rem 2rem;
-            margin-top: 4rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-        }
-
-        .copyright {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="teacher-theme">
     <div id="header-container"></div>
@@ -356,9 +18,39 @@
     <section class="hero-section">
         <div class="geometric-bg"></div>
         <div class="hero-content">
-            <h1 class="hero-title">Teacher RTI Portal</h1>
-            <p class="hero-description">Access professional development resources and transparency tools</p>
+            <div class="hero-text">
+                <h1 class="hero-title">Teacher RTI Portal</h1>
+                <p class="hero-description">Access professional development resources and transparency tools to empower your career</p>
+                <div class="hero-rights-info">
+                    <h3>Know Your Rights as an Educator</h3>
+                    <p>As a teacher in India, you have specific legal rights including:</p>
+                    <ul class="rights-list">
+                        <li><i class="fas fa-check-circle"></i> Right to information about recruitment, transfers, and promotions</li>
+                        <li><i class="fas fa-check-circle"></i> Right to fair treatment and protection from arbitrary decisions</li>
+                        <li><i class="fas fa-check-circle"></i> Right to access training and professional development funds</li>
+                        <li><i class="fas fa-check-circle"></i> Right to transparency in performance evaluations</li>
+                    </ul>
+                    <a href="policy.html" class="rights-link">Explore All Your Rights <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
             
+            <div class="hero-character">
+                <div class="character-container">
+                    <div class="character-accessory"></div>
+                    <div class="character-body">
+                        <div class="character-face">
+                            <div class="character-eyes">
+                                <div class="character-eye"></div>
+                                <div class="character-eye"></div>
+                            </div>
+                        </div>
+                        <div class="character-smile"></div>
+                        <div class="character-arm left"></div>
+                        <div class="character-arm right"></div>
+                    </div>
+                </div>
+            </div>
+
             <div class="services-grid">
                 <div class="service-card">
                     <i class="fas fa-chalkboard-teacher service-icon"></i>
@@ -380,11 +72,218 @@
                     <p class="service-description">Connect with other educators and share resources</p>
                     <a href="network.html" class="action-button">Connect <i class="fas fa-arrow-right"></i></a>
                 </div>
+
+                <div class="service-card">
+                    <i class="fas fa-school service-icon"></i>
+                    <h3 class="service-title">School Management</h3>
+                    <p class="service-description">Resources and RTI tools for school administrators</p>
+                    <a href="management.html" class="action-button">Manage <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-gavel service-icon"></i>
+                    <h3 class="service-title">Education Policy</h3>
+                    <p class="service-description">Understanding policies that shape our education system</p>
+                    <a href="policy.html" class="action-button">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-description">
+        <div class="section-accent accent-dots accent-top-right"></div>
+        <div class="section-accent accent-dots accent-bottom-left"></div>
+        <div class="container">
+            <h2>Teacher RTI Portal: Comprehensive Resources & Support</h2>
+            <p>This portal provides teachers with transparent access to government schemes, professional resources, rights information, and community forums. The platform aims to empower educators with essential information about career advancement, legal rights, and professional development opportunities.</p>
+        </div>
+    </section>
+
+    <section class="govt-schemes-section">
+        <div class="animated-bg">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+        </div>
+        <div class="section-visual visual-certificate visual-top-right"></div>
+        <div class="section-accent accent-circles accent-bottom-left"></div>
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-landmark"></i> Government Schemes & Training Opportunities</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <i class="fas fa-graduation-cap resource-icon"></i>
+                    <h3 class="resource-title">Professional Development</h3>
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            National Teacher Training Programs
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Digital Literacy Workshops
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Subject Specialization Courses
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Conference Funding Opportunities
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <i class="fas fa-hand-holding-usd resource-icon"></i>
+                    <h3 class="resource-title">Financial Assistance</h3>
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Research Grants
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Educational Innovation Funds
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Teacher Welfare Schemes
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Study Leave Programs
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="teacher-community-section">
+        <div class="section-visual visual-discussion visual-bottom-left"></div>
+        <div class="section-accent accent-waves accent-top-right"></div>
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-users"></i> Teacher Community Forum</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <i class="fas fa-comments resource-icon"></i>
+                    <h3 class="resource-title">Discussion Forums</h3>
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Subject-Specific Teaching Methods
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Classroom Management Strategies
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Educational Technology Integration
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Professional Challenges & Solutions
+                        </li>
+                    </ul>
+                </div>
+
+               
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="teacher-rights-section">
+        <div class="animated-bg">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+        </div>
+        <div class="section-visual visual-rights visual-top-right"></div>
+        <div class="section-accent accent-circles accent-center-right"></div>
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-balance-scale"></i> Teacher Rights & Information</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <i class="fas fa-file-alt resource-icon"></i>
+                    <h3 class="resource-title">RTI Guide & Resources</h3>
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Salary Records Access
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Promotion Criteria Documentation
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Pending Arrears Information
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Contract Term Details
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Ready-to-Use RTI Templates
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <i class="fas fa-gavel resource-icon"></i>
+                    <h3 class="resource-title">Legal Resources</h3>
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Labor Law Guidelines
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Teacher Rights under Education Act
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Grievance Redressal Procedures
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Legal Consultation Resources
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <i class="fas fa-database resource-icon"></i>
+                    <h3 class="resource-title">State-wise Database</h3>
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Recruitment Status Updates
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Vacant Position Listings
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Pending Promotion Information
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-check-circle"></i>
+                            Hiring & Promotion Irregularities
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="resources-section">
+        <div class="section-visual visual-resources visual-bottom-left"></div>
+        <div class="section-accent accent-dots accent-top-right"></div>
         <div class="resources-grid">
             <div class="resource-card">
                 <i class="fas fa-book resource-icon"></i>
@@ -453,6 +352,120 @@
                         Resource Sharing
                     </li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="challenges-section">
+        <div class="animated-bg">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+        </div>
+        <div class="section-visual visual-challenges visual-top-right"></div>
+        <div class="section-accent accent-waves accent-bottom-left"></div>
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> RTI in Education: Challenges & Solutions</h2>
+            
+            <div class="challenges-intro">
+                <p>Teachers face various challenges that affect their ability to teach and ensure high education standards. RTI (Right to Information) is a powerful tool that can help teachers push for greater transparency, fairness, and accountability in the education system.</p>
+            </div>
+            
+            <div class="pain-points">
+                <h3 class="pain-points-title"><i class="fas fa-bell"></i> Pain Points of Teachers in the Education Sector</h3>
+                
+                <div class="challenges-grid">
+                    <div class="challenge-card">
+                        <div class="challenge-header">
+                            <i class="fas fa-graduation-cap challenge-icon"></i>
+                            <h4>Lack of Proper Training & Professional Development</h4>
+                        </div>
+                        <ul class="challenge-list">
+                            <li>Limited access to modern teaching methods and digital tools</li>
+                            <li>Insufficient subject-specific workshops and training on NEP 2020</li>
+                            <li>No transparency on budgets allocated for teacher training</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="challenge-card">
+                        <div class="challenge-header">
+                            <i class="fas fa-user-tie challenge-icon"></i>
+                            <h4>Lack of Transparency in Teacher Recruitment & Promotions</h4>
+                        </div>
+                        <ul class="challenge-list">
+                            <li>Opaque recruitment processes for teaching posts</li>
+                            <li>Delays in recruitment announcements and unclear selection criteria</li>
+                            <li>Unfair promotion policies or favoritism in appointing permanent positions</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="challenge-card">
+                        <div class="challenge-header">
+                            <i class="fas fa-file-alt challenge-icon"></i>
+                            <h4>Lack of Transparency in Examination Systems</h4>
+                        </div>
+                        <ul class="challenge-list">
+                            <li>Non-transparent exam patterns and evaluation systems</li>
+                            <li>Lack of clarity on how exams are graded or assessed</li>
+                            <li>Limited access to answer sheets and post-exam procedures</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="solutions">
+                <h3 class="solutions-title">How Our Website Helps Teachers:</h3>
+                
+                <div class="solutions-grid">
+                    <div class="solution-card">
+                        <div class="solution-icon-wrapper">
+                            <i class="fas fa-compass solution-icon"></i>
+                        </div>
+                        <h4>RTI Guide for Teachers</h4>
+                        <p>A step-by-step guide that explains how teachers can file RTI requests for issues like teacher training programs, vacant teaching posts, and exam-related transparency.</p>
+                        <p>Clear instructions on how to request details on recruitment processes, promotion policies, and examination patterns.</p>
+                        <a href="rti-guide.html" class="solution-link">Access RTI Guide <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="solution-card">
+                        <div class="solution-icon-wrapper">
+                            <i class="fas fa-gavel solution-icon"></i>
+                        </div>
+                        <h4>Teacher Rights & Legal Help Section</h4>
+                        <p>Information on teacher rights under the Education Act and how to file RTIs for training or promotion transparency.</p>
+                        <p>Access legal advice and case studies of teachers who used RTI successfully to address recruitment issues or evaluation concerns.</p>
+                        <a href="legal-help.html" class="solution-link">Explore Your Rights <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="solution-card">
+                        <div class="solution-icon-wrapper">
+                            <i class="fas fa-database solution-icon"></i>
+                        </div>
+                        <h4>Transparent Recruitment & Promotion Tracker</h4>
+                        <p>A state-wise database showing vacant posts, recruitment timelines, and promotion statuses in government schools based on RTI data.</p>
+                        <p>Helps teachers track promotion timelines, check recruitment updates, and demand clarity on promotion criteria.</p>
+                        <a href="recruitment-tracker.html" class="solution-link">Check Tracker <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="solution-card">
+                        <div class="solution-icon-wrapper">
+                            <i class="fas fa-hands-helping solution-icon"></i>
+                        </div>
+                        <h4>Government Schemes & Training Opportunities</h4>
+                        <p>A searchable directory of teacher training programs, government schemes, and professional development workshops.</p>
+                        <p>Provides a tool for teachers to file RTI requests and demand access to training programs and government-sponsored schemes.</p>
+                        <a href="govt-schemes.html" class="solution-link">Find Opportunities <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="solution-card">
+                        <div class="solution-icon-wrapper">
+                            <i class="fas fa-comments solution-icon"></i>
+                        </div>
+                        <h4>Teacher Grievance & Community Forum</h4>
+                        <p>A discussion platform for teachers to share their experiences with recruitment issues, promotion delays, and exam-related concerns.</p>
+                        <p>Get legal support and advice from experts and connect with others who have successfully navigated RTI processes in education.</p>
+                        <a href="community-forum.html" class="solution-link">Join The Community <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

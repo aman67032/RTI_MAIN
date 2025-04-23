@@ -10,9 +10,9 @@
     --teacher-secondary: #2E7D32;
     --teacher-gradient: linear-gradient(135deg, var(--teacher-primary), var(--teacher-secondary));
     
-    /* Parent Theme */
-    --parent-primary: #FF9800;
-    --parent-secondary: #F57C00;
+    /* Parent Theme - Updated for better accessibility */
+    --parent-primary: #205493;
+    --parent-secondary: #4285F4;
     --parent-gradient: linear-gradient(135deg, var(--parent-primary), var(--parent-secondary));
     
     /* General Theme */
@@ -30,87 +30,405 @@ body {
     background: #f5f5f5;
 }
 
-/* Header Styles */
-header {
+/* Modern Header Styles */
+.modern-header {
     background: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 1rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    padding: 0;
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #666;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: #333;
 }
 
 .logo {
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.9rem;
     font-weight: 700;
     color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    position: relative;
+    margin-right: 2rem;
+}
+
+.logo-icon {
+    font-size: 2rem;
+    color: var(--parent-primary);
 }
 
 .portal-logo-text {
-    background: var(--student-gradient);
+    background: var(--parent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    position: relative;
+    font-weight: 800;
+    letter-spacing: -0.5px;
 }
 
-/* Navigation */
-nav ul {
+.portal-logo-text::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--parent-gradient);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover .portal-logo-text::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Modern Navigation */
+.modern-nav {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.nav-list {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
-nav a {
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
     text-decoration: none;
-    color: #666;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
+    color: #444;
+    font-weight: 700;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    white-space: nowrap;
+}
+
+.nav-icon {
+    font-size: 1.3rem;
+    opacity: 0.8;
     transition: all 0.3s ease;
 }
 
-nav a:hover {
-    color: #333;
-    background: rgba(0, 0, 0, 0.05);
+.nav-link:hover {
+    color: var(--parent-primary);
+    background: rgba(66, 133, 244, 0.08);
+    transform: translateY(-3px);
 }
 
-nav a.active {
+.nav-link:hover .nav-icon {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.nav-link.active {
     color: #fff;
-    background: var(--student-gradient);
+    background: var(--parent-gradient);
+    box-shadow: 0 5px 15px rgba(32, 84, 147, 0.2);
 }
 
-/* Theme-specific styles */
-.student-theme .portal-logo-text,
-.student-theme nav a.active {
-    background: var(--student-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+/* Dropdown Menus */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    padding: 0.8rem 0;
+    margin-top: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+    list-style: none;
 }
 
-.teacher-theme .portal-logo-text,
-.teacher-theme nav a.active {
-    background: var(--teacher-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
-.parent-theme .portal-logo-text,
-.parent-theme nav a.active {
+.dropdown-menu li {
+    padding: 0;
+}
+
+.dropdown-menu a {
+    padding: 0.7rem 1.2rem;
+    display: block;
+    color: #444;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.dropdown-menu a:hover {
+    background: rgba(66, 133, 244, 0.08);
+    color: var(--parent-primary);
+    padding-left: 1.5rem;
+}
+
+.dropdown-menu a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--parent-primary);
+    transform: translateY(-50%);
+    transition: width 0.2s ease;
+}
+
+.dropdown-menu a:hover::before {
+    width: 0.5rem;
+}
+
+/* Search Container */
+.search-container {
+    display: flex;
+    align-items: center;
+    background: #f5f7fa;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    width: 200px;
+}
+
+.search-container:focus-within {
+    box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+    background: #fff;
+}
+
+.search-input {
+    border: none;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    background: transparent;
+    width: 100%;
+    outline: none;
+}
+
+.search-button {
+    background: transparent;
+    border: none;
+    padding: 0.6rem;
+    cursor: pointer;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.search-button:hover {
+    color: var(--parent-primary);
+}
+
+/* User Button */
+.user-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.2rem;
+    background: transparent;
+    border: 2px solid var(--parent-primary);
+    border-radius: 8px;
+    color: var(--parent-primary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.user-button:hover {
+    background: var(--parent-primary);
+    color: white;
+}
+
+/* Menu Toggle for Mobile */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 2rem;
+    color: #555;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+    color: var(--parent-primary);
+    background: rgba(66, 133, 244, 0.08);
+}
+
+.menu-toggle.active {
+    color: var(--parent-primary);
+}
+
+/* Parent theme specific updates */
+.parent-theme .modern-header {
+    border-bottom: 4px solid var(--parent-secondary);
+}
+
+.parent-theme .nav-link.active {
+    background: var(--parent-gradient);
+    box-shadow: 0 5px 15px rgba(32, 84, 147, 0.15);
+}
+
+.parent-theme .portal-logo-text {
     background: var(--parent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 10px rgba(32, 84, 147, 0.2);
 }
 
-.general-theme .portal-logo-text,
-.general-theme nav a.active {
-    background: var(--general-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.parent-theme .user-button {
+    border-color: var(--parent-primary);
+    color: var(--parent-primary);
+}
+
+.parent-theme .user-button:hover {
+    background: var(--parent-primary);
+}
+
+/* Responsive Design for Modern Header */
+@media (max-width: 1200px) {
+    .nav-link {
+        padding: 0.9rem 1.2rem;
+        font-size: 1.1rem;
+    }
+    
+    .logo {
+        font-size: 1.7rem;
+    }
+    
+    .logo-icon {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .header-container {
+        padding: 0.9rem 1.5rem;
+    }
+    
+    .back-button span {
+        display: none;
+    }
+    
+    .nav-link {
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+    }
+    
+    .nav-icon {
+        font-size: 1.2rem;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+        margin-right: 1rem;
+    }
+    
+    .logo-icon {
+        font-size: 1.6rem;
+    }
+    
+    .nav-list {
+        gap: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .modern-nav {
+        display: none;
+    }
+    
+    .modern-nav.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        z-index: 1000;
+    }
+    
+    .nav-list {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .nav-item {
+        width: 100%;
+    }
+    
+    .nav-link {
+        padding: 1.2rem;
+        width: 100%;
+        justify-content: flex-start;
+        font-size: 1.2rem;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .header-container {
+        flex-wrap: wrap;
+    }
 }
 
 /* Common Components */
@@ -174,43 +492,6 @@ nav a.active {
     outline: none;
     border-color: var(--student-primary);
     box-shadow: 0 0 0 2px rgba(15, 224, 255, 0.2);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    header {
-        padding: 1rem;
-    }
-
-    nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: #fff;
-        padding: 1rem;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    nav.active {
-        display: block;
-    }
-
-    nav ul {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .menu-toggle {
-        display: block;
-        font-size: 1.5rem;
-        cursor: pointer;
-    }
-
-    .container {
-        padding: 1rem;
-    }
 }
 
 /* Animations */

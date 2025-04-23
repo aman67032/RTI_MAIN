@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0fe0ff">
+    <title>Auto Generate RTI Templates | Student RTI Portal</title>
+    <link rel="icon" href="../../assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="../../assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../../assets/images/favicon.png?v=2">
+    <link rel="manifest" href="../../manifest.json?v=2">
+    <link rel="stylesheet" href="../../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Student Portal Futuristic Styles */
+        :root {
+            --portal-primary: #0fe0ff;
+            --portal-secondary: #0066ff;
+            --portal-accent: #ff00ee;
+            --portal-dark: #040b36;
+            --portal-light: #f0f8ff;
+            --portal-gradient: linear-gradient(135deg, var(--portal-primary), var(--portal-secondary));
+            --portal-accent-gradient: linear-gradient(135deg, var(--portal-accent), var(--portal-primary));
+            --neon-shadow: 0 0 10px rgba(15, 224, 255, 0.5), 0 0 20px rgba(15, 224, 255, 0.3), 0 0 30px rgba(15, 224, 255, 0.1);
+            --futuristic-bg: linear-gradient(180deg, #040b36 0%, #0c1e51 50%, #060b31 100%);
+        }
+
+        body {
+            background: var(--futuristic-bg);
+            color: var(--portal-light);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 60px; /* Add space for fixed header */
+        }
+
+        /* Futuristic Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--portal-primary);
+            border-radius: 3px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--portal-secondary);
+        }
+        
+        .generator-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(4, 11, 54, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(15, 224, 255, 0.15);
+            border: 1px solid rgba(15, 224, 255, 0.2);
+        }
+        
+        .generator-header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .generator-header:after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--portal-gradient);
+            border-radius: 2px;
+        }
+        
+        .generator-description {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: center;
+            color: var(--portal-light);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .generator-form {
+            display: grid;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: var(--portal-primary);
+        }
+        
+        .form-input, 
+        .form-select,
+        .form-textarea {
+            padding: 12px 15px;
+            border: 1px solid rgba(15, 224, 255, 0.3);
+            background: rgba(4, 11, 54, 0.6);
+            color: var(--portal-light);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .form-input:focus, 
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: var(--portal-primary);
+            box-shadow: 0 0 0 2px rgba(15, 224, 255, 0.2);
+            outline: none;
+        }
+        
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .helper-text {
+            font-size: 14px;
+            color: rgba(240, 248, 255, 0.7);
+            margin-top: 4px;
+        }
+        
+        .examples-container {
+            background: rgba(15, 224, 255, 0.08);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--portal-primary);
+        }
+        
+        .examples-container h3 {
+            margin-top: 0;
+            color: var(--portal-primary);
+        }
+        
+        .examples-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 15px 0 0;
+        }
+        
+        .example-item {
+            background: rgba(6, 17, 60, 0.7);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+        
+        .example-item:hover {
+            background: rgba(15, 224, 255, 0.1);
+            border-left-color: var(--portal-accent);
+            transform: translateX(5px);
+            box-shadow: var(--neon-shadow);
+        }
+        
+        .submit-btn {
+            background: var(--portal-gradient);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--neon-shadow);
+        }
+        
+        .submit-btn i {
+            font-size: 18px;
+        }
+        
+        .footer-info {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(15, 224, 255, 0.1);
+            color: rgba(240, 248, 255, 0.7);
+            font-size: 14px;
+        }
+        
+        .result-container {
+            border: 1px solid rgba(15, 224, 255, 0.2);
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 30px;
+            background: rgba(6, 17, 60, 0.5);
+            display: none;
+        }
+        
+        .result-container.active {
+            display: block;
+        }
+        
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .result-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .result-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(15, 224, 255, 0.1);
+            color: var(--portal-light);
+            border: 1px solid rgba(15, 224, 255, 0.3);
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .result-btn:hover {
+            background: rgba(15, 224, 255, 0.2);
+            box-shadow: 0 0 8px rgba(15, 224, 255, 0.4);
+        }
+        
+        .result-content {
+            background: rgba(4, 11, 54, 0.6);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid rgba(15, 224, 255, 0.2);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.8;
+            color: var(--portal-light);
+        }
+        
+        .loading-indicator {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .loading-indicator.active {
+            display: flex;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid rgba(15, 224, 255, 0.1);
+            border-top-color: var(--portal-primary);
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .ai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--portal-gradient);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .breadcrumbs {
+            display: flex;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: rgba(240, 248, 255, 0.7);
+        }
+        
+        .breadcrumbs a {
+            color: var(--portal-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .breadcrumbs a:hover {
+            color: var(--portal-accent);
+            text-shadow: var(--neon-shadow);
+        }
+        
+        .breadcrumbs .separator {
+            margin: 0 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .generator-form {
+                gap: 15px;
+            }
+            
+            .result-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .result-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="../index.html" class="navbar-logo">Student RTI Portal</a>
+            <button class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="navbar-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../guide.html">RTI Guide</a></li>
+                <li><a href="../forms.html">Forms</a></li>
+                <li><a href="../track.html">Track Status</a></li>
+                <li><a href="../resources.html">Resources</a></li>
+                <li><a href="index.html">Templates</a></li>
+                <li><a href="#" id="change-portal-link">Change Portal</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="generator-container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator">></span>
+            <a href="index.html">Templates</a>
+            <span class="separator">></span>
+            <span>Auto Generate</span>
+        </div>
+
+        <div class="generator-header">
+            <h1>AI-Powered RTI Template Generator</h1>
+        </div>
+        
+        <p class="generator-description">
+            Describe your RTI request in simple terms, and our AI assistant will generate a tailored RTI application template for you. This tool uses advanced artificial intelligence to create professionally structured templates based on your specific needs.
+        </p>
+        
+        <div class="examples-container">
+            <h3>Example Use Cases</h3>
+            <p>Click on any example to quickly populate the request field:</p>
+            
+            <ul class="examples-list">
+                <li class="example-item" data-example="I want to request my answer sheets from the Calculus II final exam that I took last semester at Delhi University. I believe there was an error in grading.">
+                    Request examination answer sheets and re-evaluation
+                </li>
+                <li class="example-item" data-example="I need information about the criteria used for selecting scholarship recipients in the National Merit Scholarship program for the academic year 2024-25.">
+                    Request scholarship selection criteria information
+                </li>
+                <li class="example-item" data-example="I want to know how the admission cutoff marks were calculated for the Computer Science program at IIT Delhi for the 2025 batch, and the complete selection methodology.">
+                    Request admission process transparency
+                </li>
+                <li class="example-item" data-example="I need to understand the fees structure at my university, including a breakdown of what each fee component is used for, especially the development fee.">
+                    Request fee structure details and justification
+                </li>
+            </ul>
+        </div>
+        
+        <form class="generator-form" id="generatorForm">
+            <div class="form-group">
+                <label for="request-type">Request Category</label>
+                <select id="request-type" class="form-select" required>
+                    <option value="">Select a category</option>
+                    <option value="examination">Examination &amp; Results</option>
+                    <option value="admission">Admission Process</option>
+                    <option value="scholarship">Scholarships &amp; Financial Aid</option>
+                    <option value="faculty">Faculty Information</option>
+                    <option value="infrastructure">Infrastructure &amp; Facilities</option>
+                    <option value="fee">Fee Structure</option>
+                    <option value="policy">Policy &amp; Procedures</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="institution-name">Institution/Organization Name</label>
+                <input type="text" id="institution-name" class="form-input" placeholder="E.g., Delhi University, IIT Bombay, etc." required>
+            </div>
+            
+            <div class="form-group">
+                <label for="request-description">Describe Your Request</label>
+                <textarea id="request-description" class="form-textarea" placeholder="Explain what information you're seeking and why in simple language. Be specific about what you want to know." required></textarea>
+                <div class="helper-text">The more specific you are, the better the generated template will be.</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="additional-info">Additional Context (Optional)</label>
+                <textarea id="additional-info" class="form-textarea" placeholder="Any relevant background information, previous communication with the institution, or specific requirements"></textarea>
+            </div>
+            
+            <div class="form-actions" style="text-align: center; margin-top: 10px;">
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-magic"></i>
+                    Generate Template
+                </button>
+            </div>
+        </form>
+        
+        <div class="loading-indicator" id="loadingIndicator">
+            <div class="spinner"></div>
+            <p>Generating your customized RTI template...</p>
+        </div>
+        
+        <div class="result-container" id="resultContainer">
+            <div class="result-header">
+                <h2>Your Generated Template</h2>
+                <div class="result-actions">
+                    <button class="result-btn" id="copyBtn">
+                        <i class="fas fa-copy"></i>
+                        Copy
+                    </button>
+                    <button class="result-btn" id="downloadBtn">
+                        <i class="fas fa-download"></i>
+                        Download PDF
+                    </button>
+                    <button class="result-btn" id="regenerateBtn">
+                        <i class="fas fa-redo-alt"></i>
+                        Regenerate
+                    </button>
+                </div>
+            </div>
+            
+            <div class="ai-badge">
+                <i class="fas fa-robot"></i>
+                AI Generated
+            </div>
+            
+            <div class="result-content" id="resultContent">
+                <!-- Generated template will be inserted here -->
+            </div>
+        </div>
+        
+        <div class="footer-info">
+            <p>This tool is for educational purposes. Always review generated templates before submission and modify them to fit your specific needs.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const navbarLinks = document.querySelector('.navbar-links');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', () => {
+                    navbarLinks.classList.toggle('active');
+                });
+            }
+            
+            // Change portal link
+            const changePortalLink = document.getElementById('change-portal-link');
+            if (changePortalLink) {
+                changePortalLink.addEventListener('click', () => {
+                    window.location.href = '../../index.html';
+                });
+            }
+            
+            // Example item click handler
+            const exampleItems = document.querySelectorAll('.example-item');
+            const requestDescription = document.getElementById('request-description');
+            
+            exampleItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const exampleText = item.getAttribute('data-example');
+                    requestDescription.value = exampleText;
+                    
+                    // Auto-select the appropriate category based on the example
+                    const requestType = document.getElementById('request-type');
+                    const text = exampleText.toLowerCase();
+                    
+                    if (text.includes('exam') || text.includes('answer') || text.includes('grade')) {
+                        requestType.value = 'examination';
+                    } else if (text.includes('admission') || text.includes('cutoff')) {
+                        requestType.value = 'admission';
+                    } else if (text.includes('scholarship') || text.includes('financial aid')) {
+                        requestType.value = 'scholarship';
+                    } else if (text.includes('faculty') || text.includes('professor') || text.includes('teacher')) {
+                        requestType.value = 'faculty';
+                    } else if (text.includes('infrastructure') || text.includes('facility') || text.includes('building')) {
+                        requestType.value = 'infrastructure';
+                    } else if (text.includes('fee') || text.includes('tuition')) {
+                        requestType.value = 'fee';
+                    } else if (text.includes('policy') || text.includes('procedure') || text.includes('guideline')) {
+                        requestType.value = 'policy';
+                    }
+                    
+                    // Scroll to the form
+                    requestDescription.focus();
+                });
+            });
+            
+            // Form submission handler
+            const generatorForm = document.getElementById('generatorForm');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            const resultContainer = document.getElementById('resultContainer');
+            const resultContent = document.getElementById('resultContent');
+            
+            generatorForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show loading indicator
+                loadingIndicator.classList.add('active');
+                resultContainer.classList.remove('active');
+                
+                // Get form values
+                const requestType = document.getElementById('request-type').value;
+                const institutionName = document.getElementById('institution-name').value;
+                const requestDesc = document.getElementById('request-description').value;
+                const additionalInfo = document.getElementById('additional-info').value || '';
+                
+                // Simulate API call delay (in a real app, this would be an actual API call)
+                setTimeout(() => {
+                    // Hide loading indicator
+                    loadingIndicator.classList.remove('active');
+                    
+                    // Generate template based on request type
+                    let generatedTemplate = generateTemplate(requestType, institutionName, requestDesc, additionalInfo);
+                    
+                    // Display the result
+                    resultContent.innerHTML = generatedTemplate;
+                    resultContainer.classList.add('active');
+                    
+                    // Scroll to results
+                    resultContainer.scrollIntoView({ behavior: 'smooth' });
+                }, 2000);
+            });
+            
+            // Copy button functionality
+            const copyBtn = document.getElementById('copyBtn');
+            copyBtn.addEventListener('click', () => {
+                const textToCopy = resultContent.innerText;
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    // Show success message
+                    const originalText = copyBtn.innerHTML;
+                    copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    
+                    setTimeout(() => {
+                        copyBtn.innerHTML = originalText;
+                    }, 2000);
+                });
+            });
+            
+            // Download button functionality
+            const downloadBtn = document.getElementById('downloadBtn');
+            downloadBtn.addEventListener('click', () => {
+                alert('In a production environment, this would generate a PDF version of your template. Feature coming soon!');
+            });
+            
+            // Regenerate button functionality
+            const regenerateBtn = document.getElementById('regenerateBtn');
+            regenerateBtn.addEventListener('click', () => {
+                loadingIndicator.classList.add('active');
+                resultContainer.classList.remove('active');
+                
+                // Simulate regeneration
+                setTimeout(() => {
+                    loadingIndicator.classList.remove('active');
+                    
+                    // Get form values again
+                    const requestType = document.getElementById('request-type').value;
+                    const institutionName = document.getElementById('institution-name').value;
+                    const requestDesc = document.getElementById('request-description').value;
+                    const additionalInfo = document.getElementById('additional-info').value || '';
+                    
+                    // Regenerate with slight variations
+                    let generatedTemplate = generateTemplate(requestType, institutionName, requestDesc, additionalInfo, true);
+                    
+                    // Display the result
+                    resultContent.innerHTML = generatedTemplate;
+                    resultContainer.classList.add('active');
+                }, 2000);
+            });
+            
+            // Template generation function
+            function generateTemplate(type, institution, description, additionalInfo, isRegeneration = false) {
+                // Basic template structure
+                let template = '';
+                const date = new Date().toLocaleDateString('en-IN', {
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric'
+                });
+                
+                // Common header
+                template += `<p><strong>Date:</strong> ${date}</p>`;
+                template += `<p><strong>To:</strong><br>The Public Information Officer,<br>${institution},<br>[Address Line 1],<br>[Address Line 2],<br>[City, PIN]</p>`;
+                template += `<p><strong>Subject:</strong> Application under Right to Information Act, 2005</p>`;
+                template += `<p>Dear Sir/Madam,</p>`;
+                
+                // Request body based on type
+                template += `<p>I would like to request the following information under the provisions of the Right to Information Act, 2005:</p>`;
+                
+                // Different points based on the request type
+                template += `<ol>`;
+                
+                if (type === 'examination') {
+                    template += `<li>Please provide a certified copy of my answer sheet(s) for [specific exam name and date].</li>`;
+                    template += `<li>Please provide the marking scheme or evaluation criteria used for assessing the aforementioned answer sheet(s).</li>`;
+                    template += `<li>Please provide information about the qualification of the examiner(s) who evaluated my answer sheet(s).</li>`;
+                    template += `<li>Please provide information about the process of re-evaluation, if available, including the application procedure, timeline, and fees.</li>`;
+                    template += `<li>Please provide statistical information regarding the pass percentage, average marks, and highest marks obtained in the examination.</li>`;
+                } else if (type === 'admission') {
+                    template += `<li>Please provide the complete admission criteria, including all factors considered in the selection process for [specific course/program].</li>`;
+                    template += `<li>Please provide the cutoff marks/ranks for admission to [specific course/program] for the past three academic years.</li>`;
+                    template += `<li>Please provide the total number of seats available in the program, category-wise seat distribution, and the number of applications received.</li>`;
+                    template += `<li>Please provide information about any management quota or other special quotas, including the number of seats and selection criteria.</li>`;
+                    template += `<li>Please provide the selection committee's composition and the guidelines followed for the selection process.</li>`;
+                } else if (type === 'scholarship') {
+                    template += `<li>Please provide complete information regarding the eligibility criteria for [specific scholarship program].</li>`;
+                    template += `<li>Please provide the selection procedure and criteria used for awarding scholarships, including any marking/point system.</li>`;
+                    template += `<li>Please provide the total number of scholarships awarded in the current/previous academic year, category-wise distribution, and the total number of applications received.</li>`;
+                    template += `<li>Please provide the timeline for the disbursement of scholarship amounts and the mode of payment.</li>`;
+                    template += `<li>Please provide information about the committee members who select scholarship recipients.</li>`;
+                } else if (type === 'faculty') {
+                    template += `<li>Please provide information about the qualification criteria required for faculty positions in [specific department].</li>`;
+                    template += `<li>Please provide the current student-teacher ratio in [specific department/institution].</li>`;
+                    template += `<li>Please provide information about the number of sanctioned faculty positions and current vacancies.</li>`;
+                    template += `<li>Please provide details about the faculty recruitment process, including the selection committee composition.</li>`;
+                    template += `<li>Please provide information about faculty development programs conducted in the last academic year.</li>`;
+                } else if (type === 'infrastructure') {
+                    template += `<li>Please provide information about the infrastructure facilities available for students, including classrooms, laboratories, library, and sports facilities.</li>`;
+                    template += `<li>Please provide details of funds allocated and utilized for infrastructure development in the past three financial years.</li>`;
+                    template += `<li>Please provide information about any accessibility features for differently-abled students in the campus buildings.</li>`;
+                    template += `<li>Please provide details about the maintenance schedule and budget for academic facilities.</li>`;
+                    template += `<li>Please provide information about future infrastructure development plans and their timeline.</li>`;
+                } else if (type === 'fee') {
+                    template += `<li>Please provide a detailed breakdown of the fee structure for [specific course/program], including all components.</li>`;
+                    template += `<li>Please provide information about the approval process for fee structures, including the approving authority.</li>`;
+                    template += `<li>Please provide details about how the collected fees are utilized across different expenditure heads.</li>`;
+                    template += `<li>Please provide information about fee waiver/scholarship opportunities available for economically disadvantaged students.</li>`;
+                    template += `<li>Please provide details of any fee revisions in the past three academic years, including the percentage increase and justification.</li>`;
+                } else if (type === 'policy') {
+                    template += `<li>Please provide a copy of the institutional policies regarding [specific aspect: e.g., anti-ragging, sexual harassment, etc.].</li>`;
+                    template += `<li>Please provide information about the committee responsible for implementing and monitoring these policies.</li>`;
+                    template += `<li>Please provide statistics on policy implementation, including the number of cases reported, resolved, and pending in the past three academic years.</li>`;
+                    template += `<li>Please provide information about any revisions to these policies in the past five years.</li>`;
+                    template += `<li>Please provide details about the grievance redressal mechanism related to policy violations.</li>`;
+                } else {
+                    // Generic request points for 'other' type
+                    template += `<li>Please provide detailed information regarding [specific information based on your request].</li>`;
+                    template += `<li>Please provide any relevant documentation related to the above information.</li>`;
+                    template += `<li>Please provide information about the process/procedures followed for [relevant activity/decision].</li>`;
+                    template += `<li>Please provide statistical data related to [relevant aspect], if available.</li>`;
+                    template += `<li>Please provide information about the relevant authorities/committees responsible for decisions regarding the above matters.</li>`;
+                }
+                
+                // Add a few user-specific points based on their description
+                let descKeywords = description.toLowerCase();
+                let customPoints = [];
+                
+                if (descKeywords.includes('fee') || descKeywords.includes('payment') || descKeywords.includes('cost')) {
+                    customPoints.push(`<li>Please provide a detailed breakdown of all fees collected, including development fees, tuition fees, and any other charges.</li>`);
+                }
+                
+                if (descKeywords.includes('exam') || descKeywords.includes('evaluation') || descKeywords.includes('result') || descKeywords.includes('grade')) {
+                    customPoints.push(`<li>Please provide information regarding the evaluation methodology, moderation policy (if any), and grade calculation formula.</li>`);
+                }
+                
+                if (descKeywords.includes('selection') || descKeywords.includes('criteria') || descKeywords.includes('choose') || descKeywords.includes('picked')) {
+                    customPoints.push(`<li>Please provide the complete selection methodology, including all criteria, weightages, and any bonus points system used.</li>`);
+                }
+                
+                if (descKeywords.includes('scholarship') || descKeywords.includes('financial') || descKeywords.includes('aid')) {
+                    customPoints.push(`<li>Please provide details about the scholarship disbursement timeline, mode of payment, and eligibility renewal requirements.</li>`);
+                }
+                
+                // Add 1-2 custom points if available
+                if (customPoints.length > 0) {
+                    // If regenerating, add different custom points to provide variation
+                    if (isRegeneration) {
+                        template += `<li>Based on my specific situation, please provide any additional information regarding ${description.split(' ').slice(0, 5).join(' ')}...</li>`;
+                    } else {
+                        for (let i = 0; i < Math.min(2, customPoints.length); i++) {
+                            template += customPoints[i];
+                        }
+                    }
+                }
+                
+                template += `</ol>`;
+                
+                // Common footer
+                template += `<p>I am enclosing an application fee of ₹10/- through [IPO/Demand Draft/online payment] as prescribed under the RTI Rules.</p>`;
+                
+                template += `<p>I hereby state that the information sought does not fall within the restrictions contained in Sections 8 and 9 of the RTI Act and to the best of my knowledge, it pertains to your institution.</p>`;
+                
+                template += `<p>Kindly provide the information as requested at the earliest. Please note that as per Section 7(1) of the RTI Act, information is to be provided within 30 days of the receipt of the request.</p>`;
+                
+                template += `<p>Thanking you.</p>`;
+                
+                template += `<p>Yours faithfully,<br>
+                [Your Name]<br>
+                [Your Address]<br>
+                [Your Contact Number]<br>
+                [Your Email Address]</p>`;
+                
+                template += `<p><strong>Enclosures:</strong></p>
+                <ol>
+                    <li>Application fee of ₹10/-</li>
+                    <li>Identity proof (copy of Aadhar Card/Voter ID/etc.)</li>
+                    <li>Any other relevant document</li>
+                </ol>`;
+                
+                return template;
+            }
+        });
+    </script>
+</body>
+</html> 

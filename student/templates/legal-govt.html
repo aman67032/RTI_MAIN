@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0fe0ff">
+    <title>Legal & Government RTI Templates | Student RTI Portal</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6B705C;
+            --secondary-color: #A5A58D;
+            --accent-color: #CB997E;
+            --text-color: #333;
+            --light-text-color: #666;
+            --bg-color: #FFF9F0;
+            --card-bg: #FFFFFF;
+            --border-color: rgba(107, 112, 92, 0.2);
+            --shadow-color: rgba(107, 112, 92, 0.1);
+            --gradient-primary: linear-gradient(135deg, #6B705C 0%, #A5A58D 100%);
+            --gradient-accent: linear-gradient(135deg, #CB997E 0%, #DDBEA9 100%);
+            --shadow-sm: 0 2px 8px rgba(107, 112, 92, 0.1);
+            --shadow-md: 0 4px 12px rgba(107, 112, 92, 0.15);
+            --shadow-lg: 0 10px 25px rgba(107, 112, 92, 0.2);
+            
+            /* Futuristic theme vars */
+            --primary: #0fe0ff;
+            --secondary: #2e3192;
+            --dark: #13151f;
+            --darker: #0c0e16;
+            --light: #f0f6ff;
+            --glow: 0 0 10px var(--primary), 0 0 20px rgba(15, 224, 255, 0.4);
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            --panel-bg: rgba(19, 21, 31, 0.7);
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-dark: rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+
+        body {
+            background: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('../assets/grid-bg.svg') no-repeat center center / cover;
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        /* Navigation styles */
+        .navbar {
+            background: var(--panel-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .navbar-logo {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.3rem;
+            text-decoration: none;
+            text-shadow: 0 0 10px rgba(15, 224, 255, 0.5);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo:hover {
+            text-shadow: var(--glow);
+        }
+
+        .navbar-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .navbar-links li a {
+            color: var(--light);
+            text-decoration: none;
+            padding: 0 15px;
+            transition: all 0.3s;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .navbar-links li a:hover {
+            color: var(--primary);
+        }
+
+        .navbar-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 15px;
+            width: calc(100% - 30px);
+            height: 2px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-links li a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Template container */
+        .template-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .breadcrumbs {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumbs a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .breadcrumbs .separator {
+            margin: 0 8px;
+            color: var(--glass);
+        }
+
+        .page-header {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .page-header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            display: inline-block;
+        }
+
+        .page-header p {
+            color: rgba(240, 246, 255, 0.7);
+            font-size: 1.1rem;
+        }
+
+        .intro-section {
+            background: var(--panel-bg);
+            border: 1px solid var(--glass);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .intro-section h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .intro-section ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .intro-section strong {
+            color: var(--primary);
+        }
+
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .template-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--glass);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .template-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 10px var(--primary);
+        }
+
+        .template-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--glass);
+            position: relative;
+        }
+
+        .template-header h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .template-category {
+            display: inline-block;
+            padding: 5px 10px;
+            background: var(--glass-dark);
+            color: var(--primary);
+            font-size: 0.8rem;
+            border-radius: 15px;
+            font-weight: 500;
+        }
+
+        .template-body {
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .template-description {
+            margin-bottom: 15px;
+            color: rgba(240, 246, 255, 0.8);
+        }
+
+        .template-features {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .feature-icon {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        .template-footer {
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--glass);
+        }
+
+        .template-status {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+        }
+
+        .status-icon {
+            font-size: 1rem;
+        }
+
+        .status-available {
+            color: #4eff91;
+        }
+        
+        .status-coming-soon {
+            color: #ffb74d;
+        }
+        
+        .template-button {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .template-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow), 0 5px 10px rgba(0, 0, 0, 0.4);
+        }
+        
+        .template-button.disabled {
+            background: #333;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        
+        .template-button.disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .filters-section {
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-button {
+            background: var(--glass-dark);
+            border: 1px solid var(--glass);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--light);
+        }
+        
+        .filter-button:hover, .filter-button.active {
+            background: var(--primary);
+            color: var(--dark);
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(15, 224, 255, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .templates-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .navbar-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--darker);
+                transition: all 0.3s ease;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 30px;
+                gap: 20px;
+            }
+            
+            .navbar-links.active {
+                left: 0;
+            }
+            
+            .navbar-links li {
+                margin: 10px 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="../index.html" class="navbar-logo">
+                <i class="fas fa-shield-alt" style="margin-right: 10px;"></i>
+                Student RTI Portal
+            </a>
+            <ul class="navbar-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../resources.html">Resources</a></li>
+                <li><a href="../templates/index.html">Templates</a></li>
+                <li><a href="../success-stories.html">Success Stories</a></li>
+                <li><a href="../help.html">Help Center</a></li>
+            </ul>
+            <button class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="template-container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator"><i class="fas fa-chevron-right"></i></span>
+            <a href="../templates/index.html">Templates</a>
+            <span class="separator"><i class="fas fa-chevron-right"></i></span>
+            <span>Legal & Government</span>
+        </div>
+
+        <div class="page-header">
+            <h1>Legal & Government RTI Templates</h1>
+            <p>Access information from government departments and legal authorities related to education</p>
+        </div>
+
+        <section class="intro-section">
+            <h2>Understanding Legal & Government RTI Applications</h2>
+            <p>These templates help students access information from various government departments and legal authorities related to education. Use these templates to:</p>
+            <ul>
+                <li>Request information about education policies and their implementation</li>
+                <li>Inquire about legal frameworks governing educational institutions</li>
+                <li>Get clarity on government funds allocation for education</li>
+                <li>Access information about regulatory compliance of institutions</li>
+            </ul>
+            <p><strong>Remember:</strong> When filing RTI applications to government departments, be specific and clear in your requests. This increases the chances of receiving the information you need.</p>
+        </section>
+
+        <div class="filters-section">
+            <button class="filter-button active">All</button>
+            <button class="filter-button">Ministry of Education</button>
+            <button class="filter-button">Education Tribunal</button>
+            <button class="filter-button">UGC/AICTE</button>
+            <button class="filter-button">Court Cases</button>
+        </div>
+
+        <div class="templates-grid">
+            <div class="template-card">
+                <div class="template-header">
+                    <h3>Ministry of Education Policy RTI</h3>
+                    <span class="template-category">Ministry of Education</span>
+                </div>
+                <div class="template-body">
+                    <p class="template-description">Request information about specific education policies, their implementation status, and impact assessment reports.</p>
+                    <div class="template-features">
+                        <div class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                            <span>Get details about policy formulation process</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                            <span>Access implementation timelines and status</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                            <span>Request budget allocation information</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="template-footer">
+                    <div class="template-status">
+                        <span class="status-icon status-available"><i class="fas fa-circle"></i></span>
+                        <span>Available</span>
+                    </div>
+                    <a href="#" class="template-button">Use Template</a>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <div class="template-header">
+                    <h3>Education Tribunal Appeals RTI</h3>
+                    <span class="template-category">Education Tribunal</span>
+                </div>
+                <div class="template-body">
+                    <p class="template-description">Access information about education-related appeals, precedents, and judgments from education tribunals.</p>
+                    <div class="template-features">
+                        <div class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                            <span>Get statistics on resolved cases</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                            <span>Access judgment details and rationale</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                            <span>Check timeline for case resolution</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="template-footer">
+                    <div class="template-status">
+                        <span class="status-icon status-available"><i class="fas fa-circle"></i></span>
+                        <span>Available</span>
+                    </div>
+                    <a href="#" class="template-button">Use Template</a>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <div class="template-header">
+                    <h3>UGC/AICTE Compliance RTI</h3>
+                    <span class="template-category">UGC/AICTE</span>
+                </div>
+                <div class="template-body">
+                    <p class="template-description">Request information about compliance status of educational institutions with UGC/AICTE regulations.</p>
+                    <div class="template-features">
+                        <div class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                            <span>Check institution accreditation status</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                            <span>Access inspection reports and findings</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                            <span>Get details on regulation violations if any</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="template-footer">
+                    <div class="template-status">
+                        <span class="status-icon status-available"><i class="fas fa-circle"></i></span>
+                        <span>Available</span>
+                    </div>
+                    <a href="#" class="template-button">Use Template</a>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <div class="template-header">
+                    <h3>Educational Court Cases RTI</h3>
+                    <span class="template-category">Court Cases</span>
+                </div>
+                <div class="template-body">
+                    <p class="template-description">Access information about ongoing and past court cases related to educational matters and student rights.</p>
+                    <div class="template-features">
+                        <div class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                            <span>Get case status and proceedings</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                            <span>Access judgment copies and analysis</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                            <span>View statistical data on similar cases</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="template-footer">
+                    <div class="template-status">
+                        <span class="status-icon status-available"><i class="fas fa-circle"></i></span>
+                        <span>Available</span>
+                    </div>
+                    <a href="#" class="template-button">Use Template</a>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <div class="template-header">
+                    <h3>Education Budget RTI</h3>
+                    <span class="template-category">Ministry of Education</span>
+                </div>
+                <div class="template-body">
+                    <p class="template-description">Request detailed breakdown of education budget allocation, expenditure and utilization reports.</p>
+                    <div class="template-features">
+                        <div class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                            <span>Access institution-wise fund allocation</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                            <span>Get scholarship fund distribution data</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                            <span>View research and infrastructure funding</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="template-footer">
+                    <div class="template-status">
+                        <span class="status-icon status-coming-soon"><i class="fas fa-circle"></i></span>
+                        <span>Coming Soon</span>
+                    </div>
+                    <button class="template-button disabled">Coming Soon</button>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <div class="template-header">
+                    <h3>Regulatory Compliance RTI</h3>
+                    <span class="template-category">UGC/AICTE</span>
+                </div>
+                <div class="template-body">
+                    <p class="template-description">Request information about regulatory compliance of specific educational institutions and programs.</p>
+                    <div class="template-features">
+                        <div class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                            <span>Check faculty qualification compliance</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                            <span>Access infrastructure compliance reports</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                            <span>View curriculum compliance status</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="template-footer">
+                    <div class="template-status">
+                        <span class="status-icon status-coming-soon"><i class="fas fa-circle"></i></span>
+                        <span>Coming Soon</span>
+                    </div>
+                    <button class="template-button disabled">Coming Soon</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const navbarLinks = document.querySelector('.navbar-links');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', function() {
+                    navbarLinks.classList.toggle('active');
+                    const icon = mobileToggle.querySelector('i');
+                    if (navbarLinks.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+            
+            // Filter buttons
+            const filterButtons = document.querySelectorAll('.filter-button');
+            const templateCards = document.querySelectorAll('.template-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const category = this.textContent.trim();
+                    
+                    // Show all templates if "All" is selected
+                    if (category === 'All') {
+                        templateCards.forEach(card => {
+                            card.style.display = 'flex';
+                        });
+                        return;
+                    }
+                    
+                    // Otherwise filter by category
+                    templateCards.forEach(card => {
+                        const cardCategory = card.querySelector('.template-category').textContent.trim();
+                        if (cardCategory === category) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Template button hover effects
+            const templateButtons = document.querySelectorAll('.template-button:not(.disabled)');
+            templateButtons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.boxShadow = 'var(--glow), 0 5px 15px rgba(0, 0, 0, 0.4)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = '0 3px 8px rgba(0, 0, 0, 0.3)';
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -43,6 +43,14 @@
             margin-bottom: 4rem;
             position: relative;
             width: 50%;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.5s ease;
+        }
+        
+        .timeline-item.show {
+            opacity: 1;
+            transform: translateX(0);
         }
         
         .timeline-item:nth-child(even) {
@@ -51,6 +59,11 @@
             padding-right: 0;
             padding-left: 30px;
             margin-left: 50%;
+            transform: translateX(50px);
+        }
+        
+        .timeline-item:nth-child(even).show {
+            transform: translateX(0);
         }
         
         .timeline-dot {
@@ -61,6 +74,8 @@
             position: absolute;
             right: -10px;
             top: 15px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
         }
         
         .timeline-item:nth-child(even) .timeline-dot {
@@ -76,6 +91,7 @@
             width: 100%;
             max-width: 450px;
             transition: transform 0.3s ease;
+            cursor: pointer;
         }
         
         .timeline-content:hover {
@@ -87,6 +103,9 @@
             color: var(--accent-color);
             font-weight: 600;
             margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
         .timeline-title {
@@ -99,6 +118,117 @@
             font-size: 1.1rem;
             color: var(--text-light);
             line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-details {
+            display: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .timeline-details.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .timeline-stats {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .timeline-stat {
+            background: rgba(203, 107, 55, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .timeline-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .timeline-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .timeline-link:hover {
+            gap: 0.8rem;
+        }
+
+        .timeline-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .timeline-filter {
+            padding: 0.5rem 1.5rem;
+            border: none;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px var(--shadow-color);
+        }
+
+        .timeline-filter.active {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .timeline-filter:hover {
+            transform: translateY(-2px);
+        }
+
+        .timeline-search {
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .timeline-search input {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.5rem;
+            border: none;
+            border-radius: 25px;
+            background: white;
+            box-shadow: 0 2px 8px var(--shadow-color);
+            font-size: 1rem;
+        }
+
+        .timeline-search i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         @media (max-width: 768px) {
@@ -125,6 +255,17 @@
             
             .timeline-item:nth-child(even) .timeline-dot {
                 left: 20px;
+            }
+
+            .timeline-filters {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .timeline-filter {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
             }
         }
     </style>
@@ -165,87 +306,21 @@
     <section class="timeline-section">
         <div class="container">
             <div class="timeline-container">
+                <!-- Search and Filters -->
+                <div class="timeline-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search timeline events..." id="timeline-search">
+                </div>
+                <div class="timeline-filters">
+                    <button class="timeline-filter active" data-filter="all">All Events</button>
+                    <button class="timeline-filter" data-filter="policy">Policy Changes</button>
+                    <button class="timeline-filter" data-filter="landmark">Landmark Cases</button>
+                    <button class="timeline-filter" data-filter="technology">Technology</button>
+                    <button class="timeline-filter" data-filter="impact">Impact Stories</button>
+                </div>
+
                 <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">June 15, 2005</div>
-                            <h3 class="timeline-title">RTI Act Enacted</h3>
-                            <p class="timeline-text">The Right to Information Act was enacted by the Parliament of India, empowering citizens to request information from public authorities.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">October 12, 2005</div>
-                            <h3 class="timeline-title">RTI Act Implementation</h3>
-                            <p class="timeline-text">The RTI Act came into full force, providing citizens a mechanism to question government authorities, including educational institutions.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">March 23, 2008</div>
-                            <h3 class="timeline-title">First Major Education RTI Case</h3>
-                            <p class="timeline-text">Landmark case where students used RTI to uncover admission irregularities in a prestigious university, leading to policy reforms.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">July 8, 2010</div>
-                            <h3 class="timeline-title">RTI in School Education</h3>
-                            <p class="timeline-text">Guidelines issued for implementing RTI in school education, making information about school infrastructure, teacher qualifications, and funds accessible.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">November 14, 2013</div>
-                            <h3 class="timeline-title">RTI Amendment for Education</h3>
-                            <p class="timeline-text">Specific amendments made to strengthen RTI implementation in educational institutions, requiring disclosure of key information.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">April 21, 2016</div>
-                            <h3 class="timeline-title">Digital RTI Platform Launch</h3>
-                            <p class="timeline-text">Launch of an online platform for filing RTI applications for educational institutions, making the process more accessible.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">September 30, 2019</div>
-                            <h3 class="timeline-title">RTI 2.0 for Education</h3>
-                            <p class="timeline-text">Comprehensive framework introduced to enhance transparency in education through improved RTI mechanisms.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">February 12, 2022</div>
-                            <h3 class="timeline-title">National RTI Education Initiative</h3>
-                            <p class="timeline-text">Launch of the National RTI Education Initiative to promote RTI awareness and usage in educational contexts across India.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">Present Day</div>
-                            <h3 class="timeline-title">Ongoing Evolution</h3>
-                            <p class="timeline-text">RTI continues to evolve as a powerful tool for transparency in education, with thousands of applications filed annually.</p>
-                        </div>
-                    </div>
+                    <!-- Timeline items will be dynamically populated by JavaScript -->
                 </div>
             </div>
         </div>
@@ -281,5 +356,259 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Timeline Data
+        const timelineData = [
+            {
+                date: 'June 15, 2005',
+                title: 'RTI Act Enacted',
+                description: 'The Right to Information Act was enacted by the Parliament of India, empowering citizens to request information from public authorities.',
+                category: 'policy',
+                details: 'The RTI Act marked a significant milestone in Indian democracy, providing citizens with a legal framework to access information from public authorities. The Act aimed to promote transparency and accountability in governance.',
+                stats: [
+                    { icon: 'fa-file-alt', text: '2.5M+ Applications' },
+                    { icon: 'fa-check-circle', text: '78% Success Rate' }
+                ],
+                links: [
+                    { text: 'View Act Details', url: '#' },
+                    { text: 'Impact Analysis', url: '#' }
+                ]
+            },
+            {
+                date: 'October 12, 2005',
+                title: 'RTI Act Implementation',
+                description: 'The RTI Act came into full force, providing citizens a mechanism to question government authorities, including educational institutions.',
+                category: 'policy',
+                details: 'Implementation guidelines were issued to all educational institutions, requiring them to appoint Public Information Officers and set up systems for handling RTI applications.',
+                stats: [
+                    { icon: 'fa-university', text: '5,000+ Institutions' },
+                    { icon: 'fa-users', text: '10,000+ Officers Trained' }
+                ],
+                links: [
+                    { text: 'Implementation Guide', url: '#' },
+                    { text: 'Success Stories', url: '#' }
+                ]
+            },
+            {
+                date: 'March 23, 2008',
+                title: 'First Major Education RTI Case',
+                description: 'Landmark case where students used RTI to uncover admission irregularities in a prestigious university, leading to policy reforms.',
+                category: 'landmark',
+                details: 'Students discovered discrepancies in the admission process through RTI applications, leading to a comprehensive review of admission policies and the establishment of transparent guidelines.',
+                stats: [
+                    { icon: 'fa-gavel', text: 'Policy Reform' },
+                    { icon: 'fa-user-graduate', text: '50,000+ Students Impacted' }
+                ],
+                links: [
+                    { text: 'Case Study', url: '#' },
+                    { text: 'Policy Changes', url: '#' }
+                ]
+            },
+            {
+                date: 'July 8, 2010',
+                title: 'Digital RTI Platform Launch',
+                description: 'Launch of the first digital platform for filing RTI applications in educational institutions.',
+                category: 'technology',
+                details: 'The platform revolutionized the RTI filing process, making it more accessible and efficient. Features included online submission, tracking, and digital payment options.',
+                stats: [
+                    { icon: 'fa-desktop', text: '1M+ Online Applications' },
+                    { icon: 'fa-clock', text: '48hr Average Response' }
+                ],
+                links: [
+                    { text: 'Platform Features', url: '#' },
+                    { text: 'User Guide', url: '#' }
+                ]
+            },
+            {
+                date: 'November 14, 2013',
+                title: 'RTI Mobile App Launch',
+                description: 'Introduction of mobile application for easy access to RTI services and tracking.',
+                category: 'technology',
+                details: 'The mobile app brought RTI services to smartphones, featuring real-time tracking, push notifications, and document scanning capabilities.',
+                stats: [
+                    { icon: 'fa-mobile-alt', text: '500K+ Downloads' },
+                    { icon: 'fa-star', text: '4.5/5 Rating' }
+                ],
+                links: [
+                    { text: 'Download App', url: '#' },
+                    { text: 'Feature List', url: '#' }
+                ]
+            },
+            {
+                date: 'April 21, 2016',
+                title: 'Scholarship Transparency Case',
+                description: 'RTI applications revealed mismanagement in scholarship disbursement, leading to system overhaul.',
+                category: 'impact',
+                details: 'Investigation through RTI exposed delays and irregularities in scholarship disbursement, resulting in the implementation of a transparent online system.',
+                stats: [
+                    { icon: 'fa-rupee-sign', text: '₹50Cr Recovered' },
+                    { icon: 'fa-user-friends', text: '25,000 Beneficiaries' }
+                ],
+                links: [
+                    { text: 'Case Details', url: '#' },
+                    { text: 'New System Guide', url: '#' }
+                ]
+            },
+            {
+                date: 'September 30, 2019',
+                title: 'RTI Blockchain Integration',
+                description: 'Implementation of blockchain technology for transparent record-keeping of RTI applications.',
+                category: 'technology',
+                details: 'Blockchain technology was integrated to ensure immutable record-keeping and transparent tracking of RTI applications and responses.',
+                stats: [
+                    { icon: 'fa-link', text: '100% Transparency' },
+                    { icon: 'fa-shield-alt', text: 'Zero Data Tampering' }
+                ],
+                links: [
+                    { text: 'Technical Details', url: '#' },
+                    { text: 'Impact Report', url: '#' }
+                ]
+            },
+            {
+                date: 'February 12, 2022',
+                title: 'AI-Powered RTI Assistant',
+                description: 'Launch of AI-powered assistant to help citizens draft and file RTI applications effectively.',
+                category: 'technology',
+                details: 'The AI assistant helps users frame questions, identify appropriate authorities, and track application status using natural language processing.',
+                stats: [
+                    { icon: 'fa-robot', text: '90% Success Rate' },
+                    { icon: 'fa-users', text: '100K+ Users' }
+                ],
+                links: [
+                    { text: 'Try AI Assistant', url: '#' },
+                    { text: 'Success Stories', url: '#' }
+                ]
+            },
+            {
+                date: 'August 15, 2023',
+                title: 'Education Transparency Initiative',
+                description: 'Nationwide campaign for educational institution transparency through RTI.',
+                category: 'impact',
+                details: 'The initiative led to proactive disclosure of information by educational institutions and standardized RTI response formats.',
+                stats: [
+                    { icon: 'fa-school', text: '10,000+ Schools' },
+                    { icon: 'fa-chart-line', text: '85% Compliance' }
+                ],
+                links: [
+                    { text: 'Initiative Details', url: '#' },
+                    { text: 'Join Campaign', url: '#' }
+                ]
+            },
+            {
+                date: 'March 1, 2024',
+                title: 'RTI Education Dashboard',
+                description: 'Launch of real-time dashboard showing RTI statistics and impact in education sector.',
+                category: 'technology',
+                details: 'The dashboard provides real-time visualization of RTI applications, success rates, and impact metrics across educational institutions.',
+                stats: [
+                    { icon: 'fa-chart-bar', text: 'Live Analytics' },
+                    { icon: 'fa-eye', text: '1M+ Monthly Views' }
+                ],
+                links: [
+                    { text: 'View Dashboard', url: '#' },
+                    { text: 'Analytics Guide', url: '#' }
+                ]
+            }
+        ];
+
+        // Function to create timeline items
+        function createTimelineItems(data) {
+            const timeline = document.querySelector('.timeline');
+            timeline.innerHTML = '';
+
+            data.forEach(item => {
+                const timelineItem = document.createElement('div');
+                timelineItem.className = `timeline-item ${item.category}`;
+                
+                timelineItem.innerHTML = `
+                    <div class="timeline-dot" title="Click for details"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">
+                            <i class="far fa-calendar-alt"></i>
+                            ${item.date}
+                        </div>
+                        <h3 class="timeline-title">${item.title}</h3>
+                        <p class="timeline-text">${item.description}</p>
+                        <div class="timeline-details">
+                            <p>${item.details}</p>
+                            <div class="timeline-stats">
+                                ${item.stats.map(stat => `
+                                    <div class="timeline-stat">
+                                        <i class="fas ${stat.icon}"></i>
+                                        <span>${stat.text}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <div class="timeline-links">
+                                ${item.links.map(link => `
+                                    <a href="${link.url}" class="timeline-link">
+                                        ${link.text}
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                timeline.appendChild(timelineItem);
+            });
+
+            // Add animation on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                observer.observe(item);
+            });
+        }
+
+        // Initialize timeline
+        createTimelineItems(timelineData);
+
+        // Filter functionality
+        document.querySelectorAll('.timeline-filter').forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                document.querySelectorAll('.timeline-filter').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                button.classList.add('active');
+
+                // Filter timeline items
+                const filter = button.getAttribute('data-filter');
+                const filteredData = filter === 'all' 
+                    ? timelineData 
+                    : timelineData.filter(item => item.category === filter);
+                
+                createTimelineItems(filteredData);
+            });
+        });
+
+        // Search functionality
+        document.getElementById('timeline-search').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredData = timelineData.filter(item => 
+                item.title.toLowerCase().includes(searchTerm) ||
+                item.description.toLowerCase().includes(searchTerm) ||
+                item.details.toLowerCase().includes(searchTerm)
+            );
+            createTimelineItems(filteredData);
+        });
+
+        // Toggle timeline details
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('timeline-dot') || 
+                e.target.closest('.timeline-content')) {
+                const content = e.target.closest('.timeline-item').querySelector('.timeline-details');
+                content.classList.toggle('show');
+            }
+        });
+    </script>
 </body>
 </html> 

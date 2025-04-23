@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTI Forms - Parent RTI Portal</title>
+    <link rel="icon" href="../assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="../assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png?v=2">
+    <link rel="manifest" href="../manifest.json?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../shared/styles.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="parent-theme">
+    <div id="header-container"></div>
+
+    <section class="hero-section">
+        <div class="hero-pattern"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">RTI Forms for Parents</h1>
+            <p class="hero-description">Ready-to-use templates and forms to help you file effective RTI applications</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="intro-card">
+            <h2 class="intro-title">File Your RTI Application</h2>
+            <div class="intro-content">
+                <p>Complete the form below to generate your RTI application. Our system will format your request according to official guidelines, making it easy for you to get the information you need about your child's education.</p>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <form id="rti-form" class="rti-application-form">
+                <div class="form-section">
+                    <h3 class="form-section-title"><i class="fas fa-user"></i> Applicant Details</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="applicant-name">Full Name*</label>
+                            <input type="text" id="applicant-name" name="applicant-name" class="form-control" required placeholder="Enter your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="applicant-phone">Phone Number*</label>
+                            <input type="tel" id="applicant-phone" name="applicant-phone" class="form-control" required placeholder="Enter your phone number">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="applicant-email">Email Address*</label>
+                        <input type="email" id="applicant-email" name="applicant-email" class="form-control" required placeholder="Enter your email address">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="applicant-address">Postal Address*</label>
+                        <textarea id="applicant-address" name="applicant-address" class="form-control" rows="3" required placeholder="Enter your complete postal address"></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3 class="form-section-title"><i class="fas fa-school"></i> School Details</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="school-name">School Name*</label>
+                            <input type="text" id="school-name" name="school-name" class="form-control" required placeholder="Enter school name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="school-district">District*</label>
+                            <input type="text" id="school-district" name="school-district" class="form-control" required placeholder="Enter district">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="school-address">School Address*</label>
+                        <textarea id="school-address" name="school-address" class="form-control" rows="3" required placeholder="Enter complete school address"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="school-type">School Type*</label>
+                        <select id="school-type" name="school-type" class="form-control" required>
+                            <option value="" disabled selected>Select school type</option>
+                            <option value="government">Government School</option>
+                            <option value="aided">Government-Aided School</option>
+                            <option value="private">Private School</option>
+                            <option value="central">Central Government School</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3 class="form-section-title"><i class="fas fa-file-alt"></i> RTI Request Details</h3>
+                    
+                    <div class="form-group">
+                        <label for="rti-subject">Subject of Request*</label>
+                        <input type="text" id="rti-subject" name="rti-subject" class="form-control" required placeholder="e.g., Fee Structure, Teacher Qualifications, etc.">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="rti-category">Category*</label>
+                        <select id="rti-category" name="rti-category" class="form-control" required>
+                            <option value="" disabled selected>Select a category</option>
+                            <option value="fees">Fee Structure</option>
+                            <option value="teachers">Teacher Qualifications</option>
+                            <option value="infrastructure">Infrastructure & Facilities</option>
+                            <option value="admission">Admission Process</option>
+                            <option value="safety">Safety & Security</option>
+                            <option value="scholarships">Scholarships & Financial Aid</option>
+                            <option value="curriculum">Curriculum & Assessment</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="rti-information">Information Required*</label>
+                        <textarea id="rti-information" name="rti-information" class="form-control" rows="5" required placeholder="Specify the information you are seeking. Be clear and precise."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="rti-period">Time Period of Information</label>
+                        <input type="text" id="rti-period" name="rti-period" class="form-control" placeholder="e.g., Academic Year 2023-2024">
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3 class="form-section-title"><i class="fas fa-paper-plane"></i> Submission Method</h3>
+                    
+                    <div class="form-group">
+                        <label for="submission-method">How would you like to submit this RTI?*</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="method-online" name="submission-method" value="online" checked>
+                                <label for="method-online">Online Submission (via RTI Portal)</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="method-post" name="submission-method" value="post">
+                                <label for="method-post">By Post (Print & Mail)</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="method-in-person" name="submission-method" value="in-person">
+                                <label for="method-in-person">In-Person Submission</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="primary-button"><i class="fas fa-paper-plane"></i> Generate RTI Application</button>
+                    <button type="reset" class="secondary-button"><i class="fas fa-redo"></i> Clear Form</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <h2 class="section-title">Available RTI Templates</h2>
+        <div class="tools-grid">
+            <div class="tool-card">
+                <i class="fas fa-rupee-sign"></i>
+                <h3>Fee Structure RTI</h3>
+                <p>Template to request detailed breakdown of school fees and their legitimacy</p>
+                <a href="#" class="action-button">Download Template</a>
+            </div>
+
+            <div class="tool-card">
+                <i class="fas fa-user-graduate"></i>
+                <h3>Teacher Qualification RTI</h3>
+                <p>Template to verify qualifications and appointment details of teaching staff</p>
+                <a href="#" class="action-button">Download Template</a>
+            </div>
+
+            <div class="tool-card">
+                <i class="fas fa-building"></i>
+                <h3>Infrastructure RTI</h3>
+                <p>Template to check compliance with infrastructure and facility requirements</p>
+                <a href="#" class="action-button">Download Template</a>
+            </div>
+
+            <div class="tool-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Safety Compliance RTI</h3>
+                <p>Template to verify safety measures and compliance with regulations</p>
+                <a href="#" class="action-button">Download Template</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="help-section">
+        <div class="container">
+            <div class="help-content">
+                <h2 class="section-title">Not Sure What to Ask? Get Expert Help</h2>
+                <p>Our RTI experts can guide you in formulating the right questions to get the information you need</p>
+                <a href="#" class="help-button">Schedule a Consultation <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Supporting parents in their journey to ensure quality education through transparency and accountability.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="guide.html">RTI Guide</a></li>
+                    <li><a href="forms.html">RTI Forms</a></li>
+                    <li><a href="track.html">Track Status</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> parents@righttoinformation.org</p>
+                <p><i class="fas fa-phone"></i> +91 123 456 7890</p>
+                <p><i class="fas fa-map-marker-alt"></i> New Delhi, India</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Right to Information in India. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../shared/nav.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const headerContainer = document.getElementById('header-container');
+            headerContainer.innerHTML = Navigation.createHeader('Parent RTI Portal');
+            new Navigation('parent');
+        });
+    </script>
+</body>
+</html> 

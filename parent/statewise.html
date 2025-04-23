@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statewise Education Database - Parent RTI Portal</title>
+    <link rel="icon" href="../assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="../assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png?v=2">
+    <link rel="manifest" href="../manifest.json?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../shared/styles.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="parent-theme">
+    <div id="header-container"></div>
+
+    <section class="hero-section">
+        <div class="hero-pattern"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Statewise Education Database</h1>
+            <p class="hero-description">Access comprehensive state-specific education information and regulations</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="intro-card">
+            <h2 class="intro-title">Why State-Specific Education Information Matters</h2>
+            <div class="intro-content">
+                <p>Education in India operates under a concurrent framework, with both central and state governments having authority. State education laws, regulations, and policies vary significantly, making it essential for parents to understand the specific rules governing their child's education in their state.</p>
+                
+                <div class="key-points">
+                    <h3>Key Benefits of Our Statewise Database:</h3>
+                    <ul class="points-list">
+                        <li><i class="fas fa-check-circle"></i> Access state-specific education acts and regulations</li>
+                        <li><i class="fas fa-check-circle"></i> Compare fee regulation mechanisms across states</li>
+                        <li><i class="fas fa-check-circle"></i> Find state education department RTI filing procedures</li>
+                        <li><i class="fas fa-check-circle"></i> Discover school safety standards for your state</li>
+                        <li><i class="fas fa-check-circle"></i> Understand RTE implementation in your region</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">Select Your State</h2>
+        <div class="state-selection">
+            <div class="state-map-container">
+                <img src="../assets/images/india-map.png" alt="Map of India" class="india-map" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDEwMDAiPjxwYXRoIGQ9Ik01MDAgMTAwQzI3OS4xIDEwMCAxMDAgMjc5LjEgMTAwIDUwMHMxNzkuMSA0MDAgNDAwIDQwMCA0MDAtMTc5LjEgNDAwLTQwMFM3MjAuOSAxMDAgNTAwIDEwMHptMCA3NTBjLTE5My4zIDAtMzUwLTE1Ni43LTM1MC0zNTBzMTU2LjctMzUwIDM1MC0zNTAgMzUwIDE1Ni43IDM1MCAzNTAtMTU2LjcgMzUwLTM1MCAzNTB6IiBmaWxsPSIjOTI5MjkyIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGFsaWdubWVudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZmlsbD0iIzkyOTI5MiI+TWFwIEltYWdlPC90ZXh0Pjwvc3ZnPg=='" usemap="#india-map">
+                <map name="india-map">
+                    <!-- State hotspots would go here in a real implementation -->
+                </map>
+            </div>
+            <div class="state-list">
+                <div class="state-category">
+                    <h3>Northern States</h3>
+                    <ul>
+                        <li><a href="#delhi">Delhi</a></li>
+                        <li><a href="#haryana">Haryana</a></li>
+                        <li><a href="#punjab">Punjab</a></li>
+                        <li><a href="#uttarpradesh">Uttar Pradesh</a></li>
+                        <li><a href="#uttarakhand">Uttarakhand</a></li>
+                        <li><a href="#himachalpradesh">Himachal Pradesh</a></li>
+                        <li><a href="#jammukashmir">Jammu & Kashmir</a></li>
+                    </ul>
+                </div>
+                <div class="state-category">
+                    <h3>Southern States</h3>
+                    <ul>
+                        <li><a href="#tamilnadu">Tamil Nadu</a></li>
+                        <li><a href="#kerala">Kerala</a></li>
+                        <li><a href="#karnataka">Karnataka</a></li>
+                        <li><a href="#andhrapradesh">Andhra Pradesh</a></li>
+                        <li><a href="#telangana">Telangana</a></li>
+                    </ul>
+                </div>
+                <div class="state-category">
+                    <h3>Western States</h3>
+                    <ul>
+                        <li><a href="#maharashtra">Maharashtra</a></li>
+                        <li><a href="#gujarat">Gujarat</a></li>
+                        <li><a href="#rajasthan">Rajasthan</a></li>
+                        <li><a href="#goa">Goa</a></li>
+                    </ul>
+                </div>
+                <div class="state-category">
+                    <h3>Eastern States</h3>
+                    <ul>
+                        <li><a href="#westbengal">West Bengal</a></li>
+                        <li><a href="#odisha">Odisha</a></li>
+                        <li><a href="#bihar">Bihar</a></li>
+                        <li><a href="#jharkhand">Jharkhand</a></li>
+                        <li><a href="#assam">Assam</a></li>
+                    </ul>
+                </div>
+                <div class="state-category">
+                    <h3>Central States</h3>
+                    <ul>
+                        <li><a href="#madhyapradesh">Madhya Pradesh</a></li>
+                        <li><a href="#chhattisgarh">Chhattisgarh</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section" id="featured-states">
+        <h2 class="section-title">Featured State Education Profiles</h2>
+        <div class="info-grid">
+            <div class="info-card" id="delhi">
+                <i class="fas fa-landmark info-icon"></i>
+                <h3 class="info-title">Delhi</h3>
+                <ul class="info-list">
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Fee Regulation:</strong> Delhi School Education Act, 1973
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Key Authority:</strong> Directorate of Education (DoE)
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>RTI Filing:</strong> Public Information Officer, DoE
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Notable Rule:</strong> Schools on public land need DOE approval for fee hikes
+                    </li>
+                </ul>
+                <a href="#" class="info-button">View Full Delhi Profile</a>
+            </div>
+
+            <div class="info-card" id="maharashtra">
+                <i class="fas fa-landmark info-icon"></i>
+                <h3 class="info-title">Maharashtra</h3>
+                <ul class="info-list">
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Fee Regulation:</strong> Maharashtra Educational Institutions (Regulation of Fee) Act, 2011
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Key Authority:</strong> Divisional Fee Regulatory Committee
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>RTI Filing:</strong> Education Department, Maharashtra Government
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Notable Rule:</strong> 15% maximum fee increase every two years
+                    </li>
+                </ul>
+                <a href="#" class="info-button">View Full Maharashtra Profile</a>
+            </div>
+
+            <div class="info-card" id="tamilnadu">
+                <i class="fas fa-landmark info-icon"></i>
+                <h3 class="info-title">Tamil Nadu</h3>
+                <ul class="info-list">
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Fee Regulation:</strong> Tamil Nadu Schools (Regulation of Collection of Fee) Act, 2009
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Key Authority:</strong> Fee Determination Committee
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>RTI Filing:</strong> Chief Educational Officer of the district
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Notable Rule:</strong> Schools classified into tiers based on facilities
+                    </li>
+                </ul>
+                <a href="#" class="info-button">View Full Tamil Nadu Profile</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">State Education Information Categories</h2>
+        <div class="issues-grid">
+            <div class="issue-card">
+                <i class="fas fa-gavel"></i>
+                <h3>Education Acts</h3>
+                <p>State-specific education laws, amendments, and official notifications governing schools</p>
+            </div>
+
+            <div class="issue-card">
+                <i class="fas fa-rupee-sign"></i>
+                <h3>Fee Regulations</h3>
+                <p>Fee cap mechanisms, committee structures, and appeals processes for fee disputes</p>
+            </div>
+
+            <div class="issue-card">
+                <i class="fas fa-user-graduate"></i>
+                <h3>RTE Implementation</h3>
+                <p>State rules for Right to Education Act implementation including admission quotas</p>
+            </div>
+
+            <div class="issue-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Safety Standards</h3>
+                <p>State-mandated safety requirements, committees, and inspection protocols</p>
+            </div>
+
+            <div class="issue-card">
+                <i class="fas fa-school"></i>
+                <h3>Recognition Criteria</h3>
+                <p>Requirements for school recognition, renewal, and compliance verification</p>
+            </div>
+
+            <div class="issue-card">
+                <i class="fas fa-file-alt"></i>
+                <h3>RTI Procedures</h3>
+                <p>Filing procedures, fees, and contact information for education department RTIs</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">Compare State Education Metrics</h2>
+        <div class="table-container">
+            <table class="info-table">
+                <thead>
+                    <tr>
+                        <th>State</th>
+                        <th>Fee Hike Limit</th>
+                        <th>RTE Implementation</th>
+                        <th>POCSO Committee</th>
+                        <th>Safety Audit Frequency</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Delhi</td>
+                        <td>10% with DoE approval</td>
+                        <td>Strong (95% quota filled)</td>
+                        <td>Mandatory in all schools</td>
+                        <td>Annual</td>
+                    </tr>
+                    <tr>
+                        <td>Maharashtra</td>
+                        <td>15% every two years</td>
+                        <td>Moderate (70% quota filled)</td>
+                        <td>Mandatory with quarterly meetings</td>
+                        <td>Biannual</td>
+                    </tr>
+                    <tr>
+                        <td>Karnataka</td>
+                        <td>Case-by-case basis</td>
+                        <td>Strong (85% quota filled)</td>
+                        <td>Mandatory in all schools</td>
+                        <td>Annual</td>
+                    </tr>
+                    <tr>
+                        <td>Tamil Nadu</td>
+                        <td>Set by Fee Committee</td>
+                        <td>Strong (90% quota filled)</td>
+                        <td>Mandatory with monthly meetings</td>
+                        <td>Annual</td>
+                    </tr>
+                    <tr>
+                        <td>Gujarat</td>
+                        <td>Tiered caps based on facilities</td>
+                        <td>Moderate (65% quota filled)</td>
+                        <td>Mandatory in all schools</td>
+                        <td>Biannual</td>
+                    </tr>
+                    <tr>
+                        <td>Rajasthan</td>
+                        <td>8-10% annually</td>
+                        <td>Moderate (60% quota filled)</td>
+                        <td>Mandatory with quarterly meetings</td>
+                        <td>Annual</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="note-box">
+            <p><i class="fas fa-info-circle"></i> Note: Metrics are based on most recent available data. Actual implementation may vary within states. For detailed information, view the full state profile.</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">State Education Department RTI Success Rate</h2>
+        <div class="chart-container">
+            <canvas id="rtiSuccessChart" width="800" height="400"></canvas>
+        </div>
+        <div class="chart-legend">
+            <div class="legend-item">
+                <span class="legend-color" style="background-color: #4285F4;"></span>
+                <span class="legend-label">Full Information Provided</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background-color: #FBBC05;"></span>
+                <span class="legend-label">Partial Information Provided</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background-color: #EA4335;"></span>
+                <span class="legend-label">Information Denied</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background-color: #34A853;"></span>
+                <span class="legend-label">First Appeal Success Rate</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">Sample State-Specific RTI Questions</h2>
+        <div class="resources-grid">
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-rupee-sign"></i>
+                </div>
+                <h3>Fee Committee RTI</h3>
+                <p>"Please provide information regarding the constitution of the Fee Regulatory Committee for [STATE], including member names, meeting schedule, and decisions made regarding fee regulation in the past academic year."</p>
+                <div class="resource-actions">
+                    <a href="#" class="resource-button"><i class="fas fa-file-download"></i> Download Template</a>
+                </div>
+            </div>
+            
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-child"></i>
+                </div>
+                <h3>RTE Implementation RTI</h3>
+                <p>"Please provide district-wise data on RTE Section 12(1)(c) implementation in [STATE], including total seats available, applications received, and actual admissions for the past three academic years."</p>
+                <div class="resource-actions">
+                    <a href="#" class="resource-button"><i class="fas fa-file-download"></i> Download Template</a>
+                </div>
+            </div>
+            
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-clipboard-check"></i>
+                </div>
+                <h3>School Inspection RTI</h3>
+                <p>"Please provide information on the school inspection process in [STATE], including inspection schedules, parameters checked, and actions taken against non-compliant schools in the past academic year."</p>
+                <div class="resource-actions">
+                    <a href="#" class="resource-button"><i class="fas fa-file-download"></i> Download Template</a>
+                </div>
+            </div>
+            
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3>Textbook Approval RTI</h3>
+                <p>"Please provide information regarding the textbook review and approval process in [STATE], including committee members, criteria for approval, and list of approved textbooks for the current academic year."</p>
+                <div class="resource-actions">
+                    <a href="#" class="resource-button"><i class="fas fa-file-download"></i> Download Template</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">State Education Database Success Stories</h2>
+        
+        <div class="testimonials-container">
+            <div class="testimonial-card">
+                <div class="testimonial-photo">
+                    <img src="../assets/images/parent1.jpg" alt="Parent Testimonial" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48Y2lyY2xlIGN4PSIxMDAiIGN5PSI4MCIgcj0iNTAiIGZpbGw9IiM0Mjg1RjQiIC8+PHBhdGggZD0iTTE2MCwxNzUgQzE2MCwxMzYuMzQwNDkgMTMxLjcyNzY2LDEwNSA5Ni4xMTc2NDcxLDEwNSBDNjAuNTA3NjM1MywxMDUgMzAsMTM2LjM0MDQ5IDMwLDE3NSIgZmlsbD0iIzIwNTQ5MyIgLz48L3N2Zz4='" />
+                </div>
+                <div class="testimonial-content">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="testimonial-text">Using the Karnataka state education profile, I discovered that my child's school was not complying with the state's specific safety requirements. Armed with the right regulations, I filed a targeted RTI that led to immediate corrective action by the school.</p>
+                    <div class="testimonial-author">
+                        <h4>Sudha Murthy</h4>
+                        <p>Parent, Bangalore</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-photo">
+                    <img src="../assets/images/parent2.jpg" alt="Parent Testimonial" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48Y2lyY2xlIGN4PSIxMDAiIGN5PSI4MCIgcj0iNTAiIGZpbGw9IiM0Mjg1RjQiIC8+PHBhdGggZD0iTTE2MCwxNzUgQzE2MCwxMzYuMzQwNDkgMTMxLjcyNzY2LDEwNSA5Ni4xMTc2NDcxLDEwNSBDNjAuNTA3NjM1MywxMDUgMzAsMTM2LjM0MDQ5IDMwLDE3NSIgZmlsbD0iIzIwNTQ5MyIgLz48L3N2Zz4='" />
+                </div>
+                <div class="testimonial-content">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="testimonial-text">Our parent association used the Maharashtra state education profile to understand the exact fee regulation mechanism. We discovered our school had bypassed the divisional fee committee approval process and successfully challenged an arbitrary 25% fee hike.</p>
+                    <div class="testimonial-author">
+                        <h4>Parent Association</h4>
+                        <p>International School, Mumbai</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="help-section">
+        <div class="container">
+            <div class="help-content">
+                <h2 class="section-title">Need Help Understanding Your State's Education Rules?</h2>
+                <p>Our state education experts can guide you through your state's specific regulations and help craft effective RTI applications</p>
+                <a href="forms.html" class="help-button">Get State-Specific Help <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Supporting parents in their journey to ensure quality education through transparency and accountability.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="guide.html">RTI Guide</a></li>
+                    <li><a href="forms.html">RTI Forms</a></li>
+                    <li><a href="track.html">Track Status</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> parents@righttoinformation.org</p>
+                <p><i class="fas fa-phone"></i> +91 123 456 7890</p>
+                <p><i class="fas fa-map-marker-alt"></i> New Delhi, India</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Right to Information in India. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <script src="../shared/nav.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const headerContainer = document.getElementById('header-container');
+            headerContainer.innerHTML = Navigation.createHeader('Parent RTI Portal');
+            new Navigation('parent');
+
+            // RTI Success Chart
+            const ctx = document.getElementById('rtiSuccessChart').getContext('2d');
+            const rtiSuccessChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Delhi', 'Maharashtra', 'Tamil Nadu', 'Karnataka', 'Gujarat', 'Rajasthan'],
+                    datasets: [
+                        {
+                            label: 'Full Information Provided (%)',
+                            data: [78, 65, 82, 70, 62, 55],
+                            backgroundColor: '#4285F4'
+                        },
+                        {
+                            label: 'Partial Information Provided (%)',
+                            data: [15, 20, 12, 22, 25, 30],
+                            backgroundColor: '#FBBC05'
+                        },
+                        {
+                            label: 'Information Denied (%)',
+                            data: [7, 15, 6, 8, 13, 15],
+                            backgroundColor: '#EA4335'
+                        },
+                        {
+                            label: 'First Appeal Success Rate (%)',
+                            data: [60, 55, 70, 65, 50, 45],
+                            backgroundColor: '#34A853',
+                            type: 'line'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
+                        title: {
+                            display: true,
+                            text: 'RTI Response Quality by State Education Departments'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            stacked: true,
+                        },
+                        y: {
+                            stacked: true,
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

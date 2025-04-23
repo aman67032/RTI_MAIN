@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="150" viewBox="0 0 300 150">
+  <!-- Background -->
+  <rect x="0" y="0" width="300" height="150" fill="none"/>
+  
+  <!-- Support desk -->
+  <rect x="40" y="100" width="220" height="30" rx="5" ry="5" fill="#6B705C"/>
+  <rect x="45" y="95" width="210" height="5" fill="#A5A58D"/>
+  
+  <!-- Computer -->
+  <rect x="60" y="60" width="70" height="40" rx="3" ry="3" fill="#DDBEA9" stroke="#6B705C" stroke-width="2"/>
+  <rect x="65" y="65" width="60" height="30" fill="#FFE8D6" stroke="#6B705C" stroke-width="1"/>
+  <rect x="90" y="100" width="10" height="5" fill="#6B705C"/>
+  <rect x="85" y="105" width="20" height="3" fill="#6B705C"/>
+  
+  <!-- Support person -->
+  <circle cx="200" cy="60" r="20" fill="#CB997E" stroke="#6B705C" stroke-width="2"/> <!-- Head -->
+  <rect x="190" y="80" width="20" height="30" rx="5" ry="5" fill="#DDBEA9" stroke="#6B705C" stroke-width="2"/> <!-- Body -->
+  <rect x="180" y="85" width="10" height="20" rx="3" ry="3" fill="#DDBEA9" stroke="#6B705C" stroke-width="1.5"/> <!-- Arm -->
+  <rect x="210" y="85" width="10" height="20" rx="3" ry="3" fill="#DDBEA9" stroke="#6B705C" stroke-width="1.5"/> <!-- Arm -->
+  <circle cx="193" cy="55" r="3" fill="#6B705C"/> <!-- Eye -->
+  <circle cx="207" cy="55" r="3" fill="#6B705C"/> <!-- Eye -->
+  <path d="M 193 70 Q 200 75, 207 70" stroke="#6B705C" stroke-width="2" fill="none"/> <!-- Smile -->
+  
+  <!-- Headset -->
+  <path d="M 180 50 C 175 40, 175 35, 185 35 C 195 25, 205 25, 215 35 C 225 35, 225 40, 220 50" stroke="#6B705C" stroke-width="2" fill="none"/>
+  <circle cx="178" cy="50" r="5" fill="#A5A58D" stroke="#6B705C" stroke-width="1"/>
+  <circle cx="222" cy="50" r="5" fill="#A5A58D" stroke="#6B705C" stroke-width="1"/>
+  
+  <!-- Chat bubbles -->
+  <path d="M 150 40 L 170 40 Q 180 40, 180 50 L 180 60 Q 180 70, 170 70 L 130 70 Q 120 70, 120 60 L 120 50 Q 120 40, 130 40 Z" fill="#FFE8D6" stroke="#6B705C" stroke-width="1.5"/>
+  <circle cx="135" cy="55" r="3" fill="#6B705C"/>
+  <circle cx="150" cy="55" r="3" fill="#6B705C"/>
+  <circle cx="165" cy="55" r="3" fill="#6B705C"/>
+  
+  <!-- Help icons -->
+  <circle cx="70" cy="35" r="15" fill="#A5A58D" opacity="0.8"/>
+  <text x="70" y="40" font-family="Arial" font-size="16" text-anchor="middle" fill="#6B705C" font-weight="bold">?</text>
+  
+  <circle cx="110" cy="35" r="15" fill="#DDBEA9" opacity="0.8"/>
+  <text x="110" y="40" font-family="Arial" font-size="16" text-anchor="middle" fill="#6B705C" font-weight="bold">!</text>
+  
+  <!-- Decorative elements -->
+  <path d="M 30 120 C 50 110, 100 130, 150 110 C 200 90, 250 120, 270 110" stroke="#A5A58D" stroke-width="1" fill="none" stroke-dasharray="3,3"/>
+  <path d="M 30 130 C 80 120, 150 140, 200 120 C 250 100, 270 120, 270 120" stroke="#A5A58D" stroke-width="1" fill="none" stroke-dasharray="3,3"/>
+</svg> 

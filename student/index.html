@@ -12,155 +12,437 @@
     <link rel="stylesheet" href="../shared/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Student Portal Specific Styles */
+        /* Student Portal Futuristic Styles */
         :root {
-            --portal-primary: var(--student-primary);
-            --portal-secondary: var(--student-secondary);
-            --portal-gradient: var(--student-gradient);
+            --portal-primary: #0fe0ff;
+            --portal-secondary: #0066ff;
+            --portal-accent: #ff00ee;
+            --portal-dark: #040b36;
+            --portal-light: #f0f8ff;
+            --portal-gradient: linear-gradient(135deg, var(--portal-primary), var(--portal-secondary));
+            --portal-accent-gradient: linear-gradient(135deg, var(--portal-accent), var(--portal-primary));
+            --neon-shadow: 0 0 10px rgba(15, 224, 255, 0.5), 0 0 20px rgba(15, 224, 255, 0.3), 0 0 30px rgba(15, 224, 255, 0.1);
+            --futuristic-bg: linear-gradient(180deg, #040b36 0%, #0c1e51 50%, #060b31 100%);
         }
 
+        body {
+            background: var(--futuristic-bg);
+            color: var(--portal-light);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            font-size: 16px; /* Base font size increased */
+            overflow-x: hidden;
+            padding-top: 60px;
+        }
+
+        /* Futuristic Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--portal-primary);
+            border-radius: 3px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--portal-secondary);
+        }
+
+        /* One-line Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(4, 11, 36, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(15, 224, 255, 0.2);
+            z-index: 1000;
+            padding: 0;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .navbar-logo {
+            color: var(--portal-primary);
+            font-size: 1.6rem; /* Increased from 1.4rem */
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(15, 224, 255, 0.5);
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .navbar-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem; /* Increased from 1rem */
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--portal-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-links li a:hover,
+        .navbar-links li a.active {
+            color: var(--portal-primary);
+        }
+
+        .navbar-links li a:hover::after,
+        .navbar-links li a.active::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--portal-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
         .hero-section {
-            background: linear-gradient(135deg, #001a33, #000);
+            background: var(--futuristic-bg);
             color: white;
             padding: 6rem 2rem;
-            text-align: center;
             position: relative;
             overflow: hidden;
-            min-height: 80vh;
+            min-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(15, 224, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 0, 238, 0.1) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        /* Grid Lines Background */
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(rgba(15, 224, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(15, 224, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            perspective: 500px;
+            transform-style: preserve-3d;
+            animation: grid-move 20s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes grid-move {
+            0% { 
+                background-position: 0 0;
+                opacity: 0.5;
+            }
+            100% { 
+                background-position: 50px 50px;
+                opacity: 0.8; 
+            }
+        }
+
+        /* Digital Waves */
         .wave {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 100px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,224C672,213,768,171,864,149.3C960,128,1056,128,1152,149.3C1248,171,1344,213,1392,234.7L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') repeat-x;
-            background-size: 1440px 100px;
-            animation: wave 20s linear infinite;
+            height: 120px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%230fe0ff" fill-opacity="0.1" d="M0,192L48,170.7C96,149,192,107,288,122.7C384,139,480,213,576,229.3C672,245,768,203,864,170.7C960,139,1056,117,1152,138.7C1248,160,1344,224,1392,256L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') repeat-x;
+            background-size: 1440px 120px;
+            animation: wave-motion 20s linear infinite;
+            z-index: 2;
         }
 
         .wave:nth-child(2) {
             bottom: 10px;
-            opacity: 0.5;
-            animation: wave 15s linear infinite reverse;
+            opacity: 0.7;
+            height: 140px;
+            background-size: 1440px 140px;
+            animation: wave-motion 15s linear infinite reverse;
         }
 
         .wave:nth-child(3) {
-            bottom: 20px;
-            opacity: 0.2;
-            animation: wave 10s linear infinite;
+            bottom: 0;
+            opacity: 0.4;
+            height: 160px;
+            background-size: 1440px 160px;
+            animation: wave-motion 10s linear infinite;
         }
 
-        @keyframes wave {
+        @keyframes wave-motion {
             0% { background-position-x: 0; }
             100% { background-position-x: 1440px; }
         }
 
+        /* Student Character */
+        .student-character {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 90%;
+            z-index: 2;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .student-character img, 
+        .student-character svg {
+            height: 90%;
+            max-height: 500px;
+            filter: drop-shadow(0 0 15px rgba(15, 224, 255, 0.4));
+            animation: float-character 4s ease-in-out infinite;
+            transform-origin: bottom center;
+        }
+
+        @keyframes float-character {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+
+        .character-glow {
+            position: absolute;
+            width: 150px;
+            height: 40px;
+            background: rgba(15, 224, 255, 0.3);
+            border-radius: 50%;
+            filter: blur(15px);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            animation: glow-pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% { opacity: 0.3; transform: translateX(-50%) scale(1); }
+            50% { opacity: 0.5; transform: translateX(-50%) scale(1.2); }
+        }
+
         .hero-content {
             position: relative;
-            z-index: 2;
-            max-width: 1000px;
+            z-index: 3;
+            max-width: 1400px;
             margin: 0 auto;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 2rem;
+            padding-left: 250px;
+        }
+
+        .hero-text {
+            flex: 0 0 40%;
+            text-align: left;
         }
 
         .hero-title {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-size: clamp(2.5rem, 4.5vw, 4.5rem); /* Increased from 2.2rem */
             margin-bottom: 1.5rem;
-            background: var(--portal-gradient);
+            background: linear-gradient(to right, var(--portal-primary), var(--portal-accent), var(--portal-primary));
+            background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
             letter-spacing: 2px;
-            animation: glow 2s ease-in-out infinite alternate;
+            animation: shine 3s linear infinite, pulse 2s ease-in-out infinite alternate;
+            font-weight: 800;
+            text-shadow: var(--neon-shadow);
+            display: inline-block;
+            text-align: left;
         }
 
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 10px rgba(15, 224, 255, 0.2),
-                           0 0 20px rgba(15, 224, 255, 0.2),
-                           0 0 30px rgba(15, 224, 255, 0.2);
-            }
+        @keyframes shine {
             to {
-                text-shadow: 0 0 20px rgba(15, 224, 255, 0.4),
-                           0 0 30px rgba(15, 224, 255, 0.4),
-                           0 0 40px rgba(15, 224, 255, 0.4);
+                background-position: 200% center;
             }
         }
 
+        @keyframes pulse {
+            0% {
+                text-shadow: 0 0 10px rgba(15, 224, 255, 0.2),
+                            0 0 20px rgba(15, 224, 255, 0.2),
+                            0 0 30px rgba(15, 224, 255, 0.2);
+            }
+            100% {
+                text-shadow: 0 0 20px rgba(15, 224, 255, 0.6),
+                            0 0 30px rgba(15, 224, 255, 0.4),
+                            0 0 40px rgba(15, 224, 255, 0.2);
+            }
+        }
+
+        .hero-text p {
+            font-size: 1.3rem; /* Added new style for hero description */
+            line-height: 1.7;
+        }
+
+        /* Quick Actions Cards */
         .quick-actions {
+            flex: 0 0 55%;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
         }
 
         .action-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(4, 11, 54, 0.8);
             border-radius: 20px;
-            padding: 2.5rem 2rem;
+            padding: 2rem 1.5rem;
             text-align: center;
             transition: all 0.4s ease;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(15, 224, 255, 0.2);
             position: relative;
             overflow: hidden;
+            z-index: 5;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .action-card::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
+            left: 0;
             width: 100%;
             height: 100%;
             background: linear-gradient(
-                90deg,
+                45deg,
                 transparent,
-                rgba(255, 255, 255, 0.1),
+                rgba(15, 224, 255, 0.1),
                 transparent
             );
-            transition: 0.5s;
+            animation: shine-effect 3s infinite;
+            z-index: -1;
         }
 
-        .action-card:hover::before {
-            left: 100%;
+        @keyframes shine-effect {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .action-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--portal-gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s ease;
+        }
+
+        .action-card:hover::after {
+            transform: scaleX(1);
         }
 
         .action-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(-15px) scale(1.03);
+            background: rgba(15, 224, 255, 0.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3),
+                        0 0 20px rgba(15, 224, 255, 0.4);
+            border-color: rgba(15, 224, 255, 0.5);
         }
 
         .action-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.8rem;
+            margin-bottom: 1.2rem;
             color: var(--portal-primary);
-            text-shadow: 0 0 20px rgba(15, 224, 255, 0.5);
+            text-shadow: 0 0 20px rgba(15, 224, 255, 0.8);
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .action-title {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
+            font-size: 1.4rem; /* Increased from 1.2rem */
+            margin-bottom: 0.8rem;
             color: white;
             font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+
+        .action-title::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            background: var(--portal-accent-gradient);
+            bottom: -8px;
+            left: 25%;
+            border-radius: 2px;
         }
 
         .action-description {
-            color: #ccc;
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
+            color: #a0b4d0;
+            font-size: 1.1rem; /* Increased from 0.95rem */
+            margin-bottom: 1.2rem;
             line-height: 1.6;
+            flex-grow: 1;
         }
 
+        /* Futuristic Buttons */
         .button {
             background: var(--portal-gradient);
             border: none;
-            padding: 1rem 2rem;
+            padding: 1.1rem 2.3rem;
             color: white;
             border-radius: 30px;
             font-weight: 600;
@@ -170,6 +452,11 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.1rem; /* Increased from 0.95rem */
+            box-shadow: 0 5px 15px rgba(15, 224, 255, 0.3);
         }
 
         .button::before {
@@ -179,7 +466,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
             transform: translateX(-100%);
             transition: 0.6s;
             z-index: -1;
@@ -190,33 +477,98 @@
         }
 
         .button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(15, 224, 255, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(15, 224, 255, 0.5);
+            background: linear-gradient(135deg, var(--portal-accent), var(--portal-primary));
         }
 
+        .button i {
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .button:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Resources Section */
         .resources-section {
-            background: #fff;
+            background: #f8f9fa;
             padding: 6rem 2rem;
             position: relative;
+            overflow: hidden;
+        }
+
+        .resources-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at bottom left, rgba(15, 224, 255, 0.05) 0%, transparent 60%),
+                radial-gradient(ellipse at top right, rgba(255, 0, 238, 0.05) 0%, transparent 60%);
+            z-index: 0;
         }
 
         .resources-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .resource-card {
             background: #fff;
             border-radius: 20px;
             padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
             transition: all 0.4s ease;
             border: 1px solid rgba(15, 224, 255, 0.1);
             position: relative;
             overflow: hidden;
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slide-up 0.6s forwards;
+        }
+
+        @keyframes slide-up {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .resource-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .resource-card:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .resource-card::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg, 
+                transparent, 
+                rgba(15, 224, 255, 0.05), 
+                transparent
+            );
+            top: 0;
+            left: -100%;
+            transition: 0.6s;
+        }
+
+        .resource-card:hover::before {
+            left: 100%;
         }
 
         .resource-card::after {
@@ -237,21 +589,46 @@
         }
 
         .resource-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(15, 224, 255, 0.15);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(15, 224, 255, 0.2);
+            border-color: rgba(15, 224, 255, 0.3);
         }
 
         .resource-icon {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: var(--portal-primary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover .resource-icon {
+            transform: scale(1.2);
+            color: var(--portal-accent);
         }
 
         .resource-title {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: #333;
+            font-size: 1.9rem; /* Increased from 1.8rem */
+            margin-bottom: 1.8rem;
+            color: #040b36;
             font-weight: 600;
+            position: relative;
+        }
+
+        .resource-title::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: var(--portal-primary);
+            bottom: -10px;
+            left: 0;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover .resource-title::after {
+            width: 60px;
+            background: var(--portal-accent);
         }
 
         .resource-list {
@@ -263,10 +640,17 @@
         .resource-item {
             display: flex;
             align-items: center;
-            margin-bottom: 1rem;
-            color: #666;
-            font-size: 1.1rem;
+            margin-bottom: 1.3rem;
+            color: #555;
+            font-size: 1.1rem; /* Increased from default */
             transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .resource-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
         }
 
         .resource-item:hover {
@@ -278,19 +662,52 @@
             color: var(--portal-primary);
             margin-right: 1rem;
             font-size: 1rem;
+            transition: all 0.3s ease;
         }
 
+        .resource-item:hover i {
+            color: var(--portal-accent);
+            transform: rotate(360deg);
+        }
+
+        /* Stats Section */
         .stats-section {
-            background: linear-gradient(135deg, #001a33, #000);
+            background: var(--futuristic-bg);
             color: white;
             padding: 6rem 2rem;
             position: relative;
             overflow: hidden;
         }
 
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(15, 224, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(255, 0, 238, 0.1) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .stats-section .wave {
+            height: 100px;
+            background-size: 1440px 100px;
+            opacity: 0.3;
+        }
+
+        .stats-section .wave:nth-child(2) {
+            bottom: 0;
+            height: 120px;
+            background-size: 1440px 120px;
+            opacity: 0.2;
+        }
+
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 3rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -299,42 +716,156 @@
         }
 
         .stat-card {
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             text-align: center;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(6, 13, 50, 0.6);
             border-radius: 20px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            border: 1px solid rgba(15, 224, 255, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                transparent, 
+                rgba(15, 224, 255, 0.1), 
+                transparent 30%
+            );
+            animation: rotate 4s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .stat-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-10px) scale(1.05);
+            background: rgba(15, 224, 255, 0.1);
+            border-color: rgba(15, 224, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
+                        0 0 20px rgba(15, 224, 255, 0.3);
         }
 
         .stat-number {
-            font-size: 3.5rem;
+            font-size: 4rem; /* Increased from 3.8rem */
             font-weight: 700;
             margin-bottom: 1rem;
-            background: var(--portal-gradient);
+            background: linear-gradient(135deg, var(--portal-primary), var(--portal-accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(15, 224, 255, 0.3);
+            text-shadow: 0 0 20px rgba(15, 224, 255, 0.5);
+            line-height: 1;
+            position: relative;
+            display: inline-block;
+        }
+
+        .stat-card:hover .stat-number {
+            animation: pulse 1.5s ease-in-out infinite alternate;
         }
 
         .stat-label {
             color: #fff;
-            font-size: 1.2rem;
+            font-size: 1.3rem; /* Increased from 1.2rem */
             font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+
+        /* Media Queries */
+        @media (max-width: 1200px) {
+            .hero-content {
+                gap: 1.5rem;
+                padding-left: 220px;
+            }
+            
+            .quick-actions {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .action-card {
+                padding: 1.8rem 1.2rem;
+            }
+            
+            .action-icon {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-section {
+                padding: 6rem 1.5rem 4rem;
+            }
+            
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                padding-left: 0;
+                padding-bottom: 200px;
+            }
+            
+            .student-character {
+                left: 50%;
+                transform: translateX(-50%);
+                height: 250px;
+                bottom: 20px;
+            }
+            
+            .student-character img {
+                height: 100%;
+            }
+            
+            .hero-text {
+                flex: 0 0 100%;
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+            
+            .hero-title {
+                text-align: center;
+            }
+            
+            .quick-actions {
+                flex: 0 0 100%;
+                grid-template-columns: repeat(3, 1fr);
+                width: 100%;
+            }
+
+            .resources-section,
+            .stats-section {
+                padding: 5rem 1.5rem;
+            }
+
+            .quick-actions,
+            .resources-grid,
+            .stats-grid {
+                gap: 2rem;
+            }
         }
 
         @media (max-width: 768px) {
             .hero-section {
-                padding: 4rem 1rem;
+                padding: 5rem 1rem 3rem;
                 min-height: auto;
+            }
+            
+            .quick-actions {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
             }
 
             .resources-section,
@@ -347,19 +878,1585 @@
             .stat-card {
                 padding: 2rem;
             }
+
+            .action-title {
+                font-size: 1.3rem;
+            }
+
+            .resource-title {
+                font-size: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 3.2rem;
+            }
+
+            .stat-label {
+                font-size: 1rem;
+            }
+
+            .hero-content {
+                padding-bottom: 180px;
+            }
+            
+            .student-character {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-section {
+                padding: 4rem 1rem 2rem;
+            }
+            
+            .quick-actions {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: clamp(2.2rem, 8vw, 3.2rem);
+            }
+
+            .action-icon {
+                font-size: 3rem;
+            }
+
+            .hero-content {
+                padding-bottom: 150px;
+            }
+            
+            .student-character {
+                height: 180px;
+            }
+        }
+
+        /* Sidebar Navigation Styles */
+        .sidebar-navigation {
+            background: var(--futuristic-bg);
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sidebar-navigation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(15, 224, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 238, 0.1) 0%, transparent 50%);
+            z-index: 0;
+        }
+        
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .nav-title {
+            text-align: center;
+            font-size: 2.7rem; /* Increased from 2.5rem */
+            margin-bottom: 3rem;
+            color: #fff;
+            position: relative;
+        }
+        
+        .nav-title span {
+            background: linear-gradient(to right, var(--portal-primary), var(--portal-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        .nav-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--portal-gradient);
+            border-radius: 2px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .nav-item {
+            background: rgba(6, 13, 50, 0.6);
+            border-radius: 15px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(15, 224, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            border-color: rgba(15, 224, 255, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 
+                        0 0 20px rgba(15, 224, 255, 0.3);
+            transform: translateY(-5px);
+        }
+        
+        .nav-header {
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .nav-parent .nav-header {
+            border-bottom: 1px solid rgba(15, 224, 255, 0.1);
+        }
+        
+        .nav-number {
+            background: var(--portal-gradient);
+            color: white;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 15px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 0 15px rgba(15, 224, 255, 0.5);
+        }
+        
+        .nav-header h3 {
+            margin: 0;
+            color: #fff;
+            font-size: 1.3rem; /* Increased from 1.2rem */
+            font-weight: 600;
+            flex: 1;
+        }
+        
+        .nav-header h3 a {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        .nav-header h3 a:hover {
+            color: var(--portal-primary);
+        }
+        
+        .nav-header i {
+            color: var(--portal-primary);
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .nav-parent.active .nav-header i {
+            transform: rotate(180deg);
+        }
+        
+        .nav-children {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            background: rgba(4, 11, 36, 0.4);
+        }
+        
+        .nav-parent.active .nav-children {
+            max-height: 500px;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-child {
+            display: flex;
+            align-items: center;
+            padding: 0.9rem 1.5rem 0.9rem 3.2rem;
+            color: #a0b4d0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem; /* Increased from 1rem */
+        }
+        
+        .nav-child:hover {
+            background: rgba(15, 224, 255, 0.05);
+            color: var(--portal-primary);
+            transform: translateX(5px);
+        }
+        
+        .nav-child i {
+            font-size: 0.8rem;
+            margin-right: 10px;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-child:hover i {
+            opacity: 1;
+            transform: translateX(3px);
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar-navigation {
+                padding: 4rem 1rem;
+            }
+            
+            .nav-title {
+                font-size: 2.3rem;
+            }
+        }
+
+        /* Additional Visual Elements */
+        .tech-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--portal-primary);
+            border-radius: 50%;
+            opacity: 0;
+            animation: particle-float 15s linear infinite;
+        }
+
+        .particle:nth-child(odd) {
+            background: var(--portal-accent);
+        }
+
+        .particle::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--portal-primary);
+            opacity: 0.6;
+        }
+
+        .particle:nth-child(1) { width: 4px; height: 4px; top: 10%; left: 15%; animation-delay: 0s; animation-duration: 30s; }
+        .particle:nth-child(2) { width: 6px; height: 6px; top: 20%; left: 80%; animation-delay: 1s; animation-duration: 25s; }
+        .particle:nth-child(3) { width: 3px; height: 3px; top: 50%; left: 30%; animation-delay: 2s; animation-duration: 20s; }
+        .particle:nth-child(4) { width: 5px; height: 5px; top: 70%; left: 70%; animation-delay: 3s; animation-duration: 35s; }
+        .particle:nth-child(5) { width: 4px; height: 4px; top: 35%; left: 60%; animation-delay: 4s; animation-duration: 22s; }
+        .particle:nth-child(6) { width: 7px; height: 7px; top: 80%; left: 20%; animation-delay: 5s; animation-duration: 28s; }
+        .particle:nth-child(7) { width: 3px; height: 3px; top: 15%; left: 50%; animation-delay: 6s; animation-duration: 26s; }
+        .particle:nth-child(8) { width: 5px; height: 5px; top: 65%; left: 85%; animation-delay: 7s; animation-duration: 32s; }
+
+        @keyframes particle-float {
+            0% {
+                transform: translateY(100vh) translateX(-10vw) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-50vh) translateX(10vw) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Data Visualization Elements */
+        .data-viz {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid rgba(15, 224, 255, 0.3);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .data-viz::before, .data-viz::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            animation: pulse-ring 3s linear infinite;
+        }
+
+        .data-viz::before {
+            width: 80%;
+            height: 80%;
+            border: 1px solid rgba(15, 224, 255, 0.5);
+        }
+
+        .data-viz::after {
+            width: 40%;
+            height: 40%;
+            background-color: rgba(15, 224, 255, 0.2);
+            animation-delay: 1s;
+        }
+
+        .data-viz-1 {
+            top: 15%;
+            right: 10%;
+            animation: viz-rotate 20s linear infinite;
+        }
+
+        .data-viz-2 {
+            bottom: 20%;
+            right: 15%;
+            width: 80px;
+            height: 80px;
+            animation: viz-rotate 15s linear infinite reverse;
+        }
+
+        @keyframes viz-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse-ring {
+            0% { opacity: 0.2; }
+            50% { opacity: 0.5; }
+            100% { opacity: 0.2; }
+        }
+
+        /* Tech Lines */
+        .tech-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .tech-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, var(--portal-primary), transparent);
+            height: 1px;
+            width: 100%;
+            opacity: 0;
+            animation: tech-line-move 8s linear infinite;
+        }
+
+        .tech-line:nth-child(1) { top: 20%; animation-delay: 0s; }
+        .tech-line:nth-child(2) { top: 40%; animation-delay: 2s; }
+        .tech-line:nth-child(3) { top: 60%; animation-delay: 4s; }
+        .tech-line:nth-child(4) { top: 80%; animation-delay: 6s; }
+
+        @keyframes tech-line-move {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.3;
+            }
+            80% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        /* Digital Code Rain */
+        .code-rain {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100%;
+            overflow: hidden;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .code-column {
+            position: absolute;
+            top: -20%;
+            width: 20px;
+            color: var(--portal-primary);
+            font-family: monospace;
+            font-size: 14px;
+            text-align: center;
+            white-space: nowrap;
+            transform: rotate(180deg);
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            animation: code-fall linear infinite;
+        }
+
+        .code-column:nth-child(1) { left: 10%; animation-duration: 15s; animation-delay: 0s; }
+        .code-column:nth-child(2) { left: 30%; animation-duration: 12s; animation-delay: 1s; }
+        .code-column:nth-child(3) { left: 50%; animation-duration: 18s; animation-delay: 2s; }
+        .code-column:nth-child(4) { left: 70%; animation-duration: 14s; animation-delay: 3s; }
+        .code-column:nth-child(5) { left: 90%; animation-duration: 16s; animation-delay: 4s; }
+
+        @keyframes code-fall {
+            0% {
+                transform: translateY(0) rotate(180deg);
+                opacity: 0;
+            }
+            5% {
+                opacity: 0.8;
+            }
+            95% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(calc(100vh + 200px)) rotate(180deg);
+                opacity: 0;
+            }
+        }
+
+        /* Media Queries for Visual Elements */
+        @media (max-width: 992px) {
+            .data-viz-1 {
+                right: 5%;
+                width: 100px;
+                height: 100px;
+            }
+            
+            .data-viz-2 {
+                right: 10%;
+                width: 60px;
+                height: 60px;
+            }
+            
+            .code-rain {
+                width: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .data-viz-1 {
+                width: 80px;
+                height: 80px;
+                top: 10%;
+            }
+            
+            .data-viz-2 {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .code-rain {
+                width: 40px;
+            }
+        }
+
+        /* HUD Interface Elements */
+        .hud-element {
+            position: absolute;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .hud-corner {
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--portal-primary);
+            opacity: 0.6;
+        }
+
+        .hud-corner-tl {
+            top: 40px;
+            left: 40px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .hud-corner-tr {
+            top: 40px;
+            right: 40px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .hud-corner-bl {
+            bottom: 40px;
+            left: 40px;
+            border-right: none;
+            border-top: none;
+        }
+
+        .hud-corner-br {
+            bottom: 40px;
+            right: 40px;
+            border-left: none;
+            border-top: none;
+        }
+
+        .hud-scanner {
+            position: absolute;
+            top: 45%;
+            right: 10%;
+            width: 100px;
+            height: 100px;
+            border: 1px solid rgba(15, 224, 255, 0.4);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hud-scanner::before {
+            content: '';
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            border: 1px dashed rgba(15, 224, 255, 0.3);
+            border-radius: 50%;
+        }
+
+        .hud-scanner::after {
+            content: '';
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: var(--portal-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--portal-primary);
+        }
+
+        .scanner-line {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background-color: rgba(15, 224, 255, 0.5);
+            animation: scan-rotate 4s linear infinite;
+        }
+
+        @keyframes scan-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hud-metrics {
+            position: absolute;
+            top: 20px;
+            left: 120px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .metric-item {
+            background: rgba(6, 13, 50, 0.6);
+            border-radius: 20px;
+            padding: 5px 15px;
+            font-size: 0.8rem;
+            color: var(--portal-primary);
+            border-left: 2px solid var(--portal-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .metric-item i {
+            font-size: 0.9rem;
+        }
+
+        .metric-pulse {
+            width: 6px;
+            height: 6px;
+            background-color: var(--portal-primary);
+            border-radius: 50%;
+            margin-left: auto;
+            position: relative;
+        }
+
+        .metric-pulse::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--portal-primary);
+            border-radius: 50%;
+            animation: pulse-metric 2s ease-out infinite;
+        }
+
+        @keyframes pulse-metric {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(4); opacity: 0; }
+        }
+
+        /* Interactive Markers */
+        .interactive-marker {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            z-index: 4;
+        }
+
+        .marker-plus {
+            right: 25%;
+            top: 30%;
+        }
+
+        .marker-plus::before,
+        .marker-plus::after {
+            content: '';
+            position: absolute;
+            background-color: var(--portal-primary);
+        }
+
+        .marker-plus::before {
+            width: 2px;
+            height: 20px;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .marker-plus::after {
+            width: 20px;
+            height: 2px;
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .marker-circles {
+            left: 25%;
+            bottom: 30%;
+        }
+
+        .marker-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid var(--portal-primary);
+            border-radius: 50%;
+            animation: circle-pulse 3s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        .marker-circle:nth-child(1) {
+            width: 8px;
+            height: 8px;
+            animation-delay: 0s;
+        }
+
+        .marker-circle:nth-child(2) {
+            width: 16px;
+            height: 16px;
+            animation-delay: 0.5s;
+        }
+
+        .marker-circle:nth-child(3) {
+            width: 24px;
+            height: 24px;
+            animation-delay: 1s;
+        }
+
+        @keyframes circle-pulse {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.8; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.4; }
+            100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.8; }
+        }
+
+        /* Media Queries for HUD Elements */
+        @media (max-width: 992px) {
+            .hud-corner {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .hud-corner-tl, .hud-corner-bl {
+                left: 20px;
+            }
+            
+            .hud-corner-tr, .hud-corner-br {
+                right: 20px;
+            }
+            
+            .hud-corner-tl, .hud-corner-tr {
+                top: 20px;
+            }
+            
+            .hud-corner-bl, .hud-corner-br {
+                bottom: 20px;
+            }
+            
+            .hud-scanner {
+                width: 80px;
+                height: 80px;
+                right: 5%;
+            }
+            
+            .hud-metrics {
+                left: 80px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .interactive-marker {
+                display: none;
+            }
+            
+            .hud-scanner {
+                top: auto;
+                bottom: 150px;
+                width: 60px;
+                height: 60px;
+            }
+            
+            .hud-metrics {
+                left: 20px;
+                top: auto;
+                bottom: 20px;
+                flex-direction: row;
+            }
+            
+            .metric-item {
+                padding: 3px 10px;
+                font-size: 0.7rem;
+            }
+        }
+
+        /* RTI Authorities Section Styles */
+        .rti-authorities-section {
+            background: #f8f9fa;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rti-authorities-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at bottom left, rgba(15, 224, 255, 0.05) 0%, transparent 60%),
+                radial-gradient(ellipse at top right, rgba(255, 0, 238, 0.05) 0%, transparent 60%);
+            z-index: 0;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.7rem; /* Increased from 2.5rem */
+            margin-bottom: 0.5rem;
+            color: #040b36;
+            position: relative;
+        }
+
+        .section-title span {
+            background: linear-gradient(to right, var(--portal-primary), var(--portal-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .section-description {
+            text-align: center;
+            color: #555;
+            font-size: 1.3rem; /* Increased from 1.2rem */
+            margin-bottom: 3rem;
+        }
+
+        .authorities-search {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .search-input {
+            flex: 1;
+            position: relative;
+        }
+
+        .search-input i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #0fe0ff;
+        }
+
+        .search-input input {
+            width: 100%;
+            padding: 1.1rem 1.1rem 1.1rem 45px;
+            border-radius: 30px;
+            border: 1px solid rgba(15, 224, 255, 0.3);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            font-size: 1.1rem; /* Increased from 1rem */
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .search-input input:focus {
+            border-color: var(--portal-primary);
+            box-shadow: 0 5px 25px rgba(15, 224, 255, 0.2);
+            outline: none;
+        }
+
+        .search-filters {
+            width: 200px;
+        }
+
+        .search-filters select {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 30px;
+            border: 1px solid rgba(15, 224, 255, 0.3);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            font-size: 1rem;
+            color: #444;
+            background: white;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230fe0ff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-filters select:focus {
+            border-color: var(--portal-primary);
+            box-shadow: 0 5px 25px rgba(15, 224, 255, 0.2);
+            outline: none;
+        }
+
+        .authorities-container {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .authority-list-wrapper {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .authority-list {
+            max-height: 600px;
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+
+        .authority-category {
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(15, 224, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .authority-category:hover {
+            box-shadow: 0 5px 15px rgba(15, 224, 255, 0.1);
+            border-color: rgba(15, 224, 255, 0.5);
+        }
+
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 1.5rem;
+            background: rgba(15, 224, 255, 0.05);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-header:hover {
+            background: rgba(15, 224, 255, 0.1);
+        }
+
+        .category-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #040b36;
+            font-weight: 600;
+        }
+
+        .category-header i {
+            color: var(--portal-primary);
+            transition: transform 0.3s ease;
+        }
+
+        .authority-category.active .category-header i {
+            transform: rotate(180deg);
+        }
+
+        .category-items {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .authority-category.active .category-items {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .authority-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .authority-item:last-child {
+            border-bottom: none;
+        }
+
+        .authority-item:hover {
+            background: rgba(15, 224, 255, 0.03);
+        }
+
+        .authority-name {
+            font-size: 1.1rem; /* Increased from 0.95rem */
+            color: #444;
+            margin-right: 1rem;
+        }
+
+        .authority-link {
+            font-size: 1rem; /* Increased from 0.9rem */
+            color: var(--portal-primary);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            background: rgba(15, 224, 255, 0.1);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .authority-link:hover {
+            background: var(--portal-primary);
+            color: white;
+            box-shadow: 0 5px 15px rgba(15, 224, 255, 0.3);
+        }
+
+        .authority-link i {
+            margin-right: 5px;
+            font-size: 0.8rem;
+        }
+
+        #load-more-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        #load-more-btn {
+            background: transparent;
+            color: var(--portal-primary);
+            border: 1px solid var(--portal-primary);
+            padding: 0.8rem 1.8rem;
+        }
+
+        #load-more-btn:hover {
+            background: var(--portal-primary);
+            color: white;
+        }
+
+        #load-more-btn i {
+            margin-left: 10px;
+        }
+
+        .authority-info-panel {
+            background: linear-gradient(160deg, #040b36 0%, #0c1e51 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            color: white;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            height: fit-content;
+            position: relative;
+        }
+
+        .authority-info-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(15, 224, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 0, 238, 0.1) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .info-header {
+            padding: 1.5rem;
+            background: rgba(15, 224, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(15, 224, 255, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-header h3 {
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            background: linear-gradient(to right, white, var(--portal-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .info-count {
+            background: rgba(15, 224, 255, 0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .info-content {
+            padding: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-content > p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .info-category {
+            margin-bottom: 1.8rem;
+        }
+
+        .info-category h4 {
+            color: var(--portal-primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-category h4 i {
+            margin-right: 10px;
+            opacity: 0.9;
+        }
+
+        .info-category p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .info-tips {
+            background: rgba(15, 224, 255, 0.05);
+            border-radius: 10px;
+            padding: 1.2rem;
+            margin-bottom: 1.8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-tips::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--portal-primary);
+        }
+
+        .info-tips h4 {
+            color: var(--portal-primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-tips h4 i {
+            margin-right: 10px;
+        }
+
+        .info-tips ul {
+            padding-left: 1.5rem;
+            margin: 0;
+        }
+
+        .info-tips li {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-tips li:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-action {
+            text-align: center;
+        }
+
+        .info-action .button {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .data-source {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        .data-source a {
+            color: var(--portal-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .data-source a:hover {
+            color: var(--portal-accent);
+            text-decoration: underline;
+        }
+
+        /* Media queries for RTI authorities section */
+        @media (max-width: 992px) {
+            .authorities-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .authority-info-panel {
+                order: -1;
+                margin-bottom: 2rem;
+            }
+            
+            .authority-list {
+                max-height: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .rti-authorities-section {
+                padding: 4rem 1rem;
+            }
+            
+            .authorities-search {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .search-filters {
+                width: 100%;
+            }
+            
+            .authority-list {
+                max-height: 400px;
+                padding: 1rem;
+            }
+            
+            .category-header {
+                padding: 1rem;
+            }
+            
+            .authority-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+            
+            .authority-link {
+                align-self: flex-start;
+            }
+        }
+
+        /* Rights Description Section */
+        .rights-section {
+            position: relative;
+            padding: 4rem 2rem;
+            background: rgba(4, 11, 54, 0.8);
+            z-index: 3;
+        }
+
+        .rights-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            position: relative;
+        }
+
+        .rights-content {
+            padding: 2rem;
+            background: rgba(15, 224, 255, 0.05);
+            border: 1px solid rgba(15, 224, 255, 0.2);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .rights-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--neon-shadow);
+        }
+
+        .rights-title {
+            font-size: 2.2rem; /* Increased from 2rem */
+            color: var(--portal-primary);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(15, 224, 255, 0.3);
+        }
+
+        .rights-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .rights-list li {
+            margin-bottom: 1.2rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 1.1rem; /* Added font size */
+        }
+
+        .rights-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--portal-primary);
+        }
+
+        .article-card {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(15, 224, 255, 0.1), rgba(0, 102, 255, 0.1));
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(15, 224, 255, 0.15);
+        }
+
+        .article-number {
+            font-size: 1.3rem; /* Increased from 1.2rem */
+            color: var(--portal-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .article-description {
+            color: var(--portal-light);
+            font-size: 1.1rem; /* Increased from 1rem */
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .rights-container {
+                grid-template-columns: 1fr;
+            }
+        .change-portal-link {
+            background: linear-gradient(135deg, var(--portal-primary), var(--portal-accent));
+            color: white;
+            padding: 0.7rem 1.4rem;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(15, 224, 255, 0.2),
+                       0 0 20px rgba(15, 224, 255, 0.1),
+                       inset 0 0 10px rgba(255, 255, 255, 0.1);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        
+        .change-portal-link::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(270deg, var(--portal-primary), var(--portal-accent), var(--portal-primary));
+            background-size: 200% 200%;
+            border-radius: 25px;
+            z-index: -1;
+            animation: gradient-animation 3s ease infinite;
+        }
+        
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .change-portal-link::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .change-portal-link:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(15, 224, 255, 0.3),
+                       0 0 30px rgba(15, 224, 255, 0.2),
+                       inset 0 0 15px rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            color: white;
+        }
+        
+        .change-portal-link:hover::after {
+            transform: translateX(100%);
+        }
+        
+        .change-portal-link i {
+            font-size: 1rem;
+            transition: all 0.4s ease;
+            background: linear-gradient(135deg, #fff, rgba(255, 255, 255, 0.8));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
+        }
+        
+        .change-portal-link:hover i {
+            transform: translateX(3px) rotate(180deg);
+            filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+        }
+        
+        .change-portal-link:active {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(15, 224, 255, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .change-portal-link {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+                gap: 0.5rem;
+            }
+            
+            .change-portal-link i {
+                font-size: 0.9rem;
+            }
+        }
+        
+        
         }
     </style>
 </head>
 <body class="student-theme">
-    <div id="header-container"></div>
+    <!-- New one-line navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">Student RTI Portal</a>
+            <button class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="navbar-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="guide.html">RTI Guide</a></li>
+                <li><a href="forms.html">Forms</a></li>
+                <li><a href="track.html">Track Status</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="templates/index.html">Templates</a></li>
+                <li><a href="#" id="change-portal-link" class="change-portal-link">Change Portal <i class="fas fa-exchange-alt"></i></a></li>
+            </ul>
+        </div>
+    </nav>
 
     <section class="hero-section">
         <div class="wave"></div>
         <div class="wave"></div>
         <div class="wave"></div>
+        
+        <!-- HUD Interface Elements -->
+        <div class="hud-element hud-corner hud-corner-tl"></div>
+        <div class="hud-element hud-corner hud-corner-tr"></div>
+        <div class="hud-element hud-corner hud-corner-bl"></div>
+        <div class="hud-element hud-corner hud-corner-br"></div>
+        
+        <div class="hud-element hud-scanner">
+            <div class="scanner-line"></div>
+        </div>
+        
+        <div class="hud-element hud-metrics">
+            <div class="metric-item">
+                <i class="fas fa-wifi"></i>
+                <span>PORTAL ACCESS</span>
+                <div class="metric-pulse"></div>
+            </div>
+            <div class="metric-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>SECURE RTI LINK</span>
+                <div class="metric-pulse"></div>
+            </div>
+        </div>
+        
+        <!-- Interactive Markers -->
+        <div class="interactive-marker marker-plus"></div>
+        <div class="interactive-marker marker-circles">
+            <div class="marker-circle"></div>
+            <div class="marker-circle"></div>
+            <div class="marker-circle"></div>
+        </div>
+        
+        <!-- Tech Particles -->
+        <div class="tech-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
+        <!-- Data Visualization Elements -->
+        <div class="data-viz data-viz-1"></div>
+        <div class="data-viz data-viz-2"></div>
+        
+        <!-- Tech Lines -->
+        <div class="tech-lines">
+            <div class="tech-line"></div>
+            <div class="tech-line"></div>
+            <div class="tech-line"></div>
+            <div class="tech-line"></div>
+        </div>
+        
+        <!-- Digital Code Rain -->
+        <div class="code-rain">
+            <div class="code-column">10010110110101101001011001</div>
+            <div class="code-column">01101001011010110100101</div>
+            <div class="code-column">1001011011010110100101100</div>
+            <div class="code-column">011010010110101101001</div>
+            <div class="code-column">10010110110101101001011</div>
+        </div>
+        
+        <div class="student-character">
+            <div class="character-glow"></div>
+            <img src="../assets/images/student-character.png" alt="Student Character" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <svg viewBox="0 0 200 400" style="display:none" width="200" height="400">
+                <!-- Simple student character SVG -->
+                <defs>
+                    <linearGradient id="skinGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#ffdbac;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#f1c27d;stop-opacity:1" />
+                    </linearGradient>
+                    <linearGradient id="clothesGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#0fe0ff;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#0066ff;stop-opacity:1" />
+                    </linearGradient>
+                    <radialGradient id="glowGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                        <stop offset="0%" style="stop-color:rgba(15,224,255,0.6);stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:rgba(15,224,255,0);stop-opacity:1" />
+                    </radialGradient>
+                </defs>
+                
+                <!-- Glow effect -->
+                <ellipse cx="100" cy="380" rx="70" ry="20" fill="url(#glowGradient)" opacity="0.7" />
+                
+                <!-- Legs -->
+                <rect x="70" y="250" width="25" height="130" rx="10" fill="#1a2a5e" />
+                <rect x="105" y="250" width="25" height="130" rx="10" fill="#1a2a5e" />
+                
+                <!-- Body/Shirt -->
+                <path d="M60,130 L140,130 L150,250 L50,250 Z" fill="url(#clothesGradient)" />
+                
+                <!-- Arms -->
+                <rect x="45" y="140" width="20" height="90" rx="10" fill="url(#clothesGradient)" />
+                <rect x="135" y="140" width="20" height="90" rx="10" fill="url(#clothesGradient)" />
+                <circle cx="45" cy="220" r="10" fill="url(#skinGradient)" />
+                <circle cx="155" cy="220" r="10" fill="url(#skinGradient)" />
+                
+                <!-- Neck -->
+                <rect x="90" y="110" width="20" height="25" fill="url(#skinGradient)" />
+                
+                <!-- Head -->
+                <circle cx="100" cy="75" r="45" fill="url(#skinGradient)" />
+                
+                <!-- Eyes -->
+                <ellipse cx="85" cy="70" rx="5" ry="7" fill="#0c1e51" />
+                <ellipse cx="115" cy="70" rx="5" ry="7" fill="#0c1e51" />
+                
+                <!-- Eyebrows -->
+                <path d="M75,60 Q85,55 95,60" fill="none" stroke="#8d5524" stroke-width="2" />
+                <path d="M105,60 Q115,55 125,60" fill="none" stroke="#8d5524" stroke-width="2" />
+                
+                <!-- Smile -->
+                <path d="M85,90 Q100,105 115,90" fill="none" stroke="#c68642" stroke-width="2" />
+                
+                <!-- Hair -->
+                <path d="M55,75 Q100,20 145,75 L140,40 Q100,5 60,40 Z" fill="#4a2c2a" />
+                
+                <!-- Student ID -->
+                <rect x="80" y="170" width="40" height="30" rx="5" fill="white" />
+                <rect x="85" y="175" width="30" height="5" fill="#0066ff" />
+                <rect x="85" y="185" width="30" height="5" fill="#0066ff" />
+                <rect x="85" y="195" width="20" height="5" fill="#0066ff" />
+                
+                <!-- Tech effect -->
+                <circle cx="140" cy="180" r="8" fill="none" stroke="#0fe0ff" stroke-width="2">
+                    <animate attributeName="opacity" values="0.2;1;0.2" dur="3s" repeatCount="indefinite" />
+                </circle>
+                <circle cx="140" cy="180" r="12" fill="none" stroke="#0fe0ff" stroke-width="1">
+                    <animate attributeName="opacity" values="0.1;0.5;0.1" dur="4s" repeatCount="indefinite" />
+                </circle>
+            </svg>
+        </div>
         <div class="hero-content">
-            <h1 class="hero-title">Student RTI Portal</h1>
-            <p>Access educational transparency tools and resources designed for students</p>
+            <div class="hero-text">
+                <h1 class="hero-title">Student RTI Portal</h1>
+                <p>Access educational transparency tools and resources designed for students</p>
+            </div>
             
             <div class="quick-actions">
                 <div class="action-card">
@@ -381,6 +2478,124 @@
                     <h3 class="action-title">RTI Guide</h3>
                     <p class="action-description">Learn how to file effective RTI applications</p>
                     <a href="guide.html" class="button">Read Guide <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rights Description Section -->
+    <section class="rights-section">
+        <div class="rights-container">
+            <div class="rights-content">
+                <h2 class="rights-title">Your Rights as a Student</h2>
+                <ul class="rights-list">
+                    <li>Right to access educational records and information about evaluation criteria</li>
+                    <li>Right to know about admission processes and fee structures</li>
+                    <li>Right to transparency in examination and evaluation processes</li>
+                    <li>Right to information about scholarships and financial aid</li>
+                    <li>Right to know about faculty qualifications and infrastructure facilities</li>
+                    <li>Right to fair treatment and non-discrimination</li>
+                    <li>Right to participate in decision-making processes affecting student welfare</li>
+                </ul>
+            </div>
+            <div class="rights-content">
+                <h2 class="rights-title">Constitutional Framework</h2>
+                <div class="article-card">
+                    <div class="article-number">Article 21A</div>
+                    <div class="article-description">Right to Education as a Fundamental Right - Guarantees free and compulsory education to all children between 6-14 years.</div>
+                </div>
+                <div class="article-card">
+                    <div class="article-number">Article 29(2)</div>
+                    <div class="article-description">Protection against discrimination in admission to educational institutions maintained by the State or receiving aid from the State.</div>
+                </div>
+                <div class="article-card">
+                    <div class="article-number">Article 30</div>
+                    <div class="article-description">Right of minorities to establish and administer educational institutions of their choice.</div>
+                </div>
+                <div class="article-card">
+                    <div class="article-number">RTI Act, 2005</div>
+                    <div class="article-description">Empowers students to seek information from public educational institutions about their functioning, policies, and decisions.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sidebar-navigation">
+        <div class="nav-container">
+            <h2 class="nav-title">Resources <span>Navigation</span></h2>
+            
+            <div class="nav-menu">
+                <div class="nav-item nav-parent">
+                    <div class="nav-header">
+                        <span class="nav-number">1</span>
+                        <h3>RTI Guide</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="nav-children">
+                        <a href="guide/exam.html" class="nav-child">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Exam</span>
+                        </a>
+                        <a href="guide/scholarship.html" class="nav-child">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Scholarship</span>
+                        </a>
+                        <a href="guide/admission.html" class="nav-child">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Admission</span>
+                        </a>
+                        <a href="guide/faq.html" class="nav-child">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>FAQ</span>
+                        </a>
+                        <a href="guide/checklist.html" class="nav-child">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Checklist</span>
+                        </a>
+                        <a href="guide/format.html" class="nav-child">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Format</span>
+                        </a>
+                        <a href="guide/samples.html" class="nav-child">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Sample RTI</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="nav-item nav-parent">
+                    <div class="nav-header">
+                        <span class="nav-number">2</span>
+                        <h3>Case Study</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="nav-children">
+                        <a href="success-stories.html" class="nav-child">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Success Stories</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="nav-item">
+                    <div class="nav-header">
+                        <span class="nav-number">3</span>
+                        <h3><a href="templates/generate.html">Auto Generate Templates</a></h3>
+                    </div>
+                </div>
+                
+                
+                <div class="nav-item">
+                    <div class="nav-header">
+                        <span class="nav-number">5</span>
+                        <h3><a href="track.html">Live RTI Status Tracker</a></h3>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-header">
+                        <span class="nav-number">6</span>
+                        <h3><a href="forum.html">Community Forum</a></h3>
+                    </div>
                 </div>
             </div>
         </div>
@@ -459,6 +2674,157 @@
         </div>
     </section>
 
+    <section class="rti-authorities-section">
+        <div class="section-container">
+            <h2 class="section-title">RTI Public Authorities <span>Directory</span></h2>
+            <p class="section-description">Access information from over 2700 government departments and organizations</p>
+            
+            <div class="authorities-search">
+                <div class="search-input">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="authority-search" placeholder="Search for a public authority...">
+                </div>
+                <div class="search-filters">
+                    <select id="authority-category">
+                        <option value="all">All Categories</option>
+                        <option value="education">Education Related</option>
+                        <option value="agriculture">Agriculture</option>
+                        <option value="health">Health</option>
+                        <option value="ut">Union Territories</option>
+                        <option value="research">Research Institutions</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="authorities-container">
+                <div class="authority-list-wrapper">
+                    <div class="authority-list" id="authority-list">
+                        <!-- Categories will be expanded/collapsed -->
+                        <div class="authority-category">
+                            <div class="category-header">
+                                <h3>Cabinet Secretariat</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="category-items">
+                                <div class="authority-item">
+                                    <span class="authority-name">Office of the Principal Scientific Adviser</span>
+                                    <a href="https://rtionline.gov.in/request/form_a.php?u=TkVmY05XN1hyT3RGa3pSTldaTmkxZz09" class="authority-link" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i> File RTI
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="authority-category">
+                            <div class="category-header">
+                                <h3>Department of Agricultural Research & Education</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="category-items">
+                                <div class="authority-item">
+                                    <span class="authority-name">Agricultural Scientists Recruitment Board</span>
+                                    <a href="https://rtionline.gov.in/request/form_a.php?u=TVk0b3pKemxRUXRHVzY1YkY0TEdidz09" class="authority-link" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i> File RTI
+                                    </a>
+                                </div>
+                                <div class="authority-item">
+                                    <span class="authority-name">Agricultural Technology Application Research Institute Zone I (ICAR)</span>
+                                    <a href="https://rtionline.gov.in/request/form_a.php?u=TVk0b3pKemxRUXRHVzY1YkY0TEdidz09" class="authority-link" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i> File RTI
+                                    </a>
+                                </div>
+                                <div class="authority-item">
+                                    <span class="authority-name">Indian Council of Agricultural Research (ICAR) Hqrs.</span>
+                                    <a href="https://rtionline.gov.in/request/form_a.php?u=TVk0b3pKemxRUXRHVzY1YkY0TEdidz09" class="authority-link" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i> File RTI
+                                    </a>
+                                </div>
+                                <!-- More items would be populated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <div class="authority-category">
+                            <div class="category-header">
+                                <h3>UT of Chandigarh</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="category-items">
+                                <div class="authority-item">
+                                    <span class="authority-name">UT Chandigarh- School Education</span>
+                                    <a href="https://rtionline.gov.in/request/form_a.php?u=TVk0b3pKemxRUXRHVzY1YkY0TEdidz09" class="authority-link" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i> File RTI
+                                    </a>
+                                </div>
+                                <div class="authority-item">
+                                    <span class="authority-name">UT Chandigarh- Higher Education</span>
+                                    <a href="https://rtionline.gov.in/request/form_a.php?u=TVk0b3pKemxRUXRHVzY1YkY0TEdidz09" class="authority-link" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i> File RTI
+                                    </a>
+                                </div>
+                                <div class="authority-item">
+                                    <span class="authority-name">UT Chandigarh- Technical Education</span>
+                                    <a href="https://rtionline.gov.in/request/form_a.php?u=TVk0b3pKemxRUXRHVzY1YkY0TEdidz09" class="authority-link" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i> File RTI
+                                    </a>
+                                </div>
+                                <!-- More items would be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <!-- Data for all 2725 authorities would be loaded via JavaScript -->
+                        <div id="load-more-container">
+                            <button id="load-more-btn" class="button">
+                                <span>Load More Authorities</span>
+                                <i class="fas fa-sync"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="authority-info-panel">
+                    <div class="info-header">
+                        <h3>RTI Public Authorities</h3>
+                        <span class="info-count">Total: 2725</span>
+                    </div>
+                    <div class="info-content">
+                        <p>The Right to Information Act empowers you to request information from various public authorities across India.</p>
+                        
+                        <div class="info-category">
+                            <h4><i class="fas fa-building"></i> What are Public Authorities?</h4>
+                            <p>Public authorities include government bodies, departments, institutions, and organizations that are substantially financed by government funds.</p>
+                        </div>
+                        
+                        <div class="info-category">
+                            <h4><i class="fas fa-file-alt"></i> Filing RTI for Education</h4>
+                            <p>As a student, you can file RTIs to inquire about examination processes, admission criteria, scholarship disbursement, infrastructure facilities, and more.</p>
+                        </div>
+                        
+                        <div class="info-tips">
+                            <h4><i class="fas fa-lightbulb"></i> Tips for Filing Effective RTIs</h4>
+                            <ul>
+                                <li>Be specific in your questions</li>
+                                <li>Address the correct public authority</li>
+                                <li>Limit to one subject matter per application</li>
+                                <li>Keep track of your application status</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="info-action">
+                            <a href="templates/index.html" class="button">
+                                <span>View RTI Templates</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="data-source">
+                <p>Data source: <a href="https://rtionline.gov.in/request/allpa.php?pageid=a87ff679a2f3e71d9181a67b7542122c" target="_blank">RTI Online Portal (Government of India)</a></p>
+            </div>
+        </div>
+    </section>
+
     <section class="stats-section">
         <div class="wave"></div>
         <div class="wave"></div>
@@ -482,24 +2848,176 @@
         </div>
     </section>
 
-    <script src="../shared/nav.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialize navigation
-            const headerContainer = document.getElementById('header-container');
-            headerContainer.innerHTML = Navigation.createHeader('Student RTI Portal');
-            new Navigation('student');
-
-            // Add smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
+            // Mobile menu toggle
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const navbarLinks = document.querySelector('.navbar-links');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', () => {
+                    navbarLinks.classList.toggle('active');
+                });
+            }
+            
+            // Change portal link
+            const changePortalLink = document.getElementById('change-portal-link');
+            if (changePortalLink) {
+                changePortalLink.addEventListener('click', () => {
+                    window.location.href = '../index.html';
+                });
+            }
+            
+            // Navigation menu toggle functionality for sidebar
+            const navParents = document.querySelectorAll('.nav-parent');
+            navParents.forEach(parent => {
+                const header = parent.querySelector('.nav-header');
+                header.addEventListener('click', () => {
+                    parent.classList.toggle('active');
+                    
+                    // Close other open menus
+                    navParents.forEach(otherParent => {
+                        if (otherParent !== parent && otherParent.classList.contains('active')) {
+                            otherParent.classList.remove('active');
+                        }
                     });
                 });
             });
+
+            // RTI Public Authorities functionality
+            setupRTIAuthorities();
         });
+
+        function setupRTIAuthorities() {
+            // Initialize authority categories
+            const categories = document.querySelectorAll('.authority-category');
+            categories.forEach(category => {
+                const header = category.querySelector('.category-header');
+                header.addEventListener('click', () => {
+                    category.classList.toggle('active');
+                });
+            });
+
+            // Initialize search functionality
+            const searchInput = document.getElementById('authority-search');
+            if (searchInput) {
+                searchInput.addEventListener('input', filterAuthorities);
+            }
+
+            // Initialize category filter
+            const categoryFilter = document.getElementById('authority-category');
+            if (categoryFilter) {
+                categoryFilter.addEventListener('change', filterAuthorities);
+            }
+
+            // Initialize load more button
+            const loadMoreBtn = document.getElementById('load-more-btn');
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', loadMoreAuthorities);
+            }
+        }
+
+        function filterAuthorities() {
+            const searchInput = document.getElementById('authority-search');
+            const categoryFilter = document.getElementById('authority-category');
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const selectedCategory = categoryFilter.value;
+
+            // Get all authority categories
+            const categories = document.querySelectorAll('.authority-category');
+            categories.forEach(category => {
+                const categoryName = category.querySelector('.category-header h3').textContent.toLowerCase();
+                let categoryVisible = false;
+
+                // Filter by category first
+                let categoryMatches = true;
+                if (selectedCategory !== 'all') {
+                    // Simple category matching logic - can be enhanced
+                    const categoryMap = {
+                        'education': ['education', 'school', 'university', 'college', 'academic'],
+                        'agriculture': ['agriculture', 'farm', 'crop', 'rural'],
+                        'health': ['health', 'medical', 'hospital', 'disease'],
+                        'ut': ['ut of', 'union territory'],
+                        'research': ['research', 'institute', 'laboratory', 'science']
+                    };
+
+                    categoryMatches = categoryMap[selectedCategory].some(keyword => 
+                        categoryName.includes(keyword)
+                    );
+                }
+
+                if (!categoryMatches) {
+                    category.style.display = 'none';
+                    return;
+                }
+
+                // Then filter by search term
+                if (searchTerm === '') {
+                    category.style.display = '';
+                    return;
+                }
+
+                // Check if category name matches
+                if (categoryName.includes(searchTerm)) {
+                    category.style.display = '';
+                    category.classList.add('active');
+                    return;
+                }
+
+                // Check if any authority item matches
+                const items = category.querySelectorAll('.authority-item');
+                items.forEach(item => {
+                    const authorityName = item.querySelector('.authority-name').textContent.toLowerCase();
+                    if (authorityName.includes(searchTerm)) {
+                        item.style.display = '';
+                        categoryVisible = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                if (categoryVisible) {
+                    category.style.display = '';
+                    category.classList.add('active');
+                } else {
+                    category.style.display = 'none';
+                }
+            });
+        }
+
+        function loadMoreAuthorities() {
+            const loadMoreBtn = document.getElementById('load-more-btn');
+            loadMoreBtn.innerHTML = '<span>Loading...</span><i class="fas fa-spinner fa-spin"></i>';
+            
+            // Simulate loading delay for demonstration
+            setTimeout(() => {
+                // This would normally be an API call to get more data
+                // For demonstration, we'll just clone existing categories
+                const authorityList = document.getElementById('authority-list');
+                const categories = document.querySelectorAll('.authority-category');
+                
+                // Clone a few categories as examples
+                for (let i = 0; i < Math.min(categories.length, 2); i++) {
+                    const clone = categories[i].cloneNode(true);
+                    
+                    // Add event listener to the cloned category header
+                    const header = clone.querySelector('.category-header');
+                    header.addEventListener('click', () => {
+                        clone.classList.toggle('active');
+                    });
+                    
+                    // Insert before the load more button container
+                    authorityList.insertBefore(clone, document.getElementById('load-more-container'));
+                }
+                
+                loadMoreBtn.innerHTML = '<span>Load More Authorities</span><i class="fas fa-sync"></i>';
+                
+                // Notify the user
+                const count = document.querySelector('.info-count');
+                const currentTotal = parseInt(count.textContent.split(':')[1].trim());
+                count.textContent = `Total: ${currentTotal + 5}`; // Increment by some number
+            }, 1000);
+        }
     </script>
 </body>
 </html> 

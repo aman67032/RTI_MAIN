@@ -1,0 +1,53 @@
+<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect x="0" y="0" width="800" height="300" fill="#FFE8D6" rx="15" ry="15" opacity="0.5"/>
+  
+  <!-- Main path -->
+  <path d="M 50 150 C 100 50, 200 200, 300 100 C 400 0, 500 200, 600 100 C 700 0, 800 100, 900 50" 
+        stroke="#CB997E" stroke-width="20" fill="none" stroke-linecap="round"/>
+  
+  <!-- Path shadow -->
+  <path d="M 50 155 C 100 55, 200 205, 300 105 C 400 5, 500 205, 600 105 C 700 5, 800 105, 900 55" 
+        stroke="#6B705C" stroke-width="20" fill="none" stroke-linecap="round" opacity="0.3"/>
+  
+  <!-- Stations along the path -->
+  <circle cx="50" cy="150" r="20" fill="#A5A58D" stroke="#6B705C" stroke-width="3"/>
+  <text x="50" y="155" text-anchor="middle" font-size="14" fill="#FFE8D6" font-weight="bold">1</text>
+  
+  <circle cx="200" cy="140" r="20" fill="#A5A58D" stroke="#6B705C" stroke-width="3"/>
+  <text x="200" y="145" text-anchor="middle" font-size="14" fill="#FFE8D6" font-weight="bold">2</text>
+  
+  <circle cx="350" cy="120" r="20" fill="#A5A58D" stroke="#6B705C" stroke-width="3"/>
+  <text x="350" y="125" text-anchor="middle" font-size="14" fill="#FFE8D6" font-weight="bold">3</text>
+  
+  <circle cx="500" cy="150" r="20" fill="#A5A58D" stroke="#6B705C" stroke-width="3"/>
+  <text x="500" y="155" text-anchor="middle" font-size="14" fill="#FFE8D6" font-weight="bold">4</text>
+  
+  <circle cx="650" cy="100" r="20" fill="#A5A58D" stroke="#6B705C" stroke-width="3"/>
+  <text x="650" y="105" text-anchor="middle" font-size="14" fill="#FFE8D6" font-weight="bold">5</text>
+  
+  <circle cx="750" cy="100" r="20" fill="#A5A58D" stroke="#6B705C" stroke-width="3"/>
+  <text x="750" y="105" text-anchor="middle" font-size="14" fill="#FFE8D6" font-weight="bold">6</text>
+  
+  <!-- Decorative elements -->
+  <path d="M 100 250 L 100 220" stroke="#6B705C" stroke-width="2" stroke-dasharray="5,5"/>
+  <circle cx="100" cy="210" r="10" fill="#DDBEA9" stroke="#6B705C" stroke-width="2"/>
+  
+  <path d="M 300 250 L 300 220" stroke="#6B705C" stroke-width="2" stroke-dasharray="5,5"/>
+  <circle cx="300" cy="210" r="10" fill="#DDBEA9" stroke="#6B705C" stroke-width="2"/>
+  
+  <path d="M 500 250 L 500 220" stroke="#6B705C" stroke-width="2" stroke-dasharray="5,5"/>
+  <circle cx="500" cy="210" r="10" fill="#DDBEA9" stroke="#6B705C" stroke-width="2"/>
+  
+  <path d="M 700 250 L 700 220" stroke="#6B705C" stroke-width="2" stroke-dasharray="5,5"/>
+  <circle cx="700" cy="210" r="10" fill="#DDBEA9" stroke="#6B705C" stroke-width="2"/>
+  
+  <!-- Milestone flags -->
+  <path d="M 50 130 L 50 100 L 80 110 L 50 120 Z" fill="#CB997E" stroke="#6B705C" stroke-width="1"/>
+  <path d="M 750 80 L 750 50 L 780 60 L 750 70 Z" fill="#CB997E" stroke="#6B705C" stroke-width="1"/>
+  
+  <!-- Text labels -->
+  <text x="400" y="260" text-anchor="middle" font-size="20" fill="#6B705C" font-weight="bold">RTI Education Journey</text>
+  <text x="50" y="190" text-anchor="middle" font-size="12" fill="#6B705C">Start</text>
+  <text x="750" y="140" text-anchor="middle" font-size="12" fill="#6B705C">Impact</text>
+</svg> 

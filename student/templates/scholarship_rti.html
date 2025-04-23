@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarship RTI Template | Student RTI Portal</title>
+    <link rel="stylesheet" href="../../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .template-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(107, 112, 92, 0.15);
+            border-radius: 8px;
+        }
+        
+        .template-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .form-control {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+        
+        .template-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .template-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .primary-btn {
+            background: var(--accent-color);
+            color: white;
+        }
+        
+        .primary-btn:hover {
+            background: var(--secondary-color);
+        }
+        
+        .secondary-btn {
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .secondary-btn:hover {
+            background: rgba(107, 112, 92, 0.1);
+        }
+        
+        .instructions {
+            background: rgba(255, 232, 214, 0.5);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .instructions h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+        
+        .success-stories {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(165, 165, 141, 0.2);
+            border-radius: 8px;
+        }
+        
+        .success-stories h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+        
+        .success-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .success-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .info-box {
+            background: rgba(221, 190, 169, 0.2);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+        
+        .checkbox-group input {
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation from shared component -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../../assets/images/logo.png" alt="RTI Education Portal">
+                    <span>Student RTI Portal</span>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../index.html">Dashboard</a></li>
+                    <li><a href="../resources.html">Resources</a></li>
+                    <li><a href="#" class="active">Templates</a></li>
+                    <li><a href="../../shared/track.html">Track Applications</a></li>
+                    <li><a href="../../shared/forms.html">Submit RTI</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Scholarship Information RTI Template</h1>
+                <p>Template for requesting information about scholarship selection, disbursement, and eligibility criteria</p>
+            </div>
+        </section>
+
+        <section class="template-section">
+            <div class="template-container">
+                <div class="instructions">
+                    <h3>When to Use This Template</h3>
+                    <ul>
+                        <li>To get details about scholarship selection process and criteria</li>
+                        <li>To understand delays in scholarship disbursement</li>
+                        <li>To request information about your scholarship application status</li>
+                        <li>To inquire about fund allocation and utilization</li>
+                        <li>To request data on number of scholarships awarded across categories</li>
+                    </ul>
+                </div>
+
+                <form class="template-form" id="rtiForm">
+                    <div class="form-group">
+                        <label for="addressee">To (Public Information Officer)</label>
+                        <input type="text" id="addressee" class="form-control" placeholder="Name and designation of the PIO">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="department">Department/Ministry/Institution</label>
+                        <input type="text" id="department" class="form-control" placeholder="Name of the department handling scholarships">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="scholarship-type">Type of Scholarship</label>
+                        <select id="scholarship-type" class="form-control">
+                            <option value="">Select scholarship type</option>
+                            <option value="merit">Merit-based</option>
+                            <option value="means">Means-based</option>
+                            <option value="minority">Minority scholarship</option>
+                            <option value="sc-st">SC/ST scholarship</option>
+                            <option value="obc">OBC scholarship</option>
+                            <option value="pwd">Disability scholarship</option>
+                            <option value="research">Research scholarship</option>
+                            <option value="foreign">Foreign education scholarship</option>
+                            <option value="sports">Sports scholarship</option>
+                            <option value="other">Other (specify in application)</option>
+                        </select>
+                        <div class="info-box">
+                            Specifying the type helps in routing your application to the correct department.
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="applicant">Applicant Details</label>
+                        <input type="text" id="applicant" class="form-control" placeholder="Your full name">
+                        <input type="text" id="applicant-id" class="form-control mt-2" placeholder="Scholarship Application ID (if available)">
+                        <input type="text" id="applicant-address" class="form-control mt-2" placeholder="Your complete postal address">
+                        <input type="tel" id="applicant-phone" class="form-control mt-2" placeholder="Contact number">
+                        <input type="email" id="applicant-email" class="form-control mt-2" placeholder="Email address">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="information">Information Requested</label>
+                        <textarea id="information" class="form-control">1. Please provide complete information regarding the selection criteria, evaluation process, and points/marking system used for the [NAME OF SCHOLARSHIP] for the academic year [YEAR].
+
+2. Please provide the following details regarding my application for the above-mentioned scholarship:
+   a) Current status of my application (ID: [YOUR APPLICATION ID])
+   b) Reasons for rejection/selection (as applicable)
+   c) My score/rank in the selection process
+   d) Cut-off marks/ranking for selection
+
+3. Please provide information regarding the total funds allocated for the above-mentioned scholarship scheme for the academic year [YEAR], including:
+   a) Total number of applications received
+   b) Number of scholarships awarded
+   c) Category-wise distribution of scholarships
+   d) Minimum and maximum amount disbursed
+
+4. Please provide information regarding the timeline for scholarship disbursal, reasons for any delays, and the expected date of release of funds.
+
+5. Please provide copies of the minutes of meetings of the scholarship selection committee for the academic year [YEAR].
+
+6. Please provide information regarding any changes in the eligibility criteria, selection process, or scholarship amount in the past 3 years.</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="application-fee">Application Fee Details</label>
+                        <input type="text" id="application-fee" class="form-control" placeholder="Mode of payment and details (e.g., IPO/DD number)">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Poverty Status Declaration (if applicable)</label>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="bpl-status">
+                            <label for="bpl-status">I declare that I am below poverty line (BPL) and exempted from payment of application fee</label>
+                        </div>
+                        <div class="info-box">
+                            If you select this option, you must attach proof of BPL status with your RTI application.
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p>Declaration:</p>
+                        <ol>
+                            <li>I am a student who has applied for the above-mentioned scholarship</li>
+                            <li>I state that the information sought does not fall within the restrictions contained in Section 8 and 9 of the RTI Act, 2005</li>
+                            <li>I have paid the application fee as prescribed under the RTI Rules (or am exempt due to BPL status)</li>
+                        </ol>
+                    </div>
+
+                    <div class="template-buttons">
+                        <button type="button" class="template-btn primary-btn" id="downloadBtn">Download as PDF</button>
+                        <button type="button" class="template-btn secondary-btn" id="printBtn">Print</button>
+                        <button type="reset" class="template-btn secondary-btn">Reset Form</button>
+                    </div>
+                </form>
+
+                <div class="success-stories">
+                    <h3>Success Stories Using This Template</h3>
+                    <div class="success-item">
+                        <h4>National Overseas Scholarship Data Transparency (2023)</h4>
+                        <p>A group of students used RTI to obtain data on the National Overseas Scholarship selection process, discovering that funds were underutilized despite many eligible applicants. This led to policy reforms in the selection process.</p>
+                    </div>
+                    <div class="success-item">
+                        <h4>Minority Scholarship Delay Resolution (2024)</h4>
+                        <p>After repeated delays in scholarship disbursement, students filed RTI applications that revealed administrative bottlenecks. This led to the implementation of a new online tracking system for all scholarship applications.</p>
+                    </div>
+                    <div class="success-item">
+                        <h4>Research Grant Allocation Transparency (2022)</h4>
+                        <p>PhD students used RTI to understand the distribution pattern of research grants, which led to more equitable allocation across disciplines and institutions after discrepancies were highlighted.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../../assets/images/logo.png" alt="RTI Education Portal">
+                    <p>Empowering students through information</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Dashboard</a></li>
+                        <li><a href="../resources.html">Resources</a></li>
+                        <li><a href="#">Templates</a></li>
+                        <li><a href="../../shared/track.html">Track Applications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p>Email: student.support@rtieducation.org</p>
+                    <p>Helpline: 1800-XXX-XXXX</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RTI Education Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../shared/nav.js"></script>
+    <script>
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            alert('PDF download functionality will be implemented here');
+            // In a real implementation, use a library like jsPDF to generate PDF
+        });
+
+        document.getElementById('printBtn').addEventListener('click', function() {
+            window.print();
+        });
+    </script>
+</body>
+</html> 

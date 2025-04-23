@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0fe0ff">
+    <title>Basic RTI Application Template</title>
+    <link rel="stylesheet" href="../../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Student Portal Futuristic Theme Variables */
+        :root {
+            --portal-primary: #0fe0ff;
+            --portal-secondary: #0066ff;
+            --portal-accent: #ff00ee;
+            --portal-dark: #040b36;
+            --portal-light: #f0f8ff;
+            --portal-gradient: linear-gradient(135deg, var(--portal-primary), var(--portal-secondary));
+            --portal-accent-gradient: linear-gradient(135deg, var(--portal-accent), var(--portal-primary));
+            --neon-shadow: 0 0 10px rgba(15, 224, 255, 0.5), 0 0 20px rgba(15, 224, 255, 0.3), 0 0 30px rgba(15, 224, 255, 0.1);
+            --futuristic-bg: linear-gradient(180deg, #040b36 0%, #0c1e51 50%, #060b31 100%);
+        }
+
+        .template-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(107, 112, 92, 0.15);
+            border-radius: 8px;
+        }
+        
+        .template-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .form-control {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+        
+        .template-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .template-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .primary-btn {
+            background: var(--accent-color);
+            color: white;
+        }
+        
+        .primary-btn:hover {
+            background: var(--secondary-color);
+        }
+        
+        .secondary-btn {
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .secondary-btn:hover {
+            background: rgba(107, 112, 92, 0.1);
+        }
+        
+        .instructions {
+            background: rgba(255, 232, 214, 0.5);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .instructions h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+        
+        .instructions ul {
+            margin-bottom: 0;
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation from shared component -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../../assets/images/logo.png" alt="RTI Education Portal">
+                    <span>Student RTI Portal</span>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../index.html">Dashboard</a></li>
+                    <li><a href="../resources.html">Resources</a></li>
+                    <li><a href="#" class="active">Templates</a></li>
+                    <li><a href="../../shared/track.html">Track Applications</a></li>
+                    <li><a href="../../shared/forms.html">Submit RTI</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Basic RTI Application Template</h1>
+                <p>Use this template to create a standard RTI application for educational information</p>
+            </div>
+        </section>
+
+        <section class="template-section">
+            <div class="template-container">
+                <div class="instructions">
+                    <h3>How to Use This Template</h3>
+                    <ul>
+                        <li>Fill in all required fields with accurate information</li>
+                        <li>Be specific and clear about the information you are seeking</li>
+                        <li>Keep your questions direct and numbered for clarity</li>
+                        <li>Download as PDF or print to submit to the relevant authority</li>
+                        <li>Make sure to keep a copy of your application for future reference</li>
+                    </ul>
+                </div>
+
+                <form class="template-form" id="rtiForm">
+                    <div class="form-group">
+                        <label for="addressee">To (Public Information Officer)</label>
+                        <input type="text" id="addressee" class="form-control" placeholder="Name and designation of the PIO">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="department">Department/Institution</label>
+                        <input type="text" id="department" class="form-control" placeholder="Name of the educational institution or department">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="applicant">Applicant Details</label>
+                        <input type="text" id="applicant" class="form-control" placeholder="Your full name">
+                        <input type="text" id="applicant-address" class="form-control mt-2" placeholder="Your complete postal address">
+                        <input type="tel" id="applicant-phone" class="form-control mt-2" placeholder="Contact number">
+                        <input type="email" id="applicant-email" class="form-control mt-2" placeholder="Email address">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject of Application</label>
+                        <input type="text" id="subject" class="form-control" placeholder="E.g., Request for information regarding admission criteria">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="information">Information Requested</label>
+                        <textarea id="information" class="form-control" placeholder="Clearly list all the specific information you are seeking. Number each point for clarity."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="period">Time Period of Information</label>
+                        <input type="text" id="period" class="form-control" placeholder="Specify the time period for which information is sought">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="application-fee">Application Fee Details</label>
+                        <input type="text" id="application-fee" class="form-control" placeholder="Mode of payment and details (e.g., IPO/DD number)">
+                    </div>
+
+                    <div class="form-group">
+                        <p>Declaration:</p>
+                        <ol>
+                            <li>I am a citizen of India</li>
+                            <li>I state that the information sought does not fall within the restrictions contained in Section 8 and 9 of the RTI Act, 2005 and to the best of my knowledge it pertains to your office</li>
+                            <li>I have paid the application fee of ₹10 as prescribed under the RTI Rules, 2012</li>
+                        </ol>
+                    </div>
+
+                    <div class="template-buttons">
+                        <button type="button" class="template-btn primary-btn" id="downloadBtn">Download as PDF</button>
+                        <button type="button" class="template-btn secondary-btn" id="printBtn">Print</button>
+                        <button type="reset" class="template-btn secondary-btn">Reset Form</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../../assets/images/logo.png" alt="RTI Education Portal">
+                    <p>Empowering students through information</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Dashboard</a></li>
+                        <li><a href="../resources.html">Resources</a></li>
+                        <li><a href="#">Templates</a></li>
+                        <li><a href="../../shared/track.html">Track Applications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p>Email: student.support@rtieducation.org</p>
+                    <p>Helpline: 1800-XXX-XXXX</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RTI Education Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../shared/nav.js"></script>
+    <script>
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            alert('PDF download functionality will be implemented here');
+            // In a real implementation, use a library like jsPDF to generate PDF
+        });
+
+        document.getElementById('printBtn').addEventListener('click', function() {
+            window.print();
+        });
+    </script>
+</body>
+</html> 

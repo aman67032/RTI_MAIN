@@ -1,0 +1,32 @@
+<svg width="200" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Guide character -->
+  <circle cx="100" cy="70" r="55" fill="#CB997E" stroke="#6B705C" stroke-width="3"/>
+  <rect x="60" y="125" width="80" height="120" fill="#DDBEA9" rx="15" ry="15" stroke="#6B705C" stroke-width="3"/>
+  <circle cx="75" cy="60" r="10" fill="#FFE8D6"/>
+  <circle cx="125" cy="60" r="10" fill="#FFE8D6"/>
+  <path d="M 75 85 Q 100 105 125 85" stroke="#6B705C" stroke-width="4" fill="transparent"/>
+  <rect x="75" y="245" width="20" height="45" fill="#DDBEA9" rx="5" ry="5" stroke="#6B705C" stroke-width="2"/>
+  <rect x="105" y="245" width="20" height="45" fill="#DDBEA9" rx="5" ry="5" stroke="#6B705C" stroke-width="2"/>
+  <rect x="45" y="135" width="25" height="70" fill="#DDBEA9" rx="8" ry="8" stroke="#6B705C" stroke-width="2"/>
+  
+  <!-- Right arm holding a document -->
+  <rect x="130" y="135" width="25" height="70" fill="#DDBEA9" rx="8" ry="8" stroke="#6B705C" stroke-width="2"/>
+  
+  <!-- Document/RTI form -->
+  <rect x="145" y="150" width="45" height="60" fill="#FFE8D6" stroke="#6B705C" stroke-width="2" rx="5" ry="5"/>
+  <line x1="155" y1="165" x2="180" y2="165" stroke="#6B705C" stroke-width="2"/>
+  <line x1="155" y1="175" x2="180" y2="175" stroke="#6B705C" stroke-width="2"/>
+  <line x1="155" y1="185" x2="180" y2="185" stroke="#6B705C" stroke-width="2"/>
+  <line x1="155" y1="195" x2="170" y2="195" stroke="#6B705C" stroke-width="2"/>
+  
+  <!-- Guide elements - compass -->
+  <circle cx="35" cy="40" r="20" fill="#FFE8D6" stroke="#6B705C" stroke-width="2"/>
+  <circle cx="35" cy="40" r="3" fill="#CB997E"/>
+  <path d="M 35 40 L 35 25" stroke="#CB997E" stroke-width="2"/>
+  <path d="M 35 40 L 45 50" stroke="#6B705C" stroke-width="2"/>
+  
+  <!-- Map/Plan in background -->
+  <path d="M 0 290 C 50 260, 150 260, 200 290" stroke="#A5A58D" stroke-width="3" fill="transparent" stroke-dasharray="5,5"/>
+  <path d="M 30 280 L 30 260 L 50 260" stroke="#A5A58D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 170 260 L 170 280 L 150 280" stroke="#A5A58D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> 

@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Directory - Parent RTI Portal</title>
+    <link rel="icon" href="../assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="../assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png?v=2">
+    <link rel="manifest" href="../manifest.json?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../shared/styles.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="parent-theme">
+    <div id="header-container"></div>
+
+    <section class="hero-section">
+        <div class="hero-pattern"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">School Directory</h1>
+            <p class="hero-description">Access comprehensive information about schools across India to make informed decisions</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="intro-card">
+            <h2 class="intro-title">Why Use the School Directory?</h2>
+            <div class="intro-content">
+                <p>Our comprehensive school directory provides parents with detailed, verified information about schools across India. Whether you're researching schools for admission, comparing facilities, or gathering information for an RTI application, this directory serves as your one-stop resource for educational institution data.</p>
+                
+                <div class="key-points">
+                    <h3>Key Benefits of Our School Directory:</h3>
+                    <ul class="points-list">
+                        <li><i class="fas fa-check-circle"></i> Access official recognition status and affiliation details</li>
+                        <li><i class="fas fa-check-circle"></i> Verify compliance with RTE and safety regulations</li>
+                        <li><i class="fas fa-check-circle"></i> Find correct authorities for filing RTI applications</li>
+                        <li><i class="fas fa-check-circle"></i> Compare infrastructure and academic performance metrics</li>
+                        <li><i class="fas fa-check-circle"></i> Identify schools participating in government schemes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">Search for Schools</h2>
+        <div class="search-container">
+            <form id="schoolSearchForm">
+                <div class="search-row">
+                    <div class="search-input-group">
+                        <label for="searchKeyword">School Name or UDISE Code</label>
+                        <input type="text" id="searchKeyword" class="form-control" placeholder="Enter school name or UDISE code">
+                    </div>
+                    <div class="search-input-group">
+                        <label for="searchLocation">Location</label>
+                        <input type="text" id="searchLocation" class="form-control" placeholder="City, district or pincode">
+                    </div>
+                </div>
+                
+                <div class="search-row">
+                    <div class="search-input-group">
+                        <label for="searchState">State</label>
+                        <select id="searchState" class="form-control">
+                            <option value="">All States</option>
+                            <option value="delhi">Delhi</option>
+                            <option value="maharashtra">Maharashtra</option>
+                            <option value="karnataka">Karnataka</option>
+                            <option value="tamilnadu">Tamil Nadu</option>
+                            <option value="gujarat">Gujarat</option>
+                            <option value="up">Uttar Pradesh</option>
+                            <option value="telangana">Telangana</option>
+                            <option value="wb">West Bengal</option>
+                        </select>
+                    </div>
+                    <div class="search-input-group">
+                        <label for="searchBoard">Board</label>
+                        <select id="searchBoard" class="form-control">
+                            <option value="">All Boards</option>
+                            <option value="cbse">CBSE</option>
+                            <option value="icse">ICSE</option>
+                            <option value="state">State Board</option>
+                            <option value="igcse">IGCSE</option>
+                            <option value="ib">IB</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="search-row">
+                    <div class="search-input-group">
+                        <label for="searchType">School Type</label>
+                        <select id="searchType" class="form-control">
+                            <option value="">All Types</option>
+                            <option value="government">Government</option>
+                            <option value="private">Private</option>
+                            <option value="aided">Government-Aided</option>
+                            <option value="kendriya">Kendriya Vidyalaya</option>
+                            <option value="navodaya">Jawahar Navodaya Vidyalaya</option>
+                        </select>
+                    </div>
+                    <div class="search-input-group">
+                        <label for="searchLevel">Education Level</label>
+                        <select id="searchLevel" class="form-control">
+                            <option value="">All Levels</option>
+                            <option value="primary">Primary (Class 1-5)</option>
+                            <option value="middle">Middle (Class 6-8)</option>
+                            <option value="secondary">Secondary (Class 9-10)</option>
+                            <option value="senior">Senior Secondary (Class 11-12)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="search-row center-content">
+                    <button type="button" id="searchSchools" class="action-button">Search Schools <i class="fas fa-search"></i></button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <h2 class="section-title">Featured Schools</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <i class="fas fa-school info-icon"></i>
+                <h3 class="info-title">Delhi Public School, R.K. Puram</h3>
+                <ul class="info-list">
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>UDISE Code:</strong> 07240109902
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Board:</strong> CBSE (Affiliation: 2730001)
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Type:</strong> Private Unaided
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Classes:</strong> Nursery to XII
+                    </li>
+                </ul>
+                <a href="#" class="info-button">View Complete Profile</a>
+            </div>
+
+            <div class="info-card">
+                <i class="fas fa-school info-icon"></i>
+                <h3 class="info-title">Kendriya Vidyalaya, IIT Bombay</h3>
+                <ul class="info-list">
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>UDISE Code:</strong> 27250106904
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Board:</strong> CBSE (Affiliation: 1100008)
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Type:</strong> Government
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Classes:</strong> I to XII
+                    </li>
+                </ul>
+                <a href="#" class="info-button">View Complete Profile</a>
+            </div>
+
+            <div class="info-card">
+                <i class="fas fa-school info-icon"></i>
+                <h3 class="info-title">Chennai Girls Higher Secondary School</h3>
+                <ul class="info-list">
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>UDISE Code:</strong> 33070609903
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Board:</strong> State Board (Tamil Nadu)
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Type:</strong> Government
+                    </li>
+                    <li class="info-item">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Classes:</strong> VI to XII
+                    </li>
+                </ul>
+                <a href="#" class="info-button">View Complete Profile</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">School Information Categories</h2>
+        <div class="issues-grid">
+            <div class="issue-card">
+                <i class="fas fa-id-card"></i>
+                <h3>Basic Information</h3>
+                <p>Contact details, year of establishment, management type, and official recognition status</p>
+            </div>
+
+            <div class="issue-card">
+                <i class="fas fa-building"></i>
+                <h3>Infrastructure</h3>
+                <p>Classrooms, laboratories, playground area, library, computer facilities, and safety features</p>
+            </div>
+
+            <div class="issue-card">
+                <i class="fas fa-user-graduate"></i>
+                <h3>Academic Performance</h3>
+                <p>Board examination results, student-teacher ratio, and teaching staff qualifications</p>
+            </div>
+
+            <div class="issue-card">
+                <i class="fas fa-coins"></i>
+                <h3>Fee Structure</h3>
+                <p>Fee components, historical fee trends, and compliance with state fee regulations</p>
+            </div>
+
+            <div class="issue-card">
+                <i class="fas fa-child"></i>
+                <h3>RTE Compliance</h3>
+                <p>EWS quota implementation, admission transparency, and non-discrimination practices</p>
+            </div>
+
+            <div class="issue-card">
+                <i class="fas fa-file-alt"></i>
+                <h3>RTI Filing Details</h3>
+                <p>PIO contact information, RTI application procedures, and past RTI compliance record</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">School Profile Example</h2>
+        <div class="school-profile">
+            <div class="profile-header">
+                <h3 class="profile-title">Greenwood International School, Bangalore</h3>
+                <div class="profile-meta">
+                    <span class="profile-label">UDISE: 29341207809</span>
+                    <span class="profile-label">CBSE Affiliation: 830192</span>
+                    <span class="profile-label">Private Unaided</span>
+                </div>
+            </div>
+            
+            <div class="profile-contact">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>12, Green Avenue, Whitefield, Bangalore - 560066, Karnataka</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>080-28456789</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@greenwoodinternational.edu.in</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-globe"></i>
+                    <span>www.greenwoodinternational.edu.in</span>
+                </div>
+            </div>
+            
+            <div class="profile-tabs">
+                <ul class="tabs-nav">
+                    <li class="tab-active">Overview</li>
+                    <li>Infrastructure</li>
+                    <li>Academics</li>
+                    <li>Fee Structure</li>
+                    <li>RTI Information</li>
+                </ul>
+                
+                <div class="tab-content">
+                    <div class="overview-section">
+                        <div class="overview-row">
+                            <div class="overview-col">
+                                <h4>Establishment Details</h4>
+                                <table class="overview-table">
+                                    <tr>
+                                        <th>Year Established</th>
+                                        <td>2005</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Recognition Year</th>
+                                        <td>2007</td>
+                                    </tr>
+                                    <tr>
+                                        <th>School Type</th>
+                                        <td>Co-educational</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Medium of Instruction</th>
+                                        <td>English</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Classes Offered</th>
+                                        <td>Nursery to XII</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            
+                            <div class="overview-col">
+                                <h4>School Statistics</h4>
+                                <table class="overview-table">
+                                    <tr>
+                                        <th>Total Students</th>
+                                        <td>1,845</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total Teaching Staff</th>
+                                        <td>108</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Student-Teacher Ratio</th>
+                                        <td>17:1</td>
+                                    </tr>
+                                    <tr>
+                                        <th>RTE Quota Filled</th>
+                                        <td>23/25% (92% compliance)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Board Results Pass %</th>
+                                        <td>98.5% (Class X), 97.2% (Class XII)</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="overview-row">
+                            <div class="overview-full">
+                                <h4>Compliance Status</h4>
+                                <div class="compliance-grid">
+                                    <div class="compliance-item compliant">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Fire Safety</span>
+                                    </div>
+                                    <div class="compliance-item compliant">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Building Safety</span>
+                                    </div>
+                                    <div class="compliance-item compliant">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Water & Sanitation</span>
+                                    </div>
+                                    <div class="compliance-item non-compliant">
+                                        <i class="fas fa-times-circle"></i>
+                                        <span>Playground Area</span>
+                                    </div>
+                                    <div class="compliance-item compliant">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>POCSO Committee</span>
+                                    </div>
+                                    <div class="compliance-item compliant">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Fee Regulation</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">School Comparison Tool</h2>
+        <div class="comparison-tool">
+            <div class="comparison-instructions">
+                <p>Select up to three schools to compare their features, facilities, academic performance, and compliance status.</p>
+                <div class="comparison-search">
+                    <input type="text" placeholder="Type school name to add to comparison" class="form-control">
+                    <button class="tool-button"><i class="fas fa-plus"></i> Add School</button>
+                </div>
+            </div>
+            
+            <div class="comparison-selected">
+                <div class="comparison-school">
+                    <div class="comparison-school-header">
+                        <h4>Delhi Public School, Sector 45, Gurgaon</h4>
+                        <button class="remove-button"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="comparison-school-image">
+                        <img src="../assets/images/school-placeholder.jpg" alt="School Image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2YxZjFmMSIvPjxwYXRoIGQ9Ik04MCw1MEgxMjBWMTUwSDgwVjUwWiBNNTAsMTIwSDE1MFYxNTBINTBWMTIwWiBNNDAsNDBIMTYwVjE2MEg0MFY0MFoiIGZpbGw9IiNkZGQiLz48L3N2Zz4='" />
+                    </div>
+                </div>
+                
+                <div class="comparison-school">
+                    <div class="comparison-school-header">
+                        <h4>The Shri Ram School, Aravali, Gurgaon</h4>
+                        <button class="remove-button"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="comparison-school-image">
+                        <img src="../assets/images/school-placeholder.jpg" alt="School Image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2YxZjFmMSIvPjxwYXRoIGQ9Ik04MCw1MEgxMjBWMTUwSDgwVjUwWiBNNTAsMTIwSDE1MFYxNTBINTBWMTIwWiBNNDAsNDBIMTYwVjE2MEg0MFY0MFoiIGZpbGw9IiNkZGQiLz48L3N2Zz4='" />
+                    </div>
+                </div>
+                
+                <div class="comparison-school comparison-empty">
+                    <div class="comparison-school-placeholder">
+                        <i class="fas fa-plus-circle"></i>
+                        <p>Add another school</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="comparison-actions">
+                <button class="action-button">Compare Schools <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">Sample RTI Questions for School Information</h2>
+        <div class="resources-grid">
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-id-card-alt"></i>
+                </div>
+                <h3>Recognition Status RTI</h3>
+                <p>"Please provide copies of all recognition certificates, renewal applications and approvals for [SCHOOL NAME] from [YEAR] to present, including any conditions or deficiencies noted during inspections."</p>
+                <div class="resource-actions">
+                    <a href="#" class="resource-button"><i class="fas fa-file-download"></i> Download Template</a>
+                </div>
+            </div>
+            
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Staff Information RTI</h3>
+                <p>"Please provide information regarding the total number of teaching staff in [SCHOOL NAME], their qualifications, appointment dates, salary scales, and compliance with minimum qualification norms."</p>
+                <div class="resource-actions">
+                    <a href="#" class="resource-button"><i class="fas fa-file-download"></i> Download Template</a>
+                </div>
+            </div>
+            
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-child"></i>
+                </div>
+                <h3>RTE Implementation RTI</h3>
+                <p>"Please provide details of EWS/DG quota implementation in [SCHOOL NAME] for the past three academic years, including total seats, applications received, admissions granted, and reasons for rejections."</p>
+                <div class="resource-actions">
+                    <a href="#" class="resource-button"><i class="fas fa-file-download"></i> Download Template</a>
+                </div>
+            </div>
+            
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Safety Compliance RTI</h3>
+                <p>"Please provide copies of all safety certificates (fire, building, electrical, water) for [SCHOOL NAME], along with details of safety committee constitution and meeting minutes for the past year."</p>
+                <div class="resource-actions">
+                    <a href="#" class="resource-button"><i class="fas fa-file-download"></i> Download Template</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">School Directory Success Stories</h2>
+        
+        <div class="testimonials-container">
+            <div class="testimonial-card">
+                <div class="testimonial-photo">
+                    <img src="../assets/images/parent3.jpg" alt="Parent Testimonial" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48Y2lyY2xlIGN4PSIxMDAiIGN5PSI4MCIgcj0iNTAiIGZpbGw9IiM0Mjg1RjQiIC8+PHBhdGggZD0iTTE2MCwxNzUgQzE2MCwxMzYuMzQwNDkgMTMxLjcyNzY2LDEwNSA5Ni4xMTc2NDcxLDEwNSBDNjAuNTA3NjM1MywxMDUgMzAsMTM2LjM0MDQ5IDMwLDE3NSIgZmlsbD0iIzIwNTQ5MyIgLz48L3N2Zz4='" />
+                </div>
+                <div class="testimonial-content">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="testimonial-text">Using the school directory, I discovered that the international school charging high fees in our area didn't have proper CBSE affiliation. After filing an RTI using the contact details from the directory, the school was forced to obtain proper recognition or face closure. This prevented many parents from investing in an unrecognized institution.</p>
+                    <div class="testimonial-author">
+                        <h4>Arun Sharma</h4>
+                        <p>Parent, Hyderabad</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-photo">
+                    <img src="../assets/images/parent4.jpg" alt="Parent Testimonial" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48Y2lyY2xlIGN4PSIxMDAiIGN5PSI4MCIgcj0iNTAiIGZpbGw9IiM0Mjg1RjQiIC8+PHBhdGggZD0iTTE2MCwxNzUgQzE2MCwxMzYuMzQwNDkgMTMxLjcyNzY2LDEwNSA5Ni4xMTc2NDcxLDEwNSBDNjAuNTA3NjM1MywxMDUgMzAsMTM2LjM0MDQ5IDMwLDE3NSIgZmlsbD0iIzIwNTQ5MyIgLz48L3N2Zz4='" />
+                </div>
+                <div class="testimonial-content">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="testimonial-text">The comparison tool helped us evaluate three schools in our area based on infrastructure, academic performance, and RTE compliance. We found that the most expensive school had significantly lower compliance metrics than a more affordable option. This data-driven approach saved us money while ensuring quality education for our child.</p>
+                    <div class="testimonial-author">
+                        <h4>Meera & Sanjay Patel</h4>
+                        <p>Parents, Ahmedabad</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="help-section">
+        <div class="container">
+            <div class="help-content">
+                <h2 class="section-title">Need Help Finding School Information?</h2>
+                <p>Our education experts can help you navigate school data and file targeted RTI applications to verify school credentials</p>
+                <a href="forms.html" class="help-button">Get Research Assistance <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Supporting parents in their journey to ensure quality education through transparency and accountability.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="guide.html">RTI Guide</a></li>
+                    <li><a href="forms.html">RTI Forms</a></li>
+                    <li><a href="track.html">Track Status</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> parents@righttoinformation.org</p>
+                <p><i class="fas fa-phone"></i> +91 123 456 7890</p>
+                <p><i class="fas fa-map-marker-alt"></i> New Delhi, India</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Right to Information in India. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../shared/nav.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const headerContainer = document.getElementById('header-container');
+            headerContainer.innerHTML = Navigation.createHeader('Parent RTI Portal');
+            new Navigation('parent');
+        });
+    </script>
+</body>
+</html> 

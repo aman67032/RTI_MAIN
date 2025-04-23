@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0fe0ff">
+    <title>Track RTI Status - Student RTI Portal</title>
+    <link rel="icon" href="../assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="../assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png?v=2">
+    <link rel="manifest" href="../manifest.json?v=2">
+    <link rel="stylesheet" href="../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Student Portal Futuristic Styles */
+        :root {
+            --portal-primary: #0fe0ff;
+            --portal-secondary: #0066ff;
+            --portal-accent: #ff00ee;
+            --portal-dark: #040b36;
+            --portal-light: #f0f8ff;
+            --portal-gradient: linear-gradient(135deg, var(--portal-primary), var(--portal-secondary));
+            --portal-accent-gradient: linear-gradient(135deg, var(--portal-accent), var(--portal-primary));
+            --neon-shadow: 0 0 10px rgba(15, 224, 255, 0.5), 0 0 20px rgba(15, 224, 255, 0.3), 0 0 30px rgba(15, 224, 255, 0.1);
+            --futuristic-bg: linear-gradient(180deg, #040b36 0%, #0c1e51 50%, #060b31 100%);
+        }
+
+        body {
+            background: var(--futuristic-bg);
+            color: var(--portal-light);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 60px; /* Add space for fixed header */
+        }
+        
+        /* One-line Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(4, 11, 36, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(15, 224, 255, 0.2);
+            z-index: 1000;
+            padding: 0;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .navbar-logo {
+            color: var(--portal-primary);
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(15, 224, 255, 0.5);
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .navbar-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--portal-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-links li a:hover,
+        .navbar-links li a.active {
+            color: var(--portal-primary);
+        }
+
+        .navbar-links li a:hover::after,
+        .navbar-links li a.active::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--portal-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main content styles */
+        .track-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(to right, var(--portal-primary), var(--portal-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--portal-gradient);
+            border-radius: 3px;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 2rem auto 4rem;
+        }
+
+        .track-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .track-form-container {
+            background: rgba(4, 11, 54, 0.7);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(15, 224, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .track-form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(15, 224, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 0, 238, 0.08) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .track-form h3 {
+            color: var(--portal-primary);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .track-form h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--portal-accent-gradient);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(15, 224, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--portal-primary);
+            box-shadow: 0 0 15px rgba(15, 224, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(15, 224, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230fe0ff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 20px;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: var(--portal-primary);
+            box-shadow: 0 0 15px rgba(15, 224, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .form-button {
+            background: var(--portal-gradient);
+            border: none;
+            padding: 1rem 2rem;
+            color: white;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 5px 15px rgba(15, 224, 255, 0.3);
+            margin-top: 1rem;
+        }
+
+        .form-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
+            z-index: -1;
+        }
+
+        .form-button:hover::before {
+            transform: translateX(100%);
+        }
+
+        .form-button:hover {
+            background: linear-gradient(135deg, var(--portal-accent), var(--portal-primary));
+            box-shadow: 0 10px 25px rgba(15, 224, 255, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .track-form-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--portal-primary);
+            opacity: 0.4;
+        }
+
+        .track-info {
+            background: rgba(4, 11, 54, 0.7);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(15, 224, 255, 0.2);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .track-info h3 {
+            color: var(--portal-primary);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .track-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--portal-accent-gradient);
+        }
+
+        .timeline {
+            margin-top: 2rem;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--portal-primary), var(--portal-accent));
+        }
+
+        .timeline-item {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--portal-primary);
+            border: 2px solid rgba(15, 224, 255, 0.3);
+            box-shadow: 0 0 10px var(--portal-primary);
+        }
+
+        .timeline-item h4 {
+            color: white;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .timeline-item p {
+            color: #a0b4d0;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-date {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(15, 224, 255, 0.1);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: var(--portal-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .tracking-details {
+            display: none;
+            margin-top: 3rem;
+            background: rgba(15, 224, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(15, 224, 255, 0.2);
+        }
+
+        .tracking-details.active {
+            display: block;
+            animation: fade-in 0.5s ease-in-out;
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .detail-heading {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(15, 224, 255, 0.2);
+        }
+
+        .detail-reference {
+            padding: 0.5rem 1rem;
+            background: rgba(15, 224, 255, 0.2);
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--portal-primary);
+            font-size: 0.9rem;
+        }
+
+        .detail-status {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .status-pending {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+        }
+
+        .status-processing {
+            background: rgba(56, 128, 255, 0.2);
+            color: #3880ff;
+        }
+
+        .status-completed {
+            background: rgba(45, 211, 111, 0.2);
+            color: #2dd36f;
+        }
+
+        .detail-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .detail-item {
+            padding-bottom: 1rem;
+        }
+
+        .detail-label {
+            font-size: 0.85rem;
+            color: #a0b4d0;
+            margin-bottom: 0.3rem;
+            display: block;
+        }
+
+        .detail-value {
+            font-size: 1rem;
+            color: white;
+        }
+
+        .detail-progress {
+            margin-top: 2rem;
+        }
+
+        .progress-track {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 40px;
+            margin-bottom: 2rem;
+        }
+
+        .progress-track::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(15, 224, 255, 0.2);
+            z-index: 1;
+        }
+
+        .progress-step {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 100px;
+        }
+
+        .step-point {
+            width: 30px;
+            height: 30px;
+            background: var(--futuristic-bg);
+            border: 2px solid rgba(15, 224, 255, 0.3);
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            position: relative;
+        }
+
+        .step-point::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background: var(--portal-primary);
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        .progress-step.active .step-point {
+            border-color: var(--portal-primary);
+        }
+
+        .progress-step.active .step-point::before {
+            opacity: 1;
+            box-shadow: 0 0 10px var(--portal-primary);
+        }
+
+        .progress-step.completed .step-point {
+            background: var(--portal-primary);
+            border-color: var(--portal-primary);
+        }
+
+        .progress-step.completed .step-point::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: white;
+            font-size: 12px;
+            width: auto;
+            height: auto;
+            background: transparent;
+            opacity: 1;
+        }
+
+        .step-label {
+            font-size: 0.8rem;
+            color: #a0b4d0;
+        }
+
+        .progress-step.active .step-label {
+            color: var(--portal-primary);
+            font-weight: 600;
+        }
+
+        .progress-step.completed .step-label {
+            color: white;
+        }
+
+        .track-notes {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(4, 11, 36, 0.5);
+            border-radius: 10px;
+            border-left: 3px solid var(--portal-primary);
+        }
+
+        .track-notes p {
+            color: #a0b4d0;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .track-notes p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Media queries */
+        @media (max-width: 992px) {
+            .track-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-container {
+                padding: 0.8rem 1rem;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .navbar-links {
+                position: fixed;
+                top: 60px;
+                right: -100%;
+                flex-direction: column;
+                background: rgba(4, 11, 36, 0.95);
+                backdrop-filter: blur(10px);
+                width: 250px;
+                height: 100vh;
+                padding: 2rem;
+                gap: 1.5rem;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
+                z-index: 1000;
+            }
+            
+            .navbar-links.active {
+                right: 0;
+            }
+            
+            .track-section {
+                padding: 2rem 1rem;
+            }
+            
+            .detail-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .progress-track {
+                overflow-x: auto;
+                padding-bottom: 1rem;
+                justify-content: flex-start;
+                gap: 2rem;
+            }
+            
+            .progress-track::before {
+                right: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="student-theme">
+    <!-- One-line navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">Student RTI Portal</a>
+            <button class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="navbar-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="guide.html">RTI Guide</a></li>
+                <li><a href="forms.html">Forms</a></li>
+                <li><a href="track.html" class="active">Track Status</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="#" id="change-portal-link">Change Portal</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="track-section">
+        <h1 class="section-title">Track RTI Status</h1>
+        
+        <div class="section-intro">
+            <p>Monitor the progress of your RTI application through every stage of the process. Enter your RTI reference number to get real-time updates.</p>
+        </div>
+        
+        <div class="track-container">
+            <div class="track-form-container">
+                <i class="fas fa-search track-form-icon"></i>
+                <div class="track-form">
+                    <h3>Enter RTI Details</h3>
+                    
+                    <div class="form-group">
+                        <label for="rti-reference">RTI Reference Number</label>
+                        <input type="text" id="rti-reference" class="form-input" placeholder="e.g., RTI/2023/EDU/12345">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="authority-type">Public Authority Type</label>
+                        <select id="authority-type" class="form-select">
+                            <option value="">Select Authority Type</option>
+                            <option value="school">School</option>
+                            <option value="college">College/University</option>
+                            <option value="board">Educational Board (CBSE/ICSE/State)</option>
+                            <option value="ministry">Ministry of Education</option>
+                            <option value="ugc">UGC/AICTE</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <button type="button" id="track-btn" class="form-button">Track Status</button>
+                </div>
+            </div>
+            
+            <div class="track-info">
+                <h3>RTI Processing Timeline</h3>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-date">Day 1</span>
+                        <h4>RTI Application Filed</h4>
+                        <p>Application is received by the Public Information Officer (PIO) of the concerned authority.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <span class="timeline-date">Day 5</span>
+                        <h4>RTI Application Logged</h4>
+                        <p>The application is registered in the system and assigned a unique reference number.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <span class="timeline-date">Day 10-15</span>
+                        <h4>Initial Assessment</h4>
+                        <p>PIO examines the application and determines if the information requested falls under their jurisdiction.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <span class="timeline-date">Day 15-25</span>
+                        <h4>Information Collection</h4>
+                        <p>Relevant information is collected from various departments or sources within the public authority.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <span class="timeline-date">By Day 30</span>
+                        <h4>Response Preparation</h4>
+                        <p>Final response is prepared, approved, and dispatched to the applicant.</p>
+                    </div>
+                </div>
+                
+                <div id="tracking-details" class="tracking-details">
+                    <div class="detail-heading">
+                        <span class="detail-reference">RTI/2023/EDU/45678</span>
+                        <span class="detail-status status-processing">Processing</span>
+                    </div>
+                    
+                    <div class="detail-info">
+                        <div class="detail-item">
+                            <span class="detail-label">Filed Date</span>
+                            <span class="detail-value">15 Oct 2023</span>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <span class="detail-label">Authority</span>
+                            <span class="detail-value">Central Board of Secondary Education</span>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <span class="detail-label">Subject</span>
+                            <span class="detail-value">Answer Sheet Re-evaluation</span>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <span class="detail-label">Expected Response By</span>
+                            <span class="detail-value">14 Nov 2023</span>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-progress">
+                        <h4>Current Progress</h4>
+                        
+                        <div class="progress-track">
+                            <div class="progress-step completed">
+                                <div class="step-point"></div>
+                                <div class="step-label">Filed</div>
+                            </div>
+                            
+                            <div class="progress-step completed">
+                                <div class="step-point"></div>
+                                <div class="step-label">Registered</div>
+                            </div>
+                            
+                            <div class="progress-step active">
+                                <div class="step-point"></div>
+                                <div class="step-label">Processing</div>
+                            </div>
+                            
+                            <div class="progress-step">
+                                <div class="step-point"></div>
+                                <div class="step-label">Review</div>
+                            </div>
+                            
+                            <div class="progress-step">
+                                <div class="step-point"></div>
+                                <div class="step-label">Response</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="track-notes">
+                        <p><strong>Latest Update (30 Oct 2023):</strong> Your application has been forwarded to the Examination Department for retrieving the requested information. The department is currently compiling the data.</p>
+                        <p>You will receive a notification once the next step is completed. If no response is received by the expected date, you can file a first appeal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile menu toggle
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const navbarLinks = document.querySelector('.navbar-links');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', () => {
+                    navbarLinks.classList.toggle('active');
+                });
+            }
+            
+            // Change portal link
+            const changePortalLink = document.getElementById('change-portal-link');
+            if (changePortalLink) {
+                changePortalLink.addEventListener('click', () => {
+                    window.location.href = '../index.html';
+                });
+            }
+            
+            // Track button functionality
+            const trackBtn = document.getElementById('track-btn');
+            const trackingDetails = document.getElementById('tracking-details');
+            
+            if (trackBtn) {
+                trackBtn.addEventListener('click', () => {
+                    const rtiReference = document.getElementById('rti-reference').value;
+                    const authorityType = document.getElementById('authority-type').value;
+                    
+                    // Simple validation
+                    if (!rtiReference || !authorityType) {
+                        alert('Please enter RTI reference number and select authority type.');
+                        return;
+                    }
+                    
+                    // Show tracking details (in a real app, this would fetch data from API)
+                    trackingDetails.classList.add('active');
+                    
+                    // Update displayed reference number
+                    const detailReference = document.querySelector('.detail-reference');
+                    if (detailReference) {
+                        detailReference.textContent = rtiReference;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -10,498 +10,298 @@
     <link rel="manifest" href="../manifest.json?v=2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../shared/styles.css">
-    <style>
-        :root {
-            --portal-primary: var(--parent-primary);
-            --portal-secondary: var(--parent-secondary);
-            --portal-gradient: var(--parent-gradient);
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 1rem 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .back-button {
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 500;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            transition: background-color 0.3s;
-        }
-
-        nav a:hover {
-            background-color: rgba(255,255,255,0.2);
-        }
-
-        .hero-section {
-            background: linear-gradient(135deg, #4a1500, #ff6b00);
-            color: white;
-            padding: 6rem 2rem;
-            position: relative;
-            overflow: hidden;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .floating-circles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            top: 0;
-            left: 0;
-        }
-
-        .circle {
-            position: absolute;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-            border-radius: 50%;
-            animation: float 15s infinite;
-        }
-
-        .circle:nth-child(1) {
-            width: 300px;
-            height: 300px;
-            top: -150px;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .circle:nth-child(2) {
-            width: 500px;
-            height: 500px;
-            top: 40%;
-            right: -200px;
-            animation-delay: -5s;
-        }
-
-        .circle:nth-child(3) {
-            width: 400px;
-            height: 400px;
-            bottom: -200px;
-            left: 30%;
-            animation-delay: -10s;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-30px) rotate(10deg);
-            }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            margin-bottom: 1.5rem;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero-description {
-            font-size: 1.2rem;
-            margin-bottom: 3rem;
-            color: rgba(255,255,255,0.9);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .feature-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2.5rem;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all 0.4s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255,255,255,0.15);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            color: white;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0 20px rgba(255,107,0,0.5);
-        }
-
-        .feature-title {
-            font-size: 1.4rem;
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .feature-description {
-            color: rgba(255,255,255,0.8);
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            padding: 1rem 2rem;
-            background: white;
-            color: var(--portal-primary);
-            border-radius: 30px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .cta-button:hover {
-            background: transparent;
-            color: white;
-            border-color: white;
-            transform: translateY(-3px);
-        }
-
-        .cta-button i {
-            margin-left: 0.5rem;
-        }
-
-        .info-section {
-            background: #fff;
-            padding: 6rem 2rem;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .info-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
-            border: 1px solid rgba(255,107,0,0.1);
-        }
-
-        .info-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(255,107,0,0.15);
-        }
-
-        .info-icon {
-            font-size: 2.5rem;
-            color: var(--portal-primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .info-title {
-            font-size: 1.8rem;
-            color: #333;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-        }
-
-        .info-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-            color: #666;
-            transition: all 0.3s ease;
-        }
-
-        .info-item:hover {
-            color: var(--portal-primary);
-            transform: translateX(10px);
-        }
-
-        .info-item i {
-            color: var(--portal-primary);
-            margin-right: 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero-section {
-                padding: 4rem 1rem;
-                min-height: auto;
-            }
-
-            .info-section {
-                padding: 4rem 1rem;
-            }
-
-            .feature-card,
-            .info-card {
-                padding: 2rem;
-            }
-        }
-
-        .section-title {
-            text-align: center;
-            color: var(--secondary-color);
-            margin-bottom: 2rem;
-            font-size: 2rem;
-        }
-
-        .issues-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .issue-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(255, 152, 0, 0.1);
-        }
-
-        .issue-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-        }
-
-        .issue-card i {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .issue-card h3 {
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .action-button {
-            display: inline-block;
-            background: var(--primary-color);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            text-decoration: none;
-            margin-top: 1rem;
-            transition: background-color 0.3s, transform 0.3s;
-            font-weight: 500;
-        }
-
-        .action-button:hover {
-            background: var(--secondary-color);
-            transform: scale(1.05);
-        }
-
-        .tools-section {
-            background: white;
-            padding: 4rem 0;
-            border-top: 2px solid rgba(255, 152, 0, 0.1);
-            border-bottom: 2px solid rgba(255, 152, 0, 0.1);
-        }
-
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .tool-card {
-            text-align: center;
-            padding: 2rem;
-            border-radius: 15px;
-            background: var(--bg-color);
-            transition: transform 0.3s;
-            border: 1px solid rgba(255, 152, 0, 0.1);
-        }
-
-        .tool-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .tool-card i {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        footer {
-            background: var(--secondary-color);
-            color: white;
-            padding: 3rem 2rem;
-            margin-top: 4rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer-section h3 {
-            color: white;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: transform 0.3s;
-        }
-
-        .social-links a:hover {
-            transform: scale(1.2);
-        }
-
-        .copyright {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .help-section {
-            background: white;
-            padding: 3rem 0;
-            margin-top: 3rem;
-        }
-
-        .help-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .help-button {
-            display: inline-block;
-            background: var(--primary-color);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            margin-top: 1.5rem;
-            font-size: 1.2rem;
-            transition: transform 0.3s, background-color 0.3s;
-        }
-
-        .help-button:hover {
-            background: var(--secondary-color);
-            transform: scale(1.05);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="parent-theme">
     <div id="header-container"></div>
 
+    <div class="animated-banner">
+        <div class="banner-shape shape1"></div>
+        <div class="banner-shape shape2"></div>
+        <div class="banner-shape shape3"></div>
+        <div class="banner-shape shape4"></div>
+        <div class="banner-shape shape5"></div>
+    </div>
+
     <section class="hero-section">
-        <div class="floating-circles">
-            <div class="circle"></div>
-            <div class="circle"></div>
-            <div class="circle"></div>
+        <div class="hero-pattern"></div>
+        <div class="parent-characters">
+            <div class="parent-mother">
+                <img src="animated-parents-affection-child-happiness-looped-flat-2d-characters-4k-footage-color-isolated-animation-on-white-background-with-alpha-channel-transparency-for-website-social-media-video.jpg" alt="Mother" />
+            </div>
+            <div class="parent-father">
+                <img src="family-happy-moments-flat-color-childcare-parenthood-baby-learning-walk-young-mother-father-child-2d-cartoon-characters-with-living-room-interior-background_151150-3128.avif" alt="Father" />
+            </div>
         </div>
         <div class="hero-content">
-            <h1 class="hero-title">Parent RTI Portal</h1>
-            <p class="hero-description">Stay informed about your child's education and school matters</p>
+            <div class="hindi-banner">
+                <p>शिक्षा की पारदर्शिता हर अभिभावक का अधिकार है - अपने बच्चे के भविष्य के लिए, अब जागरूक बनें!</p>
+            </div>
+            <div class="welcome-banner">
+                <p class="welcome-message">Welcome to India's largest RTI community for parents</p>
+                <p class="welcome-tagline">Empowering over 1 million parents to ensure quality education for their children</p>
+            </div>
+            <h1 class="hero-title">Right to Information in Education</h1>
+            <p class="hero-description">Knowledge is power - Take control of your child's educational journey through transparency</p>
             
+            <div class="hero-buttons">
+                <a href="#intro-section" class="primary-button">Start Your RTI Journey <i class="fas fa-arrow-right"></i></a>
+                <a href="#info-section" class="secondary-button">How It Works <i class="fas fa-info-circle"></i></a>
+            </div>
+            
+            <div class="hero-visual">
+                <img src="school-principal-bully-his-mother-cartoon-flat-illustration-teacher-parent-discussing-student-behavior-d-characters-333852700.webp" alt="Parent-School Interaction" />
+            </div>
+
+            <div class="intro-section" id="intro-section">
+                <div class="intro-card">
+                    <h2 class="intro-title">Understanding Your Rights as a Parent</h2>
+                    <div class="intro-content">
+                        <p>The Right to Information Act (RTI), 2005, empowers you as a parent to ensure quality education for your child. Under Article 21-A of the Indian Constitution and the Right to Education Act, 2009, every child between 6-14 years has a fundamental right to free and compulsory education.</p>
+                        
+                        <div class="rights-grid">
+                            <div class="right-item">
+                                <div class="visual-icon">
+                                    <i class="fas fa-balance-scale"></i>
+                                </div>
+                                <h3>Legal Framework</h3>
+                                <p>RTI Act Section 2(h) covers all schools - government, private, and aided institutions under its purview.</p>
+                            </div>
+                            
+                            <div class="right-item">
+                                <div class="visual-icon">
+                                    <i class="fas fa-search-dollar"></i>
+                                </div>
+                                <h3>Financial Transparency</h3>
+                                <p>Right to access information about fees, funds utilization, and development charges.</p>
+                            </div>
+                            
+                            <div class="right-item">
+                                <div class="visual-icon">
+                                    <i class="fas fa-user-shield"></i>
+                                </div>
+                                <h3>Safety & Standards</h3>
+                                <p>Right to verify safety measures, infrastructure standards, and teacher qualifications.</p>
+                            </div>
+                            
+                            <div class="right-item">
+                                <div class="visual-icon">
+                                    <i class="fas fa-hands-helping"></i>
+                                </div>
+                                <h3>Equal Opportunity</h3>
+                                <p>Right to fair admission process and protection against discrimination.</p>
+                            </div>
+                        </div>
+
+                        <div class="key-points">
+                            <h3>What You Can Know:</h3>
+                            <ul class="points-list">
+                                <li><i class="fas fa-check-circle"></i> School's recognition status and affiliation details</li>
+                                <li><i class="fas fa-check-circle"></i> Teacher qualifications and student-teacher ratio</li>
+                                <li><i class="fas fa-check-circle"></i> Fee structure and financial statements</li>
+                                <li><i class="fas fa-check-circle"></i> Infrastructure and safety compliance</li>
+                                <li><i class="fas fa-check-circle"></i> Admission criteria and selection process</li>
+                                <li><i class="fas fa-check-circle"></i> Implementation of government schemes</li>
+                            </ul>
+                        </div>
+
+                        <div class="action-info">
+                            <p class="highlight-text">Your RTI application can be a powerful tool for:</p>
+                            <ul class="action-list">
+                                <li><i class="fas fa-arrow-right"></i> Ensuring accountability in school administration</li>
+                                <li><i class="fas fa-arrow-right"></i> Protecting your child's educational rights</li>
+                                <li><i class="fas fa-arrow-right"></i> Contributing to better educational standards</li>
+                                <li><i class="fas fa-arrow-right"></i> Creating transparency in the education system</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-visual-section">
+                <h2 class="section-title">How RTI Works For Parents</h2>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="process-icon">
+                            <div class="icon-circle">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="step-number">1</div>
+                        </div>
+                        <h3>File RTI Application</h3>
+                        <p>Complete our simple form with your query about school information</p>
+                    </div>
+                    <div class="process-connector">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-icon">
+                            <div class="icon-circle">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="step-number">2</div>
+                        </div>
+                        <h3>Processing Period</h3>
+                        <p>Your application is processed within 30 days as per RTI Act</p>
+                    </div>
+                    <div class="process-connector">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-icon">
+                            <div class="icon-circle">
+                                <i class="fas fa-envelope-open-text"></i>
+                            </div>
+                            <div class="step-number">3</div>
+                        </div>
+                        <h3>Receive Information</h3>
+                        <p>Get detailed information about fees, infrastructure & more</p>
+                    </div>
+                    <div class="process-connector">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-icon">
+                            <div class="icon-circle">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="step-number">4</div>
+                        </div>
+                        <h3>Take Informed Action</h3>
+                        <p>Use the information to ensure quality education for your child</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-strip">
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <h3>1M+</h3>
+                        <p>Parents Empowered</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <h3>50,000+</h3>
+                        <p>Successful RTI Applications</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <h3>15,000+</h3>
+                        <p>Schools Verified</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <h3>28</h3>
+                        <p>States Covered</p>
+                    </div>
+                </div>
+            </div>
+
             <div class="features-grid">
                 <div class="feature-card">
                     <i class="fas fa-file-invoice-dollar feature-icon"></i>
-                    <h3 class="feature-title">Fee Transparency</h3>
-                    <p class="feature-description">Access detailed fee structures and payment information</p>
+                    <h3 class="feature-title">Fee Information</h3>
+                    <p class="feature-description">Get complete transparency on school fees, development charges, and other costs</p>
                     <a href="fees.html" class="cta-button">View Details <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
                 <div class="feature-card">
                     <i class="fas fa-user-graduate feature-icon"></i>
-                    <h3 class="feature-title">Admission Updates</h3>
-                    <p class="feature-description">Track admission status and requirements</p>
-                    <a href="admissions.html" class="cta-button">Check Status <i class="fas fa-arrow-right"></i></a>
+                    <h3 class="feature-title">Admission Process</h3>
+                    <p class="feature-description">Stay updated with admission status, requirements, and important dates</p>
+                    <a href="admission.html" class="cta-button">Check Status <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
                 <div class="feature-card">
                     <i class="fas fa-shield-alt feature-icon"></i>
-                    <h3 class="feature-title">Safety Monitoring</h3>
-                    <p class="feature-description">Access safety protocols and compliance reports</p>
-                    <a href="safety.html" class="cta-button">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <h3 class="feature-title">School Safety</h3>
+                    <p class="feature-description">Monitor safety measures, infrastructure, and compliance reports</p>
+                    <a href="safety.html" class="cta-button">View Reports <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-database feature-icon"></i>
+                    <h3 class="feature-title">Statewise Database</h3>
+                    <p class="feature-description">Access comprehensive database of RTI responses across different states</p>
+                    <a href="statewise.html" class="cta-button">Search Database <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-chart-line feature-icon"></i>
+                    <h3 class="feature-title">Fee Hike Tracker</h3>
+                    <p class="feature-description">Monitor and analyze school fee increases over time</p>
+                    <a href="feehiketracker.html" class="cta-button">Track Changes <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-times-circle feature-icon"></i>
+                    <h3 class="feature-title">Admission Appeals</h3>
+                    <p class="feature-description">Get help with rejected admissions and appeal processes</p>
+                    <a href="admission-appeals.html" class="cta-button">File Appeal <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-hand-holding-usd feature-icon"></i>
+                    <h3 class="feature-title">Public School Funding</h3>
+                    <p class="feature-description">Track allocation and utilization of public school funds</p>
+                    <a href="public-funding.html" class="cta-button">View Funding <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-school feature-icon"></i>
+                    <h3 class="feature-title">School Directory</h3>
+                    <p class="feature-description">Find recognized schools and check blacklisted institutions</p>
+                    <a href="school-directory.html" class="cta-button">Search Schools <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-gavel feature-icon"></i>
+                    <h3 class="feature-title">Government Schemes</h3>
+                    <p class="feature-description">Learn about educational policies and government schemes</p>
+                    <a href="government-schemes.html" class="cta-button">View Schemes <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-clipboard-check feature-icon"></i>
+                    <h3 class="feature-title">Safety Audits</h3>
+                    <p class="feature-description">Access detailed safety audit reports and compliance status</p>
+                    <a href="safety-audits.html" class="cta-button">View Audits <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-exclamation-triangle feature-icon"></i>
+                    <h3 class="feature-title">Teacher Misconduct</h3>
+                    <p class="feature-description">Report and track teacher misconduct cases</p>
+                    <a href="misconduct.html" class="cta-button">Report Issue <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-building feature-icon"></i>
+                    <h3 class="feature-title">Infrastructure Status</h3>
+                    <p class="feature-description">Check real-time infrastructure conditions and maintenance</p>
+                    <a href="infrastructure-status.html" class="cta-button">View Status <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="info-section">
+    <section class="info-section" id="info-section">
+        <div class="particles-background"></div>
         <div class="info-grid">
             <div class="info-card">
                 <i class="fas fa-book-open info-icon"></i>
@@ -574,69 +374,124 @@
         </div>
     </section>
 
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">What Parents Say About Us</h2>
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <div class="testimonial-photo">
+                        <img src="../assets/images/parent1.jpg" alt="Parent Testimonial" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48Y2lyY2xlIGN4PSIxMDAiIGN5PSI4MCIgcj0iNTAiIGZpbGw9IiM0Mjg1RjQiIC8+PHBhdGggZD0iTTE2MCwxNzUgQzE2MCwxMzYuMzQwNDkgMTMxLjcyNzY2LDEwNSA5Ni4xMTc2NDcxLDEwNSBDNjAuNTA3NjM1MywxMDUgMzAsMTM2LjM0MDQ5IDMwLDE3NSIgZmlsbD0iIzIwNTQ5MyIgLz48L3N2Zz4='" />
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="testimonial-text">The RTI portal helped me understand my child's school fee structure. I discovered they were charging extra for facilities that weren't even available!</p>
+                        <div class="testimonial-author">
+                            <h4>Priya Sharma</h4>
+                            <p>Mother of 2, Delhi</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-photo">
+                        <img src="../assets/images/parent2.jpg" alt="Parent Testimonial" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48Y2lyY2xlIGN4PSIxMDAiIGN5PSI4MCIgcj0iNTAiIGZpbGw9IiM0Mjg1RjQiIC8+PHBhdGggZD0iTTE2MCwxNzUgQzE2MCwxMzYuMzQwNDkgMTMxLjcyNzY2LDEwNSA5Ni4xMTc2NDcxLDEwNSBDNjAuNTA3NjM1MywxMDUgMzAsMTM2LjM0MDQ5IDMwLDE3NSIgZmlsbD0iIzIwNTQ5MyIgLz48L3N2Zz4='" />
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="testimonial-text">After filing an RTI, I found out my son's school didn't have qualified teachers as claimed. Thanks to this platform, the school had to make proper appointments.</p>
+                        <div class="testimonial-author">
+                            <h4>Rajesh Patel</h4>
+                            <p>Father of 1, Mumbai</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-photo">
+                        <img src="../assets/images/parent3.jpg" alt="Parent Testimonial" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48Y2lyY2xlIGN4PSIxMDAiIGN5PSI4MCIgcj0iNTAiIGZpbGw9IiM0Mjg1RjQiIC8+PHBhdGggZD0iTTE2MCwxNzUgQzE2MCwxMzYuMzQwNDkgMTMxLjcyNzY2LDEwNSA5Ni4xMTc2NDcxLDEwNSBDNjAuNTA3NjM1MywxMDUgMzAsMTM2LjM0MDQ5IDMwLDE3NSIgZmlsbD0iIzIwNTQ5MyIgLz48L3N2Zz4='" />
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="testimonial-text">I was worried about safety measures in my daughter's school. The RTI revealed several gaps which were addressed after we raised concerns. The platform empowered us!</p>
+                        <div class="testimonial-author">
+                            <h4>Lakshmi Krishnan</h4>
+                            <p>Mother of 1, Bangalore</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="container">
-        <h2 class="section-title">Common Parent Concerns</h2>
+        <h2 class="section-title">Common Parent Concerns - Click to Learn More</h2>
         <div class="issues-grid">
             <div class="issue-card">
                 <i class="fas fa-rupee-sign"></i>
                 <h3>School Fee Transparency</h3>
                 <p>Get clarity on fee structure, development charges, and other costs</p>
-                <a href="#" class="action-button">Learn More</a>
+                <a href="#" class="action-button">Learn About Fees</a>
             </div>
 
             <div class="issue-card">
                 <i class="fas fa-user-graduate"></i>
                 <h3>Admission Process</h3>
                 <p>Understand admission criteria, documentation, and selection process</p>
-                <a href="#" class="action-button">Check Details</a>
+                <a href="#" class="action-button">Check Admission Details</a>
             </div>
 
             <div class="issue-card">
                 <i class="fas fa-utensils"></i>
                 <h3>Mid-Day Meal Scheme</h3>
                 <p>Monitor quality and implementation of government meal programs</p>
-                <a href="#" class="action-button">File RTI</a>
+                <a href="#" class="action-button">Know Your Rights</a>
             </div>
 
             <div class="issue-card">
                 <i class="fas fa-shield-alt"></i>
                 <h3>School Safety</h3>
                 <p>Access safety reports and verify staff credentials</p>
-                <a href="#" class="action-button">View Reports</a>
+                <a href="#" class="action-button">Safety Guidelines</a>
             </div>
         </div>
     </section>
 
     <section class="tools-section">
         <div class="container">
-            <h2 class="section-title">Parent Resources</h2>
+            <h2 class="section-title">Helpful Resources for Parents</h2>
             <div class="tools-grid">
                 <div class="tool-card">
                     <i class="fas fa-file-alt"></i>
-                    <h3>RTI Templates</h3>
+                    <h3>Ready-to-Use RTI Templates</h3>
                     <p>Easy-to-use templates for common parent queries</p>
-                    <a href="#" class="action-button">Get Templates</a>
+                    <a href="#" class="action-button">Download Templates</a>
                 </div>
 
                 <div class="tool-card">
                     <i class="fas fa-search"></i>
-                    <h3>School Verification</h3>
+                    <h3>School Verification Tool</h3>
                     <p>Check if a school is recognized and accredited</p>
-                    <a href="#" class="action-button">Verify School</a>
+                    <a href="#" class="action-button">Verify Your School</a>
                 </div>
 
                 <div class="tool-card">
                     <i class="fas fa-users"></i>
-                    <h3>Parent Community</h3>
+                    <h3>Parent Support Community</h3>
                     <p>Connect with other parents and share experiences</p>
-                    <a href="#" class="action-button">Join Forum</a>
+                    <a href="#" class="action-button">Join Our Forum</a>
                 </div>
 
                 <div class="tool-card">
                     <i class="fas fa-phone-alt"></i>
-                    <h3>Helpline</h3>
+                    <h3>Helpline for Parents</h3>
                     <p>Get assistance with RTI filing and follow-up</p>
-                    <a href="#" class="action-button">Contact Us</a>
+                    <a href="#" class="action-button">Call Helpline</a>
                 </div>
             </div>
         </div>
@@ -647,7 +502,52 @@
             <div class="help-content">
                 <h2 class="section-title">Need Help Filing an RTI?</h2>
                 <p>Our team is here to guide you through the process and answer your questions</p>
-                <a href="#" class="help-button">Get Started <i class="fas fa-arrow-right"></i></a>
+                <a href="#" class="help-button">Get Free Assistance <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="image-gallery-section">
+        <div class="container">
+            <h2 class="section-title">Parent-School Interactions</h2>
+            <div class="gallery-description">
+                <p>Understanding your rights helps ensure positive and productive interactions with your child's school</p>
+            </div>
+            
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <img src="school-principal-bully-his-mother-cartoon-flat-illustration-teacher-parent-discussing-student-behavior-d-characters-333852700.webp" alt="Parent-Teacher Meeting" />
+                    <div class="gallery-caption">
+                        <h3>Parent-Teacher Discussions</h3>
+                        <p>Productive conversations about your child's education</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="family-happy-moments-flat-color-childcare-parenthood-baby-learning-walk-young-mother-father-child-2d-cartoon-characters-with-living-room-interior-background_151150-3128.avif" alt="Family Education Moment" />
+                    <div class="gallery-caption">
+                        <h3>Home Learning Environment</h3>
+                        <p>Creating supportive spaces for education at home</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="animated-parents-affection-child-happiness-looped-flat-2d-characters-4k-footage-color-isolated-animation-on-white-background-with-alpha-channel-transparency-for-website-social-media-video.jpg" alt="Parent Child Bonding" />
+                    <div class="gallery-caption">
+                        <h3>Parent-Child Relationship</h3>
+                        <p>Building strong foundations for educational growth</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Get Started?</h2>
+                <p>Join thousands of parents who have already transformed their experience with our platform.</p>
+                <button class="pulsing-button">Register Now <i class="fa fa-arrow-right"></i></button>
             </div>
         </div>
     </section>
@@ -694,5 +594,7 @@
             new Navigation('parent');
         });
     </script>
+    <script src="../shared/script.js"></script>
+    <script src="visual-effects.js"></script>
 </body>
 </html> 

@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarship Information RTI Template | Student RTI Portal</title>
+    <link rel="stylesheet" href="../../shared/styles.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .template-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(107, 112, 92, 0.15);
+        }
+        
+        .template-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .template-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: grid;
+            gap: 0.5rem;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .help-text {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .checkbox-group input {
+            width: auto;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn-primary {
+            background: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--secondary-color);
+        }
+        
+        .btn-secondary {
+            background: #eee;
+            color: #333;
+        }
+        
+        .btn-secondary:hover {
+            background: #ddd;
+        }
+        
+        .when-to-use {
+            background: rgba(255, 232, 214, 0.5);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .when-to-use h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .when-to-use ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .when-to-use li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .key-points {
+            background: rgba(165, 165, 141, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .key-points h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .key-points ol {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .key-points li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .success-stories {
+            margin-top: 3rem;
+        }
+        
+        .success-stories h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .story-card {
+            background: rgba(165, 165, 141, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .story-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .story-info h3 {
+            margin: 0;
+            color: var(--primary-color);
+        }
+        
+        .story-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .story-content p {
+            margin-top: 0;
+        }
+        
+        .story-result {
+            background: rgba(107, 112, 92, 0.1);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .scholarship-tip {
+            background: rgba(203, 153, 126, 0.1);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            font-style: italic;
+            color: var(--primary-color);
+            position: relative;
+            padding-left: 2.5rem;
+        }
+        
+        .scholarship-tip:before {
+            content: "💡";
+            position: absolute;
+            left: 0.75rem;
+            top: 0.75rem;
+            font-size: 1.25rem;
+        }
+        
+        .scholarship-sample {
+            background: rgba(107, 112, 92, 0.05);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 2rem;
+            border: 1px dashed var(--secondary-color);
+        }
+        
+        .scholarship-sample h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        
+        .scholarship-sample ol {
+            padding-left: 1.5rem;
+        }
+        
+        .scholarship-stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 2rem 0;
+        }
+        
+        .stat-item {
+            flex: 1 0 30%;
+            min-width: 250px;
+            background: rgba(221, 190, 169, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+            border-top: 3px solid var(--accent-color);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--secondary-color);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation from shared component -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../../assets/images/logo.png" alt="RTI Education Portal">
+                    <span>Student RTI Portal</span>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../index.html">Dashboard</a></li>
+                    <li><a href="../resources.html">Resources</a></li>
+                    <li><a href="index.html" class="active">Templates</a></li>
+                    <li><a href="../../shared/track.html">Track Applications</a></li>
+                    <li><a href="../../shared/forms.html">Submit RTI</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Scholarship Information RTI Template</h1>
+                <p>Request transparency about scholarships, grants, and financial aid programs</p>
+            </div>
+        </section>
+
+        <section class="template-section">
+            <div class="container">
+                <div class="when-to-use">
+                    <h2>When to Use This Template</h2>
+                    <p>This template is designed for students seeking detailed information about scholarships and financial aid offered by educational institutions and government bodies. Use this template when:</p>
+                    <ul>
+                        <li>You need information about eligibility criteria for scholarships</li>
+                        <li>You want details about scholarship disbursement procedures</li>
+                        <li>You need information about the total number of scholarships allocated and granted</li>
+                        <li>You want to know about scholarship funds utilization and distribution</li>
+                        <li>You're concerned about delays in scholarship disbursement</li>
+                        <li>You need details about special category scholarships (SC/ST/OBC/Minority/Disabled)</li>
+                        <li>You want information about merit-based vs. need-based scholarship distributions</li>
+                        <li>You need to verify the selection process and criteria for awarding scholarships</li>
+                    </ul>
+                </div>
+
+                <div class="scholarship-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">78%</div>
+                        <div class="stat-label">Students unaware of all available scholarships</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">₹850Cr</div>
+                        <div class="stat-label">Unclaimed scholarship funds yearly</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">65%</div>
+                        <div class="stat-label">Success rate of scholarship RTIs</div>
+                    </div>
+                </div>
+
+                <div class="template-container">
+                    <div class="template-header">
+                        <h2>Scholarship Information RTI Application</h2>
+                        <p>Fill in the details below to generate your RTI application</p>
+                    </div>
+
+                    <form class="template-form">
+                        <div class="form-group">
+                            <label for="addressee">To</label>
+                            <input type="text" id="addressee" name="addressee" placeholder="Public Information Officer" required>
+                            <div class="help-text">Usually the Public Information Officer (PIO) of the educational institution or scholarship authority</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="institution">Institution/Authority Name</label>
+                            <input type="text" id="institution" name="institution" placeholder="e.g., University/College/Scholarship Body" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="department">Department (if applicable)</label>
+                            <input type="text" id="department" name="department" placeholder="e.g., Scholarship Cell, Financial Aid Office">
+                            <div class="help-text">If your query is specific to a department, mention it here</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="scholarship-name">Scholarship Name (if specific)</label>
+                            <input type="text" id="scholarship-name" name="scholarship-name" placeholder="e.g., National Merit Scholarship, State Minority Scholarship">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="academic-year">Academic Year</label>
+                            <input type="text" id="academic-year" name="academic-year" placeholder="e.g., 2025-26" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applicant-name">Applicant's Name</label>
+                            <input type="text" id="applicant-name" name="applicant-name" placeholder="Your Full Name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applicant-address">Applicant's Address</label>
+                            <textarea id="applicant-address" name="applicant-address" placeholder="Your Complete Postal Address" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applicant-contact">Contact Information</label>
+                            <input type="tel" id="applicant-contact" name="applicant-contact" placeholder="Your Phone Number" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applicant-email">Email Address</label>
+                            <input type="email" id="applicant-email" name="applicant-email" placeholder="Your Email Address" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Information Requested (Select all that apply)</label>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-list" name="requested-info" value="scholarship-list">
+                                <label for="request-list">Complete list of available scholarships with amounts</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-eligibility" name="requested-info" value="eligibility">
+                                <label for="request-eligibility">Detailed eligibility criteria for each scholarship</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-process" name="requested-info" value="selection-process">
+                                <label for="request-process">Selection process and criteria for awarding scholarships</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-disbursement" name="requested-info" value="disbursement">
+                                <label for="request-disbursement">Disbursement procedure and timeline for scholarships</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-allocated" name="requested-info" value="allocated">
+                                <label for="request-allocated">Total funds allocated for scholarships in the current academic year</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-statistics" name="requested-info" value="statistics">
+                                <label for="request-statistics">Statistics on applications received, approved, and rejected</label>
+                            </div>
+
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-category" name="requested-info" value="category-wise">
+                                <label for="request-category">Category-wise distribution of scholarships (SC/ST/OBC/General)</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-unclaimed" name="requested-info" value="unclaimed">
+                                <label for="request-unclaimed">Information about unclaimed scholarship funds and their utilization</label>
+                            </div>
+
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-special" name="requested-info" value="special-schemes">
+                                <label for="request-special">Details of any special scholarship schemes for women, minorities, or disabled students</label>
+                            </div>
+                        </div>
+
+                        <div class="scholarship-tip">
+                            When requesting scholarship information, be specific about the academic year and any specific category or scholarship scheme you're interested in. This helps in getting more relevant and precise information.
+                        </div>
+
+                        <div class="form-group">
+                            <label for="student-id">Student ID (if applicable)</label>
+                            <input type="text" id="student-id" name="student-id" placeholder="Your Student ID/Roll Number">
+                            <div class="help-text">Include if you're a current student of the institution</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="specific-info">Specific Information Required</label>
+                            <textarea id="specific-info" name="specific-info" placeholder="Provide details about the specific scholarship information you are seeking"></textarea>
+                            <div class="help-text">Clearly specify any particular aspects of scholarship information you want details about</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time-period">Time Period</label>
+                            <input type="text" id="time-period" name="time-period" placeholder="e.g., 2023-2025">
+                            <div class="help-text">Specify the time period for which you are seeking scholarship information</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="application-fee">Application Fee Details</label>
+                            <select id="application-fee" name="application-fee" required>
+                                <option value="">Select Fee Payment Method</option>
+                                <option value="Cash">Cash</option>
+                                <option value="Postal Order">Indian Postal Order</option>
+                                <option value="Court Fee Stamp">Court Fee Stamp</option>
+                                <option value="Demand Draft">Demand Draft</option>
+                                <option value="Bank Transfer">Bank Transfer</option>
+                            </select>
+                            <div class="help-text">Standard RTI application fee is ₹10 for general category</div>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="bpl-category" name="bpl-category">
+                            <label for="bpl-category">I belong to Below Poverty Line (BPL) category and have attached proof</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="declaration">Declaration</label>
+                            <div class="help-text">I hereby declare that the information sought does not fall within the restrictions contained in Section 8 and 9 of the RTI Act, 2005 and to the best of my knowledge, it pertains to your institution/organization.</div>
+                        </div>
+
+                        <div class="scholarship-sample">
+                            <h3>Sample Specific Information Request</h3>
+                            <p>I am requesting the following specific information regarding scholarships at your institution/organization:</p>
+                            <ol>
+                                <li>A comprehensive list of all scholarships, grants, and financial aid programs available to students for the academic year [YEAR], including:
+                                    <ul>
+                                        <li>Name and type of each scholarship (merit-based, need-based, category-based, etc.)</li>
+                                        <li>The amount/value of each scholarship</li>
+                                        <li>Number of seats/positions available for each scholarship</li>
+                                    </ul>
+                                </li>
+                                <li>Detailed eligibility criteria for each scholarship program, including:
+                                    <ul>
+                                        <li>Academic requirements (minimum grades/percentages required)</li>
+                                        <li>Income limits for need-based scholarships</li>
+                                        <li>Category requirements (SC/ST/OBC/Minority/Disabled quotas)</li>
+                                        <li>Any additional criteria or qualifications needed</li>
+                                    </ul>
+                                </li>
+                                <li>Statistical data regarding scholarships for the last academic year [PREVIOUS YEAR], including:
+                                    <ul>
+                                        <li>Total number of applications received for each scholarship</li>
+                                        <li>Number of scholarships granted, by category and department</li>
+                                        <li>Total amount disbursed in scholarships</li>
+                                        <li>Number of applications rejected and grounds for rejection</li>
+                                    </ul>
+                                </li>
+                                <li>Information about the disbursement process, including:
+                                    <ul>
+                                        <li>Timeline from application to disbursement</li>
+                                        <li>Method of fund transfer to students</li>
+                                        <li>Any installment schedules for multi-year scholarships</li>
+                                        <li>Authorities responsible for approving and releasing scholarship funds</li>
+                                    </ul>
+                                </li>
+                                <li>Details about any unclaimed scholarship funds:
+                                    <ul>
+                                        <li>Amount of unclaimed scholarship funds in the previous academic year</li>
+                                        <li>Reasons for non-disbursement of allocated funds</li>
+                                        <li>How unclaimed funds are utilized or reallocated</li>
+                                    </ul>
+                                </li>
+                                <li>Information about any special scholarship schemes:
+                                    <ul>
+                                        <li>Details of scholarships specifically for women in STEM fields</li>
+                                        <li>Scholarships for first-generation college students</li>
+                                        <li>Any new scholarship programs introduced in the last two years</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-primary">Download as PDF</button>
+                            <button type="button" class="btn btn-secondary">Print Form</button>
+                            <button type="reset" class="btn btn-secondary">Reset Form</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="key-points">
+                    <h2>Key Points to Remember</h2>
+                    <ol>
+                        <li><strong>Be specific about the scholarship:</strong> If you're inquiring about a particular scholarship, mention its exact name and academic year.</li>
+                        <li><strong>Request numerical data:</strong> Ask for specific numbers - how many students applied, how many received scholarships, total amount disbursed, etc.</li>
+                        <li><strong>Inquire about selection criteria:</strong> Request information about how recipients are selected and the weightage given to different factors.</li>
+                        <li><strong>Ask about timelines:</strong> Request information about application deadlines, announcement dates, and disbursement schedules.</li>
+                        <li><strong>Seek category-wise breakdowns:</strong> Ask for data broken down by categories like SC/ST/OBC/General or by department/course.</li>
+                        <li><strong>Inquire about unclaimed funds:</strong> Ask about scholarships that went unclaimed and how those funds were utilized.</li>
+                    </ol>
+                </div>
+
+                <div class="success-stories">
+                    <h2>Success Stories</h2>
+                    
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">AK</div>
+                            <div class="story-info">
+                                <h3>Amrita Kaur</h3>
+                                <p>Engineering Student</p>
+                            </div>
+                        </div>
+                        <div class="story-content">
+                            <p>Our university claimed that all eligible SC/ST students received their scholarships, but many of my classmates hadn't received their funds for over 8 months. I filed an RTI requesting information about the disbursement status of SC/ST scholarships. The response revealed that while the government had released the funds to the university 6 months earlier, the university had not processed them due to "administrative reasons." Within two weeks of my RTI findings being shared with the student welfare committee, the university disbursed all pending scholarships to over 200 students.</p>
+                            <div class="story-result">Result: Immediate disbursement of delayed scholarships worth ₹1.8 crores to 200+ students</div>
+                        </div>
+                    </div>
+                    
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">MD</div>
+                            <div class="story-info">
+                                <h3>Mohammed Danish</h3>
+                                <p>Postgraduate Student</p>
+                            </div>
+                        </div>
+                        <div class="story-content">
+                            <p>Our college had a special scholarship for "economically disadvantaged students with academic excellence," but had very few recipients despite many eligible students. I filed an RTI asking for details about this scholarship's budget allocation, number of applicants, and selection criteria. The response revealed that while ₹50 lakhs was allocated annually, only ₹8 lakhs was disbursed in the previous year, with the selection criteria including an undisclosed interview process that wasn't mentioned in the scholarship announcement. After presenting this information to the student union, the college revamped the application process, made the selection criteria transparent, and established a grievance redressal system.</p>
+                            <div class="story-result">Result: Transparent selection process established, scholarship recipients increased from 16 to 96 students</div>
+                        </div>
+                    </div>
+                    
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">PC</div>
+                            <div class="story-info">
+                                <h3>Priya Chaudhary</h3>
+                                <p>Medical Student</p>
+                            </div>
+                        </div>
+                        <div class="story-content">
+                            <p>I was confused about why I wasn't eligible for a state merit scholarship despite having higher marks than some recipients. Through an RTI application, I requested the complete selection criteria and the cut-off marks for each department. The response revealed that the medical college was using an outdated formula for calculating merit that wasn't aligned with the state government's current guidelines. Additionally, it showed that the scholarship committee had mistakenly applied the wrong cut-off scores for medical students. When this information was presented to the college authorities, they acknowledged the error and recalculated the merit list.</p>
+                            <div class="story-result">Result: Scholarship awarded retroactively to 35 deserving students who had been overlooked</div>
+                        </div>
+                    </div>
+                    
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">RT</div>
+                            <div class="story-info">
+                                <h3>Rajat Trivedi</h3>
+                                <p>Rural Development Studies Student</p>
+                            </div>
+                        </div>
+                        <div class="story-content">
+                            <p>Many students in our rural development program didn't know about special government scholarships for students pursuing agriculture and rural studies. I filed an RTI with the Ministry of Rural Development asking about all available scholarships for such courses. The response included details of seven scholarship schemes that our university had never informed students about, including two with substantial financial support. Using this information, our department created a comprehensive scholarship guide and helped students apply. The department also began regular information sessions about available financial aid opportunities.</p>
+                            <div class="story-result">Result: Over 120 students received previously unknown scholarships totaling ₹1.2 crores annually</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../../assets/images/logo.png" alt="RTI Education Portal">
+                    <p>Empowering students through information</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Dashboard</a></li>
+                        <li><a href="../resources.html">Resources</a></li>
+                        <li><a href="index.html">Templates</a></li>
+                        <li><a href="../../shared/track.html">Track Applications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p>Email: student.support@rtieducation.org</p>
+                    <p>Helpline: 1800-XXX-XXXX</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RTI Education Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../shared/nav.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form handling functionality
+            const downloadBtn = document.querySelector('.btn-primary');
+            const printBtn = document.querySelectorAll('.btn-secondary')[0];
+            
+            downloadBtn.addEventListener('click', function() {
+                alert('PDF download functionality will be integrated here. In a production environment, this would generate a formatted PDF of your RTI application.');
+            });
+            
+            printBtn.addEventListener('click', function() {
+                window.print();
+            });
+            
+            // Hide the sample text when focusing on the specific info field
+            const specificInfoField = document.getElementById('specific-info');
+            const sampleSection = document.querySelector('.scholarship-sample');
+            
+            specificInfoField.addEventListener('focus', function() {
+                sampleSection.style.display = 'none';
+            });
+            
+            specificInfoField.addEventListener('blur', function() {
+                if (!this.value) {
+                    sampleSection.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

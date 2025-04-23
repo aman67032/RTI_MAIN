@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0fe0ff">
+    <title>RTI Templates for Students | RTI Education Portal</title>
+    <link rel="stylesheet" href="../../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Student Portal Futuristic Theme Variables */
+        :root {
+            --portal-primary: #0fe0ff;
+            --portal-secondary: #0066ff;
+            --portal-accent: #ff00ee;
+            --portal-dark: #040b36;
+            --portal-light: #f0f8ff;
+            --portal-gradient: linear-gradient(135deg, var(--portal-primary), var(--portal-secondary));
+            --portal-accent-gradient: linear-gradient(135deg, var(--portal-accent), var(--portal-primary));
+            --neon-shadow: 0 0 10px rgba(15, 224, 255, 0.5), 0 0 20px rgba(15, 224, 255, 0.3), 0 0 30px rgba(15, 224, 255, 0.1);
+            --futuristic-bg: linear-gradient(180deg, #040b36 0%, #0c1e51 50%, #060b31 100%);
+        }
+
+        body {
+            background: var(--futuristic-bg);
+            color: var(--portal-light);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        /* Futuristic Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--portal-primary);
+            border-radius: 3px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--portal-secondary);
+        }
+
+        .templates-container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .page-header h1 {
+            font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--portal-primary), var(--portal-accent), var(--portal-primary));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: shine 3s linear infinite;
+            font-weight: 800;
+            text-shadow: var(--neon-shadow);
+        }
+
+        .page-header p {
+            font-size: 1.3rem;
+            color: var(--portal-light);
+            opacity: 0.9;
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .intro-section {
+            background: rgba(4, 11, 54, 0.8);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(15, 224, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(15, 224, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 0, 238, 0.1) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .intro-section h2 {
+            color: var(--portal-primary);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro-section p, .intro-section ul {
+            position: relative;
+            z-index: 1;
+            color: var(--portal-light);
+            font-size: 1.1rem;
+        }
+
+        .intro-section ul li {
+            margin-bottom: 1rem;
+        }
+
+        .intro-section ul li strong {
+            color: var(--portal-primary);
+        }
+
+        .search-container {
+            margin-bottom: 3rem;
+            display: flex;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 1.2rem 1.5rem;
+            background: rgba(4, 11, 54, 0.8);
+            border: 1px solid rgba(15, 224, 255, 0.2);
+            border-radius: 15px 0 0 15px;
+            font-size: 1.1rem;
+            color: var(--portal-light);
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--portal-primary);
+            box-shadow: 0 0 15px rgba(15, 224, 255, 0.3);
+        }
+
+        .search-button {
+            background: var(--portal-gradient);
+            color: white;
+            border: none;
+            padding: 0 2rem;
+            border-radius: 0 15px 15px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .search-button:hover {
+            background: var(--portal-accent-gradient);
+            box-shadow: var(--neon-shadow);
+        }
+
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .filter-button {
+            padding: 0.8rem 1.5rem;
+            background: rgba(4, 11, 54, 0.8);
+            border: 1px solid rgba(15, 224, 255, 0.2);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--portal-light);
+            font-size: 1.1rem;
+        }
+
+        .filter-button:hover, .filter-button.active {
+            background: var(--portal-gradient);
+            border-color: transparent;
+            box-shadow: var(--neon-shadow);
+            transform: translateY(-2px);
+        }
+
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .template-card {
+            background: rgba(4, 11, 54, 0.8);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(15, 224, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .template-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(15, 224, 255, 0.1),
+                transparent
+            );
+            animation: shine-effect 3s infinite;
+            z-index: 0;
+        }
+
+        @keyframes shine-effect {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .template-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3),
+                        0 0 20px rgba(15, 224, 255, 0.3);
+            border-color: rgba(15, 224, 255, 0.5);
+        }
+
+        .template-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, rgba(15, 224, 255, 0.1), rgba(0, 102, 255, 0.1));
+        }
+
+        .template-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            opacity: 0.8;
+        }
+
+        .template-card:hover .template-img img {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        .template-icon {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 50px;
+            height: 50px;
+            background: var(--portal-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: var(--neon-shadow);
+            z-index: 1;
+        }
+
+        .template-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .template-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--portal-primary);
+            font-weight: 600;
+        }
+
+        .template-description {
+            font-size: 1.1rem;
+            color: var(--portal-light);
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .template-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1rem;
+            color: var(--portal-light);
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .template-success {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .success-icon {
+            color: var(--portal-primary);
+        }
+
+        .template-button {
+            display: inline-block;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: var(--portal-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .template-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
+        }
+
+        .template-button:hover {
+            background: var(--portal-accent-gradient);
+            transform: translateY(-5px);
+            box-shadow: var(--neon-shadow);
+        }
+
+        .template-button:hover::before {
+            transform: translateX(100%);
+        }
+
+        /* Tech Lines Background */
+        .tech-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .tech-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, var(--portal-primary), transparent);
+            height: 1px;
+            width: 100%;
+            opacity: 0;
+            animation: tech-line-move 8s linear infinite;
+        }
+
+        .tech-line:nth-child(1) { top: 20%; animation-delay: 0s; }
+        .tech-line:nth-child(2) { top: 40%; animation-delay: 2s; }
+        .tech-line:nth-child(3) { top: 60%; animation-delay: 4s; }
+        .tech-line:nth-child(4) { top: 80%; animation-delay: 6s; }
+
+        @keyframes tech-line-move {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.3;
+            }
+            80% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .templates-container {
+                padding: 1.5rem;
+            }
+
+            .template-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: clamp(2rem, 8vw, 3rem);
+            }
+
+            .search-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .search-input {
+                border-radius: 15px;
+            }
+
+            .search-button {
+                border-radius: 15px;
+                padding: 1rem;
+            }
+
+            .template-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-filter {
+                gap: 0.8rem;
+            }
+
+            .filter-button {
+                padding: 0.6rem 1.2rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* Add new navbar styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(4, 11, 54, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(15, 224, 255, 0.2);
+        }
+
+        .navbar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .navbar-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .navbar-logo span {
+            font-size: 1.4rem;
+            font-weight: 600;
+            background: var(--portal-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-links a {
+            color: var(--portal-light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--portal-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-links a:hover {
+            color: var(--portal-primary);
+        }
+
+        .navbar-links a:hover::after {
+            width: 100%;
+        }
+
+        .navbar-button {
+            background: var(--portal-gradient);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .navbar-button:hover {
+            background: var(--portal-accent-gradient);
+            box-shadow: var(--neon-shadow);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-button {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--portal-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-button {
+                display: block;
+            }
+
+            .navbar-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(4, 11, 54, 0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 1rem;
+                border-bottom: 1px solid rgba(15, 224, 255, 0.2);
+            }
+
+            .navbar-links.active {
+                display: flex;
+            }
+
+            .navbar-links a {
+                padding: 1rem;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="../index.html" class="navbar-logo">
+                <img src="../../assets/images/logo.png" alt="RTI Portal Logo">
+                <span>RTI Education</span>
+            </a>
+            <button class="mobile-menu-button">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="navbar-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="index.html">Templates</a></li>
+                <li><a href="../resources.html">Resources</a></li>
+                <li><a href="../success-stories.html">Success Stories</a></li>
+                <li><a href="../contact.html" class="navbar-button">Get Help</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Tech Lines Background -->
+    <div class="tech-lines">
+        <div class="tech-line"></div>
+        <div class="tech-line"></div>
+        <div class="tech-line"></div>
+        <div class="tech-line"></div>
+    </div>
+
+    <main class="templates-container">
+        <div class="page-header">
+            <h1>RTI Templates for Students</h1>
+            <p>Ready-to-use templates to help you file effective RTI applications</p>
+        </div>
+        
+        <div class="intro-section">
+            <h2>Why Use Our Templates?</h2>
+            <p>Our carefully crafted RTI templates are designed to help you get quick and effective responses. Each template:</p>
+            <ul>
+                <li><strong>Targets specific information</strong> that educational institutions are legally required to provide</li>
+                <li><strong>Uses precise language</strong> to minimize ambiguity and avoid rejection</li>
+                <li><strong>Includes success metrics</strong> based on historical RTI data</li>
+                <li><strong>Provides guidance</strong> on what supporting documents to attach</li>
+            </ul>
+            <p>Choose from our collection of templates categorized by common student needs.</p>
+        </div>
+        
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search for templates...">
+            <button class="search-button">Search</button>
+        </div>
+        
+        <div class="category-filter">
+            <button class="filter-button active">All Templates</button>
+            <button class="filter-button">Examination</button>
+            <button class="filter-button">Admission</button>
+            <button class="filter-button">Scholarships</button>
+            <button class="filter-button">Infrastructure</button>
+            <button class="filter-button">Faculty</button>
+        </div>
+        
+        <div class="template-grid">
+            <!-- Examination Information Template -->
+            <div class="template-card">
+                <div class="template-img">
+                    <img src="../../assets/images/exam-template.jpg" alt="Examination Information Template">
+                    <div class="template-icon">📝</div>
+                </div>
+                <div class="template-content">
+                    <h3 class="template-title">Examination Information</h3>
+                    <div class="template-meta">
+                        <span>Category: Examination</span>
+                        <div class="template-success">
+                            <span class="success-icon">✓</span>
+                            <span>78% success rate</span>
+                        </div>
+                    </div>
+                    <p class="template-description">Request access to answer sheets, evaluation criteria, re-evaluation processes, and examination policies.</p>
+                    <a href="examination_info_rti.html" class="template-button">Use Template</a>
+                </div>
+            </div>
+            
+            <!-- Exam Results Template -->
+            <div class="template-card">
+                <div class="template-img">
+                    <img src="../../assets/images/results-template.jpg" alt="Exam Results Template">
+                    <div class="template-icon">📊</div>
+                </div>
+                <div class="template-content">
+                    <h3 class="template-title">Exam Results RTI</h3>
+                    <div class="template-meta">
+                        <span>Category: Examination</span>
+                        <div class="template-success">
+                            <span class="success-icon">✓</span>
+                            <span>82% success rate</span>
+                        </div>
+                    </div>
+                    <p class="template-description">Request detailed information about exam results, evaluation methodology, and grade distribution.</p>
+                    <a href="exam_results_rti.html" class="template-button">Use Template</a>
+                </div>
+            </div>
+            
+            <!-- Admission Template -->
+            <div class="template-card">
+                <div class="template-img">
+                    <img src="../../assets/images/admission-template.jpg" alt="Admission Process Template">
+                    <div class="template-icon">🎓</div>
+                </div>
+                <div class="template-content">
+                    <h3 class="template-title">Admission Process</h3>
+                    <div class="template-meta">
+                        <span>Category: Admission</span>
+                        <div class="template-success">
+                            <span class="success-icon">✓</span>
+                            <span>81% success rate</span>
+                        </div>
+                    </div>
+                    <p class="template-description">Get information about admission criteria, selection process, cutoffs, and reservation policies.</p>
+                    <a href="admission_info_rti.html" class="template-button">Use Template</a>
+                </div>
+            </div>
+            
+            <!-- Scholarship Information Template -->
+            <div class="template-card">
+                <div class="template-img">
+                    <img src="../../assets/images/scholarship-template.jpg" alt="Scholarship Information Template">
+                    <div class="template-icon">💰</div>
+                </div>
+                <div class="template-content">
+                    <h3 class="template-title">Scholarship Information</h3>
+                    <div class="template-meta">
+                        <span>Category: Scholarships</span>
+                        <div class="template-success">
+                            <span class="success-icon">✓</span>
+                            <span>75% success rate</span>
+                        </div>
+                    </div>
+                    <p class="template-description">Request details about scholarship distribution, eligibility criteria, and application status.</p>
+                    <a href="scholarship_info_rti.html" class="template-button">Use Template</a>
+                </div>
+            </div>
+            
+            <!-- Scholarship RTI Template -->
+            <div class="template-card">
+                <div class="template-img">
+                    <img src="../../assets/images/scholarship-status.jpg" alt="Scholarship Status Template">
+                    <div class="template-icon">📋</div>
+                </div>
+                <div class="template-content">
+                    <h3 class="template-title">Scholarship Status</h3>
+                    <div class="template-meta">
+                        <span>Category: Scholarships</span>
+                        <div class="template-success">
+                            <span class="success-icon">✓</span>
+                            <span>79% success rate</span>
+                        </div>
+                    </div>
+                    <p class="template-description">Track your scholarship application status and get information about fund disbursement.</p>
+                    <a href="scholarship_rti.html" class="template-button">Use Template</a>
+                </div>
+            </div>
+            
+            <!-- Faculty Information Template -->
+            <div class="template-card">
+                <div class="template-img">
+                    <img src="../../assets/images/faculty-template.jpg" alt="Faculty Information Template">
+                    <div class="template-icon">👨‍🏫</div>
+                </div>
+                <div class="template-content">
+                    <h3 class="template-title">Faculty Information</h3>
+                    <div class="template-meta">
+                        <span>Category: Faculty</span>
+                        <div class="template-success">
+                            <span class="success-icon">✓</span>
+                            <span>72% success rate</span>
+                        </div>
+                    </div>
+                    <p class="template-description">Access information about faculty qualifications, student-teacher ratio, and faculty recruitment process.</p>
+                    <a href="faculty_info_rti.html" class="template-button">Use Template</a>
+                </div>
+            </div>
+            
+            <!-- Fee Structure Template -->
+            <div class="template-card">
+                <div class="template-img">
+                    <img src="../../assets/images/fee-template.jpg" alt="Fee Structure Template">
+                    <div class="template-icon">💲</div>
+                </div>
+                <div class="template-content">
+                    <h3 class="template-title">Fee Structure</h3>
+                    <div class="template-meta">
+                        <span>Category: Financial</span>
+                        <div class="template-success">
+                            <span class="success-icon">✓</span>
+                            <span>85% success rate</span>
+                        </div>
+                    </div>
+                    <p class="template-description">Request transparency about fee structures, additional charges, and expense allocation.</p>
+                    <a href="fee_structure_rti.html" class="template-button">Use Template</a>
+                </div>
+            </div>
+
+            <!-- Basic RTI Application Template -->
+            <div class="template-card">
+                <div class="template-img">
+                    <img src="../../assets/images/basic-template.jpg" alt="Basic RTI Application Template">
+                    <div class="template-icon">📄</div>
+                </div>
+                <div class="template-content">
+                    <h3 class="template-title">Basic RTI Application</h3>
+                    <div class="template-meta">
+                        <span>Category: General</span>
+                        <div class="template-success">
+                            <span class="success-icon">✓</span>
+                            <span>88% success rate</span>
+                        </div>
+                    </div>
+                    <p class="template-description">A simple, standard RTI application template that can be customized for any educational query.</p>
+                    <a href="basic_rti_application.html" class="template-button">Use Template</a>
+                </div>
+            </div>
+
+            <!-- Legal & Government Template -->
+            <div class="template-card">
+                <div class="template-img">
+                    <img src="../../assets/images/legal-template.jpg" alt="Legal & Government Template">
+                    <div class="template-icon">⚖️</div>
+                </div>
+                <div class="template-content">
+                    <h3 class="template-title">Legal & Government</h3>
+                    <div class="template-meta">
+                        <span>Category: Legal</span>
+                        <div class="template-success">
+                            <span class="success-icon">✓</span>
+                            <span>76% success rate</span>
+                        </div>
+                    </div>
+                    <p class="template-description">Access information about educational policies, government regulations, and compliance requirements.</p>
+                    <a href="legal-govt.html" class="template-button">Use Template</a>
+                </div>
+            </div>
+
+            <!-- RTI Generator Template -->
+            <div class="template-card">
+                <div class="template-img">
+                    <img src="../../assets/images/generator-template.jpg" alt="RTI Generator Template">
+                    <div class="template-icon">⚡</div>
+                </div>
+                <div class="template-content">
+                    <h3 class="template-title">RTI Generator</h3>
+                    <div class="template-meta">
+                        <span>Category: Tools</span>
+                        <div class="template-success">
+                            <span class="success-icon">✓</span>
+                            <span>90% success rate</span>
+                        </div>
+                    </div>
+                    <p class="template-description">Generate custom RTI applications using our interactive tool with AI-powered suggestions.</p>
+                    <a href="generate.html" class="template-button">Use Generator</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        // Template filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-button');
+            const templateCards = document.querySelectorAll('.template-card');
+            const searchInput = document.querySelector('.search-input');
+            const searchButton = document.querySelector('.search-button');
+            
+            // Filter by category
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    const category = button.textContent.trim();
+                    
+                    if (category === 'All Templates') {
+                        templateCards.forEach(card => {
+                            card.style.display = 'block';
+                        });
+                    } else {
+                        templateCards.forEach(card => {
+                            const cardCategory = card.querySelector('.template-meta span').textContent.replace('Category: ', '');
+                            
+                            if (cardCategory === category) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            });
+            
+            // Search functionality
+            const handleSearch = () => {
+                const searchTerm = searchInput.value.toLowerCase();
+                
+                templateCards.forEach(card => {
+                    const title = card.querySelector('.template-title').textContent.toLowerCase();
+                    const description = card.querySelector('.template-description').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            };
+            
+            searchButton.addEventListener('click', handleSearch);
+            searchInput.addEventListener('keyup', (e) => {
+                if (e.key === 'Enter') {
+                    handleSearch();
+                }
+            });
+        });
+
+        // Mobile menu functionality
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const navbarLinks = document.querySelector('.navbar-links');
+
+        mobileMenuButton.addEventListener('click', () => {
+            navbarLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.navbar-container')) {
+                navbarLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html> 

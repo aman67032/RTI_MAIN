@@ -3,229 +3,724 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File RTI - Student Portal</title>
+    <meta name="theme-color" content="#0fe0ff">
+    <title>File RTI Application - Student RTI Portal</title>
+    <link rel="icon" href="../assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="../assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png?v=2">
+    <link rel="manifest" href="../manifest.json?v=2">
     <link rel="stylesheet" href="../shared/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        .page-header {
-            background: linear-gradient(135deg, #001a33, #000);
-            color: white;
-            padding: 2rem;
-            text-align: center;
+        /* Student Portal Futuristic Styles */
+        :root {
+            --portal-primary: #0fe0ff;
+            --portal-secondary: #0066ff;
+            --portal-accent: #ff00ee;
+            --portal-dark: #040b36;
+            --portal-light: #f0f8ff;
+            --portal-gradient: linear-gradient(135deg, var(--portal-primary), var(--portal-secondary));
+            --portal-accent-gradient: linear-gradient(135deg, var(--portal-accent), var(--portal-primary));
+            --neon-shadow: 0 0 10px rgba(15, 224, 255, 0.5), 0 0 20px rgba(15, 224, 255, 0.3), 0 0 30px rgba(15, 224, 255, 0.1);
+            --futuristic-bg: linear-gradient(180deg, #040b36 0%, #0c1e51 50%, #060b31 100%);
         }
 
-        .page-title {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            background: var(--student-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        body {
+            background: var(--futuristic-bg);
+            color: var(--portal-light);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 60px; /* Add space for fixed header */
+        }
+        
+        /* One-line Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(4, 11, 36, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(15, 224, 255, 0.2);
+            z-index: 1000;
+            padding: 0;
         }
 
-        .template-section {
-            padding: 2rem;
-            background: #f5f5f5;
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        .template-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        .navbar-logo {
+            color: var(--portal-primary);
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(15, 224, 255, 0.5);
+        }
+
+        .navbar-links {
+            display: flex;
             gap: 2rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .navbar-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--portal-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-links li a:hover,
+        .navbar-links li a.active {
+            color: var(--portal-primary);
+        }
+
+        .navbar-links li a:hover::after,
+        .navbar-links li a.active::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--portal-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main content styles */
+        .forms-section {
+            padding: 4rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .template-card {
-            background: white;
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .template-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .template-icon {
-            font-size: 2rem;
-            color: var(--student-primary);
+        .section-title {
+            font-size: 2.5rem;
             margin-bottom: 1rem;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(to right, var(--portal-primary), var(--portal-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
         }
 
-        .template-title {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: #333;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--portal-gradient);
+            border-radius: 3px;
         }
 
-        .template-description {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 2rem auto 4rem;
+            color: #a0b4d0;
         }
 
-        .use-template-btn {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.5rem 1rem;
+        .form-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        .application-form {
+            background: rgba(4, 11, 54, 0.7);
             border-radius: 20px;
-            background: var(--student-gradient);
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(15, 224, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .application-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(15, 224, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 0, 238, 0.08) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .form-title {
+            color: var(--portal-primary);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .form-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--portal-accent-gradient);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(15, 224, 255, 0.2);
+            border-radius: 10px;
             color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 1rem;
             transition: all 0.3s ease;
         }
 
-        .use-template-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        .form-input:focus {
+            outline: none;
+            border-color: var(--portal-primary);
+            box-shadow: 0 0 15px rgba(15, 224, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        .use-template-btn i {
-            margin-left: 0.5rem;
+        .form-select {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(15, 224, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230fe0ff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 20px;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: var(--portal-primary);
+            box-shadow: 0 0 15px rgba(15, 224, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .form-textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(15, 224, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--portal-primary);
+            box-shadow: 0 0 15px rgba(15, 224, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .form-radio-group {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .radio-item input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .radio-custom {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid rgba(15, 224, 255, 0.4);
+            display: inline-block;
+            margin-right: 8px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .radio-item:hover .radio-custom {
+            border-color: var(--portal-primary);
+        }
+
+        .radio-item input[type="radio"]:checked + .radio-custom::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--portal-primary);
+            box-shadow: 0 0 10px var(--portal-primary);
+        }
+
+        .form-button {
+            background: var(--portal-gradient);
+            border: none;
+            padding: 1rem 2rem;
+            color: white;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 5px 15px rgba(15, 224, 255, 0.3);
+            margin-top: 1rem;
+        }
+
+        .form-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
+            z-index: -1;
+        }
+
+        .form-button:hover::before {
+            transform: translateX(100%);
+        }
+
+        .form-button:hover {
+            background: linear-gradient(135deg, var(--portal-accent), var(--portal-primary));
+            box-shadow: 0 10px 25px rgba(15, 224, 255, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .info-sidebar {
+            background: rgba(4, 11, 54, 0.7);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(15, 224, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .info-title {
+            color: var(--portal-primary);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .info-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--portal-accent-gradient);
+        }
+
+        .info-card {
+            background: rgba(15, 224, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid var(--portal-primary);
+        }
+
+        .info-card h4 {
+            color: white;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .info-card p {
+            color: #a0b4d0;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        .info-icon {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-icon i {
+            font-size: 1.5rem;
+            color: var(--portal-primary);
+            margin-right: 1rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(15, 224, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .info-icon span {
+            color: #a0b4d0;
+            font-size: 0.95rem;
+        }
+
+        .template-link {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border: 1px dashed rgba(15, 224, 255, 0.3);
+            border-radius: 10px;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .template-link:hover {
+            background: rgba(15, 224, 255, 0.1);
+            border-color: var(--portal-primary);
+            transform: translateY(-3px);
+        }
+
+        .template-link i {
+            font-size: 1.5rem;
+            color: var(--portal-primary);
+            margin-right: 1rem;
+        }
+
+        .template-link-content {
+            flex: 1;
+        }
+
+        .template-link-content h4 {
+            color: white;
+            margin: 0 0 0.3rem;
+            font-size: 1rem;
+        }
+
+        .template-link-content p {
+            color: #a0b4d0;
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        /* Media queries */
+        @media (max-width: 992px) {
+            .form-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .forms-section {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-container {
+                padding: 0.8rem 1rem;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .navbar-links {
+                position: fixed;
+                top: 60px;
+                right: -100%;
+                flex-direction: column;
+                background: rgba(4, 11, 36, 0.95);
+                backdrop-filter: blur(10px);
+                width: 250px;
+                height: 100vh;
+                padding: 2rem;
+                gap: 1.5rem;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
+                z-index: 1000;
+            }
+            
+            .navbar-links.active {
+                right: 0;
+            }
+            
+            .forms-section {
+                padding: 2rem 1rem;
+            }
+            
+            .form-radio-group {
+                flex-direction: column;
+                gap: 0.7rem;
+            }
         }
     </style>
 </head>
 <body class="student-theme">
-    <div id="header-container"></div>
+    <!-- One-line navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">Student RTI Portal</a>
+            <button class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="navbar-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="guide.html">RTI Guide</a></li>
+                <li><a href="forms.html" class="active">Forms</a></li>
+                <li><a href="track.html">Track Status</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="#" id="change-portal-link">Change Portal</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <section class="page-header">
-        <h1 class="page-title">File RTI Application</h1>
-        <p>Choose a template or create a custom RTI application</p>
-    </section>
-
-    <section class="template-section">
-        <div class="template-grid">
-            <div class="template-card">
-                <i class="fas fa-file-alt template-icon"></i>
-                <h3 class="template-title">Answer Sheet Verification</h3>
-                <p class="template-description">Request to view and verify your exam answer sheets</p>
-                <button class="use-template-btn" data-template="answer-sheet">
-                    Use Template <i class="fas fa-arrow-right"></i>
-                </button>
+    <section class="forms-section">
+        <h1 class="section-title">File RTI Application</h1>
+        
+        <div class="section-intro">
+            <p>Complete the form below to submit your RTI application to the appropriate educational authority. All fields marked with an asterisk (*) are required.</p>
+        </div>
+        
+        <div class="form-container">
+            <div class="application-form">
+                <h3 class="form-title">RTI Application Form</h3>
+                
+                <form id="rti-form">
+                    <div class="form-group">
+                        <label for="applicant-name">Full Name *</label>
+                        <input type="text" id="applicant-name" class="form-input" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" class="form-input" placeholder="Enter your email address" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-input" placeholder="Enter your phone number">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Postal Address *</label>
+                        <textarea id="address" class="form-textarea" placeholder="Enter your complete postal address" required style="min-height: 80px;"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="authority-type">Public Authority Type *</label>
+                        <select id="authority-type" class="form-select" required>
+                            <option value="">Select Authority Type</option>
+                            <option value="school">School</option>
+                            <option value="college">College/University</option>
+                            <option value="board">Educational Board (CBSE/ICSE/State)</option>
+                            <option value="ministry">Ministry of Education</option>
+                            <option value="ugc">UGC/AICTE</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="authority-name">Name of Public Authority *</label>
+                        <input type="text" id="authority-name" class="form-input" placeholder="Enter name of public authority" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="rti-subject">Subject of Information *</label>
+                        <input type="text" id="rti-subject" class="form-input" placeholder="E.g., Fee Structure, Examination Results" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="information-request">Information Requested *</label>
+                        <textarea id="information-request" class="form-textarea" placeholder="Describe the specific information you are seeking. Be clear and concise." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="time-period">Time Period of Information</label>
+                        <input type="text" id="time-period" class="form-input" placeholder="E.g., Academic Year 2023-24">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Fee Payment Method *</label>
+                        <div class="form-radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="payment-method" value="ipo" required>
+                                <span class="radio-custom"></span>
+                                Indian Postal Order
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="payment-method" value="dd">
+                                <span class="radio-custom"></span>
+                                Demand Draft
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="payment-method" value="online">
+                                <span class="radio-custom"></span>
+                                Online Payment
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="payment-details">Payment Reference Number (if applicable)</label>
+                        <input type="text" id="payment-details" class="form-input" placeholder="Enter payment reference number">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="attachments">Upload Supporting Documents (if any)</label>
+                        <input type="file" id="attachments" class="form-input" style="padding-top: 0.7rem; padding-bottom: 0.7rem;">
+                    </div>
+                    
+                    <button type="submit" class="form-button">Submit Application</button>
+                </form>
             </div>
-
-            <div class="template-card">
-                <i class="fas fa-university template-icon"></i>
-                <h3 class="template-title">Admission Process</h3>
-                <p class="template-description">Inquire about admission criteria and selection process</p>
-                <button class="use-template-btn" data-template="admission">
-                    Use Template <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-
-            <div class="template-card">
-                <i class="fas fa-hand-holding-usd template-icon"></i>
-                <h3 class="template-title">Scholarship Status</h3>
-                <p class="template-description">Track your scholarship application and disbursement</p>
-                <button class="use-template-btn" data-template="scholarship">
-                    Use Template <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-
-            <div class="template-card">
-                <i class="fas fa-exclamation-circle template-icon"></i>
-                <h3 class="template-title">Exam Malpractice</h3>
-                <p class="template-description">Report examination irregularities or malpractices</p>
-                <button class="use-template-btn" data-template="malpractice">
-                    Use Template <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-
-            <div class="template-card">
-                <i class="fas fa-calculator template-icon"></i>
-                <h3 class="template-title">Fee Structure</h3>
-                <p class="template-description">Request detailed breakdown of fees and charges</p>
-                <button class="use-template-btn" data-template="fee">
-                    Use Template <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-
-            <div class="template-card">
-                <i class="fas fa-edit template-icon"></i>
-                <h3 class="template-title">Custom RTI</h3>
-                <p class="template-description">Create a custom RTI application from scratch</p>
-                <button class="use-template-btn" data-template="custom">
-                    Start Fresh <i class="fas fa-arrow-right"></i>
-                </button>
+            
+            <div class="info-sidebar">
+                <h3 class="info-title">Guidelines</h3>
+                
+                <div class="info-card">
+                    <h4>Application Fee</h4>
+                    <p>A fee of ₹10 must be paid when filing an RTI application. BPL cardholders are exempted from paying the fee.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h4>Processing Time</h4>
+                    <p>Public authorities are required to provide requested information within 30 days from the date of receiving the application.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h4>Appeal Process</h4>
+                    <p>If information is denied or not provided within the stipulated time, you can file a first appeal within 30 days.</p>
+                </div>
+                
+                <h3 class="info-title" style="margin-top: 2.5rem;">Contact Support</h3>
+                
+                <div class="info-icon">
+                    <i class="fas fa-envelope"></i>
+                    <span>support@rtiedu.org</span>
+                </div>
+                
+                <div class="info-icon">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+91 1234567890</span>
+                </div>
+                
+                <a href="resources.html" class="template-link">
+                    <i class="fas fa-file-alt"></i>
+                    <div class="template-link-content">
+                        <h4>RTI Templates</h4>
+                        <p>Download pre-formatted templates for various RTI applications</p>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- RTI Form will be loaded here -->
-    <div id="form-container"></div>
-
-    <script src="../shared/nav.js"></script>
-    <script src="../shared/forms.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialize navigation
-            const headerContainer = document.getElementById('header-container');
-            headerContainer.innerHTML = Navigation.createHeader('Student RTI Portal');
-            new Navigation('student');
-
-            // Template data
-            const templates = {
-                'answer-sheet': {
-                    subject: 'Request for Answer Sheet Verification',
-                    description: `I would like to request access to view my answer sheet for the following examination:
-
-Exam Name: [Exam Name]
-Roll Number: [Roll Number]
-Date of Examination: [Date]
-Subject(s): [Subject Names]
-
-I am exercising my right under RTI Act to:
-1. Inspect my answer sheets
-2. Obtain photocopies of the evaluated answer sheets
-3. Know the marks given for each question
-4. View the marking scheme/solution key used for evaluation
-
-Please provide the above information within the stipulated time frame.`
-                },
-                'admission': {
-                    subject: 'Information Request Regarding Admission Process',
-                    description: `I would like to request the following information regarding the admission process:
-
-1. Complete selection criteria and weightage given to each component
-2. Cut-off marks/ranks for all categories in the last three years
-3. Total number of seats available and their category-wise distribution
-4. Number of applications received and candidates selected in each category
-5. Copy of the merit list with marks/ranks of selected candidates
-
-Please provide the above information as per RTI Act guidelines.`
-                },
-                // Add other templates...
-            };
-
-            // Handle template selection
-            document.querySelectorAll('.use-template-btn').forEach(button => {
-                button.addEventListener('click', () => {
-                    const templateId = button.dataset.template;
-                    const template = templates[templateId] || { subject: '', description: '' };
-                    
-                    // Load the form
-                    fetch('../shared/forms.html')
-                        .then(response => response.text())
-                        .then(html => {
-                            const formContainer = document.getElementById('form-container');
-                            formContainer.innerHTML = html;
-                            
-                            // Pre-fill template data if available
-                            if (template.subject) {
-                                document.getElementById('subject').value = template.subject;
-                            }
-                            if (template.description) {
-                                document.getElementById('description').value = template.description;
-                            }
-
-                            // Scroll to form
-                            formContainer.scrollIntoView({ behavior: 'smooth' });
-                        });
+            // Mobile menu toggle
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const navbarLinks = document.querySelector('.navbar-links');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', () => {
+                    navbarLinks.classList.toggle('active');
                 });
-            });
+            }
+            
+            // Change portal link
+            const changePortalLink = document.getElementById('change-portal-link');
+            if (changePortalLink) {
+                changePortalLink.addEventListener('click', () => {
+                    window.location.href = '../index.html';
+                });
+            }
+            
+            // Form submission
+            const rtiForm = document.getElementById('rti-form');
+            
+            if (rtiForm) {
+                rtiForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    // In a real application, you would handle form submission to server here
+                    // For now, let's show a simple alert
+                    alert('Your RTI application has been submitted successfully! A reference number will be sent to your email shortly.');
+                    
+                    // Optionally redirect to tracking page
+                    // window.location.href = 'track.html';
+                });
+            }
         });
     </script>
 </body>

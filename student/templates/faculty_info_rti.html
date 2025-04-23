@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Information RTI Template | Student RTI Portal</title>
+    <link rel="stylesheet" href="../../shared/styles.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .template-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(107, 112, 92, 0.15);
+        }
+        
+        .template-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .template-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: grid;
+            gap: 0.5rem;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .help-text {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .checkbox-group input {
+            width: auto;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn-primary {
+            background: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--secondary-color);
+        }
+        
+        .btn-secondary {
+            background: #eee;
+            color: #333;
+        }
+        
+        .btn-secondary:hover {
+            background: #ddd;
+        }
+        
+        .when-to-use {
+            background: rgba(255, 232, 214, 0.5);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .when-to-use h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .when-to-use ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .when-to-use li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .key-points {
+            background: rgba(165, 165, 141, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .key-points h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .key-points ol {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .key-points li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .success-stories {
+            margin-top: 3rem;
+        }
+        
+        .success-stories h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .story-card {
+            background: rgba(165, 165, 141, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .story-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .story-info h3 {
+            margin: 0;
+            color: var(--primary-color);
+        }
+        
+        .story-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .story-content p {
+            margin-top: 0;
+        }
+        
+        .story-result {
+            background: rgba(107, 112, 92, 0.1);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .faculty-tip {
+            background: rgba(203, 153, 126, 0.1);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            font-style: italic;
+            color: var(--primary-color);
+            position: relative;
+            padding-left: 2.5rem;
+        }
+        
+        .faculty-tip:before {
+            content: "💡";
+            position: absolute;
+            left: 0.75rem;
+            top: 0.75rem;
+            font-size: 1.25rem;
+        }
+        
+        .faculty-sample {
+            background: rgba(107, 112, 92, 0.05);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 2rem;
+            border: 1px dashed var(--secondary-color);
+        }
+        
+        .faculty-sample h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        
+        .faculty-sample ol {
+            padding-left: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation from shared component -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../../assets/images/logo.png" alt="RTI Education Portal">
+                    <span>Student RTI Portal</span>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../index.html">Dashboard</a></li>
+                    <li><a href="../resources.html">Resources</a></li>
+                    <li><a href="index.html" class="active">Templates</a></li>
+                    <li><a href="../../shared/track.html">Track Applications</a></li>
+                    <li><a href="../../shared/forms.html">Submit RTI</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Faculty Information RTI Template</h1>
+                <p>Request transparency about faculty qualifications, vacancies, and teaching standards</p>
+            </div>
+        </section>
+
+        <section class="template-section">
+            <div class="container">
+                <div class="when-to-use">
+                    <h2>When to Use This Template</h2>
+                    <p>This template is designed for students seeking detailed information about faculty members at educational institutions. Use this template when:</p>
+                    <ul>
+                        <li>You need information about faculty qualifications and credentials</li>
+                        <li>You want to verify faculty-student ratios or teaching workloads</li>
+                        <li>You're concerned about faculty vacancies in your department</li>
+                        <li>You need details about specialized faculty for certain courses</li>
+                        <li>You want information about faculty selection process and criteria</li>
+                        <li>You need to verify compliance with regulatory requirements for faculty</li>
+                        <li>You want details about guest faculty or visiting professors</li>
+                    </ul>
+                </div>
+
+                <div class="template-container">
+                    <div class="template-header">
+                        <h2>Faculty Information RTI Application</h2>
+                        <p>Fill in the details below to generate your RTI application</p>
+                    </div>
+
+                    <form class="template-form">
+                        <div class="form-group">
+                            <label for="addressee">To</label>
+                            <input type="text" id="addressee" name="addressee" placeholder="Public Information Officer" required>
+                            <div class="help-text">Usually the Public Information Officer (PIO) of the educational institution</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="institution">Institution Name</label>
+                            <input type="text" id="institution" name="institution" placeholder="e.g., College/University/School Name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="department">Department/Faculty (if applicable)</label>
+                            <input type="text" id="department" name="department" placeholder="e.g., Engineering, Medical, Arts, etc.">
+                            <div class="help-text">If your query is specific to a department, mention it here</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="course">Course/Program (if applicable)</label>
+                            <input type="text" id="course" name="course" placeholder="e.g., B.Tech, MBBS, BA, etc.">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="academic-year">Academic Year</label>
+                            <input type="text" id="academic-year" name="academic-year" placeholder="e.g., 2025-26" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applicant-name">Applicant's Name</label>
+                            <input type="text" id="applicant-name" name="applicant-name" placeholder="Your Full Name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applicant-address">Applicant's Address</label>
+                            <textarea id="applicant-address" name="applicant-address" placeholder="Your Complete Postal Address" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applicant-contact">Contact Information</label>
+                            <input type="tel" id="applicant-contact" name="applicant-contact" placeholder="Your Phone Number" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="applicant-email">Email Address</label>
+                            <input type="email" id="applicant-email" name="applicant-email" placeholder="Your Email Address" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Information Requested (Select all that apply)</label>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-faculty-list" name="requested-info" value="faculty-list">
+                                <label for="request-faculty-list">Complete list of faculty members with designations</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-qualifications" name="requested-info" value="qualifications">
+                                <label for="request-qualifications">Faculty qualifications and credentials</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-experience" name="requested-info" value="experience">
+                                <label for="request-experience">Teaching and industry experience of faculty members</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-vacancies" name="requested-info" value="vacancies">
+                                <label for="request-vacancies">Information about vacant faculty positions</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-ratio" name="requested-info" value="ratio">
+                                <label for="request-ratio">Faculty-to-student ratio for specific departments</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-research" name="requested-info" value="research">
+                                <label for="request-research">Research publications and projects led by faculty</label>
+                            </div>
+
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-selection" name="requested-info" value="selection">
+                                <label for="request-selection">Faculty selection process and criteria</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="request-guest" name="requested-info" value="guest">
+                                <label for="request-guest">Details of guest faculty or visiting professors</label>
+                            </div>
+                        </div>
+
+                        <div class="faculty-tip">
+                            When requesting faculty information, be specific about the department or course you're interested in. This helps in getting more relevant and precise information. Also, clearly specify the time period for which you are seeking information.
+                        </div>
+
+                        <div class="form-group">
+                            <label for="student-id">Student ID (if applicable)</label>
+                            <input type="text" id="student-id" name="student-id" placeholder="Your Student ID/Roll Number">
+                            <div class="help-text">Include if you're a current student of the institution</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="specific-info">Specific Information Required</label>
+                            <textarea id="specific-info" name="specific-info" placeholder="Provide details about the specific faculty information you are seeking"></textarea>
+                            <div class="help-text">Clearly specify any particular aspects of faculty information you want details about</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time-period">Time Period</label>
+                            <input type="text" id="time-period" name="time-period" placeholder="e.g., 2023-2025">
+                            <div class="help-text">Specify the time period for which you are seeking faculty information</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="application-fee">Application Fee Details</label>
+                            <select id="application-fee" name="application-fee" required>
+                                <option value="">Select Fee Payment Method</option>
+                                <option value="Cash">Cash</option>
+                                <option value="Postal Order">Indian Postal Order</option>
+                                <option value="Court Fee Stamp">Court Fee Stamp</option>
+                                <option value="Demand Draft">Demand Draft</option>
+                                <option value="Bank Transfer">Bank Transfer</option>
+                            </select>
+                            <div class="help-text">Standard RTI application fee is ₹10 for general category</div>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="bpl-category" name="bpl-category">
+                            <label for="bpl-category">I belong to Below Poverty Line (BPL) category and have attached proof</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="declaration">Declaration</label>
+                            <div class="help-text">I hereby declare that the information sought does not fall within the restrictions contained in Section 8 and 9 of the RTI Act, 2005 and to the best of my knowledge, it pertains to your institution.</div>
+                        </div>
+
+                        <div class="faculty-sample">
+                            <h3>Sample Specific Information Request</h3>
+                            <p>I am requesting the following specific information regarding faculty at your institution:</p>
+                            <ol>
+                                <li>A comprehensive list of all faculty members in the [DEPARTMENT NAME] department for the academic year [YEAR], including their names, designations, qualifications, and specializations.</li>
+                                <li>Detailed information about the educational qualifications, research experience, and industry experience of the faculty members teaching the [COURSE NAME] program.</li>
+                                <li>The current faculty-to-student ratio in the [DEPARTMENT NAME] department, compared to the ratio prescribed by regulatory bodies like UGC/AICTE/MCI.</li>
+                                <li>Information about vacant faculty positions in the [DEPARTMENT NAME] department, including:
+                                    <ul>
+                                        <li>Number of sanctioned positions vs. filled positions</li>
+                                        <li>Duration for which these positions have been vacant</li>
+                                        <li>Alternative arrangements made to cover the teaching workload</li>
+                                    </ul>
+                                </li>
+                                <li>Details of research publications, patents, and funded projects undertaken by the faculty of [DEPARTMENT NAME] in the last three years.</li>
+                                <li>Information about guest faculty or visiting professors who taught courses in the [DEPARTMENT NAME] in the last academic year, including their qualifications and organizations they are primarily affiliated with.</li>
+                                <li>The workload distribution among faculty members in the [DEPARTMENT NAME], including the number of courses, teaching hours, and research supervision responsibilities assigned to each faculty member.</li>
+                            </ol>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-primary">Download as PDF</button>
+                            <button type="button" class="btn btn-secondary">Print Form</button>
+                            <button type="reset" class="btn btn-secondary">Reset Form</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="key-points">
+                    <h2>Key Points to Remember</h2>
+                    <ol>
+                        <li><strong>Be specific about the department:</strong> Specify the exact department or program for which you need faculty information.</li>
+                        <li><strong>Request verifiable information:</strong> Ask for official documents like appointment letters, qualification certificates, or regulatory compliance reports.</li>
+                        <li><strong>Compare with regulations:</strong> Reference specific regulatory requirements (like AICTE/UGC norms) for faculty qualifications or faculty-student ratios.</li>
+                        <li><strong>Seek workload information:</strong> Request details about teaching hours, course allocation, and research supervision responsibilities.</li>
+                        <li><strong>Ask about vacant positions:</strong> Inquire about unfilled faculty positions and steps being taken to address shortages.</li>
+                        <li><strong>Request objective data:</strong> Focus on factual information like qualifications, experience, and publications rather than subjective assessments.</li>
+                    </ol>
+                </div>
+
+                <div class="success-stories">
+                    <h2>Success Stories</h2>
+                    
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">RK</div>
+                            <div class="story-info">
+                                <h3>Rahul Kumar</h3>
+                                <p>Computer Science Student</p>
+                            </div>
+                        </div>
+                        <div class="story-content">
+                            <p>Our institute claimed to have 'world-class faculty' for a specialized AI course, but the quality of teaching seemed inconsistent. Using RTI, I requested information about the qualifications and experience of faculty teaching AI courses. The response revealed that only one out of five faculty members had formal qualifications in AI or Machine Learning. When this information was presented to the department, they were compelled to bring in qualified guest faculty from industry and arrange specialized training for existing faculty.</p>
+                            <div class="story-result">Result: Improved teaching quality with qualified AI specialists brought in</div>
+                        </div>
+                    </div>
+                    
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">SP</div>
+                            <div class="story-info">
+                                <h3>Sunita Patel</h3>
+                                <p>Civil Engineering Student</p>
+                            </div>
+                        </div>
+                        <div class="story-content">
+                            <p>Our department had been functioning with minimal faculty for over a year, affecting the quality of labs and project guidance. Through an RTI application, I found that 7 out of 12 sanctioned faculty positions were vacant, violating AICTE norms for faculty-student ratio. The RTI response also revealed that the institute had not advertised these positions for over two years despite collecting full fees from students. Following this revelation, the state technical education department intervened, and the institute was directed to expedite the recruitment process.</p>
+                            <div class="story-result">Result: Recruitment process fast-tracked with 5 new faculty members hired within a semester</div>
+                        </div>
+                    </div>
+                    
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">AT</div>
+                            <div class="story-info">
+                                <h3>Ananya Thakur</h3>
+                                <p>Physics Graduate Student</p>
+                            </div>
+                        </div>
+                        <div class="story-content">
+                            <p>My research required specialized guidance in quantum computing, but our department claimed they couldn't provide resources for this 'niche' area. Using RTI, I requested information about the research focus and grants received by the Physics department. The response revealed that the department had received a substantial grant specifically for quantum computing research two years ago. When confronted with this information, the department acknowledged the resources and established a quantum computing lab that became accessible to all interested students.</p>
+                            <div class="story-result">Result: Access to previously hidden quantum computing resources and specialized guidance</div>
+                        </div>
+                    </div>
+                    
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">VR</div>
+                            <div class="story-info">
+                                <h3>Vivek Reddy</h3>
+                                <p>Journalism Student</p>
+                            </div>
+                        </div>
+                        <div class="story-content">
+                            <p>Our media studies program advertised 'industry experts as faculty,' but we rarely saw these experts in our classes. Through an RTI application, I requested information about guest faculty appointments and teaching hours. The response showed that while the college had agreements with several industry professionals, they were only required to conduct 2-3 sessions per semester, not the regular involvement that was advertised. The students' association used this information to negotiate with the college, resulting in a revised program with structured weekly masterclasses by industry professionals in addition to regular faculty.</p>
+                            <div class="story-result">Result: Weekly masterclasses with industry professionals established as a formal part of the curriculum</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../../assets/images/logo.png" alt="RTI Education Portal">
+                    <p>Empowering students through information</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Dashboard</a></li>
+                        <li><a href="../resources.html">Resources</a></li>
+                        <li><a href="index.html">Templates</a></li>
+                        <li><a href="../../shared/track.html">Track Applications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p>Email: student.support@rtieducation.org</p>
+                    <p>Helpline: 1800-XXX-XXXX</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RTI Education Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../shared/nav.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form handling functionality
+            const downloadBtn = document.querySelector('.btn-primary');
+            const printBtn = document.querySelectorAll('.btn-secondary')[0];
+            
+            downloadBtn.addEventListener('click', function() {
+                alert('PDF download functionality will be integrated here. In a production environment, this would generate a formatted PDF of your RTI application.');
+            });
+            
+            printBtn.addEventListener('click', function() {
+                window.print();
+            });
+            
+            // Hide the sample text when focusing on the specific info field
+            const specificInfoField = document.getElementById('specific-info');
+            const sampleSection = document.querySelector('.faculty-sample');
+            
+            specificInfoField.addEventListener('focus', function() {
+                sampleSection.style.display = 'none';
+            });
+            
+            specificInfoField.addEventListener('blur', function() {
+                if (!this.value) {
+                    sampleSection.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
