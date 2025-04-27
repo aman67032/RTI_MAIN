@@ -3,55 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0fe0ff">
+    <meta name="theme-color" content="#D27D2D">
     <title>Legal & Government RTI Templates | Student RTI Portal</title>
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Lato:wght@300;400;700&display=swap">
     <style>
         :root {
-            --primary-color: #6B705C;
-            --secondary-color: #A5A58D;
-            --accent-color: #CB997E;
-            --text-color: #333;
-            --light-text-color: #666;
-            --bg-color: #FFF9F0;
-            --card-bg: #FFFFFF;
-            --border-color: rgba(107, 112, 92, 0.2);
-            --shadow-color: rgba(107, 112, 92, 0.1);
-            --gradient-primary: linear-gradient(135deg, #6B705C 0%, #A5A58D 100%);
-            --gradient-accent: linear-gradient(135deg, #CB997E 0%, #DDBEA9 100%);
-            --shadow-sm: 0 2px 8px rgba(107, 112, 92, 0.1);
-            --shadow-md: 0 4px 12px rgba(107, 112, 92, 0.15);
-            --shadow-lg: 0 10px 25px rgba(107, 112, 92, 0.2);
+            /* Enhanced earthy color palette matching main portal */
+            --earthy-brown: #d27d2d;
+            --earthy-tan: #F4A261;
+            --earthy-cream: #FEF4E8;
+            --earthy-sage: #7FA99B;
+            --earthy-olive: #5E8B7E;
             
-            /* Futuristic theme vars */
-            --primary: #0fe0ff;
-            --secondary: #2e3192;
-            --dark: #13151f;
-            --darker: #0c0e16;
-            --light: #f0f6ff;
-            --glow: 0 0 10px var(--primary), 0 0 20px rgba(15, 224, 255, 0.4);
-            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            --panel-bg: rgba(19, 21, 31, 0.7);
-            --glass: rgba(255, 255, 255, 0.1);
-            --glass-dark: rgba(0, 0, 0, 0.2);
+            /* Portal colors */
+            --portal-primary: #D27D2D;
+            --portal-secondary: #5E8B7E;
+            --portal-accent: #7FA99B;
+            --portal-dark: #1b3a4b;
+            --portal-light: #ffffff;
+            --portal-bg: #FEF4E8;
+            --portal-text: #3d5a6c;
+            --portal-border: #e8e2d6;
+            --portal-shadow: 0 1px 3px rgba(60, 64, 67, 0.2);
+            --portal-hover-shadow: 0 2px 6px rgba(60, 64, 67, 0.15);
+            --transition-normal: 0.3s ease;
+            --transition-fast: 0.2s ease;
+            --container-max-width: 1400px;
         }
+/* Clean Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--portal-light);
+    border-bottom: 1px solid var(--portal-border);
+    z-index: 1000;
+    padding: 0;
+    box-shadow: var(--portal-shadow);
+    transition: all var(--transition-normal);
+}
+
+.navbar.scrolled {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.98);
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 2rem;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+}
+
+.navbar-logo {
+    color: var(--portal-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navbar-logo img {
+    height: 32px;
+    width: auto;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.navbar-links li a {
+    color: var(--portal-dark);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: all var(--transition-normal);
+}
+
+.navbar-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--portal-primary);
+    transition: width var(--transition-normal);
+}
+
+.navbar-links li a:hover,
+.navbar-links li a.active {
+    color: var(--portal-primary);
+}
+
+.navbar-links li a:hover::after,
+.navbar-links li a.active::after {
+    width: 100%;
+}
+
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--portal-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform var(--transition-fast);
+}
+
+.mobile-toggle:hover {
+    transform: scale(1.1);
+}
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-family: 'Roboto', 'Segoe UI', sans-serif;
         }
 
         body {
-            background: var(--dark);
-            color: var(--light);
+            background: linear-gradient(135deg, var(--earthy-cream), #FEF8F2);
+            color: var(--portal-text);
             overflow-x: hidden;
             line-height: 1.6;
             position: relative;
             min-height: 100vh;
+            padding-top: 70px;
         }
 
         body::before {
@@ -73,27 +166,28 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: var(--darker);
+            background: #f1f1f1;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--secondary);
+            background: rgba(210, 125, 45, 0.5);
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary);
+            background: rgba(210, 125, 45, 0.7);
         }
 
         /* Navigation styles */
         .navbar {
-            background: var(--panel-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--glass);
-            position: sticky;
+            background: var(--portal-light);
+            border-bottom: 1px solid var(--portal-border);
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
+            box-shadow: var(--portal-shadow);
         }
 
         .navbar-container {
@@ -107,18 +201,17 @@
         }
 
         .navbar-logo {
-            color: var(--primary);
+            color: var(--portal-primary);
             font-weight: 700;
             font-size: 1.3rem;
             text-decoration: none;
-            text-shadow: 0 0 10px rgba(15, 224, 255, 0.5);
             transition: all 0.3s;
             display: flex;
             align-items: center;
         }
 
         .navbar-logo:hover {
-            text-shadow: var(--glow);
+            color: var(--portal-secondary);
         }
 
         .navbar-links {
@@ -127,7 +220,7 @@
         }
 
         .navbar-links li a {
-            color: var(--light);
+            color: var(--portal-dark);
             text-decoration: none;
             padding: 0 15px;
             transition: all 0.3s;
@@ -136,7 +229,7 @@
         }
 
         .navbar-links li a:hover {
-            color: var(--primary);
+            color: var(--portal-primary);
         }
 
         .navbar-links li a::after {
@@ -146,7 +239,7 @@
             left: 15px;
             width: calc(100% - 30px);
             height: 2px;
-            background: var(--gradient);
+            background: var(--portal-primary);
             transform: scaleX(0);
             transform-origin: right;
             transition: transform 0.3s ease;

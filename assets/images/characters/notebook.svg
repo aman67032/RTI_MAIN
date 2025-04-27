@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+  <!-- Notebook background -->
+  <rect x="128" y="96" width="256" height="320" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="8"/>
+  
+  <!-- Notebook binding -->
+  <rect x="128" y="96" width="32" height="320" fill="#ffd700" stroke="#333" stroke-width="8"/>
+  <path d="M128 136h32M128 176h32M128 216h32M128 256h32M128 296h32M128 336h32M128 376h32" stroke="#333" stroke-width="4"/>
+  
+  <!-- Notebook pages -->
+  <rect x="160" y="96" width="224" height="320" fill="#fff" stroke="#333" stroke-width="2"/>
+  
+  <!-- Page lines -->
+  <path d="M160 136h224M160 176h224M160 216h224M160 256h224M160 296h224M160 336h224M160 376h224" stroke="#aaa" stroke-width="1"/>
+  
+  <!-- RTI Heading -->
+  <rect x="200" y="110" width="144" height="16" fill="#ffd700"/>
+  <text x="272" y="123" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">RTI NOTES</text>
+  
+  <!-- List items -->
+  <circle cx="180" cy="156" r="4" fill="#ffd700"/>
+  <path d="M192 156h160" stroke="#333" stroke-width="2"/>
+  
+  <circle cx="180" cy="196" r="4" fill="#ffd700"/>
+  <path d="M192 196h160" stroke="#333" stroke-width="2"/>
+  
+  <circle cx="180" cy="236" r="4" fill="#ffd700"/>
+  <path d="M192 236h160" stroke="#333" stroke-width="2"/>
+  
+  <circle cx="180" cy="276" r="4" fill="#ffd700"/>
+  <path d="M192 276h120" stroke="#333" stroke-width="2"/>
+  
+  <!-- Bookmark -->
+  <path d="M352 96v64l-16-8-16 8V96" fill="#ffd700" stroke="#333" stroke-width="2"/>
+  
+  <!-- Pencil -->
+  <g transform="translate(272, 330) rotate(45)">
+    <rect x="-8" y="-60" width="16" height="120" rx="2" fill="#ffd700" stroke="#333" stroke-width="2"/>
+    <path d="M-8-60h16l-8-16z" fill="#ff6b6b" stroke="#333" stroke-width="2"/>
+    <rect x="-8" y="40" width="16" height="20" fill="#d9d9d9" stroke="#333" stroke-width="1"/>
+  </g>
+</svg> 

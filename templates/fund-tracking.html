@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffd700">
+    <title>Fund Tracking RTI Template | RTI Education Portal</title>
+    <link rel="icon" href="../assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="../assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png?v=2">
+    <link rel="manifest" href="../manifest.json?v=2">
+
+    <link rel="stylesheet" href="../Waves.css">
+    <link rel="stylesheet" href="../loading-screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../decrypted-text.css">
+    <link rel="stylesheet" href="../GlitchText.css">
+    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="../rti-tools.css">
+    <script src="../FuzzyText.js"></script>
+    <script src="../loading-screen.js"></script>
+    <script src="../favicon-refresh.js"></script>
+    
+    <style>
+        .template-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+        
+        .template-header {
+            border-bottom: 2px solid #f0f0f0;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+        }
+        
+        .template-title {
+            color: #333;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .template-description {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .template-content {
+            font-family: 'Arial', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            white-space: pre-line;
+        }
+        
+        .template-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-title {
+            color: #333;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .copy-btn {
+            background-color: #4285f4;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background-color: #3367d6;
+        }
+        
+        .instructions {
+            background-color: #f9f9f9;
+            border-left: 4px solid #ffd700;
+            margin-top: 2rem;
+            padding: 1rem;
+        }
+        
+        .instructions h3 {
+            color: #333;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .instructions ol {
+            margin-left: 1.5rem;
+        }
+        
+        .instructions li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .tips-box {
+            background-color: #f5f5f5;
+            border-radius: 6px;
+            margin-top: 2rem;
+            padding: 1.5rem;
+        }
+        
+        .tips-box h3 {
+            color: #333;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .tips-box ul {
+            margin-left: 1.5rem;
+        }
+        
+        .tips-box li {
+            margin-bottom: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar/Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>RTI Education</span>
+                <div class="logo-accent"></div>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">
+                    <span class="nav-icon"><i class="fas fa-home"></i></span>
+                    Home
+                </a>
+                <a href="../timeline.html">
+                    <span class="nav-icon"><i class="fas fa-history"></i></span>
+                    Timeline
+                </a>
+                <a href="../news.html">
+                    <span class="nav-icon"><i class="fas fa-newspaper"></i></span>
+                    News
+                </a>
+                <a href="../cases.html">
+                    <span class="nav-icon"><i class="fas fa-gavel"></i></span>
+                    Current Cases
+                </a>
+            </div>
+            <div class="auth-links">
+                <a href="../login.html" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </a>
+                <a href="../signup.html" class="signup-btn">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up
+                </a>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <div class="nav-decoration">
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+        </div>
+    </nav>
+
+    <!-- Template Content -->
+    <div class="container">
+        <div class="page-header">
+            <h1>Fund Tracking RTI Template</h1>
+            <p>Use this template to request information about allocation, utilization, and monitoring of educational funds</p>
+        </div>
+        
+        <div class="template-container">
+            <div class="template-header">
+                <h2 class="template-title">Educational Funds Tracking RTI Application</h2>
+                <p class="template-description">This template helps you request detailed information about government funds allocated to educational institutions and their utilization.</p>
+            </div>
+            
+            <div class="template-content">
+                <div class="template-section">
+                    <h3 class="section-title">To:</h3>
+                    <p>The Public Information Officer,<br>[Name of Department/Educational Institution],<br>[Complete Address]</p>
+                </div>
+                
+                <div class="template-section">
+                    <h3 class="section-title">Subject: Request for Information under Right to Information Act, 2005 regarding Fund Allocation and Utilization</h3>
+                </div>
+                
+                <div class="template-section">
+                    <h3 class="section-title">Application:</h3>
+                    <p>Sir/Madam,</p>
+                    <p>I, [Your Name], a citizen of India, would like to request the following information under the Right to Information Act, 2005 regarding the allocation and utilization of funds for [specify scheme/project/institution]:</p>
+                    
+                    <ol>
+                        <li>Total amount of funds allocated to [specify scheme/project/institution] for the financial year(s) [specify years].</li>
+                        <li>Detailed breakup of the fund allocation under different heads/categories.</li>
+                        <li>Copies of all government orders/circulars/notifications regarding the allocation and utilization of these funds.</li>
+                        <li>Statement of expenditure showing the utilization of funds allocated during the specified period.</li>
+                        <li>List of beneficiaries/institutions that received funds under this scheme/project, along with the amount received by each.</li>
+                        <li>Details of any unutilized funds, if any, and reasons for non-utilization.</li>
+                        <li>Copies of audit reports related to the utilization of these funds for the specified period.</li>
+                        <li>Details of monitoring mechanism in place to ensure proper utilization of funds.</li>
+                        <li>Information regarding any irregularities identified in fund utilization and action taken.</li>
+                        <li>Details of the committee/authority responsible for approving fund allocation and monitoring utilization.</li>
+                    </ol>
+                    
+                    <p>I am willing to pay the necessary fee as prescribed under the RTI Act for obtaining this information.</p>
+                    <p>I would appreciate if the information could be provided within the stipulated time as per the RTI Act, 2005.</p>
+                    
+                    <p>Thanking you,</p>
+                    <p>Yours faithfully,<br>[Your Name]<br>[Your Address]<br>[Contact Number]<br>[Email Address]<br>[Date]</p>
+                </div>
+                
+                <button class="copy-btn" onclick="copyTemplate()">Copy Template</button>
+            </div>
+            
+            <div class="instructions">
+                <h3>How to Use This Template:</h3>
+                <ol>
+                    <li>Replace all text in [brackets] with your specific information.</li>
+                    <li>Add or remove points in the request list based on your specific requirements.</li>
+                    <li>Submit the application to the Public Information Officer (PIO) of the relevant department or institution.</li>
+                    <li>Keep a copy of the application for your records and request an acknowledgment.</li>
+                    <li>Follow up after 30 days if you don't receive a response.</li>
+                </ol>
+            </div>
+            
+            <div class="tips-box">
+                <h3>Tips for Fund Tracking RTIs</h3>
+                <ul>
+                    <li><strong>Be specific about schemes:</strong> Mention the exact name of the scheme or fund you're inquiring about (e.g., Sarva Shiksha Abhiyan, Mid-Day Meal Scheme, RUSA, etc.).</li>
+                    <li><strong>Specify time periods:</strong> Always specify the exact financial years for which you need information.</li>
+                    <li><strong>Follow the money trail:</strong> If funds flow from central to state to district to school level, you might need to file separate RTIs at different levels.</li>
+                    <li><strong>Request physical inspection:</strong> For large documents like detailed expenditure reports, you can request physical inspection of records under Section 2(j) of the RTI Act.</li>
+                    <li><strong>Check utilization certificates:</strong> These documents show whether the funds were used as intended and are crucial for tracking misuse.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>RTI Education</span>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <a href="#">RTI Act Guidelines</a>
+                    <a href="#">Templates</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Success Stories</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Portals</h3>
+                    <a href="../student/index.html">Student Section</a>
+                    <a href="../parent/index.html">Parent Section</a>
+                    <a href="../teacher/index.html">Teacher Section</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Community</h3>
+                    <a href="#">Forums</a>
+                    <a href="#">Events</a>
+                    <a href="#">Newsletter</a>
+                </div>
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <a href="#">About Us</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 RTI Education Portal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        function copyTemplate() {
+            const templateContent = document.querySelector('.template-content').innerText;
+            navigator.clipboard.writeText(templateContent)
+                .then(() => {
+                    const copyBtn = document.querySelector('.copy-btn');
+                    copyBtn.textContent = 'Copied!';
+                    setTimeout(() => {
+                        copyBtn.textContent = 'Copy Template';
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Could not copy text: ', err);
+                });
+        }
+    </script>
+</body>
+</html> 

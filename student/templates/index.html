@@ -3,27 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0fe0ff">
+    <meta name="theme-color" content="#D27D2D">
     <title>RTI Templates for Students | RTI Education Portal</title>
     <link rel="stylesheet" href="../../shared/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Lato:wght@300;400;700&display=swap">
     <style>
-        /* Student Portal Futuristic Theme Variables */
+        /* Student Portal Theme Variables */
         :root {
-            --portal-primary: #0fe0ff;
-            --portal-secondary: #0066ff;
-            --portal-accent: #ff00ee;
-            --portal-dark: #040b36;
-            --portal-light: #f0f8ff;
-            --portal-gradient: linear-gradient(135deg, var(--portal-primary), var(--portal-secondary));
-            --portal-accent-gradient: linear-gradient(135deg, var(--portal-accent), var(--portal-primary));
-            --neon-shadow: 0 0 10px rgba(15, 224, 255, 0.5), 0 0 20px rgba(15, 224, 255, 0.3), 0 0 30px rgba(15, 224, 255, 0.1);
-            --futuristic-bg: linear-gradient(180deg, #040b36 0%, #0c1e51 50%, #060b31 100%);
+            /* Enhanced earthy color palette matching main portal */
+            --earthy-brown: #d27d2d;
+            --earthy-tan: #F4A261;
+            --earthy-cream: #FEF4E8;
+            --earthy-sage: #7FA99B;
+            --earthy-olive: #5E8B7E;
+            
+            /* Portal colors */
+            --portal-primary: #D27D2D;
+            --portal-secondary: #5E8B7E;
+            --portal-accent: #7FA99B;
+            --portal-dark: #1b3a4b;
+            --portal-light: #ffffff;
+            --portal-bg: #FEF4E8;
+            --portal-text: #3d5a6c;
+            --portal-border: #e8e2d6;
+            --portal-shadow: 0 1px 3px rgba(60, 64, 67, 0.2);
+            --portal-hover-shadow: 0 2px 6px rgba(60, 64, 67, 0.15);
         }
 
         body {
-            background: var(--futuristic-bg);
-            color: var(--portal-light);
+            background: linear-gradient(135deg, var(--earthy-cream), #FEF8F2);
+            color: var(--portal-text);
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             line-height: 1.7;
             font-size: 16px;
@@ -33,23 +43,23 @@
             padding-top: 80px;
         }
 
-        /* Futuristic Scrollbar */
+        /* Professional Scrollbar */
         ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
+            width: 8px;
+            height: 8px;
         }
         
         ::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.2);
+            background: #f1f1f1;
         }
         
         ::-webkit-scrollbar-thumb {
-            background: var(--portal-primary);
-            border-radius: 3px;
+            background: rgba(210, 125, 45, 0.5);
+            border-radius: 4px;
         }
         
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--portal-secondary);
+            background: rgba(210, 125, 45, 0.7);
         }
 
         .templates-container {
@@ -69,51 +79,28 @@
         .page-header h1 {
             font-size: clamp(2.5rem, 4.5vw, 4.5rem);
             margin-bottom: 1.5rem;
-            background: linear-gradient(to right, var(--portal-primary), var(--portal-accent), var(--portal-primary));
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--portal-primary);
             text-transform: uppercase;
             letter-spacing: 2px;
-            animation: shine 3s linear infinite;
             font-weight: 800;
-            text-shadow: var(--neon-shadow);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .page-header p {
             font-size: 1.3rem;
-            color: var(--portal-light);
+            color: var(--portal-text);
             opacity: 0.9;
         }
 
-        @keyframes shine {
-            to {
-                background-position: 200% center;
-            }
-        }
-
         .intro-section {
-            background: rgba(4, 11, 54, 0.8);
+            background: var(--portal-light);
             padding: 2.5rem;
-            border-radius: 20px;
+            border-radius: 12px;
             margin-bottom: 3rem;
-            border: 1px solid rgba(15, 224, 255, 0.2);
-            backdrop-filter: blur(10px);
+            border: 1px solid var(--portal-border);
+            box-shadow: var(--portal-shadow);
             position: relative;
             overflow: hidden;
-        }
-
-        .intro-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(15, 224, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 0, 238, 0.1) 0%, transparent 50%);
-            z-index: 0;
         }
 
         .intro-section h2 {
@@ -127,7 +114,7 @@
         .intro-section p, .intro-section ul {
             position: relative;
             z-index: 1;
-            color: var(--portal-light);
+            color: var(--portal-text);
             font-size: 1.1rem;
         }
 
@@ -152,34 +139,34 @@
         .search-input {
             flex: 1;
             padding: 1.2rem 1.5rem;
-            background: rgba(4, 11, 54, 0.8);
-            border: 1px solid rgba(15, 224, 255, 0.2);
-            border-radius: 15px 0 0 15px;
+            background: var(--portal-light);
+            border: 1px solid var(--portal-border);
+            border-radius: 8px 0 0 8px;
             font-size: 1.1rem;
-            color: var(--portal-light);
+            color: var(--portal-text);
             transition: all 0.3s ease;
         }
 
         .search-input:focus {
             outline: none;
             border-color: var(--portal-primary);
-            box-shadow: 0 0 15px rgba(15, 224, 255, 0.3);
+            box-shadow: 0 0 15px rgba(210, 125, 45, 0.2);
         }
 
         .search-button {
-            background: var(--portal-gradient);
+            background: var(--portal-primary);
             color: white;
             border: none;
             padding: 0 2rem;
-            border-radius: 0 15px 15px 0;
+            border-radius: 0 8px 8px 0;
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 1.1rem;
         }
 
         .search-button:hover {
-            background: var(--portal-accent-gradient);
-            box-shadow: var(--neon-shadow);
+            background: var(--portal-secondary);
+            box-shadow: 0 0 15px rgba(94, 139, 126, 0.3);
         }
 
         .category-filter {
@@ -194,19 +181,20 @@
 
         .filter-button {
             padding: 0.8rem 1.5rem;
-            background: rgba(4, 11, 54, 0.8);
-            border: 1px solid rgba(15, 224, 255, 0.2);
-            border-radius: 30px;
+            background: var(--portal-light);
+            border: 1px solid var(--portal-border);
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
-            color: var(--portal-light);
+            color: var(--portal-text);
             font-size: 1.1rem;
         }
 
         .filter-button:hover, .filter-button.active {
-            background: var(--portal-gradient);
-            border-color: transparent;
-            box-shadow: var(--neon-shadow);
+            background: var(--portal-primary);
+            border-color: var(--portal-primary);
+            color: white;
+            box-shadow: 0 0 15px rgba(210, 125, 45, 0.2);
             transform: translateY(-2px);
         }
 
@@ -220,49 +208,26 @@
         }
 
         .template-card {
-            background: rgba(4, 11, 54, 0.8);
-            border-radius: 20px;
+            background: var(--portal-light);
+            border-radius: 12px;
             overflow: hidden;
-            border: 1px solid rgba(15, 224, 255, 0.2);
-            backdrop-filter: blur(10px);
+            border: 1px solid var(--portal-border);
+            box-shadow: var(--portal-shadow);
             transition: all 0.4s ease;
             position: relative;
         }
 
-        .template-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                45deg,
-                transparent,
-                rgba(15, 224, 255, 0.1),
-                transparent
-            );
-            animation: shine-effect 3s infinite;
-            z-index: 0;
-        }
-
-        @keyframes shine-effect {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
         .template-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3),
-                        0 0 20px rgba(15, 224, 255, 0.3);
-            border-color: rgba(15, 224, 255, 0.5);
+            box-shadow: var(--portal-hover-shadow);
+            border-color: var(--portal-primary);
         }
 
         .template-img {
             height: 200px;
             overflow: hidden;
             position: relative;
-            background: linear-gradient(135deg, rgba(15, 224, 255, 0.1), rgba(0, 102, 255, 0.1));
+            background: linear-gradient(135deg, rgba(210, 125, 45, 0.05), rgba(94, 139, 126, 0.05));
         }
 
         .template-img img {
@@ -270,12 +235,10 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
-            opacity: 0.8;
         }
 
         .template-card:hover .template-img img {
             transform: scale(1.1);
-            opacity: 1;
         }
 
         .template-icon {
@@ -284,14 +247,14 @@
             right: 1rem;
             width: 50px;
             height: 50px;
-            background: var(--portal-gradient);
+            background: var(--portal-primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-size: 1.5rem;
-            box-shadow: var(--neon-shadow);
+            box-shadow: 0 0 15px rgba(210, 125, 45, 0.3);
             z-index: 1;
         }
 
@@ -310,9 +273,8 @@
 
         .template-description {
             font-size: 1.1rem;
-            color: var(--portal-light);
+            color: var(--portal-text);
             margin-bottom: 1.5rem;
-            opacity: 0.9;
             line-height: 1.6;
         }
 
@@ -321,7 +283,7 @@
             justify-content: space-between;
             align-items: center;
             font-size: 1rem;
-            color: var(--portal-light);
+            color: var(--portal-text);
             margin-bottom: 1.5rem;
             opacity: 0.8;
         }
@@ -340,10 +302,10 @@
             display: inline-block;
             width: 100%;
             padding: 1rem 2rem;
-            background: var(--portal-gradient);
+            background: var(--portal-primary);
             color: white;
             text-decoration: none;
-            border-radius: 30px;
+            border-radius: 8px;
             font-weight: 500;
             text-align: center;
             transition: all 0.3s ease;
@@ -366,99 +328,13 @@
         }
 
         .template-button:hover {
-            background: var(--portal-accent-gradient);
+            background: var(--portal-secondary);
             transform: translateY(-5px);
-            box-shadow: var(--neon-shadow);
+            box-shadow: 0 0 15px rgba(94, 139, 126, 0.3);
         }
 
         .template-button:hover::before {
             transform: translateX(100%);
-        }
-
-        /* Tech Lines Background */
-        .tech-lines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .tech-line {
-            position: absolute;
-            background: linear-gradient(90deg, transparent, var(--portal-primary), transparent);
-            height: 1px;
-            width: 100%;
-            opacity: 0;
-            animation: tech-line-move 8s linear infinite;
-        }
-
-        .tech-line:nth-child(1) { top: 20%; animation-delay: 0s; }
-        .tech-line:nth-child(2) { top: 40%; animation-delay: 2s; }
-        .tech-line:nth-child(3) { top: 60%; animation-delay: 4s; }
-        .tech-line:nth-child(4) { top: 80%; animation-delay: 6s; }
-
-        @keyframes tech-line-move {
-            0% {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-            20% {
-                opacity: 0.3;
-            }
-            80% {
-                opacity: 0.3;
-            }
-            100% {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .templates-container {
-                padding: 1.5rem;
-            }
-
-            .template-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            }
-        }
-
-        @media (max-width: 768px) {
-            .page-header h1 {
-                font-size: clamp(2rem, 8vw, 3rem);
-            }
-
-            .search-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .search-input {
-                border-radius: 15px;
-            }
-
-            .search-button {
-                border-radius: 15px;
-                padding: 1rem;
-            }
-
-            .template-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .category-filter {
-                gap: 0.8rem;
-            }
-
-            .filter-button {
-                padding: 0.6rem 1.2rem;
-                font-size: 1rem;
-            }
         }
 
         /* Add new navbar styles */
@@ -467,11 +343,11 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(4, 11, 54, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
+            background: var(--portal-light);
+            border-bottom: 1px solid var(--portal-border);
+            padding: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(15, 224, 255, 0.2);
+            box-shadow: var(--portal-shadow);
         }
 
         .navbar-container {
@@ -480,26 +356,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0.8rem 2rem;
         }
 
         .navbar-logo {
+            color: var(--portal-primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 0.5px;
             display: flex;
             align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-        }
-
-        .navbar-logo img {
-            height: 40px;
-            width: auto;
-        }
-
-        .navbar-logo span {
-            font-size: 1.4rem;
-            font-weight: 600;
-            background: var(--portal-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            gap: 0.5rem;
         }
 
         .navbar-links {
@@ -512,21 +380,23 @@
         }
 
         .navbar-links a {
-            color: var(--portal-light);
+            color: var(--portal-dark);
             text-decoration: none;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
             position: relative;
+            transition: all 0.3s ease;
         }
 
         .navbar-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -2px;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--portal-gradient);
+            background: var(--portal-primary);
             transition: width 0.3s ease;
         }
 
@@ -539,10 +409,10 @@
         }
 
         .navbar-button {
-            background: var(--portal-gradient);
+            background: var(--portal-primary);
             color: white;
             padding: 0.8rem 1.5rem;
-            border-radius: 30px;
+            border-radius: 8px;
             text-decoration: none;
             transition: all 0.3s ease;
             border: none;
@@ -551,8 +421,8 @@
         }
 
         .navbar-button:hover {
-            background: var(--portal-accent-gradient);
-            box-shadow: var(--neon-shadow);
+            background: var(--portal-secondary);
+            box-shadow: 0 0 15px rgba(94, 139, 126, 0.3);
             transform: translateY(-2px);
         }
 
@@ -560,7 +430,7 @@
             display: none;
             background: none;
             border: none;
-            color: var(--portal-light);
+            color: var(--portal-primary);
             font-size: 1.5rem;
             cursor: pointer;
             padding: 0.5rem;
@@ -577,11 +447,11 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: rgba(4, 11, 54, 0.95);
-                backdrop-filter: blur(10px);
+                background: var(--portal-light);
                 flex-direction: column;
                 padding: 1rem;
-                border-bottom: 1px solid rgba(15, 224, 255, 0.2);
+                border-bottom: 1px solid var(--portal-border);
+                box-shadow: var(--portal-shadow);
             }
 
             .navbar-links.active {
@@ -600,10 +470,8 @@
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="navbar-container">
-            <a href="../index.html" class="navbar-logo">
-                <img src="../../assets/images/logo.png" alt="RTI Portal Logo">
-                <span>RTI Education</span>
-            </a>
+            <a href="../index.html" class="navbar-logo">Student RTI Portal</a>
+                
             <button class="mobile-menu-button">
                 <i class="fas fa-bars"></i>
             </button>
@@ -613,17 +481,10 @@
                 <li><a href="../resources.html">Resources</a></li>
                 <li><a href="../success-stories.html">Success Stories</a></li>
                 <li><a href="../contact.html" class="navbar-button">Get Help</a></li>
+                
             </ul>
         </div>
     </nav>
-
-    <!-- Tech Lines Background -->
-    <div class="tech-lines">
-        <div class="tech-line"></div>
-        <div class="tech-line"></div>
-        <div class="tech-line"></div>
-        <div class="tech-line"></div>
-    </div>
 
     <main class="templates-container">
         <div class="page-header">

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffd700">
+    <title>Education Authorities Directory | RTI Education Portal</title>
+    <link rel="icon" href="../assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="../assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png?v=2">
+    <link rel="manifest" href="../manifest.json?v=2">
+
+    <link rel="stylesheet" href="../Waves.css">
+    <link rel="stylesheet" href="../loading-screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../decrypted-text.css">
+    <link rel="stylesheet" href="../GlitchText.css">
+    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="../rti-tools.css">
+    <script src="../FuzzyText.js"></script>
+    <script src="../loading-screen.js"></script>
+    <script src="../favicon-refresh.js"></script>
+    
+    <style>
+        .directory-container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .search-box {
+            background: #f5f5f5;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .search-form {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .search-btn {
+            background: #4285f4;
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .search-btn:hover {
+            background: #3367d6;
+        }
+        
+        .directory-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .directory-table th {
+            background: #4285f4;
+            color: white;
+            text-align: left;
+            padding: 1rem;
+        }
+        
+        .directory-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .directory-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .directory-table tr:hover {
+            background: #f9f9f9;
+        }
+        
+        .authority-type {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .pio-info {
+            color: #555;
+        }
+        
+        .contact-btn {
+            display: inline-block;
+            background: #f5f5f5;
+            color: #333;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        
+        .contact-btn:hover {
+            background: #e0e0e0;
+        }
+        
+        .contact-btn i {
+            margin-right: 0.3rem;
+        }
+        
+        .filter-tabs {
+            display: flex;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            overflow-x: auto;
+        }
+        
+        .filter-tab {
+            padding: 0.8rem 1.2rem;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            font-weight: 500;
+            color: #555;
+            white-space: nowrap;
+        }
+        
+        .filter-tab.active {
+            color: #4285f4;
+            border-bottom: 2px solid #4285f4;
+        }
+        
+        .filter-tab:hover:not(.active) {
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar/Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>RTI Education</span>
+                <div class="logo-accent"></div>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">
+                    <span class="nav-icon"><i class="fas fa-home"></i></span>
+                    Home
+                </a>
+                <a href="../timeline.html">
+                    <span class="nav-icon"><i class="fas fa-history"></i></span>
+                    Timeline
+                </a>
+                <a href="../news.html">
+                    <span class="nav-icon"><i class="fas fa-newspaper"></i></span>
+                    News
+                </a>
+                <a href="../cases.html">
+                    <span class="nav-icon"><i class="fas fa-gavel"></i></span>
+                    Current Cases
+                </a>
+            </div>
+            <div class="auth-links">
+                <a href="../login.html" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </a>
+                <a href="../signup.html" class="signup-btn">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up
+                </a>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <div class="nav-decoration">
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container">
+        <div class="page-header">
+            <h1>Education Authorities Directory</h1>
+            <p>Find contact information for PIOs and educational authorities to file your RTI applications</p>
+        </div>
+        
+        <div class="directory-container">
+            <div class="search-box">
+                <form class="search-form">
+                    <input type="text" class="search-input" placeholder="Search by authority name, location, or education level...">
+                    <button type="submit" class="search-btn">Search</button>
+                </form>
+            </div>
+            
+            <div class="filter-tabs">
+                <button class="filter-tab active">All Authorities</button>
+                <button class="filter-tab">Central Government</button>
+                <button class="filter-tab">State Education Departments</button>
+                <button class="filter-tab">School Boards</button>
+                <button class="filter-tab">Universities</button>
+                <button class="filter-tab">Regulatory Bodies</button>
+            </div>
+            
+            <table class="directory-table">
+                <thead>
+                    <tr>
+                        <th>Authority</th>
+                        <th>PIO Details</th>
+                        <th>Jurisdiction</th>
+                        <th>Contact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="authority-type">Ministry of Education</div>
+                            <div>Department of School Education & Literacy</div>
+                        </td>
+                        <td>
+                            <div class="pio-info">Mr. Rajesh Kumar</div>
+                            <div>PIO & Deputy Secretary</div>
+                        </td>
+                        <td>All schools under central government schemes, national policies</td>
+                        <td>
+                            <a href="#" class="contact-btn"><i class="fas fa-envelope"></i> Email</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="authority-type">Central Board of Secondary Education (CBSE)</div>
+                            <div>Examination Department</div>
+                        </td>
+                        <td>
+                            <div class="pio-info">Ms. Anjali Sharma</div>
+                            <div>PIO & Joint Secretary</div>
+                        </td>
+                        <td>All CBSE affiliated schools, exams, results, and certifications</td>
+                        <td>
+                            <a href="#" class="contact-btn"><i class="fas fa-envelope"></i> Email</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="authority-type">National Council of Educational Research and Training (NCERT)</div>
+                        </td>
+                        <td>
+                            <div class="pio-info">Dr. Sanjay Verma</div>
+                            <div>PIO & Secretary</div>
+                        </td>
+                        <td>Curriculum development, textbooks, educational research</td>
+                        <td>
+                            <a href="#" class="contact-btn"><i class="fas fa-envelope"></i> Email</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="authority-type">University Grants Commission (UGC)</div>
+                        </td>
+                        <td>
+                            <div class="pio-info">Dr. Neeta Prasad</div>
+                            <div>PIO & Deputy Secretary</div>
+                        </td>
+                        <td>Higher education standards, university regulations, grants</td>
+                        <td>
+                            <a href="#" class="contact-btn"><i class="fas fa-envelope"></i> Email</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="authority-type">Delhi Directorate of Education</div>
+                        </td>
+                        <td>
+                            <div class="pio-info">Mr. Vijay Singh</div>
+                            <div>PIO & Assistant Director</div>
+                        </td>
+                        <td>Government and government-aided schools in Delhi</td>
+                        <td>
+                            <a href="#" class="contact-btn"><i class="fas fa-envelope"></i> Email</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="authority-type">Maharashtra State Board of Secondary & Higher Secondary Education</div>
+                        </td>
+                        <td>
+                            <div class="pio-info">Mrs. Priya Patil</div>
+                            <div>PIO & Secretary</div>
+                        </td>
+                        <td>State board schools in Maharashtra, exams, results</td>
+                        <td>
+                            <a href="#" class="contact-btn"><i class="fas fa-envelope"></i> Email</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="authority-type">All India Council for Technical Education (AICTE)</div>
+                        </td>
+                        <td>
+                            <div class="pio-info">Dr. Ramesh Yadav</div>
+                            <div>PIO & Director</div>
+                        </td>
+                        <td>Technical education standards, accreditation, regulations</td>
+                        <td>
+                            <a href="#" class="contact-btn"><i class="fas fa-envelope"></i> Email</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="authority-type">National Council for Teacher Education (NCTE)</div>
+                        </td>
+                        <td>
+                            <div class="pio-info">Ms. Sunita Kapoor</div>
+                            <div>PIO & Under Secretary</div>
+                        </td>
+                        <td>Teacher education standards, B.Ed programs, regulations</td>
+                        <td>
+                            <a href="#" class="contact-btn"><i class="fas fa-envelope"></i> Email</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="pagination">
+                <span>Page 1 of 12</span>
+                <button disabled>Previous</button>
+                <button>Next</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>RTI Education</span>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <a href="#">RTI Act Guidelines</a>
+                    <a href="#">Templates</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Success Stories</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Portals</h3>
+                    <a href="../student/index.html">Student Section</a>
+                    <a href="../parent/index.html">Parent Section</a>
+                    <a href="../teacher/index.html">Teacher Section</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Community</h3>
+                    <a href="#">Forums</a>
+                    <a href="#">Events</a>
+                    <a href="#">Newsletter</a>
+                </div>
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <a href="#">About Us</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 RTI Education Portal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filter tab functionality
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Here you would typically filter the directory
+                    // For now, we'll just console log the selected filter
+                    console.log('Selected filter:', this.textContent);
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

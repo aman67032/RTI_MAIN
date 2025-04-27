@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="80" height="80">
+  <!-- Money bag -->
+  <path d="M160 200c0-80 96-120 96-120s96 40 96 120c0 80-48 160-96 160s-96-80-96-160z" fill="#ffd700" stroke="#333" stroke-width="8"/>
+  
+  <!-- Money bag opening and ties -->
+  <path d="M160 200h192" stroke="#333" stroke-width="8"/>
+  <path d="M176 180c-20-20-20-60 0-60h160c20 0 20 40 0 60" stroke="#333" stroke-width="8" fill="none"/>
+  
+  <!-- Rupee symbol -->
+  <circle cx="256" cy="280" r="32" fill="#fff" stroke="#333" stroke-width="4"/>
+  <path d="M240 264h32M240 280h32M240 296h32M256 264v32M244 272l24 16" stroke="#333" stroke-width="3"/>
+  
+  <!-- Coins scattered -->
+  <circle cx="200" cy="360" r="16" fill="#ffd700" stroke="#333" stroke-width="4"/>
+  <text x="200" y="364" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">₹</text>
+  
+  <circle cx="312" cy="340" r="16" fill="#ffd700" stroke="#333" stroke-width="4"/>
+  <text x="312" y="344" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">₹</text>
+  
+  <circle cx="220" cy="328" r="16" fill="#ffd700" stroke="#333" stroke-width="4"/>
+  <text x="220" y="332" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">₹</text>
+  
+  <circle cx="290" cy="370" r="16" fill="#ffd700" stroke="#333" stroke-width="4"/>
+  <text x="290" y="374" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">₹</text>
+  
+  <!-- Money bag decoration -->
+  <text x="256" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333">RTI</text>
+  
+  <!-- Shine highlights -->
+  <path d="M200 172c16-8 32-8 48 0M264 172c16-8 32-8 48 0" stroke="#fff" stroke-width="4" fill="none"/>
+  
+  <!-- Stars for scholarship -->
+  <path d="M340 200l6 12 12 2-8 8 2 12-12-6-12 6 2-12-8-8 12-2z" fill="#fff" stroke="#333" stroke-width="1"/>
+  <path d="M172 200l6 12 12 2-8 8 2 12-12-6-12 6 2-12-8-8 12-2z" fill="#fff" stroke="#333" stroke-width="1"/>
+</svg> 

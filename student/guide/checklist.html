@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#D27D2D">
+    <title>RTI Application Checklist - Student RTI Portal</title>
+    <link rel="icon" href="../../assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="../../assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../../assets/images/favicon.png?v=2">
+    <link rel="manifest" href="../../manifest.json?v=2">
+    <link rel="stylesheet" href="../../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Lato:wght@300;400;700&display=swap">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/guide.css">
+    <style>
+        .checklist-container {
+            margin-bottom: 3rem;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding: 1.25rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .checklist-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        .checklist-checkbox {
+            margin-right: 1rem;
+            min-width: 24px;
+            height: 24px;
+        }
+        
+        .checklist-checkbox input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            accent-color: var(--primary-color);
+        }
+        
+        .checklist-content {
+            flex: 1;
+        }
+        
+        .checklist-content h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        .checklist-content p {
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+        }
+        
+        .checklist-tip {
+            background: rgba(5, 150, 200, 0.05);
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            border-left: 3px solid rgba(5, 150, 200, 0.5);
+        }
+        
+        .checklist-tip i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+        
+        .checklist-progress {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 5px;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-text {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+        
+        .completed {
+            opacity: 0.6;
+            text-decoration: line-through;
+        }
+        
+        .print-checklist {
+            display: block;
+            margin: 2rem auto;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 6px;
+            color: var(--text-color);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .print-checklist:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .checklist-section {
+            margin-bottom: 2rem;
+        }
+        
+        .checklist-section h2 {
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media print {
+            .navbar, .guide-navigation, .site-footer, .print-checklist {
+                display: none !important;
+            }
+            
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            
+            .checklist-item {
+                background: white !important;
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+                page-break-inside: avoid;
+            }
+            
+            .checklist-content h3 {
+                color: #333 !important;
+            }
+            
+            .checklist-content p {
+                color: #666 !important;
+            }
+            
+            .guide-header h1 {
+                color: #333 !important;
+            }
+        }
+    </style>
+</head>
+<body class="student-theme">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="../index.html" class="navbar-logo">Student RTI Portal</a>
+            <button class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="navbar-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../guide.html" class="active">RTI Guide</a></li>
+                <li><a href="../forms.html">Forms</a></li>
+                <li><a href="../track.html">Track Status</a></li>
+                <li><a href="../resources.html">Resources</a></li>
+                <li><a href="../templates/index.html">Templates</a></li>
+                <li><a href="#" id="change-portal-link" class="change-portal-link">Change Portal <i class="fas fa-exchange-alt"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Guide Navigation -->
+    <div class="guide-navigation">
+        <div class="guide-nav-container">
+            <a href="../guide.html">Guide Home</a>
+            <a href="exam.html">Exam</a>
+            <a href="scholarship.html">Scholarship</a>
+            <a href="admission.html">Admission</a>
+            <a href="faq.html">FAQ</a>
+            <a href="checklist.html" class="active">Checklist</a>
+            <a href="format.html">Format</a>
+            <a href="samples.html">Sample RTI</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="guide-content">
+        <div class="container">
+            <div class="guide-header">
+                <h1>RTI Application Checklist</h1>
+                <p>Follow this step-by-step checklist to ensure your RTI application is complete and effective</p>
+            </div>
+            
+            <div class="checklist-progress">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="progress-text" id="progress-text">0% Complete (0/15 items)</div>
+            
+            <div class="checklist-section">
+                <h2>Before Filing</h2>
+                <div class="checklist-container">
+                    <div class="checklist-item">
+                        <div class="checklist-checkbox">
+                            <input type="checkbox" class="checklist-check" id="check1">
+                        </div>
+                        <div class="checklist-content">
+                            <h3>Identify the Correct Public Authority</h3>
+                            <p>Determine which educational institution or government body holds the information you need.</p>
+                            <div class="checklist-tip">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>For college admissions, target the specific college. For entrance exams, target the conducting body (e.g., NTA for JEE/NEET).</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <div class="checklist-checkbox">
+                            <input type="checkbox" class="checklist-check" id="check2">
+                        </div>
+                        <div class="checklist-content">
+                            <h3>Research Existing Information</h3>
+                            <p>Check if the information you're seeking is already available on the institution's website or other public sources.</p>
+                            <div class="checklist-tip">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Many institutions publish information under Section 4 of the RTI Act on their websites. Check for "RTI Disclosures" or "Mandatory Disclosures" sections.</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <div class="checklist-checkbox">
+                            <input type="checkbox" class="checklist-check" id="check3">
+                        </div>
+                        <div class="checklist-content">
+                            <h3>Clarify Your Information Needs</h3>
+                            <p>Be clear about what specific information you need and why it's important for you as a student.</p>
+                            <div class="checklist-tip">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Make a list of specific data points or documents you need. Vague questions often lead to unhelpful responses.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="checklist-section">
+                <h2>Preparing Your Application</h2>
+                <div class="checklist-container">
+                    <div class="checklist-item">
+                        <div class="checklist-checkbox">
+                            <input type="checkbox" class="checklist-check" id="check4">
+                        </div>
+                        <div class="checklist-content">
+                            <h3>Frame Specific Questions</h3>
+                            <p>Draft clear, precise questions that specify exactly what information you need.</p>
+                            <div class="checklist-tip">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Instead of asking "Tell me about admissions," ask "Please provide the category-wise cutoff marks for BTech Computer Science for the 2022-23 academic year."</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <div class="checklist-checkbox">
+                            <input type="checkbox" class="checklist-check" id="check5">
+                        </div>
+                        <div class="checklist-content">
+                            <h3>Focus on One Subject Per Application</h3>
+                            <p>Keep your RTI application focused on a single subject matter to avoid rejection.</p>
+                            <div class="checklist-tip">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>File separate RTIs for unrelated topics. For example, don't mix questions about admissions and scholarships in one application.</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <div class="checklist-checkbox">
+                            <input type="checkbox" class="checklist-check" id="check6">
+                        </div>
+                        <div class="checklist-content">
+                            <h3>Limit the Number of Questions</h3>
+                            <p>Avoid overwhelming the PIO with too many questions in a single application.</p>
+                            <div class="checklist-tip">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Aim for 5-7 specific questions per application. Too many questions may lead to rejection due to "voluminous information."</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <div class="checklist-checkbox">
+                            <input type="checkbox" class="checklist-check" id="check7">
+                        </div>
+                        <div class="checklist-content">
+                            <h3>Include Relevant References</h3>
+                            <p>Mention relevant details like application numbers, roll numbers, or specific time periods.</p>
+                            <div class="checklist-tip">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>For example: "Regarding Application No. XYZ123 submitted on [Date] for admission to [Course]."</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="checklist-section">
+                <h2>Filing Your Application</h2>
+                <div class="checklist-container">
+                    <div class="checklist-item">
+                        <div class="checklist-checkbox">
+                            <input type="checkbox" class="checklist-check" id="check8">
+                        </div>
+                        <div class="checklist-content">
+                            <h3>Use the Correct Format</h3>
+                            <p>Use the standard RTI application format or the specific format required by the public authority.</p>
+                            <div class="checklist-tip">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Use our templates section for pre-formatted RTI applications tailored for student needs.</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <div class="checklist-checkbox">
+                            <input type="checkbox" class="checklist-check" id="check9">
+                        </div>
+                        <div class="checklist-content">
+                            <h3>Provide Your Contact Information</h3>
+                            <p>Include your complete name, address, phone number, and email for communication.</p>
+                            <div class="checklist-tip">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Make sure your contact information is legible and current. This is how the PIO will reach you with their response.</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <div class="checklist-checkbox">
+                            <input type="checkbox" class="checklist-check" id="check10">
+                        </div>
+                        <div class="checklist-content">
+                            <h3>Pay the Required Fee</h3>
+                            <p>Include the application fee of ₹10 in the appropriate form.</p>
+                            <div class="checklist-tip">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>For online applications, pay via online gateway. For physical applications, use postal order, demand draft, or court fee stamp as accepted by the authority.</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <div class="checklist-checkbox">
+                            <input type="checkbox" class="checklist-check" id="check11">
+                        </div>
+                        <div class="checklist-content">
+                            <h3>Sign Your Application</h3>
+                            <p>Don't forget to sign your RTI application before sending it.</p>
+                            <div class="checklist-tip">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>For online applications, digital signatures or checking the verification box is sufficient. For physical applications, a handwritten signature is required.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="checklist-section">
+                <h2>After Filing</h2>
+                <div class="checklist-container">
+                    <div class="checklist-item">
+                        <div class="checklist-checkbox">
+                            <input type="checkbox" class="checklist-check" id="check12">
+                        </div>
+                        <div class="checklist-content">
+                            <h3>Keep a Copy of Your Application</h3>
+                            <p>Maintain a copy of your RTI application and any acknowledgment received.</p>
+                            <div class="checklist-tip">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Take a screenshot or save a PDF of online applications. Keep a photocopy of physical applications along with posting receipt.</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <div class="checklist-checkbox">
+                            <input type="checkbox" class="checklist-check" id="check13">
+                        </div>
+                        <div class="checklist-content">
+                            <h3>Track Your Application</h3>
+                            <p>Monitor the status of your RTI application using the provided registration number.</p>
+                            <div class="checklist-tip">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Use our Track Status feature to monitor your application's progress. For online applications, most portals provide a tracking facility.</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <div class="checklist-checkbox">
+                            <input type="checkbox" class="checklist-check" id="check14">
+                        </div>
+                        <div class="checklist-content">
+                            <h3>Be Prepared for Additional Fees</h3>
+                            <p>The PIO may request additional fees for providing voluminous information.</p>
+                            <div class="checklist-tip">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>If asked to pay additional fees, respond promptly. The time between the fee request and your payment is not counted in the 30-day timeline.</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <div class="checklist-checkbox">
+                            <input type="checkbox" class="checklist-check" id="check15">
+                        </div>
+                        <div class="checklist-content">
+                            <h3>Know Your Appeal Rights</h3>
+                            <p>Be aware of the appeal process if you don't receive a satisfactory response.</p>
+                            <div class="checklist-tip">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>You can file a First Appeal within 30 days if information is denied or no response is received. Second Appeal can be filed with the Information Commission within 90 days of First Appeal decision.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="print-checklist" id="print-btn">
+                <i class="fas fa-print"></i> Print Checklist
+            </button>
+            
+            <div class="guide-action">
+                <a href="../forms.html" class="button primary-button">
+                    <i class="fas fa-file-alt"></i> File RTI Now
+                </a>
+                <a href="format.html" class="button secondary-button">
+                    <i class="fas fa-list-alt"></i> View RTI Format
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h3 class="footer-title">Student RTI Portal</h3>
+                        <p class="footer-description">India's dedicated platform for students to access educational information under the RTI Act, 2005.</p>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3 class="footer-title">Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="../index.html" class="footer-link">Home</a></li>
+                            <li><a href="../guide.html" class="footer-link">RTI Guide</a></li>
+                            <li><a href="../forms.html" class="footer-link">File RTI</a></li>
+                            <li><a href="../track.html" class="footer-link">Track Status</a></li>
+                            <li><a href="../resources.html" class="footer-link">Resources</a></li>
+                            <li><a href="../templates/index.html" class="footer-link">Templates</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3 class="footer-title">Contact Us</h3>
+                        <ul class="footer-contact">
+                            <li><i class="fas fa-envelope"></i> <a href="mailto:support@studentrti.gov.in">support@studentrti.gov.in</a></li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:+911123386626">+91-11-2338-6626</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p class="copyright">© 2023 Student RTI Portal. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile menu toggle
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const navbarLinks = document.querySelector('.navbar-links');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', () => {
+                    navbarLinks.classList.toggle('active');
+                });
+            }
+            
+            // Change portal link
+            const changePortalLink = document.getElementById('change-portal-link');
+            if (changePortalLink) {
+                changePortalLink.addEventListener('click', () => {
+                    window.location.href = '../../index.html';
+                });
+            }
+            
+            // Checklist functionality
+            const checkboxes = document.querySelectorAll('.checklist-check');
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+            
+            function updateProgress() {
+                const totalItems = checkboxes.length;
+                let completedItems = 0;
+                
+                checkboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        completedItems++;
+                        checkbox.closest('.checklist-item').classList.add('completed');
+                    } else {
+                        checkbox.closest('.checklist-item').classList.remove('completed');
+                    }
+                });
+                
+                const progressPercentage = (completedItems / totalItems) * 100;
+                progressBar.style.width = `${progressPercentage}%`;
+                progressText.textContent = `${Math.round(progressPercentage)}% Complete (${completedItems}/${totalItems} items)`;
+                
+                // Save progress to localStorage
+                const progress = {};
+                checkboxes.forEach(checkbox => {
+                    progress[checkbox.id] = checkbox.checked;
+                });
+                localStorage.setItem('rtiChecklistProgress', JSON.stringify(progress));
+            }
+            
+            // Load saved progress
+            const savedProgress = JSON.parse(localStorage.getItem('rtiChecklistProgress')) || {};
+            checkboxes.forEach(checkbox => {
+                if (savedProgress[checkbox.id]) {
+                    checkbox.checked = true;
+                }
+                checkbox.addEventListener('change', updateProgress);
+            });
+            
+            // Initialize progress bar
+            updateProgress();
+            
+            // Print functionality
+            const printBtn = document.getElementById('print-btn');
+            if (printBtn) {
+                printBtn.addEventListener('click', () => {
+                    window.print();
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

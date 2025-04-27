@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0fe0ff">
+    <meta name="theme-color" content="#D27D2D">
     <title>File RTI Application - Student RTI Portal</title>
     <link rel="icon" href="../assets/images/favicon.ico?v=2" sizes="any">
     <link rel="icon" href="../assets/images/favicon.svg?v=2" type="image/svg+xml">
@@ -11,179 +11,20 @@
     <link rel="manifest" href="../manifest.json?v=2">
     <link rel="stylesheet" href="../shared/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Lato:wght@300;400;700&display=swap">
+    <link rel="stylesheet" href="styles/style.css">
     <style>
-        /* Student Portal Futuristic Styles */
-        :root {
-            --portal-primary: #0fe0ff;
-            --portal-secondary: #0066ff;
-            --portal-accent: #ff00ee;
-            --portal-dark: #040b36;
-            --portal-light: #f0f8ff;
-            --portal-gradient: linear-gradient(135deg, var(--portal-primary), var(--portal-secondary));
-            --portal-accent-gradient: linear-gradient(135deg, var(--portal-accent), var(--portal-primary));
-            --neon-shadow: 0 0 10px rgba(15, 224, 255, 0.5), 0 0 20px rgba(15, 224, 255, 0.3), 0 0 30px rgba(15, 224, 255, 0.1);
-            --futuristic-bg: linear-gradient(180deg, #040b36 0%, #0c1e51 50%, #060b31 100%);
-        }
-
-        body {
-            background: var(--futuristic-bg);
-            color: var(--portal-light);
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-            padding-top: 60px; /* Add space for fixed header */
-        }
-        
-        /* One-line Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(4, 11, 36, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(15, 224, 255, 0.2);
-            z-index: 1000;
-            padding: 0;
-        }
-
-        .navbar-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.8rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .navbar-logo {
-            color: var(--portal-primary);
-            font-size: 1.4rem;
-            font-weight: 700;
-            text-decoration: none;
-            letter-spacing: 1px;
-            text-shadow: 0 0 10px rgba(15, 224, 255, 0.5);
-        }
-
-        .navbar-links {
-            display: flex;
-            gap: 2rem;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .navbar-links li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 500;
-            padding: 0.5rem 0;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .navbar-links li a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--portal-gradient);
-            transition: width 0.3s ease;
-        }
-
-        .navbar-links li a:hover,
-        .navbar-links li a.active {
-            color: var(--portal-primary);
-        }
-
-        .navbar-links li a:hover::after,
-        .navbar-links li a.active::after {
-            width: 100%;
-        }
-
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--portal-primary);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Main content styles */
-        .forms-section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #fff;
-            text-align: center;
-            position: relative;
-            display: inline-block;
-            background: linear-gradient(to right, var(--portal-primary), var(--portal-accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: var(--portal-gradient);
-            border-radius: 3px;
-        }
-
-        .section-intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 2rem auto 4rem;
-            color: #a0b4d0;
-        }
-
-        .form-container {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 3rem;
-        }
-
+        /* Override form styles to match earthy theme */
         .application-form {
-            background: rgba(4, 11, 54, 0.7);
-            border-radius: 20px;
+            background: rgba(254, 244, 232, 0.9);
+            border-radius: var(--card-border-radius);
             padding: 2.5rem;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(15, 224, 255, 0.2);
-            backdrop-filter: blur(10px);
+            box-shadow: var(--portal-shadow);
+            border: 1px solid var(--portal-border);
             position: relative;
             overflow: hidden;
         }
-
-        .application-form::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(15, 224, 255, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 0, 238, 0.08) 0%, transparent 50%);
-            z-index: -1;
-        }
-
+        
         .form-title {
             color: var(--portal-primary);
             font-size: 1.5rem;
@@ -191,7 +32,7 @@
             position: relative;
             display: inline-block;
         }
-
+        
         .form-title::after {
             content: '';
             position: absolute;
@@ -199,115 +40,82 @@
             left: 0;
             width: 50px;
             height: 2px;
-            background: var(--portal-accent-gradient);
+            background: var(--portal-primary);
         }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 500;
-            font-size: 0.95rem;
-        }
-
-        .form-input {
+        
+        .form-input, .form-textarea, .form-select {
             width: 100%;
             padding: 1rem 1.2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(15, 224, 255, 0.2);
-            border-radius: 10px;
-            color: white;
+            background: #ffffff;
+            border: 1px solid #e8e2d6;
+            border-radius: 6px;
+            color: var(--portal-dark);
             font-size: 1rem;
-            transition: all 0.3s ease;
+            transition: all var(--transition-normal);
         }
-
-        .form-input:focus {
+        
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
             outline: none;
             border-color: var(--portal-primary);
-            box-shadow: 0 0 15px rgba(15, 224, 255, 0.2);
-            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 0 2px rgba(210, 125, 45, 0.2);
         }
-
+        
         .form-select {
-            width: 100%;
-            padding: 1rem 1.2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(15, 224, 255, 0.2);
-            border-radius: 10px;
-            color: white;
-            font-size: 1rem;
-            transition: all 0.3s ease;
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230fe0ff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23D27D2D'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 15px center;
             background-size: 20px;
         }
-
-        .form-select:focus {
-            outline: none;
-            border-color: var(--portal-primary);
-            box-shadow: 0 0 15px rgba(15, 224, 255, 0.2);
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .form-textarea {
-            width: 100%;
-            padding: 1rem 1.2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(15, 224, 255, 0.2);
-            border-radius: 10px;
+        
+        .form-button {
+            background: var(--portal-primary);
+            border: none;
+            padding: 1rem 2rem;
             color: white;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            min-height: 150px;
-            resize: vertical;
+            border-radius: var(--button-border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: var(--portal-shadow);
+            margin-top: 1rem;
         }
-
-        .form-textarea:focus {
-            outline: none;
-            border-color: var(--portal-primary);
-            box-shadow: 0 0 15px rgba(15, 224, 255, 0.2);
-            background: rgba(255, 255, 255, 0.1);
+        
+        .form-button:hover {
+            background: #bf6f25;
+            box-shadow: var(--portal-hover-shadow);
+            transform: translateY(-3px);
         }
-
-        .form-radio-group {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 0.5rem;
-        }
-
+        
         .radio-item {
             display: flex;
             align-items: center;
             cursor: pointer;
+            margin-bottom: 8px;
         }
-
-        .radio-item input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }
-
+        
         .radio-custom {
             width: 20px;
             height: 20px;
             border-radius: 50%;
-            border: 2px solid rgba(15, 224, 255, 0.4);
+            border: 2px solid rgba(210, 125, 45, 0.4);
             display: inline-block;
             margin-right: 8px;
             position: relative;
-            transition: all 0.3s ease;
+            transition: all var(--transition-normal);
         }
-
+        
         .radio-item:hover .radio-custom {
             border-color: var(--portal-primary);
         }
-
+        
         .radio-item input[type="radio"]:checked + .radio-custom::after {
             content: '';
             position: absolute;
@@ -318,61 +126,16 @@
             height: 10px;
             border-radius: 50%;
             background: var(--portal-primary);
-            box-shadow: 0 0 10px var(--portal-primary);
         }
-
-        .form-button {
-            background: var(--portal-gradient);
-            border: none;
-            padding: 1rem 2rem;
-            color: white;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.95rem;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            box-shadow: 0 5px 15px rgba(15, 224, 255, 0.3);
-            margin-top: 1rem;
-        }
-
-        .form-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transform: translateX(-100%);
-            transition: 0.6s;
-            z-index: -1;
-        }
-
-        .form-button:hover::before {
-            transform: translateX(100%);
-        }
-
-        .form-button:hover {
-            background: linear-gradient(135deg, var(--portal-accent), var(--portal-primary));
-            box-shadow: 0 10px 25px rgba(15, 224, 255, 0.5);
-            transform: translateY(-3px);
-        }
-
+        
         .info-sidebar {
-            background: rgba(4, 11, 54, 0.7);
-            border-radius: 20px;
+            background: rgba(254, 244, 232, 0.9);
+            border-radius: var(--card-border-radius);
             padding: 2.5rem;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(15, 224, 255, 0.2);
-            backdrop-filter: blur(10px);
+            box-shadow: var(--portal-shadow);
+            border: 1px solid var(--portal-border);
         }
-
+        
         .info-title {
             color: var(--portal-primary);
             font-size: 1.5rem;
@@ -380,7 +143,7 @@
             position: relative;
             display: inline-block;
         }
-
+        
         .info-title::after {
             content: '';
             position: absolute;
@@ -388,35 +151,24 @@
             left: 0;
             width: 50px;
             height: 2px;
-            background: var(--portal-accent-gradient);
+            background: var(--portal-primary);
         }
-
+        
         .info-card {
-            background: rgba(15, 224, 255, 0.05);
+            background: #ffffff;
             padding: 1.5rem;
-            border-radius: 15px;
+            border-radius: 10px;
             margin-bottom: 1.5rem;
             border-left: 3px solid var(--portal-primary);
+            box-shadow: var(--portal-shadow);
         }
-
-        .info-card h4 {
-            color: white;
-            margin-bottom: 0.8rem;
-            font-size: 1.1rem;
-        }
-
-        .info-card p {
-            color: #a0b4d0;
-            font-size: 0.95rem;
-            margin-bottom: 0;
-        }
-
+        
         .info-icon {
             display: flex;
             align-items: center;
             margin-bottom: 1.5rem;
         }
-
+        
         .info-icon i {
             font-size: 1.5rem;
             color: var(--portal-primary);
@@ -426,99 +178,43 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(15, 224, 255, 0.1);
+            background: rgba(210, 125, 45, 0.1);
             border-radius: 50%;
         }
-
-        .info-icon span {
-            color: #a0b4d0;
-            font-size: 0.95rem;
-        }
-
+        
         .template-link {
             display: flex;
             align-items: center;
             padding: 1rem;
-            border: 1px dashed rgba(15, 224, 255, 0.3);
+            border: 1px dashed rgba(210, 125, 45, 0.3);
             border-radius: 10px;
             margin-top: 2rem;
-            transition: all 0.3s ease;
+            transition: all var(--transition-normal);
             text-decoration: none;
+            background: #ffffff;
         }
-
+        
         .template-link:hover {
-            background: rgba(15, 224, 255, 0.1);
+            background: rgba(210, 125, 45, 0.05);
             border-color: var(--portal-primary);
             transform: translateY(-3px);
         }
-
-        .template-link i {
-            font-size: 1.5rem;
-            color: var(--portal-primary);
-            margin-right: 1rem;
+        
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 2rem auto 4rem;
+            color: var(--portal-text);
         }
-
-        .template-link-content {
-            flex: 1;
-        }
-
-        .template-link-content h4 {
-            color: white;
-            margin: 0 0 0.3rem;
-            font-size: 1rem;
-        }
-
-        .template-link-content p {
-            color: #a0b4d0;
-            font-size: 0.85rem;
-            margin: 0;
-        }
-
-        /* Media queries */
+        
         @media (max-width: 992px) {
             .form-container {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
-
-            .forms-section {
-                padding: 3rem 1.5rem;
-            }
         }
-
+        
         @media (max-width: 768px) {
-            .navbar-container {
-                padding: 0.8rem 1rem;
-            }
-            
-            .mobile-toggle {
-                display: block;
-            }
-            
-            .navbar-links {
-                position: fixed;
-                top: 60px;
-                right: -100%;
-                flex-direction: column;
-                background: rgba(4, 11, 36, 0.95);
-                backdrop-filter: blur(10px);
-                width: 250px;
-                height: 100vh;
-                padding: 2rem;
-                gap: 1.5rem;
-                transition: right 0.3s ease;
-                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
-                z-index: 1000;
-            }
-            
-            .navbar-links.active {
-                right: 0;
-            }
-            
-            .forms-section {
-                padding: 2rem 1rem;
-            }
-            
             .form-radio-group {
                 flex-direction: column;
                 gap: 0.7rem;
@@ -527,7 +223,7 @@
     </style>
 </head>
 <body class="student-theme">
-    <!-- One-line navbar -->
+    <!-- New one-line navbar -->
     <nav class="navbar">
         <div class="navbar-container">
             <a href="index.html" class="navbar-logo">Student RTI Portal</a>
@@ -540,12 +236,54 @@
                 <li><a href="forms.html" class="active">Forms</a></li>
                 <li><a href="track.html">Track Status</a></li>
                 <li><a href="resources.html">Resources</a></li>
-                <li><a href="#" id="change-portal-link">Change Portal</a></li>
+                <li><a href="templates/index.html">Templates</a></li>
+                <li><a href="#" id="change-portal-link" class="change-portal-link">Change Portal <i class="fas fa-exchange-alt"></i></a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="forms-section">
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        
+        <!-- Decorative Elements -->
+        <div class="decorative-shape shape-circle"></div>
+        <div class="decorative-shape shape-square"></div>
+        <div class="decorative-shape shape-triangle"></div>
+        <div class="decorative-shape shape-dots"></div>
+        
+        <!-- HUD Interface Elements -->
+        <div class="hud-element hud-corner hud-corner-tl"></div>
+        <div class="hud-element hud-corner hud-corner-tr"></div>
+        <div class="hud-element hud-corner hud-corner-bl"></div>
+        <div class="hud-element hud-corner hud-corner-br"></div>
+        
+        <div class="hud-element hud-scanner">
+            <div class="scanner-line"></div>
+        </div>
+        
+        <div class="character-illustration student-pointing">
+            <div class="char-shadow"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-text fade-in-up">
+                <h1 class="hero-title">File RTI Application</h1>
+                <p>Complete and submit your RTI application easily with our guided form</p>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator" onclick="document.querySelector('.forms-section').scrollIntoView({behavior: 'smooth'})">
+            <div class="mouse"></div>
+            <span>Scroll Down</span>
+        </div>
+    </section>
+
+    <!-- Forms Section with updated styling -->
+    <section class="forms-section rights-section">
         <h1 class="section-title">File RTI Application</h1>
         
         <div class="section-intro">
@@ -574,7 +312,7 @@
                     
                     <div class="form-group">
                         <label for="address">Postal Address *</label>
-                        <textarea id="address" class="form-textarea" placeholder="Enter your complete postal address" required style="min-height: 80px;"></textarea>
+                        <textarea id="address" class="form-textarea" placeholder="Enter your complete postal address" required></textarea>
                     </div>
                     
                     <div class="form-group">
@@ -638,7 +376,7 @@
                     
                     <div class="form-group">
                         <label for="attachments">Upload Supporting Documents (if any)</label>
-                        <input type="file" id="attachments" class="form-input" style="padding-top: 0.7rem; padding-bottom: 0.7rem;">
+                        <input type="file" id="attachments" class="form-input">
                     </div>
                     
                     <button type="submit" class="form-button">Submit Application</button>
@@ -685,6 +423,102 @@
             </div>
         </div>
     </section>
+
+    <!-- Modern Footer Section -->
+    <footer class="site-footer">
+        <div class="footer-visuals">
+            <div class="f-visual f-dots"></div>
+            <div class="f-visual f-lines"></div>
+            <div class="f-visual f-circles"></div>
+        </div>
+        
+        <div class="character-group">
+            <div class="character-illustration student-waving"></div>
+            <div class="character-illustration student-sitting"></div>
+            <div class="character-illustration student-standing"></div>
+        </div>
+        
+        <div class="site-footer::before"></div>
+        
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h3 class="footer-title">Student RTI Portal</h3>
+                        <p class="footer-description">India's dedicated platform for students to access educational information under the Right to Information Act, 2005.</p>
+                        <div class="footer-social">
+                            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3 class="footer-title">Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="index.html" class="footer-link">Home</a></li>
+                            <li><a href="guide.html" class="footer-link">RTI Guide</a></li>
+                            <li><a href="forms.html" class="footer-link">File RTI</a></li>
+                            <li><a href="track.html" class="footer-link">Track Status</a></li>
+                            <li><a href="resources.html" class="footer-link">Resources</a></li>
+                            <li><a href="templates/index.html" class="footer-link">Templates</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3 class="footer-title">Student Resources</h3>
+                        <ul class="footer-links">
+                            <li><a href="guide/exam.html" class="footer-link">Exam Information</a></li>
+                            <li><a href="guide/scholarship.html" class="footer-link">Scholarships</a></li>
+                            <li><a href="guide/admission.html" class="footer-link">Admission Process</a></li>
+                            <li><a href="guide/faq.html" class="footer-link">FAQ</a></li>
+                            <li><a href="success-stories.html" class="footer-link">Success Stories</a></li>
+                            <li><a href="forum.html" class="footer-link">Community Forum</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3 class="footer-title">Contact Us</h3>
+                        <ul class="footer-contact">
+                            <li><i class="fas fa-map-marker-alt"></i> <span>Department of Education<br>Ministry of Education, Government of India<br>New Delhi, India</span></li>
+                            <li><i class="fas fa-envelope"></i> <a href="mailto:support@studentrti.gov.in">support@studentrti.gov.in</a></li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:+911123386626">+91-11-2338-6626</a></li>
+                            <li><i class="fas fa-clock"></i> <span>Monday to Friday: 9:30 AM - 6:00 PM</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-middle">
+            <div class="container">
+                <div class="newsletter">
+                    <h3 class="newsletter-title">Subscribe to RTI Updates</h3>
+                    <p class="newsletter-text">Stay updated with the latest RTI news, case studies, and guidelines for students.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email Address" class="newsletter-input" required>
+                        <button type="submit" class="newsletter-button">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p class="copyright">© 2023 Student RTI Portal. All Rights Reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="privacy.html" class="footer-bottom-link">Privacy Policy</a>
+                        <a href="terms.html" class="footer-bottom-link">Terms of Service</a>
+                        <a href="sitemap.html" class="footer-bottom-link">Sitemap</a>
+                        <a href="accessibility.html" class="footer-bottom-link">Accessibility</a>
+                    </div>
+                </div>
+                <p class="disclaimer">This website is designed for educational purposes to help students access information under the RTI Act.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {

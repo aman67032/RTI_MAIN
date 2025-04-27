@@ -1,0 +1,373 @@
+/* Floating Characters CSS */
+
+/* General floating characters container */
+.floating-characters {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Individual floating character */
+.floating-character {
+    position: absolute;
+    max-width: 120px;
+    max-height: 120px;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+    will-change: transform;
+}
+
+/* Character positioning */
+.document-char {
+    top: 15%;
+    right: 10%;
+}
+
+.magnifier-char {
+    bottom: 20%;
+    left: 8%;
+}
+
+.lightbulb-char {
+    top: 30%;
+    left: 12%;
+}
+
+.trophy-char {
+    top: 10%;
+    right: 15%;
+}
+
+.justice-char {
+    bottom: 15%;
+    left: 10%;
+}
+
+.brain-char {
+    top: 20%;
+    right: 8%;
+}
+
+.notebook-char {
+    bottom: 25%;
+    left: 15%;
+}
+
+.pencil-char {
+    top: 35%;
+    left: 10%;
+}
+
+.school-char {
+    top: 15%;
+    right: 12%;
+}
+
+.college-char {
+    bottom: 20%;
+    left: 12%;
+}
+
+.map-pin-char {
+    top: 25%;
+    left: 20%;
+}
+
+/* Animation patterns */
+.float-animation-1 {
+    animation: float1 8s ease-in-out infinite;
+}
+
+.float-animation-2 {
+    animation: float2 10s ease-in-out infinite;
+}
+
+.float-animation-3 {
+    animation: float3 7s ease-in-out infinite;
+}
+
+@keyframes float1 {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(5deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+@keyframes float2 {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-25px) rotate(-8deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+@keyframes float3 {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    33% {
+        transform: translateY(-10px) rotate(3deg);
+    }
+    66% {
+        transform: translateY(-20px) rotate(-3deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+/* Character in story cards */
+.story-character {
+    position: absolute;
+    right: -15px;
+    bottom: -15px;
+    width: 80px;
+    height: 80px;
+    z-index: 2;
+}
+
+.character-bounce {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Section transitions */
+.section-transition {
+    position: relative;
+    height: 100px;
+    overflow: hidden;
+}
+
+.floating-books, .floating-papers {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.floating-books img, .floating-papers img {
+    position: absolute;
+    max-width: 80px;
+    max-height: 80px;
+    filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.15));
+}
+
+.floating-books img:nth-child(1) {
+    top: 20%;
+    left: 20%;
+}
+
+.floating-books img:nth-child(2) {
+    top: 40%;
+    left: 55%;
+}
+
+.floating-books img:nth-child(3) {
+    top: 10%;
+    left: 80%;
+}
+
+.floating-papers img:nth-child(1) {
+    top: 30%;
+    left: 30%;
+}
+
+.floating-papers img:nth-child(2) {
+    top: 50%;
+    left: 65%;
+}
+
+.floating-papers img:nth-child(3) {
+    top: 20%;
+    left: 75%;
+}
+
+.transition-wave {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background: url('assets/images/visuals/wave.svg') repeat-x;
+    background-size: 800px 40px;
+    animation: wave 10s linear infinite;
+}
+
+@keyframes wave {
+    0% {
+        background-position-x: 0;
+    }
+    100% {
+        background-position-x: 800px;
+    }
+}
+
+.transition-dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px 0;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ffd700;
+    opacity: 0.8;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.8s;
+}
+
+.dot:nth-child(4) {
+    animation-delay: 1.2s;
+}
+
+.dot:nth-child(5) {
+    animation-delay: 1.6s;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+}
+
+/* Floating devices in mobile app section */
+.floating-devices {
+    position: relative;
+    height: 200px;
+    margin-top: 30px;
+}
+
+.floating-devices img {
+    position: absolute;
+    max-height: 180px;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+}
+
+.float-device-1 {
+    left: 10%;
+    top: 20%;
+    animation: float-device1 6s ease-in-out infinite;
+    z-index: 3;
+}
+
+.float-device-2 {
+    right: 15%;
+    top: 5%;
+    animation: float-device2 7s ease-in-out infinite;
+    z-index: 2;
+}
+
+.float-device-3 {
+    left: 30%;
+    top: 30%;
+    animation: float-device3 8s ease-in-out infinite;
+    z-index: 1;
+}
+
+@keyframes float-device1 {
+    0%, 100% {
+        transform: translateY(0) rotate(2deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(-2deg);
+    }
+}
+
+@keyframes float-device2 {
+    0%, 100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(1deg);
+    }
+}
+
+@keyframes float-device3 {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(3deg);
+    }
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 992px) {
+    .floating-character {
+        max-width: 80px;
+        max-height: 80px;
+    }
+    
+    .story-character {
+        width: 60px;
+        height: 60px;
+        right: -10px;
+        bottom: -10px;
+    }
+    
+    .floating-devices img {
+        max-height: 140px;
+    }
+}
+
+@media (max-width: 768px) {
+    .floating-character {
+        max-width: 60px;
+        max-height: 60px;
+    }
+    
+    .floating-books img, .floating-papers img {
+        max-width: 50px;
+        max-height: 50px;
+    }
+    
+    .floating-devices {
+        height: 150px;
+    }
+    
+    .floating-devices img {
+        max-height: 120px;
+    }
+    
+    .section-transition {
+        height: 80px;
+    }
+} 

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffd700">
+    <title>Confidential RTI Filing | RTI Education Portal</title>
+    <link rel="icon" href="assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/images/favicon.png?v=2">
+    <link rel="manifest" href="manifest.json?v=2">
+
+    <link rel="stylesheet" href="Waves.css">
+    <link rel="stylesheet" href="loading-screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="decrypted-text.css">
+    <link rel="stylesheet" href="GlitchText.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="rti-tools.css">
+    <script src="FuzzyText.js"></script>
+    <script src="loading-screen.js"></script>
+    <script src="favicon-refresh.js"></script>
+    
+    <style>
+        .content-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .info-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        
+        .card-header {
+            background: #f44336;
+            color: white;
+            padding: 1.5rem;
+            position: relative;
+        }
+        
+        .card-header h2 {
+            margin: 0;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-header h2 i {
+            margin-right: 1rem;
+            font-size: 2rem;
+        }
+        
+        .card-content {
+            padding: 2rem;
+        }
+        
+        .warning-text {
+            color: #d32f2f;
+            font-weight: 500;
+        }
+        
+        .section-title {
+            color: #333;
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 0.5rem;
+        }
+        
+        .steps-list {
+            counter-reset: steps-counter;
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .steps-list li {
+            counter-increment: steps-counter;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 3rem;
+        }
+        
+        .steps-list li::before {
+            content: counter(steps-counter);
+            background-color: #4285f4;
+            color: white;
+            font-weight: bold;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .pros, .cons {
+            padding: 1.5rem;
+            border-radius: 6px;
+        }
+        
+        .pros {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .cons {
+            background-color: #ffebee;
+            border-left: 4px solid #f44336;
+        }
+        
+        .pros h3, .cons h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .pros h3 i, .cons h3 i {
+            margin-right: 0.5rem;
+        }
+        
+        .pros h3 {
+            color: #2e7d32;
+        }
+        
+        .cons h3 {
+            color: #c62828;
+        }
+        
+        .pros ul, .cons ul {
+            margin-bottom: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .pros li, .cons li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-box {
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+        
+        .info-box h3 {
+            color: #0d47a1;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-box h3 i {
+            margin-right: 0.5rem;
+        }
+        
+        .cta-box {
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .cta-box h3 {
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background-color: #4285f4;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-btn:hover {
+            background-color: #3367d6;
+        }
+        
+        @media (max-width: 768px) {
+            .pros-cons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar/Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>RTI Education</span>
+                <div class="logo-accent"></div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">
+                    <span class="nav-icon"><i class="fas fa-home"></i></span>
+                    Home
+                </a>
+                <a href="timeline.html">
+                    <span class="nav-icon"><i class="fas fa-history"></i></span>
+                    Timeline
+                </a>
+                <a href="news.html">
+                    <span class="nav-icon"><i class="fas fa-newspaper"></i></span>
+                    News
+                </a>
+                <a href="cases.html">
+                    <span class="nav-icon"><i class="fas fa-gavel"></i></span>
+                    Current Cases
+                </a>
+            </div>
+            <div class="auth-links">
+                <a href="login.html" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </a>
+                <a href="signup.html" class="signup-btn">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up
+                </a>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <div class="nav-decoration">
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container">
+        <div class="page-header">
+            <h1>Confidential RTI Filing Guide</h1>
+            <p>Protecting your identity while seeking information in sensitive educational matters</p>
+        </div>
+        
+        <div class="content-container">
+            <div class="info-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-user-secret"></i> Confidential RTI Filing</h2>
+                </div>
+                
+                <div class="card-content">
+                    <p>There might be situations when you need to seek information about educational institutions or practices but are concerned about revealing your identity. This could be due to fear of retaliation, discrimination, or other valid concerns, especially in cases involving corruption, misconduct, or sensitive issues.</p>
+                    
+                    <p>The <span class="warning-text">RTI Act doesn't provide a direct option for anonymous filing</span>, but there are legitimate ways to protect your privacy while using your right to information.</p>
+                    
+                    <h3 class="section-title">Legal Methods for Confidential RTI Filing</h3>
+                    
+                    <ol class="steps-list">
+                        <li>
+                            <strong>Filing through a third party (authorized representative)</strong>
+                            <p>You can authorize another person to file an RTI application on your behalf. This person could be a friend, family member, lawyer, or an RTI activist. The application will contain their details, not yours.</p>
+                        </li>
+                        
+                        <li>
+                            <strong>Using an RTI filing service or NGO</strong>
+                            <p>Several NGOs and advocacy groups help citizens file RTI applications. They can file on your behalf while keeping your identity confidential from the authority you're seeking information from.</p>
+                        </li>
+                        
+                        <li>
+                            <strong>Through an official authorized representative</strong>
+                            <p>You can appoint a lawyer as your authorized representative. In this case, all communications will go through your lawyer, providing a layer of privacy.</p>
+                        </li>
+                    </ol>
+                    
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h3><i class="fas fa-check-circle"></i> Advantages</h3>
+                            <ul>
+                                <li>Protection from potential retaliation or discrimination</li>
+                                <li>Ability to seek sensitive information related to corruption or misconduct</li>
+                                <li>Reduced risk of personal identification in educational institutions where you or your children study</li>
+                                <li>Freedom to ask more direct questions without fear</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cons">
+                            <h3><i class="fas fa-exclamation-circle"></i> Limitations</h3>
+                            <ul>
+                                <li>The third-party filer's details will be visible to the authority</li>
+                                <li>Some information might be denied if it requires justification of personal need</li>
+                                <li>Possibility of delays in receiving information due to indirect communication</li>
+                                <li>Additional costs for using third-party services</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h3 class="section-title">Important Legal Considerations</h3>
+                    
+                    <div class="info-box">
+                        <h3><i class="fas fa-balance-scale"></i> Legal Framework</h3>
+                        <p>While the RTI Act doesn't directly provide for anonymous applications, Section 6(2) of the RTI Act states that an applicant making a request for information shall not be required to give any reason for requesting the information.</p>
+                        <p>This means that while your identity (or your representative's) must be disclosed, you don't need to explain why you're seeking the information.</p>
+                    </div>
+                    
+                    <h3 class="section-title">When to Consider Confidential Filing</h3>
+                    
+                    <ul>
+                        <li><strong>Whistleblowing scenarios:</strong> When you have information about malpractices in educational institutions</li>
+                        <li><strong>Cases involving powerful individuals:</strong> When seeking information about misconduct by influential administrators</li>
+                        <li><strong>Student protection matters:</strong> When investigating safety concerns or harassment without exposing vulnerable students</li>
+                        <li><strong>Corruption investigations:</strong> When looking into misuse of educational funds</li>
+                        <li><strong>Issues affecting your child:</strong> When you fear retaliation that could affect your child's academic standing</li>
+                    </ul>
+                    
+                    <h3 class="section-title">Trusted Organizations That Can Help</h3>
+                    
+                    <p>The following organizations have experience in helping individuals file RTIs confidentially for educational matters:</p>
+                    
+                    <ul>
+                        <li><strong>National Campaign for People's Right to Information (NCPRI)</strong> - A collective that helps citizens with RTI filing</li>
+                        <li><strong>Association for Democratic Reforms (ADR)</strong> - Works primarily on transparency in governance</li>
+                        <li><strong>Commonwealth Human Rights Initiative (CHRI)</strong> - Provides assistance with RTI applications</li>
+                        <li><strong>Local RTI activists</strong> - Many cities have local RTI activists who can file on your behalf</li>
+                    </ul>
+                    
+                    <div class="cta-box">
+                        <h3>Need Personalized Guidance for Confidential Filing?</h3>
+                        <p>Our network of experienced RTI advocates can help you file sensitive RTI applications while protecting your identity. We offer confidential consultations to assess your case and suggest the best approach.</p>
+                        <a href="#" class="cta-btn">Request Confidential Consultation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>RTI Education</span>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <a href="#">RTI Act Guidelines</a>
+                    <a href="#">Templates</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Success Stories</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Portals</h3>
+                    <a href="student/index.html">Student Section</a>
+                    <a href="parent/index.html">Parent Section</a>
+                    <a href="teacher/index.html">Teacher Section</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Community</h3>
+                    <a href="#">Forums</a>
+                    <a href="#">Events</a>
+                    <a href="#">Newsletter</a>
+                </div>
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <a href="#">About Us</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 RTI Education Portal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

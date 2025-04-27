@@ -1,0 +1,448 @@
+/* Student Portal Guide Styles */
+
+/* Guide Navigation */
+.guide-navigation {
+    background-color: var(--portal-bg);
+    border-bottom: 1px solid var(--portal-border);
+    padding: 0.5rem 0;
+    position: sticky;
+    top: 60px;
+    z-index: 100;
+}
+
+.guide-nav-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+    gap: 1rem;
+}
+
+.guide-nav-container a {
+    color: var(--portal-text);
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-radius: var(--button-border-radius);
+    transition: all var(--transition-normal);
+}
+
+.guide-nav-container a:hover {
+    color: var(--portal-primary);
+    background-color: rgba(210, 125, 45, 0.1);
+}
+
+.guide-nav-container a.active {
+    color: var(--portal-light);
+    background-color: var(--portal-primary);
+}
+
+/* Guide Content */
+.guide-content {
+    padding: 3rem 0 5rem;
+}
+
+.guide-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.guide-header h1 {
+    color: var(--portal-primary);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.guide-header h1::after {
+    content: '';
+    display: block;
+    width: 60%;
+    height: 3px;
+    background: linear-gradient(to right, transparent, var(--portal-primary), transparent);
+    position: absolute;
+    bottom: -10px;
+    left: 20%;
+}
+
+.guide-header p {
+    color: var(--portal-text);
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Guide Sections */
+.guide-section {
+    margin-bottom: 4rem;
+}
+
+.guide-section h2 {
+    color: var(--portal-dark);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--portal-border);
+}
+
+/* Information Cards */
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.info-card {
+    background-color: var(--portal-light);
+    border-radius: var(--card-border-radius);
+    padding: 2rem;
+    box-shadow: var(--portal-shadow);
+    transition: all var(--transition-normal);
+    border: 1px solid var(--portal-border);
+    text-align: center;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--portal-hover-shadow);
+    border-color: var(--portal-primary);
+}
+
+.card-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--portal-primary);
+    display: inline-block;
+    position: relative;
+}
+
+.card-icon::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(210, 125, 45, 0.1);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.info-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    color: var(--portal-dark);
+}
+
+.info-card p {
+    color: var(--portal-text);
+    font-size: 0.95rem;
+}
+
+/* Process Steps */
+.process-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.process-step {
+    display: flex;
+    gap: 1.5rem;
+    background-color: var(--portal-light);
+    border-radius: var(--card-border-radius);
+    padding: 2rem;
+    box-shadow: var(--portal-shadow);
+    transition: all var(--transition-normal);
+    border: 1px solid var(--portal-border);
+}
+
+.process-step:hover {
+    box-shadow: var(--portal-hover-shadow);
+    transform: translateX(5px);
+}
+
+.step-number {
+    background-color: var(--portal-primary);
+    color: var(--portal-light);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    color: var(--portal-primary);
+}
+
+.step-tip, .step-example {
+    background-color: rgba(126, 169, 155, 0.1);
+    border-left: 3px solid var(--portal-secondary);
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 0 var(--card-border-radius) var(--card-border-radius) 0;
+}
+
+.step-tip {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.step-tip i {
+    color: var(--portal-secondary);
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+}
+
+.step-example h4 {
+    color: var(--portal-secondary);
+    margin-bottom: 0.75rem;
+}
+
+.step-example ul {
+    padding-left: 1.5rem;
+}
+
+.step-example li {
+    margin-bottom: 0.5rem;
+}
+
+.step-example li:last-child {
+    margin-bottom: 0;
+}
+
+/* Timeline */
+.timeline {
+    margin-top: 2rem;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 100px;
+    width: 3px;
+    background-color: var(--portal-border);
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-marker {
+    width: 200px;
+    flex-shrink: 0;
+    text-align: center;
+    font-weight: 700;
+    color: var(--portal-primary);
+    font-size: 1.2rem;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.timeline-marker::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: var(--portal-primary);
+    border-radius: 50%;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.timeline-content {
+    flex: 1;
+    background-color: var(--portal-light);
+    border-radius: var(--card-border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--portal-shadow);
+    margin-left: 2rem;
+    border: 1px solid var(--portal-border);
+}
+
+.timeline-content h3 {
+    color: var(--portal-primary);
+    margin-bottom: 0.5rem;
+}
+
+/* Case Studies */
+.case-studies {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.case-study {
+    background-color: var(--portal-light);
+    border-radius: var(--card-border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--portal-shadow);
+    border: 1px solid var(--portal-border);
+    transition: all var(--transition-normal);
+}
+
+.case-study:hover {
+    box-shadow: var(--portal-hover-shadow);
+    border-color: var(--portal-primary);
+}
+
+.case-study h3 {
+    color: var(--portal-primary);
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+}
+
+/* Template Links */
+.template-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.template-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: var(--portal-light);
+    border: 1px solid var(--portal-border);
+    border-radius: var(--button-border-radius);
+    padding: 0.75rem 1.25rem;
+    color: var(--portal-primary);
+    text-decoration: none;
+    transition: all var(--transition-normal);
+}
+
+.template-link:hover {
+    background-color: rgba(210, 125, 45, 0.1);
+    border-color: var(--portal-primary);
+}
+
+.template-link i {
+    font-size: 1.2rem;
+}
+
+/* Guide Action */
+.guide-action {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+
+.guide-action .button {
+    padding: 0.75rem 1.5rem;
+}
+
+.primary-button {
+    background-color: var(--portal-primary);
+    color: var(--portal-light);
+}
+
+.primary-button:hover {
+    background-color: #b86a24;
+}
+
+.secondary-button {
+    background-color: var(--portal-secondary);
+    color: var(--portal-light);
+}
+
+.secondary-button:hover {
+    background-color: #4e7568;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .guide-header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .guide-nav-container {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .process-step {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+    
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-marker {
+        width: 40px;
+        overflow: hidden;
+    }
+    
+    .timeline-marker::after {
+        right: auto;
+        left: 12px;
+    }
+    
+    .timeline-content {
+        margin-left: 1rem;
+    }
+    
+    .guide-action {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .guide-action .button {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .guide-nav-container a {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.6rem;
+    }
+    
+    .guide-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .guide-section h2 {
+        font-size: 1.5rem;
+    }
+} 

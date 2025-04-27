@@ -2015,4 +2015,169 @@ function updateCharts() {
 function refreshData() {
     // Add logic to refresh data
     console.log('Refreshing data...');
-} 
+}
+
+// RTI Tools & Templates Section Interactions
+document.addEventListener('DOMContentLoaded', function() {
+    // Tool cards hover effects
+    const toolCards = document.querySelectorAll('.tool-card');
+    if (toolCards.length) {
+        toolCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.classList.add('active');
+            });
+            card.addEventListener('mouseleave', function() {
+                this.classList.remove('active');
+            });
+        });
+    }
+    
+    // Success Stories Tab Functionality
+    const storyTabs = document.querySelectorAll('.story-tab');
+    const storyCategories = document.querySelectorAll('.story-category');
+    
+    if (storyTabs.length && storyCategories.length) {
+        storyTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                storyTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Hide all story categories
+                storyCategories.forEach(category => category.classList.remove('active'));
+                
+                // Show the selected category
+                const targetCategory = document.getElementById(this.dataset.target);
+                if (targetCategory) {
+                    targetCategory.classList.add('active');
+                }
+            });
+        });
+    }
+    
+    // Policy Tracker Tab Functionality
+    const trackerTabs = document.querySelectorAll('.tracker-tab');
+    const trackerPanels = document.querySelectorAll('.tracker-panel');
+    
+    if (trackerTabs.length && trackerPanels.length) {
+        trackerTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                trackerTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Hide all panels
+                trackerPanels.forEach(panel => panel.classList.remove('active'));
+                
+                // Show the selected panel
+                const targetPanel = document.getElementById(this.dataset.target);
+                if (targetPanel) {
+                    targetPanel.classList.add('active');
+                }
+            });
+        });
+    }
+    
+    // Interactive Learning Resources - Video Preview
+    const videoResources = document.querySelectorAll('.video-resource');
+    if (videoResources.length) {
+        videoResources.forEach(resource => {
+            const playButton = resource.querySelector('.play-button');
+            if (playButton) {
+                playButton.addEventListener('click', function() {
+                    const videoLink = resource.querySelector('.resource-link');
+                    if (videoLink) {
+                        window.location.href = videoLink.getAttribute('href');
+                    }
+                });
+            }
+        });
+    }
+    
+    // Quiz Card Interactions
+    const quizCards = document.querySelectorAll('.quiz-card');
+    if (quizCards.length) {
+        quizCards.forEach(card => {
+            const startButton = card.querySelector('.start-quiz-btn');
+            if (startButton) {
+                startButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Add quiz start functionality here
+                    // For now, just redirect to the quiz page
+                    window.location.href = this.getAttribute('href');
+                });
+            }
+        });
+    }
+    
+    // Institution Directory Search Functionality
+    const directorySearchForm = document.querySelector('.search-form');
+    if (directorySearchForm) {
+        directorySearchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real implementation, this would perform a search
+            // For now, we'll just redirect to the directory index page
+            window.location.href = 'directory/index.html';
+        });
+        
+        // Quick filters
+        const quickFilters = document.querySelectorAll('.quick-filter');
+        if (quickFilters.length) {
+            quickFilters.forEach(filter => {
+                filter.addEventListener('click', function() {
+                    // Toggle active state
+                    this.classList.toggle('active');
+                    // In a real implementation, this would apply the filter
+                });
+            });
+        }
+    }
+    
+    // Newsletter Subscription Form
+    const subscriptionForm = document.querySelector('.subscription-form');
+    if (subscriptionForm) {
+        subscriptionForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real implementation, this would submit the form
+            // For now, we'll just show an alert
+            alert('Thank you for subscribing to RTI Education updates!');
+            this.reset();
+        });
+    }
+});
+
+// Webinar Tab Functionality
+function initializeWebinarTabs() {
+    const tabs = document.querySelectorAll('.webinar-tab');
+    const upcomingSection = document.getElementById('upcoming-webinars');
+    const recordedSection = document.getElementById('recorded-webinars');
+
+    if (!tabs.length) return; // Exit if not on webinars page
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remove active class from all tabs
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            // Add active class to clicked tab
+            tab.classList.add('active');
+
+            // Show/hide appropriate section
+            if (tab.dataset.target === 'upcoming') {
+                upcomingSection.style.display = 'block';
+                recordedSection.style.display = 'none';
+            } else {
+                upcomingSection.style.display = 'none';
+                recordedSection.style.display = 'block';
+            }
+        });
+    });
+}
+
+// Add webinar initialization to document ready
+document.addEventListener('DOMContentLoaded', () => {
+    // ... existing code ...
+    initializeWebinarTabs();
+}); 

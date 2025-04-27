@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#D27D2D">
+    <title>RTI Application Format - Student RTI Portal</title>
+    <link rel="icon" href="../../assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="../../assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../../assets/images/favicon.png?v=2">
+    <link rel="manifest" href="../../manifest.json?v=2">
+    <link rel="stylesheet" href="../../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Lato:wght@300;400;700&display=swap">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/guide.css">
+    <style>
+        .format-container {
+            margin-bottom: 3rem;
+        }
+        
+        .format-example {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .format-example h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .format-example .format-content {
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            line-height: 1.6;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            overflow: auto;
+        }
+        
+        .format-notes {
+            margin-top: 1rem;
+        }
+        
+        .format-notes h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .format-notes ul {
+            padding-left: 1.5rem;
+        }
+        
+        .format-notes li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 1rem;
+            padding: 8px 16px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn i {
+            margin-right: 8px;
+        }
+        
+        .download-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .format-section {
+            margin-bottom: 3rem;
+        }
+        
+        .format-section h2 {
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .format-tips {
+            background: rgba(5, 150, 200, 0.05);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid rgba(5, 150, 200, 0.5);
+        }
+        
+        .format-tips h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .format-tip {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .format-tip i {
+            color: var(--primary-color);
+            margin-right: 0.75rem;
+            margin-top: 0.25rem;
+        }
+        
+        .format-tip p {
+            margin: 0;
+        }
+        
+        .copy-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 4px;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+        }
+        
+        .copy-btn i {
+            margin-right: 6px;
+        }
+        
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="student-theme">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="../index.html" class="navbar-logo">Student RTI Portal</a>
+            <button class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="navbar-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../guide.html" class="active">RTI Guide</a></li>
+                <li><a href="../forms.html">Forms</a></li>
+                <li><a href="../track.html">Track Status</a></li>
+                <li><a href="../resources.html">Resources</a></li>
+                <li><a href="../templates/index.html">Templates</a></li>
+                <li><a href="#" id="change-portal-link" class="change-portal-link">Change Portal <i class="fas fa-exchange-alt"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Guide Navigation -->
+    <div class="guide-navigation">
+        <div class="guide-nav-container">
+            <a href="../guide.html">Guide Home</a>
+            <a href="exam.html">Exam</a>
+            <a href="scholarship.html">Scholarship</a>
+            <a href="admission.html">Admission</a>
+            <a href="faq.html">FAQ</a>
+            <a href="checklist.html">Checklist</a>
+            <a href="format.html" class="active">Format</a>
+            <a href="samples.html">Sample RTI</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="guide-content">
+        <div class="container">
+            <div class="guide-header">
+                <h1>RTI Application Format</h1>
+                <p>Standard formats for filing effective RTI applications for educational matters</p>
+            </div>
+            
+            <div class="format-tips">
+                <h3><i class="fas fa-lightbulb"></i> Tips for Using These Formats</h3>
+                <div class="format-tip">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Replace all text in [square brackets] with your specific information</p>
+                </div>
+                <div class="format-tip">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Customize the information requests to match your specific needs</p>
+                </div>
+                <div class="format-tip">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Keep your application focused on one subject matter for best results</p>
+                </div>
+                <div class="format-tip">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Be precise in your questions to avoid vague or incomplete responses</p>
+                </div>
+            </div>
+            
+            <div class="format-section">
+                <h2>Standard RTI Application Format</h2>
+                <div class="format-example">
+                    <h3>Basic RTI Application</h3>
+                    <div class="format-content" id="basic-format">Date: [Current Date]
+
+To
+The Public Information Officer
+[Name of Educational Institution/Public Authority]
+[Complete Address]
+
+Subject: Application under Right to Information Act, 2005
+
+Sir/Madam,
+
+Under the Right to Information Act, 2005, I would like to request the following information:
+
+1. [Specific Question 1]
+2. [Specific Question 2]
+3. [Specific Question 3]
+4. [Specific Question 4]
+5. [Specific Question 5]
+
+I am enclosing the application fee of Rs. 10/- by [mode of payment: IPO/DD/online payment receipt].
+
+Please provide the requested information within 30 days as per Section 7(1) of the RTI Act, 2005.
+
+Thanking you,
+
+Yours faithfully,
+[Your Name]
+[Your Complete Address]
+[Your Phone Number]
+[Your Email]</div>
+                    <button class="copy-btn" data-target="basic-format">
+                        <i class="fas fa-copy"></i> Copy Format
+                    </button>
+                    <div class="format-notes">
+                        <h4>Important Notes:</h4>
+                        <ul>
+                            <li>Keep your questions specific and precise</li>
+                            <li>Limit to 5-7 questions per application</li>
+                            <li>Mention your contact details clearly</li>
+                        </ul>
+                    </div>
+                    <a href="../downloads/rti_basic_format.docx" class="download-btn">
+                        <i class="fas fa-download"></i> Download Word Format
+                    </a>
+                </div>
+            </div>
+            
+            <div class="format-section">
+                <h2>Educational RTI Formats</h2>
+                <div class="format-example">
+                    <h3>Examination RTI Format</h3>
+                    <div class="format-content" id="exam-format">Date: [Current Date]
+
+To
+The Public Information Officer
+[Name of Educational Institution/Examination Body]
+[Complete Address]
+
+Subject: Application under Right to Information Act, 2005 - Regarding Examination Results
+
+Sir/Madam,
+
+Under the Right to Information Act, 2005, I would like to request the following information:
+
+1. Please provide a certified copy of my answer sheet for [Exam Name] with Roll Number [Roll No.] held on [Exam Date].
+
+2. Please provide the detailed marking scheme used for evaluating [Subject/Paper] in the above-mentioned examination.
+
+3. Please provide information about the qualification and experience of the examiner(s) who evaluated my answer sheet.
+
+4. Please provide the procedure for re-evaluation/re-checking of answer sheets and the timeline for the same.
+
+5. Please provide the statistical data showing the number of students who appeared, passed, and failed in the above-mentioned examination.
+
+The above information is sought to understand the evaluation process and verify the correctness of my result.
+
+I am enclosing the application fee of Rs. 10/- by [mode of payment: IPO/DD/online payment receipt].
+
+Please provide the requested information within 30 days as per Section 7(1) of the RTI Act, 2005.
+
+Thanking you,
+
+Yours faithfully,
+[Your Name]
+[Your Complete Address]
+[Your Phone Number]
+[Your Email]</div>
+                    <button class="copy-btn" data-target="exam-format">
+                        <i class="fas fa-copy"></i> Copy Format
+                    </button>
+                    <a href="../downloads/rti_exam_format.docx" class="download-btn">
+                        <i class="fas fa-download"></i> Download Word Format
+                    </a>
+                </div>
+                
+                <div class="format-example">
+                    <h3>Scholarship RTI Format</h3>
+                    <div class="format-content" id="scholarship-format">Date: [Current Date]
+
+To
+The Public Information Officer
+[Name of Scholarship Authority/Department]
+[Complete Address]
+
+Subject: Application under Right to Information Act, 2005 - Regarding Scholarship Information
+
+Sir/Madam,
+
+Under the Right to Information Act, 2005, I would like to request the following information regarding [Name of Scholarship Scheme]:
+
+1. Please provide the current status of my scholarship application (Application ID: [Your Application ID]) submitted on [Date of Submission].
+
+2. Please provide the complete selection criteria and evaluation methodology used for awarding scholarships under this scheme.
+
+3. Please provide information about the total number of applications received, shortlisted, and finally selected for the academic year [Year].
+
+4. Please provide the category-wise distribution of scholarships awarded.
+
+5. Please provide the detailed timeline for disbursement of scholarship funds for the current academic year.
+
+The information is being sought to understand the scholarship selection process and the status of my application.
+
+I am enclosing the application fee of Rs. 10/- by [mode of payment: IPO/DD/online payment receipt].
+
+Please provide the requested information within 30 days as per Section 7(1) of the RTI Act, 2005.
+
+Thanking you,
+
+Yours faithfully,
+[Your Name]
+[Your Complete Address]
+[Your Phone Number]
+[Your Email]</div>
+                    <button class="copy-btn" data-target="scholarship-format">
+                        <i class="fas fa-copy"></i> Copy Format
+                    </button>
+                    <a href="../downloads/rti_scholarship_format.docx" class="download-btn">
+                        <i class="fas fa-download"></i> Download Word Format
+                    </a>
+                </div>
+                
+                <div class="format-example">
+                    <h3>Admission RTI Format</h3>
+                    <div class="format-content" id="admission-format">Date: [Current Date]
+
+To
+The Public Information Officer
+[Name of Educational Institution]
+[Complete Address]
+
+Subject: Application under Right to Information Act, 2005 - Regarding Admission Process
+
+Sir/Madam,
+
+Under the Right to Information Act, 2005, I would like to request the following information regarding admissions to [Course Name] for the academic year [Year]:
+
+1. Please provide the complete details of the selection process, including the weightage given to different components (entrance exam, interview, etc.).
+
+2. Please provide the category-wise seat matrix showing the number of seats available in each category.
+
+3. Please provide the category-wise cut-off marks/ranks for admission to [Course Name].
+
+4. Please provide information about my rank/position on the waitlist (Application No: [Your Application Number]) and the number of vacant seats still available in my category.
+
+5. Please provide the detailed fee structure for the course, including all components and installment options if any.
+
+The information is being sought to understand the admission process and verify the correctness of my application status.
+
+I am enclosing the application fee of Rs. 10/- by [mode of payment: IPO/DD/online payment receipt].
+
+Please provide the requested information within 30 days as per Section 7(1) of the RTI Act, 2005.
+
+Thanking you,
+
+Yours faithfully,
+[Your Name]
+[Your Complete Address]
+[Your Phone Number]
+[Your Email]</div>
+                    <button class="copy-btn" data-target="admission-format">
+                        <i class="fas fa-copy"></i> Copy Format
+                    </button>
+                    <a href="../downloads/rti_admission_format.docx" class="download-btn">
+                        <i class="fas fa-download"></i> Download Word Format
+                    </a>
+                </div>
+            </div>
+            
+            <div class="format-section">
+                <h2>First Appeal Format</h2>
+                <div class="format-example">
+                    <h3>First Appeal Under RTI Act</h3>
+                    <div class="format-content" id="appeal-format">Date: [Current Date]
+
+To
+The First Appellate Authority
+[Name of Educational Institution/Public Authority]
+[Complete Address]
+
+Subject: First Appeal under Section 19(1) of the Right to Information Act, 2005
+
+Reference: RTI Application No. [RTI Application Number] dated [Date of RTI Application]
+
+Sir/Madam,
+
+I had filed an RTI application (details mentioned above) with the Public Information Officer (PIO) of your organization on [Date of RTI Application]. However, I am filing this appeal on the following grounds (select applicable):
+
+[ ] No response has been received within the stipulated time period of 30 days.
+[ ] Information provided is incomplete/incorrect/misleading.
+[ ] The PIO has rejected my request without giving proper reasons.
+[ ] I have been charged unreasonable additional fees.
+[ ] Other (please specify): [Your specific reason]
+
+Details of information sought and the issue with the response:
+[Provide specific details of the information requested and what was lacking in the response]
+
+I request you to:
+1. Direct the PIO to provide the complete and correct information as requested in my original RTI application.
+2. Waive any unreasonable additional fees charged (if applicable).
+3. Take appropriate action against the PIO for not providing the information as per the RTI Act, 2005 (if applicable).
+
+I am attaching the following documents:
+1. Copy of my original RTI application
+2. Copy of the response received from the PIO (if any)
+3. Any other relevant documents: [List any other documents]
+
+I affirm that the information provided by me is true to the best of my knowledge.
+
+Thanking you,
+
+Yours faithfully,
+[Your Name]
+[Your Complete Address]
+[Your Phone Number]
+[Your Email]</div>
+                    <button class="copy-btn" data-target="appeal-format">
+                        <i class="fas fa-copy"></i> Copy Format
+                    </button>
+                    <div class="format-notes">
+                        <h4>When to File First Appeal:</h4>
+                        <ul>
+                            <li>If you don't receive any response within 30 days</li>
+                            <li>If the information provided is incomplete or incorrect</li>
+                            <li>If your request is unjustifiably rejected</li>
+                            <li>If you're charged unreasonable fees</li>
+                        </ul>
+                    </div>
+                    <a href="../downloads/rti_first_appeal_format.docx" class="download-btn">
+                        <i class="fas fa-download"></i> Download Word Format
+                    </a>
+                </div>
+            </div>
+            
+            <div class="guide-action">
+                <a href="../templates/generate.html" class="button primary-button">
+                    <i class="fas fa-magic"></i> Generate Custom RTI Application
+                </a>
+                <a href="samples.html" class="button secondary-button">
+                    <i class="fas fa-list"></i> View Sample RTIs
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h3 class="footer-title">Student RTI Portal</h3>
+                        <p class="footer-description">India's dedicated platform for students to access educational information under the RTI Act, 2005.</p>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3 class="footer-title">Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="../index.html" class="footer-link">Home</a></li>
+                            <li><a href="../guide.html" class="footer-link">RTI Guide</a></li>
+                            <li><a href="../forms.html" class="footer-link">File RTI</a></li>
+                            <li><a href="../track.html" class="footer-link">Track Status</a></li>
+                            <li><a href="../resources.html" class="footer-link">Resources</a></li>
+                            <li><a href="../templates/index.html" class="footer-link">Templates</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3 class="footer-title">Contact Us</h3>
+                        <ul class="footer-contact">
+                            <li><i class="fas fa-envelope"></i> <a href="mailto:support@studentrti.gov.in">support@studentrti.gov.in</a></li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:+911123386626">+91-11-2338-6626</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p class="copyright">© 2023 Student RTI Portal. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile menu toggle
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const navbarLinks = document.querySelector('.navbar-links');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', () => {
+                    navbarLinks.classList.toggle('active');
+                });
+            }
+            
+            // Change portal link
+            const changePortalLink = document.getElementById('change-portal-link');
+            if (changePortalLink) {
+                changePortalLink.addEventListener('click', () => {
+                    window.location.href = '../../index.html';
+                });
+            }
+            
+            // Copy button functionality
+            const copyButtons = document.querySelectorAll('.copy-btn');
+            
+            copyButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetId = button.getAttribute('data-target');
+                    const contentElement = document.getElementById(targetId);
+                    
+                    if (contentElement) {
+                        navigator.clipboard.writeText(contentElement.textContent)
+                            .then(() => {
+                                const originalText = button.innerHTML;
+                                button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                                
+                                setTimeout(() => {
+                                    button.innerHTML = originalText;
+                                }, 2000);
+                            })
+                            .catch(err => {
+                                console.error('Could not copy text: ', err);
+                                button.innerHTML = '<i class="fas fa-times"></i> Failed to copy';
+                                
+                                setTimeout(() => {
+                                    button.innerHTML = '<i class="fas fa-copy"></i> Copy Format';
+                                }, 2000);
+                            });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

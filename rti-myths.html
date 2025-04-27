@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffd700">
+    <title>RTI Myths vs. Facts | RTI Education Portal</title>
+    <link rel="icon" href="assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/images/favicon.png?v=2">
+    <link rel="manifest" href="manifest.json?v=2">
+
+    <link rel="stylesheet" href="Waves.css">
+    <link rel="stylesheet" href="loading-screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="main.css">
+    <style>
+        /* Page-specific styles */
+        .myths-section {
+            background-color: var(--bg-color);
+            padding: 4rem 0;
+        }
+        
+        .myths-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .myths-description {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .myths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .myth-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .myth-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--shadow-color);
+        }
+        
+        .myth-header {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 1.5rem;
+            position: relative;
+        }
+        
+        .myth-header::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 15px solid #ff8e8e;
+        }
+        
+        .myth-title {
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .myth-tag {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.15);
+            padding: 0.5rem 1rem;
+            border-bottom-left-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .myth-content {
+            padding: 2rem;
+        }
+        
+        .myth-text {
+            margin-bottom: 2rem;
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .fact-header {
+            background: linear-gradient(135deg, #4ecdc4, #56e0d3);
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .fact-header i {
+            font-size: 1.2rem;
+        }
+        
+        .fact-title {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .fact-text {
+            color: var(--text-color);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .legal-support {
+            margin-top: 1.5rem;
+            background: #f9f9f9;
+            border-radius: 5px;
+            padding: 1rem;
+            font-size: 0.9rem;
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .legal-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        
+        .legal-text {
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+        
+        .faq-section {
+            background-color: #f5f7fa;
+            padding: 4rem 0;
+        }
+        
+        .faq-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-color);
+            transition: background-color 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: rgba(0,0,0,0.01);
+        }
+        
+        .faq-question i {
+            color: var(--accent-color);
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-answer p {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar/Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>RTI Education</span>
+                <div class="logo-accent"></div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">
+                    <span class="nav-icon"><i class="fas fa-home"></i></span>
+                    Home
+                </a>
+                <a href="timeline.html">
+                    <span class="nav-icon"><i class="fas fa-history"></i></span>
+                    Timeline
+                </a>
+                <a href="news.html">
+                    <span class="nav-icon"><i class="fas fa-newspaper"></i></span>
+                    News
+                </a>
+                <a href="cases.html">
+                    <span class="nav-icon"><i class="fas fa-gavel"></i></span>
+                    Current Cases
+                </a>
+            </div>
+            <div class="auth-links">
+                <a href="login.html" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </a>
+                <a href="signup.html" class="signup-btn">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up
+                </a>
+            </div>
+            <div class="mobile-menu">
+            <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <div class="nav-decoration">
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">RTI Myths vs. Facts</h1>
+            <p class="page-subtitle">Debunking common misconceptions about the Right to Information Act</p>
+            <div class="breadcrumbs">
+                <a href="index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>RTI Myths vs. Facts</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Myths vs. Facts Section -->
+    <section class="myths-section">
+        <div class="container">
+            <div class="myths-header">
+                <h2>Popular Myths About RTI in Education</h2>
+                <p class="myths-description">There are many misconceptions about using RTI in education. We've compiled the most common myths and debunked them with facts and legal references.</p>
+            </div>
+            
+            <div class="myths-grid">
+                <div class="myth-card">
+                    <div class="myth-header">
+                        <h3 class="myth-title">RTI doesn't apply to private schools</h3>
+                        <div class="myth-tag">Common Myth</div>
+                    </div>
+                    <div class="myth-content">
+                        <p class="myth-text">Many believe that Right to Information Act only applies to government schools and colleges, leaving private institutions completely outside its scope.</p>
+                        
+                        <div class="fact-header">
+                            <i class="fas fa-check-circle"></i>
+                            <h4 class="fact-title">The Fact</h4>
+                        </div>
+                        <p class="fact-text">Private schools that receive substantial government aid fall under RTI Act's purview. Additionally, private schools are regulated by government authorities (like education boards) which can be approached through RTI.</p>
+                        
+                        <div class="legal-support">
+                            <div class="legal-title">Legal Support:</div>
+                            <p class="legal-text">Section 2(h) of RTI Act defines "public authority" to include organizations substantially financed by government funds. Supreme Court in DAV College Trust case (2019) clarified this further.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="myth-card">
+                    <div class="myth-header">
+                        <h3 class="myth-title">Students can't see their answer sheets</h3>
+                        <div class="myth-tag">Common Myth</div>
+                    </div>
+                    <div class="myth-content">
+                        <p class="myth-text">Many examination authorities and educational institutions refuse to show evaluated answer sheets to students, claiming confidentiality or policy restrictions.</p>
+                        
+                        <div class="fact-header">
+                            <i class="fas fa-check-circle"></i>
+                            <h4 class="fact-title">The Fact</h4>
+                        </div>
+                        <p class="fact-text">The Supreme Court has clearly established that students have the right to access their evaluated answer sheets through RTI. Educational boards and universities must provide copies upon request.</p>
+                        
+                        <div class="legal-support">
+                            <div class="legal-title">Legal Support:</div>
+                            <p class="legal-text">Supreme Court's landmark judgment in CBSE v. Aditya Bandopadhyay (2011) established that evaluated answer sheets are "information" under RTI Act. This decision has been consistently upheld in subsequent cases.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="myth-card">
+                    <div class="myth-header">
+                        <h3 class="myth-title">RTI filing is complicated and technical</h3>
+                        <div class="myth-tag">Common Myth</div>
+                    </div>
+                    <div class="myth-content">
+                        <p class="myth-text">Many people believe that filing an RTI application requires legal expertise, complex forms, and technical knowledge of government procedures.</p>
+                        
+                        <div class="fact-header">
+                            <i class="fas fa-check-circle"></i>
+                            <h4 class="fact-title">The Fact</h4>
+                        </div>
+                        <p class="fact-text">RTI applications can be written in simple language on plain paper. The law intentionally keeps the process simple. You only need to clearly specify what information you're seeking and include a small application fee.</p>
+                        
+                        <div class="legal-support">
+                            <div class="legal-title">Legal Support:</div>
+                            <p class="legal-text">Section 6 of the RTI Act requires only that the request be made in writing (including electronic means) with reasonable details to identify the information. No specific format is mandated by law.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="myth-card">
+                    <div class="myth-header">
+                        <h3 class="myth-title">RTI filers face retaliation risks</h3>
+                        <div class="myth-tag">Common Concern</div>
+                    </div>
+                    <div class="myth-content">
+                        <p class="myth-text">Many teachers, students, and parents worry that filing RTI against educational institutions may lead to retaliation, affecting careers, grades, or treatment of their children.</p>
+                        
+                        <div class="fact-header">
+                            <i class="fas fa-check-circle"></i>
+                            <h4 class="fact-title">The Fact</h4>
+                        </div>
+                        <p class="fact-text">The RTI Act provides options for confidentiality and protection. You can file through third parties, use legal representatives, or file anonymously in some cases. Any retaliation based on RTI filing is illegal.</p>
+                        
+                        <div class="legal-support">
+                            <div class="legal-title">Legal Support:</div>
+                            <p class="legal-text">Section 6(2) of RTI Act explicitly states that applicants don't have to provide reasons for requesting information. Additionally, Section 11 provides for third-party information procedures that can help protect the applicant's identity.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="myth-card">
+                    <div class="myth-header">
+                        <h3 class="myth-title">RTI responses take too long to be useful</h3>
+                        <div class="myth-tag">Common Myth</div>
+                    </div>
+                    <div class="myth-content">
+                        <p class="myth-text">A widespread belief is that RTI responses are too delayed to be useful for time-sensitive matters like admission disputes, examination issues, or scholarship applications.</p>
+                        
+                        <div class="fact-header">
+                            <i class="fas fa-check-circle"></i>
+                            <h4 class="fact-title">The Fact</h4>
+                        </div>
+                        <p class="fact-text">RTI Act mandates information delivery within 30 days (and 48 hours for life-liberty matters). For educational issues with deadlines, you can request expedited processing. Courts have upheld the right to timely information.</p>
+                        
+                        <div class="legal-support">
+                            <div class="legal-title">Legal Support:</div>
+                            <p class="legal-text">Section 7 of RTI Act requires information to be provided within 30 days, or 48 hours when the information concerns life or liberty. Central Information Commission has penalized authorities for delayed responses in numerous cases.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="myth-card">
+                    <div class="myth-header">
+                        <h3 class="myth-title">First appeals are just a formality</h3>
+                        <div class="myth-tag">Common Misconception</div>
+                    </div>
+                    <div class="myth-content">
+                        <p class="myth-text">Many RTI applicants believe that the first appeal is just a formality and doesn't yield results, so they either skip it or file it without proper attention to detail.</p>
+                        
+                        <div class="fact-header">
+                            <i class="fas fa-check-circle"></i>
+                            <h4 class="fact-title">The Fact</h4>
+                        </div>
+                        <p class="fact-text">First appeals are critical and often successful, especially in education matters. The First Appellate Authority is a senior official who can reverse or modify the PIO's decision and often takes a more comprehensive view of the request.</p>
+                        
+                        <div class="legal-support">
+                            <div class="legal-title">Legal Support:</div>
+                            <p class="legal-text">Section 19 of RTI Act establishes the first appeal process. Statistics show that approximately 30-40% of first appeals in education-related matters result in favorable outcomes for applicants.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-header">
+                <h2>Frequently Asked Questions</h2>
+                <p class="myths-description">Common questions about using RTI for education-related transparency</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What information can I request through RTI in education?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can request a wide range of information including but not limited to:</p>
+                        <ul>
+                            <li>Admission criteria and selection process details</li>
+                            <li>Fee structure breakdowns and financial statements</li>
+                            <li>Teacher qualifications and appointment details</li>
+                            <li>Infrastructure and safety compliance information</li>
+                            <li>Evaluated answer sheets and marking schemes</li>
+                            <li>Scholarship disbursement records</li>
+                            <li>Implementation details of government schemes</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How much does it cost to file an RTI application?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The application fee is ₹10 for filing an RTI with central government authorities. State government fees may vary slightly but are typically ₹10-₹50. Additional charges may apply for photocopies (₹2 per page) or other document formats.</p>
+                        <p>Importantly, applicants below the poverty line are exempt from all fees. Just attach a copy of your BPL card with your application.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What happens if I don't get a response within 30 days?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>If you don't receive a response within 30 days (or 35 days if sent by post), you can:</p>
+                        <ol>
+                            <li>File a first appeal with the First Appellate Authority of the same public authority</li>
+                            <li>If the first appeal doesn't resolve the issue, file a second appeal with the Central/State Information Commission</li>
+                            <li>The Commission can impose penalties on the PIO for delays without reasonable cause</li>
+                        </ol>
+                        <p>Non-response is treated as a deemed refusal under the RTI Act and provides grounds for appeal.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can minors file RTI applications?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, minors can file RTI applications. The RTI Act gives the right to "citizens" without any age restriction. Students under 18 years can file RTI applications regarding their education, exams, or other matters.</p>
+                        <p>However, some public authorities may request a guardian's signature or identity proof. In such cases, parents can co-sign the application or file on behalf of their minor children.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What information is exempt from disclosure under RTI?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Certain information is exempt from disclosure under Section 8 of the RTI Act, including:</p>
+                        <ul>
+                            <li>Information that would prejudicially affect India's sovereignty and integrity, security, or economic interests</li>
+                            <li>Information expressly forbidden by a court of law</li>
+                            <li>Information that would breach parliamentary privilege</li>
+                            <li>Commercial confidence, trade secrets, or intellectual property that would harm a third party's competitive position</li>
+                            <li>Information available to a person in his fiduciary relationship</li>
+                            <li>Personal information which has no relation to public activity or interest</li>
+                        </ul>
+                        <p>However, information that cannot be denied to Parliament or State Legislature cannot be denied to any person.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Dedicated to promoting transparency in education through the Right to Information Act.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="timeline.html">Timeline</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="cases.html">Current Cases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: info@rtieducation.org</p>
+                    <p>Phone: +91 1234567890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RTI Education Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', function() {
+                    // Toggle active class on the clicked item
+                    item.classList.toggle('active');
+                    
+                    // Close other items (optional - for accordion behavior)
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

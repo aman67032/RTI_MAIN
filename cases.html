@@ -190,6 +190,65 @@
             flex-wrap: wrap;
         }
         
+        /* New Case Study Specific Styles */
+        .case-issue, .case-intervention, .case-impact {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        .case-issue h4, .case-intervention h4, .case-impact h4 {
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .case-issue ul, .case-intervention ul, .case-impact ul {
+            padding-left: 1.2rem;
+            margin-top: 0.5rem;
+        }
+        
+        .case-issue li, .case-intervention li, .case-impact li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .case-sources {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .case-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .case-link:hover {
+            color: var(--accent-dark);
+            text-decoration: underline;
+        }
+        
+        .case-link i {
+            font-size: 0.8rem;
+        }
+        
+        /* Status classes */
+        .status-recent {
+            background-color: #E3F2FD;
+            color: #0D47A1;
+        }
+        
+        .status-significant {
+            background-color: #E8EAF6;
+            color: #303F9F;
+        }
+        
         .filter-dropdown {
             position: relative;
         }
@@ -242,7 +301,7 @@
                 <a href="index.html">Home</a>
                 <a href="timeline.html">Timeline</a>
                 <a href="news.html">News</a>
-                <a href="cases.html" class="active">Current Cases</a>
+                <a href="cases.html" class="active">Case Studies</a>
             </div>
             <div class="auth-links">
                 <a href="login.html" class="login-btn">Login</a>
@@ -257,7 +316,7 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1 class="page-title">Current RTI Cases</h1>
+            <h1 class="page-title">RTI Case Studies</h1>
             <p class="page-description">Explore ongoing and landmark RTI cases in the education sector</p>
         </div>
     </section>
@@ -301,81 +360,17 @@
             </div>
             
             <div class="case-list">
-                <!-- Case 1 -->
+                <!-- Case 1: CBSE v. Aditya Bandopadhyay -->
                 <div class="case-card">
                     <div class="case-header">
-                        <div class="case-number">Case #RTI-EDU-2024-0125</div>
-                        <div class="case-status status-active">Active</div>
-                    </div>
-                    <h3 class="case-title">University Admission Transparency Case</h3>
-                    <div class="case-meta">
-                        <div class="case-meta-item">
-                            <i class="fas fa-user"></i>
-                            <span>Filed by: Student Group</span>
-                        </div>
-                        <div class="case-meta-item">
-                            <i class="fas fa-building"></i>
-                            <span>Against: Delhi University</span>
-                        </div>
-                        <div class="case-meta-item">
-                            <i class="fas fa-calendar"></i>
-                            <span>Filed on: Feb 12, 2024</span>
-                        </div>
-                    </div>
-                    <p class="case-description">RTI filed seeking transparency in admission process and cutoff calculations across different colleges and departments. The case questions the discrepancies in merit list preparation and seat allocation.</p>
-                    <div class="case-footer">
-                        <div class="case-tags">
-                            <span class="case-tag">University</span>
-                            <span class="case-tag">Admissions</span>
-                            <span class="case-tag">Merit List</span>
-                        </div>
-                        <a href="#" class="case-details">View Details <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <!-- Case 2 -->
-                <div class="case-card">
-                    <div class="case-header">
-                        <div class="case-number">Case #RTI-EDU-2024-0098</div>
-                        <div class="case-status status-pending">Pending</div>
-                    </div>
-                    <h3 class="case-title">Scholarship Disbursement Investigation</h3>
-                    <div class="case-meta">
-                        <div class="case-meta-item">
-                            <i class="fas fa-user"></i>
-                            <span>Filed by: Student Welfare Association</span>
-                        </div>
-                        <div class="case-meta-item">
-                            <i class="fas fa-building"></i>
-                            <span>Against: Ministry of Education</span>
-                        </div>
-                        <div class="case-meta-item">
-                            <i class="fas fa-calendar"></i>
-                            <span>Filed on: Jan 25, 2024</span>
-                        </div>
-                    </div>
-                    <p class="case-description">RTI application filed to investigate delays and irregularities in the national scholarship disbursement for the academic year 2023-24. Seeking detailed allocation and distribution records.</p>
-                    <div class="case-footer">
-                        <div class="case-tags">
-                            <span class="case-tag">Scholarships</span>
-                            <span class="case-tag">Finance</span>
-                            <span class="case-tag">National</span>
-                        </div>
-                        <a href="#" class="case-details">View Details <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <!-- Case 3 -->
-                <div class="case-card">
-                    <div class="case-header">
-                        <div class="case-number">Case #RTI-EDU-2023-0876</div>
+                        <div class="case-number">Case Study 01</div>
                         <div class="case-status status-landmark">Landmark</div>
                     </div>
-                    <h3 class="case-title">Examination Evaluation Transparency</h3>
+                    <h3 class="case-title">RTI for Exam Paper Re-Evaluation (CBSE v. Aditya Bandopadhyay, 2011)</h3>
                     <div class="case-meta">
                         <div class="case-meta-item">
                             <i class="fas fa-user"></i>
-                            <span>Filed by: Student Union</span>
+                            <span>Filed by: Aditya Bandopadhyay</span>
                         </div>
                         <div class="case-meta-item">
                             <i class="fas fa-building"></i>
@@ -383,85 +378,452 @@
                         </div>
                         <div class="case-meta-item">
                             <i class="fas fa-calendar"></i>
-                            <span>Filed on: Dec 5, 2023</span>
+                            <span>Filed in: 2011</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-gavel"></i>
+                            <span>Supreme Court</span>
                         </div>
                     </div>
-                    <p class="case-description">Landmark RTI case that established students' rights to access their evaluated answer sheets and the detailed marking scheme. Led to nationwide reforms in examination transparency practices.</p>
+                    
+                    <div class="case-issue">
+                        <h4>Issue:</h4>
+                        <ul>
+                            <li>CBSE students faced errors in their board exam marks but were denied access to their answer sheets.</li>
+                            <li>The CBSE claimed that answer sheets were "confidential" and not subject to RTI requests.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="case-intervention">
+                        <h4>RTI Intervention:</h4>
+                        <ul>
+                            <li>Aditya Bandopadhyay, a student, filed an RTI requesting his evaluated answer sheet.</li>
+                            <li>CBSE rejected the request, which led to a legal battle in the Supreme Court.</li>
+                            <li>The Supreme Court ruled in favor of the students, stating that exam answer sheets fall under the scope of RTI.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="case-impact">
+                        <h4>Impact:</h4>
+                        <ul>
+                            <li>Students can now request copies of their evaluated answer sheets under RTI.</li>
+                            <li>Exposed marking errors and unfair evaluation practices.</li>
+                            <li>Led to significant changes in CBSE's policy, increasing transparency in re-evaluation.</li>
+                        </ul>
+                    </div>
+                    
                     <div class="case-footer">
                         <div class="case-tags">
                             <span class="case-tag">Examinations</span>
                             <span class="case-tag">Evaluation</span>
-                            <span class="case-tag">School Board</span>
+                            <span class="case-tag">Supreme Court</span>
+                            <span class="case-tag">CBSE</span>
                         </div>
-                        <a href="#" class="case-details">View Details <i class="fas fa-arrow-right"></i></a>
+                        <div class="case-sources">
+                            <a href="https://dsscic.nic.in/files/upload_decision/639.pdf" class="case-link" target="_blank">Official Document <i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://indiankanoon.org/doc/1519371/" class="case-link" target="_blank">Legal Reference <i class="fas fa-external-link-alt"></i></a>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Case 4 -->
+                <!-- Case 2: NEET Paper Leak Investigation -->
                 <div class="case-card">
                     <div class="case-header">
-                        <div class="case-number">Case #RTI-EDU-2024-0112</div>
-                        <div class="case-status status-resolved">Resolved</div>
+                        <div class="case-number">Case Study 02</div>
+                        <div class="case-status status-active">Recent</div>
                     </div>
-                    <h3 class="case-title">Faculty Recruitment Discrepancies</h3>
+                    <h3 class="case-title">RTI for NEET Paper Leak Investigation (2024)</h3>
                     <div class="case-meta">
                         <div class="case-meta-item">
                             <i class="fas fa-user"></i>
-                            <span>Filed by: Teachers' Association</span>
+                            <span>Filed by: Dr. Vivek Pandey</span>
                         </div>
                         <div class="case-meta-item">
                             <i class="fas fa-building"></i>
-                            <span>Against: State University</span>
+                            <span>Against: National Testing Agency (NTA)</span>
                         </div>
                         <div class="case-meta-item">
                             <i class="fas fa-calendar"></i>
-                            <span>Filed on: Jan 30, 2024</span>
+                            <span>Filed in: 2024</span>
                         </div>
                         <div class="case-meta-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Resolved on: Mar 15, 2024</span>
+                            <i class="fas fa-users"></i>
+                            <span>Impacted: 24+ lakh candidates</span>
                         </div>
                     </div>
-                    <p class="case-description">Case seeking transparency in faculty recruitment process. Successfully revealed inconsistencies in selection criteria. Resulted in revised recruitment guidelines being issued by the university.</p>
+                    
+                    <div class="case-issue">
+                        <h4>Issue:</h4>
+                        <ul>
+                            <li>In May 2024, allegations arose regarding the leak of the NEET-UG exam paper, impacting over 24 lakh candidates.</li>
+                            <li>Students demanded proof of a fair investigation, but the National Testing Agency (NTA) refused to provide information, citing "security reasons."</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="case-intervention">
+                        <h4>RTI Intervention:</h4>
+                        <ul>
+                            <li>Dr. Vivek Pandey, a health activist, filed an RTI requesting a status report on the investigation from the Bihar Director General of Police.</li>
+                            <li>The Central Bureau of Investigation (CBI) denied disclosing investigation details, citing exemptions under the RTI Act, which raised debates on transparency.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="case-impact">
+                        <h4>Impact:</h4>
+                        <ul>
+                            <li>The Supreme Court ruled against conducting a retest, urging authorities to improve cybersecurity and identity verification measures.</li>
+                            <li>The incident led to the enforcement of the Public Examinations (Prevention of Unfair Means) Act, 2024, which aims to enhance the integrity of public exams.</li>
+                        </ul>
+                    </div>
+                    
                     <div class="case-footer">
                         <div class="case-tags">
-                            <span class="case-tag">Faculty</span>
-                            <span class="case-tag">Recruitment</span>
-                            <span class="case-tag">University</span>
+                            <span class="case-tag">NEET</span>
+                            <span class="case-tag">Paper Leak</span>
+                            <span class="case-tag">CBI</span>
+                            <span class="case-tag">Medical</span>
                         </div>
-                        <a href="#" class="case-details">View Details <i class="fas fa-arrow-right"></i></a>
+                        <div class="case-sources">
+                            <a href="https://timesofindia.indiatimes.com/" class="case-link" target="_blank">Times of India <i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://www.edexlive.com/" class="case-link" target="_blank">EdexLive <i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://economictimes.indiatimes.com/" class="case-link" target="_blank">Economic Times <i class="fas fa-external-link-alt"></i></a>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Case 5 -->
+                <!-- Case 3: DU Admission & Reservation Transparency -->
                 <div class="case-card">
                     <div class="case-header">
-                        <div class="case-number">Case #RTI-EDU-2024-0135</div>
+                        <div class="case-number">Case Study 03</div>
+                        <div class="case-status status-resolved">Significant</div>
+                    </div>
+                    <h3 class="case-title">RTI for Admission & Reservation Transparency (Delhi University, 2018)</h3>
+                    <div class="case-meta">
+                        <div class="case-meta-item">
+                            <i class="fas fa-user"></i>
+                            <span>Filed by: Students and Activists</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-building"></i>
+                            <span>Against: Delhi University</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Filed in: 2018</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-percentage"></i>
+                            <span>OBC Quota: 27%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="case-issue">
+                        <h4>Issue:</h4>
+                        <ul>
+                            <li>OBC applicants faced difficulties during Delhi University admissions, with unclear quota implementations and admission delays.</li>
+                            <li>Authorities were reluctant to provide clear information about cut-offs and seat allocations.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="case-intervention">
+                        <h4>RTI Intervention:</h4>
+                        <ul>
+                            <li>Students and activists filed RTI applications seeking details on OBC category admissions, cut-offs, and seat matrices.</li>
+                            <li>The responses revealed inconsistencies in seat allotment and lack of adherence to the mandated 27% OBC reservation policy.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="case-impact">
+                        <h4>Impact:</h4>
+                        <ul>
+                            <li>The exposure led to increased pressure on Delhi University to streamline its admission process for OBC students.</li>
+                            <li>It highlighted systemic gaps and the need for stronger monitoring and transparency in implementing reservation policies.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="case-footer">
+                        <div class="case-tags">
+                            <span class="case-tag">University</span>
+                            <span class="case-tag">Admissions</span>
+                            <span class="case-tag">OBC</span>
+                            <span class="case-tag">Reservation</span>
+                        </div>
+                        <div class="case-sources">
+                            <a href="https://www.forwardpress.in/2018/05/delhi-university-admissions-no-one-to-listen-to-obc-applicants-woes/" class="case-link" target="_blank">Forward Press <i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://www.du.ac.in/uploads/27092018_RTI.pdf" class="case-link" target="_blank">DU RTI Document <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Case 4: RTE Implementation & Private Schools -->
+                <div class="case-card">
+                    <div class="case-header">
+                        <div class="case-number">Case Study 04</div>
+                        <div class="case-status status-landmark">Landmark</div>
+                    </div>
+                    <h3 class="case-title">RTI for RTE Implementation in Private Schools (2012)</h3>
+                    <div class="case-meta">
+                        <div class="case-meta-item">
+                            <i class="fas fa-user"></i>
+                            <span>Filed by: Social Rights Activists</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-building"></i>
+                            <span>Against: Multiple State Education Departments</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Filed in: 2012</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-child"></i>
+                            <span>Impact: Nationwide</span>
+                        </div>
+                    </div>
+                    
+                    <div class="case-issue">
+                        <h4>Issue:</h4>
+                        <ul>
+                            <li>Private schools were found to be non-compliant with the 25% reservation for economically weaker sections required by the Right to Education Act.</li>
+                            <li>Schools were either not implementing the quota or creating artificial barriers for disadvantaged students.</li>
+                            <li>State education departments were not enforcing compliance or monitoring implementation.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="case-intervention">
+                        <h4>RTI Intervention:</h4>
+                        <ul>
+                            <li>RTI applications filed across multiple states seeking data on RTE quota implementation in private schools.</li>
+                            <li>Information sought included number of seats reserved, admission procedures, and action taken against non-compliant schools.</li>
+                            <li>The case eventually reached the Supreme Court when several private schools challenged the RTE Act itself.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="case-impact">
+                        <h4>Impact:</h4>
+                        <ul>
+                            <li>Supreme Court upheld the constitutional validity of the RTE Act, requiring private schools to comply with the 25% reservation.</li>
+                            <li>Led to the establishment of regulatory committees in states to monitor implementation.</li>
+                            <li>Improved admission chances for over 2 million disadvantaged children annually across India.</li>
+                            <li>Created a framework for ongoing monitoring through RTI-based social audits.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="case-footer">
+                        <div class="case-tags">
+                            <span class="case-tag">RTE Act</span>
+                            <span class="case-tag">Private Schools</span>
+                            <span class="case-tag">EWS Quota</span>
+                            <span class="case-tag">Supreme Court</span>
+                        </div>
+                        <div class="case-sources">
+                            <a href="https://scobserver.in/cases/society-for-unaided-private-schools-of-rajasthan-v-union-of-india-right-to-education-case/" class="case-link" target="_blank">SC Observer <i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://main.sci.gov.in/judgment/judis/39231.pdf" class="case-link" target="_blank">Supreme Court Judgment <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Case 5: Mid-Day Meal Scheme Transparency -->
+                <div class="case-card">
+                    <div class="case-header">
+                        <div class="case-number">Case Study 05</div>
+                        <div class="case-status status-resolved">Significant</div>
+                    </div>
+                    <h3 class="case-title">RTI for Mid-Day Meal Scheme Transparency (2013-2014)</h3>
+                    <div class="case-meta">
+                        <div class="case-meta-item">
+                            <i class="fas fa-user"></i>
+                            <span>Filed by: NGO Collective</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-building"></i>
+                            <span>Against: Human Resource Development Ministry</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Filed in: 2013</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-utensils"></i>
+                            <span>Impacted: 120 million children</span>
+                        </div>
+                    </div>
+                    
+                    <div class="case-issue">
+                        <h4>Issue:</h4>
+                        <ul>
+                            <li>Reports of widespread corruption in the implementation of the Mid-Day Meal Scheme across multiple states.</li>
+                            <li>Concerns over food quality, safety, and nutritional adequacy after multiple food poisoning incidents.</li>
+                            <li>Discrepancies between allocated funds, reported beneficiaries, and actual meal distribution.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="case-intervention">
+                        <h4>RTI Intervention:</h4>
+                        <ul>
+                            <li>A series of coordinated RTI applications filed across 10 states seeking detailed expenditure reports, supplier contracts, and quality inspection records.</li>
+                            <li>Information requested on testing protocols, food safety certifications, and incident reporting mechanisms.</li>
+                            <li>Findings compiled into a comprehensive public report highlighting systemic issues in the scheme's implementation.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="case-impact">
+                        <h4>Impact:</h4>
+                        <ul>
+                            <li>Led to the creation of a centralized online monitoring system for real-time tracking of meal distribution.</li>
+                            <li>Resulted in revised nutritional guidelines and mandatory food safety certifications for suppliers.</li>
+                            <li>Introduced community-based monitoring committees with parent representatives.</li>
+                            <li>Estimated to have improved meal quality for over 120 million school children across India.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="case-footer">
+                        <div class="case-tags">
+                            <span class="case-tag">Mid-Day Meal</span>
+                            <span class="case-tag">Food Security</span>
+                            <span class="case-tag">Public Funds</span>
+                            <span class="case-tag">School Nutrition</span>
+                        </div>
+                        <div class="case-sources">
+                            <a href="https://mhrd.gov.in/sites/upload_files/mhrd/files/upload_document/MDM_Report.pdf" class="case-link" target="_blank">Official Report <i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://accountabilityindia.in/publication/fund-flows-and-expenditure-of-mid-day-meal-scheme/" class="case-link" target="_blank">Accountability Research <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Case 6: Teacher Recruitment Transparency -->
+                <div class="case-card">
+                    <div class="case-header">
+                        <div class="case-number">Case Study 06</div>
                         <div class="case-status status-active">Active</div>
                     </div>
-                    <h3 class="case-title">School Infrastructure Funds Allocation</h3>
+                    <h3 class="case-title">RTI for Teacher Recruitment & Qualification Verification (2022-Present)</h3>
                     <div class="case-meta">
                         <div class="case-meta-item">
                             <i class="fas fa-user"></i>
-                            <span>Filed by: Parent-Teacher Association</span>
+                            <span>Filed by: Education Reform Collective</span>
                         </div>
                         <div class="case-meta-item">
                             <i class="fas fa-building"></i>
-                            <span>Against: District Education Department</span>
+                            <span>Against: State Public Service Commissions</span>
                         </div>
                         <div class="case-meta-item">
                             <i class="fas fa-calendar"></i>
-                            <span>Filed on: Feb 22, 2024</span>
+                            <span>Ongoing since: 2022</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>Concerns: 35,000+ appointments</span>
                         </div>
                     </div>
-                    <p class="case-description">RTI application seeking detailed information on allocation and utilization of infrastructure development funds across schools in the district. Questions significant disparities in fund distribution.</p>
+                    
+                    <div class="case-issue">
+                        <h4>Issue:</h4>
+                        <ul>
+                            <li>Allegations of widespread irregularities in teacher recruitment processes across multiple states.</li>
+                            <li>Reports of appointments made without proper verification of qualifications and teaching credentials.</li>
+                            <li>Concerns about political influence in the selection process and violations of merit-based recruitment policies.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="case-intervention">
+                        <h4>RTI Intervention:</h4>
+                        <ul>
+                            <li>Multiple RTI applications filed seeking detailed information on selection criteria, interview scores, and verification procedures.</li>
+                            <li>Requests for disclosure of appointment committee compositions and declaration of conflicts of interest.</li>
+                            <li>Information sought on actions taken against appointments found to be based on fraudulent qualifications.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="case-impact">
+                        <h4>Impact:</h4>
+                        <ul>
+                            <li>Ongoing investigations have already identified over 2,800 potentially fraudulent appointments.</li>
+                            <li>Several state governments have initiated re-verification of teacher qualifications.</li>
+                            <li>Development of an online transparency portal showing recruitment scores and qualification details.</li>
+                            <li>Policy changes mandating regular audits of teacher recruitment processes.</li>
+                        </ul>
+                    </div>
+                    
                     <div class="case-footer">
                         <div class="case-tags">
-                            <span class="case-tag">Infrastructure</span>
-                            <span class="case-tag">Funding</span>
-                            <span class="case-tag">School</span>
+                            <span class="case-tag">Teacher Recruitment</span>
+                            <span class="case-tag">Qualification Fraud</span>
+                            <span class="case-tag">Merit-Based Selection</span>
+                            <span class="case-tag">Ongoing</span>
                         </div>
-                        <a href="#" class="case-details">View Details <i class="fas fa-arrow-right"></i></a>
+                        <div class="case-sources">
+                            <a href="https://education.gov.in/sites/upload_files/mhrd/files/NEP_Final_English_0.pdf" class="case-link" target="_blank">National Education Policy <i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://ncte.gov.in/Website/index.aspx" class="case-link" target="_blank">NCTE Guidelines <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Case 7: College Fee Structure Transparency -->
+                <div class="case-card">
+                    <div class="case-header">
+                        <div class="case-number">Case Study 07</div>
+                        <div class="case-status status-resolved">Significant</div>
+                    </div>
+                    <h3 class="case-title">RTI for Medical College Fee Structure Transparency (2019)</h3>
+                    <div class="case-meta">
+                        <div class="case-meta-item">
+                            <i class="fas fa-user"></i>
+                            <span>Filed by: Parent Association</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-building"></i>
+                            <span>Against: Fee Regulatory Committee & Private Medical Colleges</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Filed in: 2019</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <i class="fas fa-rupee-sign"></i>
+                            <span>Impact: Fee reduction of 15-30%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="case-issue">
+                        <h4>Issue:</h4>
+                        <ul>
+                            <li>Private medical colleges in multiple states were charging exorbitant fees despite government regulations.</li>
+                            <li>Lack of transparency in how fee structures were determined and approved by regulatory committees.</li>
+                            <li>Unauthorized collection of capitation fees and other hidden charges despite court rulings against the practice.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="case-intervention">
+                        <h4>RTI Intervention:</h4>
+                        <ul>
+                            <li>RTI applications filed seeking detailed breakdowns of fee structures, committee meeting minutes, and financial audits.</li>
+                            <li>Information requested on cost calculation methodologies and justification for annual fee increases.</li>
+                            <li>Data sought on actual infrastructure and faculty expenses versus claims made by institutions.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="case-impact">
+                        <h4>Impact:</h4>
+                        <ul>
+                            <li>High Court ordered an independent audit of 35 private medical colleges, revealing significant financial discrepancies.</li>
+                            <li>Fee Regulatory Committee implemented a standardized transparent formula for calculating permissible fees.</li>
+                            <li>Resulted in fee reductions of 15-30% across multiple institutions benefiting thousands of students.</li>
+                            <li>Established mandatory public disclosure of detailed fee breakdowns and financial statements.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="case-footer">
+                        <div class="case-tags">
+                            <span class="case-tag">Medical Education</span>
+                            <span class="case-tag">Fee Regulation</span>
+                            <span class="case-tag">Capitation Fees</span>
+                            <span class="case-tag">Transparency</span>
+                        </div>
+                        <div class="case-sources">
+                            <a href="https://www.nmc.org.in/rules-regulations/guidelines" class="case-link" target="_blank">NMC Guidelines <i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://main.mohfw.gov.in/Organisation/departments-health-and-family-welfare/medical-education-policy" class="case-link" target="_blank">Ministry Guidelines <i class="fas fa-external-link-alt"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>

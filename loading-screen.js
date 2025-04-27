@@ -3,13 +3,25 @@
  */
 class LoadingScreen {
   constructor(options = {}) {
+    // Check if we're in the teacher portal
+    const isTeacherPortal = window.location.href.includes('teacher');
+    
     this.options = {
       minDuration: options.minDuration || 2000, // Minimum time to show loading screen (ms)
-      text: options.text || 'Right to Information',
-      subText: options.subText || 'India',
+      text: isTeacherPortal ? 'Teacher Portal' : 'Right to Information',
+      subText: isTeacherPortal ? 'RTI India' : 'India',
       loadingMessage: options.loadingMessage || 'Loading resources',
       particleCount: options.particleCount || 30,
       ...options
+    };
+    
+    // Set color scheme based on portal
+    this.colorScheme = isTeacherPortal ? {
+      primaryColor: "rgba(210, 125, 45, 0.9)",
+      secondaryColor: "rgba(94, 139, 126, 0.9)"
+    } : {
+      primaryColor: "rgba(50, 205, 50, 0.9)",
+      secondaryColor: "rgba(15, 224, 255, 0.9)"
     };
     
     this.startTime = Date.now();
@@ -113,7 +125,7 @@ class LoadingScreen {
       container: this.textContainer,
       fontSize: "clamp(2rem, 8vw, 5rem)",
       fontWeight: 900,
-      color: "rgba(50, 205, 50, 0.9)",
+      color: this.colorScheme.primaryColor,
       baseIntensity: 0.18,
       hoverIntensity: 0.5
     });
@@ -129,7 +141,7 @@ class LoadingScreen {
         container: this.subTextContainer,
         fontSize: "clamp(1rem, 4vw, 2.5rem)",
         fontWeight: 700,
-        color: "rgba(15, 224, 255, 0.9)",
+        color: this.colorScheme.secondaryColor,
         baseIntensity: 0.15,
         hoverIntensity: 0.4
       });

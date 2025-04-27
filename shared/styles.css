@@ -5,19 +5,19 @@
     --student-secondary: #0066ff;
     --student-gradient: linear-gradient(135deg, var(--student-primary), var(--student-secondary));
     
-    /* Teacher Theme */
-    --teacher-primary: #4CAF50;
-    --teacher-secondary: #2E7D32;
+    /* Teacher Theme - Updated with vibrant earthy palette */
+    --teacher-primary: #D27D2D;
+    --teacher-secondary: #5E8B7E;
     --teacher-gradient: linear-gradient(135deg, var(--teacher-primary), var(--teacher-secondary));
     
-    /* Parent Theme - Updated for better accessibility */
-    --parent-primary: #205493;
-    --parent-secondary: #4285F4;
+    /* Parent Theme - Updated to match teacher portal's earthy palette */
+    --parent-primary: #D27D2D;
+    --parent-secondary: #5E8B7E;
     --parent-gradient: linear-gradient(135deg, var(--parent-primary), var(--parent-secondary));
     
-    /* General Theme */
-    --general-primary: #9E9E9E;
-    --general-secondary: #616161;
+    /* General Theme - Updated with earthy tones */
+    --general-primary: #F4A261;
+    --general-secondary: #7FA99B;
     --general-gradient: linear-gradient(135deg, var(--general-primary), var(--general-secondary));
 }
 
@@ -160,7 +160,7 @@ body {
 
 .nav-link:hover {
     color: var(--parent-primary);
-    background: rgba(66, 133, 244, 0.08);
+    background: rgba(210, 125, 45, 0.08);
     transform: translateY(-3px);
 }
 
@@ -172,7 +172,7 @@ body {
 .nav-link.active {
     color: #fff;
     background: var(--parent-gradient);
-    box-shadow: 0 5px 15px rgba(32, 84, 147, 0.2);
+    box-shadow: 0 5px 15px rgba(210, 125, 45, 0.2);
 }
 
 /* Dropdown Menus */
@@ -215,7 +215,7 @@ body {
 }
 
 .dropdown-menu a:hover {
-    background: rgba(66, 133, 244, 0.08);
+    background: rgba(210, 125, 45, 0.08);
     color: var(--parent-primary);
     padding-left: 1.5rem;
 }
@@ -307,7 +307,7 @@ body {
 
 .menu-toggle:hover {
     color: var(--parent-primary);
-    background: rgba(66, 133, 244, 0.08);
+    background: rgba(210, 125, 45, 0.08);
 }
 
 .menu-toggle.active {
@@ -321,7 +321,7 @@ body {
 
 .parent-theme .nav-link.active {
     background: var(--parent-gradient);
-    box-shadow: 0 5px 15px rgba(32, 84, 147, 0.15);
+    box-shadow: 0 5px 15px rgba(210, 125, 45, 0.2);
 }
 
 .parent-theme .portal-logo-text {
@@ -338,6 +338,34 @@ body {
 
 .parent-theme .user-button:hover {
     background: var(--parent-primary);
+}
+
+/* Teacher theme specific updates */
+.teacher-theme .modern-header {
+    border-bottom: 3px solid var(--teacher-primary);
+}
+
+.teacher-theme .nav-link.active {
+    background: var(--teacher-gradient);
+    color: white;
+    box-shadow: 0 5px 15px rgba(210, 125, 45, 0.2);
+}
+
+.teacher-theme .portal-logo-text {
+    background: var(--teacher-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.teacher-theme .user-button {
+    background: rgba(210, 125, 45, 0.1);
+    color: var(--teacher-primary);
+    border: 1px solid rgba(210, 125, 45, 0.2);
+}
+
+.teacher-theme .user-button:hover {
+    background: var(--teacher-primary);
+    color: white;
 }
 
 /* Responsive Design for Modern Header */
@@ -462,7 +490,7 @@ body {
 
 .button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px rgba(210, 125, 45, 0.2);
 }
 
 .button i {
@@ -491,7 +519,7 @@ body {
 .form-input:focus {
     outline: none;
     border-color: var(--student-primary);
-    box-shadow: 0 0 0 2px rgba(15, 224, 255, 0.2);
+    box-shadow: 0 0 0 2px rgba(210, 125, 45, 0.2);
 }
 
 /* Animations */

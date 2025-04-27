@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#D27D2D">
+    <title>RTI FAQ - Student RTI Portal</title>
+    <link rel="icon" href="../../assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="../../assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../../assets/images/favicon.png?v=2">
+    <link rel="manifest" href="../../manifest.json?v=2">
+    <link rel="stylesheet" href="../../shared/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Lato:wght@300;400;700&display=swap">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/guide.css">
+    <style>
+        .faq-section {
+            margin-bottom: 3rem;
+        }
+        
+        .faq-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem;
+            cursor: pointer;
+            background: rgba(5, 150, 200, 0.05);
+            font-weight: 500;
+            color: var(--primary-color);
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: rgba(5, 150, 200, 0.1);
+        }
+        
+        .faq-question .icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-answer {
+            padding: 0 1.25rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+        
+        .faq-item.active .faq-question {
+            background: rgba(5, 150, 200, 0.1);
+        }
+        
+        .faq-item.active .icon {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 1.25rem;
+            max-height: 500px;
+        }
+        
+        .search-faq {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .search-faq input {
+            width: 100%;
+            padding: 12px 20px;
+            padding-left: 45px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+        
+        .search-faq i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+        
+        .faq-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+        
+        .faq-category {
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .faq-category:hover, .faq-category.active {
+            background: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body class="student-theme">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="../index.html" class="navbar-logo">Student RTI Portal</a>
+            <button class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="navbar-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../guide.html" class="active">RTI Guide</a></li>
+                <li><a href="../forms.html">Forms</a></li>
+                <li><a href="../track.html">Track Status</a></li>
+                <li><a href="../resources.html">Resources</a></li>
+                <li><a href="../templates/index.html">Templates</a></li>
+                <li><a href="#" id="change-portal-link" class="change-portal-link">Change Portal <i class="fas fa-exchange-alt"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Guide Navigation -->
+    <div class="guide-navigation">
+        <div class="guide-nav-container">
+            <a href="../guide.html">Guide Home</a>
+            <a href="exam.html">Exam</a>
+            <a href="scholarship.html">Scholarship</a>
+            <a href="admission.html">Admission</a>
+            <a href="faq.html" class="active">FAQ</a>
+            <a href="checklist.html">Checklist</a>
+            <a href="format.html">Format</a>
+            <a href="samples.html">Sample RTI</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="guide-content">
+        <div class="container">
+            <div class="guide-header">
+                <h1>Frequently Asked Questions</h1>
+                <p>Common questions about the RTI application process for students</p>
+            </div>
+            
+            <div class="search-faq">
+                <i class="fas fa-search"></i>
+                <input type="text" id="faq-search" placeholder="Search for questions...">
+            </div>
+            
+            <div class="faq-categories">
+                <div class="faq-category active" data-category="all">All</div>
+                <div class="faq-category" data-category="basics">RTI Basics</div>
+                <div class="faq-category" data-category="filing">Filing Process</div>
+                <div class="faq-category" data-category="fees">Fees & Payment</div>
+                <div class="faq-category" data-category="appeal">Appeals</div>
+                <div class="faq-category" data-category="education">Educational RTIs</div>
+            </div>
+            
+            <div class="faq-section">
+                <h2>General Questions</h2>
+                <ul class="faq-list">
+                    <li class="faq-item" data-category="basics">
+                        <div class="faq-question">
+                            <span>What is RTI and how does it help students?</span>
+                            <i class="fas fa-chevron-down icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The Right to Information (RTI) Act, 2005 empowers citizens to request information from public authorities. For students, RTI can help in getting access to information about examination processes, admission criteria, scholarship disbursement, infrastructure facilities, faculty qualifications, and more. It enhances transparency in educational institutions and helps address grievances related to educational matters.</p>
+                        </div>
+                    </li>
+                    
+                    <li class="faq-item" data-category="basics">
+                        <div class="faq-question">
+                            <span>Which educational institutions come under RTI?</span>
+                            <i class="fas fa-chevron-down icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>All public educational institutions, including government schools, colleges, universities, and institutions that are substantially financed by government funds come under the RTI Act. This includes central universities, state universities, IITs, NITs, IIMs, AIIMS, and other government-funded institutions. Private institutions that receive significant government funding also fall under RTI.</p>
+                        </div>
+                    </li>
+                    
+                    <li class="faq-item" data-category="filing">
+                        <div class="faq-question">
+                            <span>How do I file an RTI application for educational matters?</span>
+                            <i class="fas fa-chevron-down icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>To file an RTI application for educational matters:</p>
+                            <ol>
+                                <li>Identify the correct public authority (school, college, university, or educational body)</li>
+                                <li>Prepare your application with specific questions about the information you seek</li>
+                                <li>Pay the requisite fee (usually ₹10)</li>
+                                <li>Submit your application to the Public Information Officer (PIO) of the institution</li>
+                            </ol>
+                            <p>You can file an RTI online through RTI Online Portal or offline by sending a physical application.</p>
+                        </div>
+                    </li>
+                    
+                    <li class="faq-item" data-category="fees">
+                        <div class="faq-question">
+                            <span>What is the fee for filing an RTI application?</span>
+                            <i class="fas fa-chevron-down icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The standard fee for filing an RTI application is ₹10. This can be paid through:</p>
+                            <ul>
+                                <li>Cash (when filing in person)</li>
+                                <li>Demand Draft or Banker's Cheque</li>
+                                <li>Indian Postal Order (IPO)</li>
+                                <li>Online payment (for online applications)</li>
+                            </ul>
+                            <p>Additional fees may be charged for providing information in printed or electronic format. Citizens who are Below Poverty Line (BPL) are exempt from paying the application fee, but need to provide proof of their BPL status.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="faq-section">
+                <h2>Educational RTI Questions</h2>
+                <ul class="faq-list">
+                    <li class="faq-item" data-category="education">
+                        <div class="faq-question">
+                            <span>Can I get a copy of my evaluated answer sheet through RTI?</span>
+                            <i class="fas fa-chevron-down icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, you can get a copy of your evaluated answer sheet through RTI. The Supreme Court in the case of CBSE vs. Aditya Bandopadhyay (2011) ruled that evaluated answer sheets are "information" under the RTI Act and students have the right to access them.</p>
+                            <p>However, some institutions may have their own procedures for accessing answer sheets (like revaluation or rechecking). The Supreme Court has clarified that such procedures cannot override the provisions of the RTI Act.</p>
+                        </div>
+                    </li>
+                    
+                    <li class="faq-item" data-category="education">
+                        <div class="faq-question">
+                            <span>Can I ask about scholarship selection criteria and disbursement?</span>
+                            <i class="fas fa-chevron-down icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, you can file an RTI to inquire about scholarship selection criteria, evaluation methods, merit lists, and disbursement status. If your scholarship application was rejected or payment is delayed, you can seek specific information about the reasons.</p>
+                            <p>For government scholarships, file with the relevant ministry or department (e.g., Ministry of Education, Ministry of Social Justice and Empowerment). For institutional scholarships, file with the concerned educational institution.</p>
+                        </div>
+                    </li>
+                    
+                    <li class="faq-item" data-category="education">
+                        <div class="faq-question">
+                            <span>Can I get information about admission process through RTI?</span>
+                            <i class="fas fa-chevron-down icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, you can request information about admission processes through RTI. This includes:</p>
+                            <ul>
+                                <li>Selection criteria and evaluation methodology</li>
+                                <li>Category-wise seat matrix and allocation</li>
+                                <li>Cut-off marks/ranks for different categories</li>
+                                <li>Details about waitlist movement</li>
+                                <li>Fee structure and refund policies</li>
+                            </ul>
+                            <p>This can be particularly useful if you suspect any irregularity in the admission process or if your application was rejected despite meeting eligibility criteria.</p>
+                        </div>
+                    </li>
+                    
+                    <li class="faq-item" data-category="education">
+                        <div class="faq-question">
+                            <span>Can I ask about faculty qualifications through RTI?</span>
+                            <i class="fas fa-chevron-down icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, you can request information about faculty qualifications, appointment processes, and teaching experience through RTI. Educational institutions are required to disclose such information as it relates to public interest.</p>
+                            <p>However, personal information of faculty members that doesn't serve any public interest (like their personal addresses, contact details, etc.) may be exempt from disclosure under Section 8(1)(j) of the RTI Act.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="faq-section">
+                <h2>RTI Process Questions</h2>
+                <ul class="faq-list">
+                    <li class="faq-item" data-category="filing">
+                        <div class="faq-question">
+                            <span>How long does it take to get a response to an RTI application?</span>
+                            <i class="fas fa-chevron-down icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>By law, public authorities are required to provide information within 30 days of receiving the RTI application. If the information concerns the life or liberty of a person, it must be provided within 48 hours.</p>
+                            <p>If the application is transferred to another public authority, an additional 5 days are allowed. If a third party is involved, the time limit extends to 40-45 days.</p>
+                        </div>
+                    </li>
+                    
+                    <li class="faq-item" data-category="appeal">
+                        <div class="faq-question">
+                            <span>What can I do if I don't receive a response or get an unsatisfactory response?</span>
+                            <i class="fas fa-chevron-down icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>If you don't receive a response within 30 days or if the response is unsatisfactory, you can file a First Appeal. The First Appeal is filed with the First Appellate Authority (FAA) of the same public authority, who is generally an officer senior to the PIO.</p>
+                            <p>If you're not satisfied with the First Appeal decision, you can file a Second Appeal with the Information Commission (State or Central, depending on the public authority) within 90 days of receiving the First Appeal decision.</p>
+                        </div>
+                    </li>
+                    
+                    <li class="faq-item" data-category="filing">
+                        <div class="faq-question">
+                            <span>Can I file multiple questions in a single RTI application?</span>
+                            <i class="fas fa-chevron-down icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, you can include multiple questions in a single RTI application as long as they pertain to the same subject matter and are directed to the same public authority. However, it's advisable to limit your application to a reasonable number of questions (ideally 5-7) to avoid any grounds for rejection due to "voluminous information".</p>
+                            <p>If your questions relate to different departments within the same public authority, the PIO is responsible for transferring those portions to the relevant departments.</p>
+                        </div>
+                    </li>
+                    
+                    <li class="faq-item" data-category="filing">
+                        <div class="faq-question">
+                            <span>Can I file RTI online for educational institutions?</span>
+                            <i class="fas fa-chevron-down icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, for central government institutions, you can file RTI online through the RTI Online Portal (rtionline.gov.in). This includes central universities, IITs, NITs, and other centrally funded institutions.</p>
+                            <p>For state government institutions like state universities and colleges, some states have their own online RTI portals. If not available online, you'll need to send a physical application to the institution's PIO.</p>
+                            <p>Our portal provides links to the appropriate online portals for various educational institutions.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="guide-action">
+                <a href="../forms.html" class="button primary-button">
+                    <i class="fas fa-file-alt"></i> File RTI Now
+                </a>
+                <a href="samples.html" class="button secondary-button">
+                    <i class="fas fa-list"></i> View Sample RTIs
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h3 class="footer-title">Student RTI Portal</h3>
+                        <p class="footer-description">India's dedicated platform for students to access educational information under the RTI Act, 2005.</p>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3 class="footer-title">Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="../index.html" class="footer-link">Home</a></li>
+                            <li><a href="../guide.html" class="footer-link">RTI Guide</a></li>
+                            <li><a href="../forms.html" class="footer-link">File RTI</a></li>
+                            <li><a href="../track.html" class="footer-link">Track Status</a></li>
+                            <li><a href="../resources.html" class="footer-link">Resources</a></li>
+                            <li><a href="../templates/index.html" class="footer-link">Templates</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3 class="footer-title">Contact Us</h3>
+                        <ul class="footer-contact">
+                            <li><i class="fas fa-envelope"></i> <a href="mailto:support@studentrti.gov.in">support@studentrti.gov.in</a></li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:+911123386626">+91-11-2338-6626</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p class="copyright">© 2023 Student RTI Portal. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile menu toggle
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const navbarLinks = document.querySelector('.navbar-links');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', () => {
+                    navbarLinks.classList.toggle('active');
+                });
+            }
+            
+            // Change portal link
+            const changePortalLink = document.getElementById('change-portal-link');
+            if (changePortalLink) {
+                changePortalLink.addEventListener('click', () => {
+                    window.location.href = '../../index.html';
+                });
+            }
+            
+            // FAQ item toggle
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // FAQ search functionality
+            const searchInput = document.getElementById('faq-search');
+            searchInput.addEventListener('input', () => {
+                const searchTerm = searchInput.value.toLowerCase();
+                
+                faqItems.forEach(item => {
+                    const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+                    const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                    
+                    if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                        item.style.display = '';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+            
+            // FAQ category filter
+            const categories = document.querySelectorAll('.faq-category');
+            categories.forEach(category => {
+                category.addEventListener('click', () => {
+                    const categoryValue = category.getAttribute('data-category');
+                    
+                    // Update active category
+                    categories.forEach(cat => cat.classList.remove('active'));
+                    category.classList.add('active');
+                    
+                    // Filter FAQ items
+                    faqItems.forEach(item => {
+                        const itemCategory = item.getAttribute('data-category');
+                        
+                        if (categoryValue === 'all' || itemCategory === categoryValue) {
+                            item.style.display = '';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

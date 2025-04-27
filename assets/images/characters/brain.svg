@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+  <!-- Brain background glow -->
+  <ellipse cx="256" cy="256" rx="176" ry="160" fill="rgba(255, 215, 0, 0.2)"/>
+  
+  <!-- Brain outline -->
+  <path d="M256 112v288M144 176c-17.7 0-32 14.3-32 32 0 17.7 14.3 32 32 32M144 240c-17.7 0-32 14.3-32 32 0 17.7 14.3 32 32 32M144 304c-17.7 0-32 14.3-32 32 0 17.7 14.3 32 32 32M368 176c17.7 0 32 14.3 32 32 0 17.7-14.3 32-32 32M368 240c17.7 0 32 14.3 32 32 0 17.7-14.3 32-32 32M368 304c17.7 0 32 14.3 32 32 0 17.7-14.3 32-32 32" stroke="#333" stroke-width="8" fill="none"/>
+  
+  <!-- Left brain hemisphere -->
+  <path d="M144 176c0-17.7 14.3-32 32-32s32 14.3 32 32-14.3 32-32 32M144 240c0-17.7 14.3-32 32-32s32 14.3 32 32-14.3 32-32 32M144 304c0-17.7 14.3-32 32-32s32 14.3 32 32-14.3 32-32 32M208 176c0-17.7 14.3-32 32-32M208 240c0-17.7 14.3-32 32-32M208 304c0-17.7 14.3-32 32-32" stroke="#333" stroke-width="8" fill="#ffd700"/>
+  
+  <!-- Right brain hemisphere -->
+  <path d="M368 176c0-17.7-14.3-32-32-32s-32 14.3-32 32 14.3 32 32 32M368 240c0-17.7-14.3-32-32-32s-32 14.3-32 32 14.3 32 32 32M368 304c0-17.7-14.3-32-32-32s-32 14.3-32 32 14.3 32 32 32M304 176c0-17.7-14.3-32-32-32M304 240c0-17.7-14.3-32-32-32M304 304c0-17.7-14.3-32-32-32" stroke="#333" stroke-width="8" fill="#ffd700"/>
+  
+  <!-- Knowledge highlight pulses -->
+  <circle cx="208" cy="176" r="12" fill="#fff"/>
+  <circle cx="304" cy="240" r="12" fill="#fff"/>
+  <circle cx="208" cy="304" r="12" fill="#fff"/>
+  
+  <!-- RTI Knowledge text -->
+  <text x="256" y="380" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#333">RTI</text>
+</svg> 

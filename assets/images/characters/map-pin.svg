@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+  <!-- Map pin drop shadow -->
+  <path d="M256 48c-66.2 0-120 53.8-120 120 0 56.4 84 204.9 110.3 248.5 5.4 8.9 14.5 14.5 24.6 14.5s19.2-5.6 24.6-14.5C321.9 372.9 376 256.4 376 168c0-66.2-53.8-120-120-120z" fill="rgba(0,0,0,0.2)" transform="translate(10, 10)"/>
+  
+  <!-- Map pin body -->
+  <path d="M256 48c-66.2 0-120 53.8-120 120 0 56.4 84 204.9 110.3 248.5 5.4 8.9 14.5 14.5 24.6 14.5s19.2-5.6 24.6-14.5C321.9 372.9 376 256.4 376 168c0-66.2-53.8-120-120-120z" fill="#ffd700" stroke="#333" stroke-width="8"/>
+  
+  <!-- Inner circle -->
+  <circle cx="256" cy="168" r="48" fill="#fff" stroke="#333" stroke-width="6"/>
+  
+  <!-- RTI text -->
+  <text x="256" y="176" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#333">RTI</text>
+  
+  <!-- Pin shine -->
+  <path d="M200 120c16-24 56-32 88-16" stroke="#fff" stroke-width="6" stroke-linecap="round" fill="none"/>
+  
+  <!-- Ground shadow -->
+  <ellipse cx="256" cy="432" rx="64" ry="16" fill="rgba(0,0,0,0.2)"/>
+  
+  <!-- Map elements -->
+  <path d="M128 368c32-16 64-16 96 0s64 16 96 0 64-16 96 0" stroke="#333" stroke-width="4" stroke-dasharray="8 8" fill="none"/>
+  <path d="M128 392c32-16 64-16 96 0s64 16 96 0 64-16 96 0" stroke="#333" stroke-width="4" stroke-dasharray="8 8" fill="none"/>
+</svg> 

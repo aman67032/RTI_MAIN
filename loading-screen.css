@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(5, 10, 24, 0.95);
+  background-color: rgba(254, 244, 232, 0.97);
   z-index: 9999;
   display: flex;
   flex-direction: column;
@@ -30,7 +30,7 @@
 .loading-progress {
   width: 200px;
   height: 4px;
-  background-color: rgba(50, 205, 50, 0.2);
+  background-color: rgba(210, 125, 45, 0.2);
   border-radius: 2px;
   overflow: hidden;
   position: relative;
@@ -43,16 +43,16 @@
   left: 0;
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, rgba(15, 224, 255, 0.8), rgba(50, 205, 50, 0.8));
-  box-shadow: 0 0 10px rgba(50, 205, 50, 0.6);
+  background: linear-gradient(90deg, rgba(210, 125, 45, 0.8), rgba(244, 162, 97, 0.8));
+  box-shadow: 0 0 10px rgba(210, 125, 45, 0.6);
   transition: width 0.3s ease-out;
 }
 
 .loading-message {
   margin-top: 1rem;
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
-  font-family: monospace;
+  color: rgba(27, 58, 75, 0.9);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   letter-spacing: 1px;
 }
 
@@ -77,9 +77,9 @@
   position: absolute;
   width: 3px;
   height: 3px;
-  background-color: rgba(50, 205, 50, 0.8);
+  background-color: rgba(210, 125, 45, 0.8);
   border-radius: 50%;
-  box-shadow: 0 0 6px 2px rgba(50, 205, 50, 0.4);
+  box-shadow: 0 0 6px 2px rgba(210, 125, 45, 0.4);
   animation: float 8s infinite ease-in-out;
 }
 

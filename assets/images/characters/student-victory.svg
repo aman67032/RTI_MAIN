@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="80" height="80">
+  <!-- Student character -->
+  <circle cx="256" cy="180" r="60" fill="#ffd700" stroke="#333" stroke-width="6"/>
+  
+  <!-- Student face -->
+  <circle cx="236" cy="170" r="6" fill="#333"/>
+  <circle cx="276" cy="170" r="6" fill="#333"/>
+  <path d="M246 200a20 20 0 0 0 20 0" stroke="#333" stroke-width="3" fill="none"/>
+  
+  <!-- Graduation cap -->
+  <path d="M256 140l-50 20 50 20 50-20z" fill="#333"/>
+  <path d="M296 160v30" stroke="#333" stroke-width="3"/>
+  <circle cx="296" cy="200" r="10" fill="#333"/>
+  
+  <!-- Tassel -->
+  <path d="M256 140c0 0 0-20 0-30 0-5 5-10 10-10s10 5 10 10c0 5-10 10-10 10" stroke="#ffd700" stroke-width="3" fill="none"/>
+  
+  <!-- Arms raised in victory -->
+  <path d="M226 200l-40-50M286 200l40-50" stroke="#ffd700" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- Certificate/paper -->
+  <rect x="226" y="220" width="60" height="80" rx="4" fill="#fff" stroke="#333" stroke-width="3"/>
+  <path d="M236 240h40M236 260h40M236 280h30" stroke="#333" stroke-width="2"/>
+  
+  <!-- RTI seal -->
+  <circle cx="256" cy="270" r="10" fill="#ffd700" stroke="#333" stroke-width="1"/>
+  <text x="256" y="274" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#333">RTI</text>
+  
+  <!-- Victory stars -->
+  <path d="M196 140l5 10 11 2-8 7 2 11-10-5-10 5 2-11-8-7 11-2zM316 140l5 10 11 2-8 7 2 11-10-5-10 5 2-11-8-7 11-2z" fill="#ffd700" stroke="#333" stroke-width="1"/>
+</svg> 

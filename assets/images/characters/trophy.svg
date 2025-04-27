@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+  <!-- Trophy cup -->
+  <path d="M128 96h256v64c0 70.7-57.3 128-128 128S128 230.7 128 160V96z" fill="#ffd700" stroke="#333" stroke-width="8"/>
+  
+  <!-- Trophy handles -->
+  <path d="M128 128H64c0 35.3 28.7 64 64 64V128z" fill="#ffd700" stroke="#333" stroke-width="8"/>
+  <path d="M384 128h64c0 35.3-28.7 64-64 64V128z" fill="#ffd700" stroke="#333" stroke-width="8"/>
+  
+  <!-- Trophy base -->
+  <rect x="192" y="288" width="128" height="32" fill="#ffd700" stroke="#333" stroke-width="8"/>
+  <rect x="208" y="320" width="96" height="64" fill="#ffd700" stroke="#333" stroke-width="8"/>
+  <rect x="176" y="384" width="160" height="16" rx="8" fill="#d9d9d9" stroke="#333" stroke-width="8"/>
+  
+  <!-- Star highlight -->
+  <path d="M256 176l18 36 40 5.8-29 28.2 6.8 40-35.8-19-35.8 19 6.8-40-29-28.2 40-5.8z" fill="#fff" stroke="#ffd700" stroke-width="2"/>
+  
+  <!-- RTI text -->
+  <text x="256" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#333">RTI</text>
+  
+  <!-- Shine highlights -->
+  <path d="M160 120c16 8 32 8 48 0M304 120c16 8 32 8 48 0" stroke="#fff" stroke-width="4" fill="none"/>
+</svg> 

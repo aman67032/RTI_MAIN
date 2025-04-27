@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+  <!-- Document base -->
+  <rect x="96" y="32" width="320" height="448" rx="16" fill="#f5f5f5" stroke="#333" stroke-width="8"/>
+  
+  <!-- Document content lines -->
+  <rect x="136" y="112" width="240" height="16" rx="4" fill="#ffd700" opacity="0.7"/>
+  <rect x="136" y="160" width="240" height="16" rx="4" fill="#ffd700" opacity="0.7"/>
+  <rect x="136" y="208" width="240" height="16" rx="4" fill="#ffd700" opacity="0.7"/>
+  <rect x="136" y="256" width="180" height="16" rx="4" fill="#ffd700" opacity="0.7"/>
+  
+  <!-- RTI text -->
+  <rect x="160" y="320" width="192" height="64" rx="8" fill="#ffd700"/>
+  <text x="256" y="364" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#333">RTI</text>
+  
+  <!-- Corner fold -->
+  <path d="M416 32v48h-48" fill="#d9d9d9" stroke="#333" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M368 32l48 48" stroke="#333" stroke-width="4"/>
+</svg> 

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+  <!-- Center pole -->
+  <rect x="248" y="112" width="16" height="288" fill="#d9d9d9" stroke="#333" stroke-width="4"/>
+  
+  <!-- Top ornament -->
+  <circle cx="256" cy="96" r="32" fill="#ffd700" stroke="#333" stroke-width="6"/>
+  <text x="256" y="104" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#333">RTI</text>
+  
+  <!-- Scale arm -->
+  <rect x="160" y="144" width="192" height="16" rx="4" fill="#d9d9d9" stroke="#333" stroke-width="4"/>
+  
+  <!-- Scale suspension lines -->
+  <line x1="176" y1="144" x2="176" y2="208" stroke="#333" stroke-width="3"/>
+  <line x1="336" y1="144" x2="336" y2="208" stroke="#333" stroke-width="3"/>
+  
+  <!-- Scale pans -->
+  <ellipse cx="176" cy="224" rx="32" ry="16" fill="#ffd700" stroke="#333" stroke-width="4"/>
+  <ellipse cx="336" cy="224" rx="32" ry="16" fill="#ffd700" stroke="#333" stroke-width="4"/>
+  
+  <!-- Document on left scale -->
+  <rect x="164" y="214" width="24" height="20" fill="#fff" stroke="#333" stroke-width="1"/>
+  <path d="M168 218h16M168 222h16M168 226h12" stroke="#333" stroke-width="1"/>
+  
+  <!-- Transparency symbol on right scale -->
+  <circle cx="336" cy="224" r="12" fill="#fff" stroke="#333" stroke-width="1"/>
+  <path d="M328 224h16M336 216v16" stroke="#333" stroke-width="1"/>
+  
+  <!-- Base -->
+  <rect x="192" y="400" width="128" height="16" rx="8" fill="#d9d9d9" stroke="#333" stroke-width="6"/>
+  <path d="M192 400c0-16 64-16 64-16s64 0 64 16" fill="none" stroke="#333" stroke-width="4"/>
+</svg> 

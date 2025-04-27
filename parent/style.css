@@ -1,26 +1,26 @@
 /* Parent Portal CSS Styles */
 
 :root {
-    /* Enhanced aesthetic color palette with warm orange tones for parents 30-60 */
-    --parent-primary: #FFA500;      /* Standard orange base */
-    --parent-secondary: #CC8400;    /* Darker orange for contrast */
-    --parent-accent: #996300;       /* Deep orange accent */
-    --parent-highlight: #FFAE19;    /* Bright orange for highlights */
-    --parent-success: #10B981;      /* Keeping emerald green for success elements */
-    --parent-warning: #F59E0B;      /* Amber for warning/caution elements */
-    --parent-text: #212121;         /* Near-black text for readability */
-    --parent-light: #FFF8F0;        /* Light warm background */
-    --parent-muted: #555555;        /* Darker muted text for better contrast */
-    --parent-bg: #FFF8F0;           /* Light warm background */
+    /* Enhanced aesthetic color palette with earthy tones to match teacher portal */
+    --parent-primary: #D27D2D;      /* Earthy brown base */
+    --parent-secondary: #8b805e;    /* Earthy teal/green for contrast */
+    --parent-accent: #7FA99B;       /* Sage accent */
+    --parent-highlight: #F4A261;    /* Light orange for highlights */
+    --parent-success: #7FA99B;      /* Sage green for success elements */
+    --parent-warning: #F4A261;      /* Light orange for warning/caution elements */
+    --parent-text: #1B3A4B;         /* Dark blue text for readability */
+    --parent-light: #FEF4E8;        /* Light cream background */
+    --parent-muted: #3D5A6C;        /* Darker muted text for better contrast */
+    --parent-bg: #FEF4E8;           /* Light cream background */
     --parent-gradient: linear-gradient(135deg, var(--parent-secondary), var(--parent-primary));
     --parent-gradient-alt: linear-gradient(135deg, var(--parent-accent), var(--parent-highlight));
-    --parent-shadow: 0 10px 30px rgba(255, 165, 0, 0.15);
-    --portal-primary: #FFA500;
-    --portal-accent: #FFAE19;
-    --portal-primary-rgb: 255, 165, 0;
-    --portal-text: #212121;
-    --portal-text-light: #555555;
-    --portal-bg: #FFF8F0;
+    --parent-shadow: 0 10px 30px rgba(210, 125, 45, 0.15);
+    --portal-primary: #D27D2D;
+    --portal-accent: #F4A261;
+    --portal-primary-rgb: 210, 125, 45;
+    --portal-text: #1B3A4B;
+    --portal-text-light: #3D5A6C;
+    --portal-bg: #FEF4E8;
     --portal-bg-light: #FFFFFF;
 }
 
@@ -49,9 +49,9 @@
 }
 
 @keyframes borderGlow {
-    0% { box-shadow: 0 0 5px rgba(255, 165, 0, 0.5); }
-    50% { box-shadow: 0 0 20px rgba(255, 165, 0, 0.8); }
-    100% { box-shadow: 0 0 5px rgba(255, 165, 0, 0.5); }
+    0% { box-shadow: 0 0 5px rgba(210, 125, 45, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(210, 125, 45, 0.8); }
+    100% { box-shadow: 0 0 5px rgba(210, 125, 45, 0.5); }
 }
 
 /* Base styles */
@@ -147,9 +147,9 @@ body {
     right: 0;
     bottom: 0;
     background: linear-gradient(45deg, 
-        rgba(255, 165, 0, 0) 0%,
-        rgba(255, 165, 0, 0.1) 50%,
-        rgba(255, 165, 0, 0) 100%);
+        rgba(210, 125, 45, 0) 0%,
+        rgba(210, 125, 45, 0.1) 50%,
+        rgba(210, 125, 45, 0) 100%);
     background-size: 200% 200%;
     animation: gradientShift 5s ease infinite;
     pointer-events: none;
@@ -2770,7 +2770,7 @@ body {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(255, 165, 0, 0.2) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(210, 125, 45, 0.2) 0%, transparent 70%);
     transform: rotate(0deg);
     z-index: -1;
     opacity: 0;

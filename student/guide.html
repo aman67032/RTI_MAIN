@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0fe0ff">
+    <meta name="theme-color" content="#D27D2D">
     <title>RTI Guide for Students - Right to Information in India</title>
     <link rel="icon" href="../assets/images/favicon.ico?v=2" sizes="any">
     <link rel="icon" href="../assets/images/favicon.svg?v=2" type="image/svg+xml">
@@ -11,442 +11,11 @@
     <link rel="manifest" href="../manifest.json?v=2">
     <link rel="stylesheet" href="../shared/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Student Portal Futuristic Styles */
-        :root {
-            --portal-primary: #0fe0ff;
-            --portal-secondary: #0066ff;
-            --portal-accent: #ff00ee;
-            --portal-dark: #040b36;
-            --portal-light: #f0f8ff;
-            --portal-gradient: linear-gradient(135deg, var(--portal-primary), var(--portal-secondary));
-            --portal-accent-gradient: linear-gradient(135deg, var(--portal-accent), var(--portal-primary));
-            --neon-shadow: 0 0 10px rgba(15, 224, 255, 0.5), 0 0 20px rgba(15, 224, 255, 0.3), 0 0 30px rgba(15, 224, 255, 0.1);
-            --futuristic-bg: linear-gradient(180deg, #040b36 0%, #0c1e51 50%, #060b31 100%);
-        }
-
-        body {
-            background: var(--futuristic-bg);
-            color: var(--portal-light);
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-            padding-top: 60px; /* Add space for fixed header */
-        }
-        
-        /* One-line Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(4, 11, 36, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(15, 224, 255, 0.2);
-            z-index: 1000;
-            padding: 0;
-        }
-
-        .navbar-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.8rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .navbar-logo {
-            color: var(--portal-primary);
-            font-size: 1.4rem;
-            font-weight: 700;
-            text-decoration: none;
-            letter-spacing: 1px;
-            text-shadow: 0 0 10px rgba(15, 224, 255, 0.5);
-        }
-
-        .navbar-links {
-            display: flex;
-            gap: 2rem;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .navbar-links li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 500;
-            padding: 0.5rem 0;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .navbar-links li a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--portal-gradient);
-            transition: width 0.3s ease;
-        }
-
-        .navbar-links li a:hover,
-        .navbar-links li a.active {
-            color: var(--portal-primary);
-        }
-
-        .navbar-links li a:hover::after,
-        .navbar-links li a.active::after {
-            width: 100%;
-        }
-
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--portal-primary);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Main content styles */
-        .guide-section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #fff;
-            text-align: center;
-            position: relative;
-            display: inline-block;
-            background: linear-gradient(to right, var(--portal-primary), var(--portal-accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: var(--portal-gradient);
-            border-radius: 3px;
-        }
-
-        .guide-intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 2rem auto 4rem;
-        }
-
-        .guide-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .guide-card {
-            background: rgba(4, 11, 54, 0.8);
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: all 0.4s ease;
-            border: 1px solid rgba(15, 224, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .guide-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(15, 224, 255, 0.1), transparent);
-            animation: shine-effect 3s infinite;
-            z-index: -1;
-        }
-
-        @keyframes shine-effect {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        .guide-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(15, 224, 255, 0.2);
-            border-color: rgba(15, 224, 255, 0.4);
-        }
-
-        .guide-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--portal-primary);
-            text-shadow: 0 0 15px rgba(15, 224, 255, 0.6);
-        }
-
-        .guide-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #fff;
-            position: relative;
-        }
-
-        .guide-card h3::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: var(--portal-accent-gradient);
-            transition: width 0.3s ease;
-        }
-
-        .guide-card:hover h3::after {
-            width: 60px;
-        }
-
-        .guide-card p {
-            color: #a0b4d0;
-            margin-bottom: 1.5rem;
-        }
-
-        .guide-link {
-            display: inline-flex;
-            align-items: center;
-            color: var(--portal-primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .guide-link i {
-            margin-left: 8px;
-            transition: transform 0.3s ease;
-        }
-
-        .guide-link:hover {
-            color: var(--portal-accent);
-        }
-
-        .guide-link:hover i {
-            transform: translateX(5px);
-        }
-
-        .steps-container {
-            margin-top: 5rem;
-            position: relative;
-        }
-
-        .steps-container::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, transparent, var(--portal-primary), var(--portal-accent), transparent);
-            transform: translateX(-50%);
-        }
-
-        .step-item {
-            display: flex;
-            margin-bottom: 3rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .step-item:nth-child(odd) {
-            flex-direction: row-reverse;
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: var(--portal-gradient);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            box-shadow: 0 0 20px rgba(15, 224, 255, 0.4);
-            position: relative;
-            z-index: 2;
-        }
-
-        .step-content {
-            flex: 1;
-            background: rgba(4, 11, 54, 0.7);
-            border-radius: 20px;
-            padding: 2rem;
-            max-width: calc(50% - 80px);
-            margin: 0 30px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(15, 224, 255, 0.2);
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .step-content:hover {
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 15px rgba(15, 224, 255, 0.3);
-            border-color: rgba(15, 224, 255, 0.4);
-            transform: translateY(-5px);
-        }
-
-        .step-content h3 {
-            color: var(--portal-primary);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .step-content p {
-            color: #a0b4d0;
-            margin-bottom: 1rem;
-        }
-
-        .step-content ul {
-            color: #a0b4d0;
-            padding-left: 1.5rem;
-        }
-
-        .step-content li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Futuristic Buttons */
-        .button {
-            background: var(--portal-gradient);
-            border: none;
-            padding: 1rem 2.2rem;
-            color: white;
-            border-radius: 30px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            display: inline-flex;
-            align-items: center;
-            text-decoration: none;
-            font-size: 0.95rem;
-            box-shadow: 0 5px 15px rgba(15, 224, 255, 0.3);
-            margin-top: 2rem;
-        }
-
-        .button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transform: translateX(-100%);
-            transition: 0.6s;
-            z-index: -1;
-        }
-
-        .button:hover::before {
-            transform: translateX(100%);
-        }
-
-        .button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(15, 224, 255, 0.5);
-            background: linear-gradient(135deg, var(--portal-accent), var(--portal-primary));
-        }
-
-        .button i {
-            margin-left: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .button:hover i {
-            transform: translateX(5px);
-        }
-
-        .cta-container {
-            text-align: center;
-            margin-top: 4rem;
-        }
-
-        /* Media queries */
-        @media (max-width: 992px) {
-            .guide-section {
-                padding: 3rem 1.5rem;
-            }
-            
-            .steps-container::before {
-                left: 30px;
-            }
-            
-            .step-item, .step-item:nth-child(odd) {
-                flex-direction: row;
-            }
-            
-            .step-content {
-                max-width: calc(100% - 100px);
-                margin-left: 40px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .navbar-container {
-                padding: 0.8rem 1rem;
-            }
-            
-            .mobile-toggle {
-                display: block;
-            }
-            
-            .navbar-links {
-                position: fixed;
-                top: 60px;
-                right: -100%;
-                flex-direction: column;
-                background: rgba(4, 11, 36, 0.95);
-                backdrop-filter: blur(10px);
-                width: 250px;
-                height: 100vh;
-                padding: 2rem;
-                gap: 1.5rem;
-                transition: right 0.3s ease;
-                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
-                z-index: 1000;
-            }
-            
-            .navbar-links.active {
-                right: 0;
-            }
-            
-            .guide-section {
-                padding: 2rem 1rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Lato:wght@300;400;700&display=swap">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body class="student-theme">
-    <!-- One-line navbar -->
+    <!-- New one-line navbar -->
     <nav class="navbar">
         <div class="navbar-container">
             <a href="index.html" class="navbar-logo">Student RTI Portal</a>
@@ -459,140 +28,526 @@
                 <li><a href="forms.html">Forms</a></li>
                 <li><a href="track.html">Track Status</a></li>
                 <li><a href="resources.html">Resources</a></li>
-                <li><a href="#" id="change-portal-link">Change Portal</a></li>
+                <li><a href="templates/index.html">Templates</a></li>
+                <li><a href="#" id="change-portal-link" class="change-portal-link">Change Portal <i class="fas fa-exchange-alt"></i></a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="guide-section">
-        <h1 class="section-title">RTI Guide for Students</h1>
+    <!-- Guide Hero Section -->
+    <section class="hero-section">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
         
-        <div class="guide-intro">
-            <p>Welcome to the comprehensive RTI guide for students. This resource will help you understand how to leverage the Right to Information Act to gain transparency in educational institutions and processes.</p>
+        <!-- Decorative Elements -->
+        <div class="decorative-shape shape-circle"></div>
+        <div class="decorative-shape shape-square"></div>
+        <div class="decorative-shape shape-triangle"></div>
+        <div class="decorative-shape shape-dots"></div>
+        
+        <!-- HUD Interface Elements -->
+        <div class="hud-element hud-corner hud-corner-tl"></div>
+        <div class="hud-element hud-corner hud-corner-tr"></div>
+        <div class="hud-element hud-corner hud-corner-bl"></div>
+        <div class="hud-element hud-corner hud-corner-br"></div>
+        
+        <div class="hud-element hud-scanner">
+            <div class="scanner-line"></div>
         </div>
         
-        <div class="guide-container">
-            <div class="guide-card">
-                <i class="fas fa-graduation-cap guide-icon"></i>
-                <h3>Exam Related RTIs</h3>
-                <p>Learn how to file RTI applications for copy of answer sheets, re-evaluation, admission test results, and more.</p>
-                <a href="guide/exam.html" class="guide-link">View Guide <i class="fas fa-arrow-right"></i></a>
+        <!-- Character Illustration -->
+        <div class="character-illustration student-reading">
+            <div class="char-shadow"></div>
             </div>
             
-            <div class="guide-card">
-                <i class="fas fa-hand-holding-usd guide-icon"></i>
-                <h3>Scholarship RTIs</h3>
-                <p>Discover how to use RTI to check scholarship application status, criteria, distribution details, and more.</p>
-                <a href="guide/scholarship.html" class="guide-link">View Guide <i class="fas fa-arrow-right"></i></a>
-            </div>
-            
-            <div class="guide-card">
-                <i class="fas fa-university guide-icon"></i>
-                <h3>Admission RTIs</h3>
-                <p>Learn how to file RTI applications about admission processes, fee structures, seat allocation, and more.</p>
-                <a href="guide/admission.html" class="guide-link">View Guide <i class="fas fa-arrow-right"></i></a>
-            </div>
-            
-            <div class="guide-card">
-                <i class="fas fa-question-circle guide-icon"></i>
-                <h3>RTI FAQs</h3>
-                <p>Find answers to frequently asked questions about filing RTI applications as a student.</p>
-                <a href="guide/faq.html" class="guide-link">View Guide <i class="fas fa-arrow-right"></i></a>
-            </div>
-            
-            <div class="guide-card">
-                <i class="fas fa-tasks guide-icon"></i>
-                <h3>RTI Checklist</h3>
-                <p>A comprehensive checklist to ensure your RTI application is complete and effective.</p>
-                <a href="guide/checklist.html" class="guide-link">View Guide <i class="fas fa-arrow-right"></i></a>
-            </div>
-            
-            <div class="guide-card">
-                <i class="fas fa-file-alt guide-icon"></i>
-                <h3>RTI Formats</h3>
-                <p>Access standardized RTI application formats and templates for various educational purposes.</p>
-                <a href="guide/format.html" class="guide-link">View Guide <i class="fas fa-arrow-right"></i></a>
+        <div class="hero-content">
+            <div class="hero-text fade-in-up">
+                <h1 class="hero-title">Student RTI Guide</h1>
+                <p>Everything you need to know about filing effective RTI applications as a student</p>
             </div>
         </div>
-        
-        <div class="steps-container">
-            <div class="step-item">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h3>Identify the Public Authority</h3>
-                    <p>Determine which public authority holds the information you're seeking. This could be:</p>
-                    <ul>
-                        <li>Your school or university</li>
-                        <li>State education board</li>
-                        <li>UGC (University Grants Commission)</li>
-                        <li>CBSE, ICSE, or other examination boards</li>
-                        <li>Ministry of Education</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="step-item">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h3>Draft Your RTI Application</h3>
-                    <p>Create a clear, concise application that includes:</p>
-                    <ul>
-                        <li>Your personal details (name, contact info)</li>
-                        <li>Specific questions about the information you seek</li>
-                        <li>Relevant time period or context</li>
-                        <li>Declaration that you are an Indian citizen</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="step-item">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h3>Pay the RTI Fee</h3>
-                    <p>Attach the application fee of ₹10 through:</p>
-                    <ul>
-                        <li>Indian Postal Order (IPO)</li>
-                        <li>Demand Draft</li>
-                        <li>Court Fee Stamp</li>
-                        <li>Cash (if submitting in person)</li>
-                        <li>Online payment (for RTI Online Portal)</li>
-                    </ul>
-                    <p>Note: BPL cardholders are exempted from paying the fee.</p>
-                </div>
-            </div>
-            
-            <div class="step-item">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                    <h3>Submit Your Application</h3>
-                    <p>Submit your RTI application through one of these methods:</p>
-                    <ul>
-                        <li>Online through RTI Portal</li>
-                        <li>By post to the PIO of the concerned authority</li>
-                        <li>In person at the RTI cell of the authority</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="step-item">
-                <div class="step-number">5</div>
-                <div class="step-content">
-                    <h3>Track Your Application</h3>
-                    <p>Keep track of your RTI application:</p>
-                    <ul>
-                        <li>Note down the RTI reference number</li>
-                        <li>Expect a response within 30 days</li>
-                        <li>Follow up if you don't receive a response</li>
-                        <li>File an appeal if information is denied or incomplete</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-        <div class="cta-container">
-            <a href="forms.html" class="button">File an RTI Now <i class="fas fa-arrow-right"></i></a>
+
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator" onclick="document.querySelector('.guide-section').scrollIntoView({behavior: 'smooth'})">
+            <div class="mouse"></div>
+            <span>Scroll Down</span>
         </div>
     </section>
+
+    <!-- Main Guide Section -->
+    <section class="guide-section rights-section">
+        <div class="visual-elements">
+            <div class="floating-shape f-shape1"></div>
+            <div class="floating-shape f-shape2"></div>
+            <div class="floating-shape f-shape3"></div>
+            <div class="floating-shape f-shape4"></div>
+            </div>
+            
+        <div class="rights-container">
+            <div class="rights-content fade-in-up">
+                <div class="rights-decoration">
+                    <span class="accent-line"></span>
+                    <span class="corner-accent ca-tl"></span>
+                    <span class="corner-accent ca-tr"></span>
+                    <span class="corner-accent ca-bl"></span>
+                    <span class="corner-accent ca-br"></span>
+                </div>
+                <h2 class="rights-title">What is RTI?</h2>
+                <p>The Right to Information Act (RTI) is a law enacted by the Parliament of India which sets out the rules and procedures regarding citizens' right to information. It replaced the former Freedom of Information Act, 2002.</p>
+                <p>Under the provisions of the Act, any citizen of India may request information from a "public authority" which is required to reply expeditiously or within thirty days. This law empowers students to access information about educational institutions, examination processes, and more.</p>
+            </div>
+            </div>
+            
+        <!-- Guide Categories -->
+        <div class="resources-grid">
+            <div class="resource-card fade-in-up">
+                <i class="fas fa-graduation-cap resource-icon"></i>
+                <h3 class="resource-title">Academic RTIs</h3>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Examination Result Verification
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Answer Sheet Copies
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Evaluation Criteria
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Re-evaluation Process
+                    </li>
+                </ul>
+                <a href="guide/exam.html" class="button">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="resource-card fade-in-up delay-200">
+                <i class="fas fa-university resource-icon"></i>
+                <h3 class="resource-title">Admission RTIs</h3>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Admission Criteria
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Seat Allocation
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Fee Structure
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Reservation Policy
+                    </li>
+                </ul>
+                <a href="guide/admission.html" class="button">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="resource-card fade-in-up delay-300">
+                <i class="fas fa-hand-holding-usd resource-icon"></i>
+                <h3 class="resource-title">Scholarship RTIs</h3>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Scholarship Criteria
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Application Status
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Fund Disbursement
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-check-circle"></i>
+                        Selection Process
+                    </li>
+                </ul>
+                <a href="guide/scholarship.html" class="button">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- RTI Step by Step Process -->
+    <section class="resources-navigation">
+        <div class="visual-background">
+            <div class="bg-grid"></div>
+            <div class="bg-circle-1"></div>
+            <div class="bg-circle-2"></div>
+            <div class="bg-dots"></div>
+            <div class="bg-line-1"></div>
+            <div class="bg-line-2"></div>
+        </div>
+        
+        <div class="character-illustration student-pointing">
+            <div class="char-shadow"></div>
+        </div>
+        
+        <h2 class="resources-navigation-title">RTI Filing <span>Process</span></h2>
+        <div class="nav-container">
+            <div class="nav-menu">
+                <div class="nav-item nav-parent">
+                    <div class="nav-header">
+                        <span class="nav-number">1</span>
+                    <h3>Identify the Public Authority</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="nav-children">
+                        <div class="nav-child">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Determine which public authority holds the information you need</span>
+                        </div>
+                        <div class="nav-child">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Check our directory of educational institutions</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="nav-item nav-parent">
+                    <div class="nav-header">
+                        <span class="nav-number">2</span>
+                        <h3>Draft Your Application</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="nav-children">
+                        <div class="nav-child">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Be specific about what information you need</span>
+                        </div>
+                        <div class="nav-child">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Use our templates for common student RTIs</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="nav-item nav-parent">
+                    <div class="nav-header">
+                        <span class="nav-number">3</span>
+                        <h3>Pay the RTI Fee</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="nav-children">
+                        <div class="nav-child">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>₹10 application fee (waived for BPL citizens)</span>
+                        </div>
+                        <div class="nav-child">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Various payment methods available</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="nav-item nav-parent">
+                    <div class="nav-header">
+                        <span class="nav-number">4</span>
+                        <h3>Submit Application</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="nav-children">
+                        <div class="nav-child">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Online through RTI Online Portal</span>
+                        </div>
+                        <div class="nav-child">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>By post to the concerned PIO</span>
+                        </div>
+                        <div class="nav-child">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>In person at the RTI counter</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="nav-item nav-parent">
+                    <div class="nav-header">
+                        <span class="nav-number">5</span>
+                        <h3>Track Your RTI</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="nav-children">
+                        <div class="nav-child">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Get a registration number</span>
+                        </div>
+                        <div class="nav-child">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Use our tracking tool</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="rti-authorities-section">
+        <div class="authority-visuals">
+            <div class="a-element a-dots"></div>
+            <div class="a-element a-circles"></div>
+            <div class="a-element a-grid"></div>
+            <div class="a-element a-line"></div>
+        </div>
+        
+        <div class="character-illustration student-searching">
+            <div class="char-shadow"></div>
+        </div>
+        
+        <div class="section-container">
+            <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+            <p class="section-description">Common queries about RTI applications for students</p>
+            
+            <div class="authorities-container">
+                <div class="authority-list-wrapper">
+                    <div class="authority-list" id="authority-list">
+                        <div class="authority-category">
+                            <div class="category-header">
+                                <h3>What information can I request through RTI?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="category-items">
+                                <div class="authority-item">
+                                    <span class="authority-name">As a student, you can request information about examination results, answer sheets, evaluation criteria, admission processes, scholarship details, faculty qualifications, infrastructure facilities, and many other aspects of educational institutions.</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="authority-category">
+                            <div class="category-header">
+                                <h3>How long does it take to get a response?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="category-items">
+                                <div class="authority-item">
+                                    <span class="authority-name">Public authorities are required to provide information within 30 days of receiving your application. In cases where the information sought concerns the life or liberty of a person, it must be provided within 48 hours.</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="authority-category">
+                            <div class="category-header">
+                                <h3>What if I don't get a response or am not satisfied?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="category-items">
+                                <div class="authority-item">
+                                    <span class="authority-name">If you don't receive a response within 30 days, or if you're dissatisfied with the response, you can file a first appeal with the First Appellate Authority. If still unsatisfied, you can approach the Information Commission with a second appeal.</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="authority-category">
+                            <div class="category-header">
+                                <h3>Can I ask questions or seek opinions through RTI?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="category-items">
+                                <div class="authority-item">
+                                    <span class="authority-name">The RTI Act allows you to seek information that exists in records held by public authorities. You cannot ask questions that require creating new information, providing opinions, or solving your problems.</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="authority-category">
+                            <div class="category-header">
+                                <h3>Can private educational institutions be approached through RTI?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="category-items">
+                                <div class="authority-item">
+                                    <span class="authority-name">Private educational institutions not substantially financed by the government are not directly covered under the RTI Act. However, you can approach the regulatory bodies that govern these institutions, such as UGC, AICTE, or state education departments.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="authority-info-panel">
+                    <div class="info-header">
+                        <h3>RTI Tips for Students</h3>
+                    </div>
+                    <div class="info-content">
+                        <p>Making your RTI application effective can increase your chances of getting the information you need.</p>
+                        
+                        <div class="info-category">
+                            <h4><i class="fas fa-lightbulb"></i> Be Specific</h4>
+                            <p>Ask for specific information rather than vague requests. Instead of asking "Why was I denied admission?", ask "What was the cutoff score for admission in my category?"</p>
+                        </div>
+                        
+                        <div class="info-category">
+                            <h4><i class="fas fa-file-alt"></i> One Subject Per RTI</h4>
+                            <p>Focus on one subject matter per application to avoid rejection on grounds of being too broad or unclear.</p>
+            </div>
+            
+                        <div class="info-tips">
+                            <h4><i class="fas fa-check-circle"></i> Best Practices</h4>
+                    <ul>
+                                <li>Keep your questions clear and concise</li>
+                                <li>Request information in easily accessible formats</li>
+                                <li>Maintain copies of all correspondence</li>
+                                <li>Follow up if you don't receive a response</li>
+                    </ul>
+                        </div>
+                        
+                        <div class="info-action">
+                            <a href="templates/index.html" class="button">
+                                <span>View RTI Templates</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section class="stats-section">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        
+        <div class="stats-visuals">
+            <div class="s-element s-circle"></div>
+            <div class="s-element s-triangle"></div>
+            <div class="s-element s-square"></div>
+            <div class="s-element s-line"></div>
+        </div>
+        
+        <div class="character-illustration student-celebrating">
+            <div class="char-shadow"></div>
+        </div>
+        
+        <h2 class="section-title mb-4">Success Stories</h2>
+        
+        <div class="resources-grid">
+            <div class="resource-card fade-in-up">
+                <i class="fas fa-award resource-icon"></i>
+                <h3 class="resource-title">Exam Score Verification</h3>
+                <p>Rahul from Delhi University used RTI to verify his exam scores after suspecting an error. The university admitted a calculation mistake and rectified his marks, helping him qualify for a scholarship.</p>
+                <a href="success-stories.html#exam" class="button">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="resource-card fade-in-up delay-200">
+                <i class="fas fa-door-open resource-icon"></i>
+                <h3 class="resource-title">Admission Transparency</h3>
+                <p>A group of students used RTI to uncover irregularities in the admission process at a prestigious college. Their action led to policy changes ensuring transparent admission procedures.</p>
+                <a href="success-stories.html#admission" class="button">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="resource-card fade-in-up delay-300">
+                <i class="fas fa-coins resource-icon"></i>
+                <h3 class="resource-title">Scholarship Disbursement</h3>
+                <p>Priya's scholarship was delayed for months without explanation. Her RTI application revealed administrative bottlenecks, which were subsequently resolved, benefiting hundreds of other students.</p>
+                <a href="success-stories.html#scholarship" class="button">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern Footer Section -->
+    <footer class="site-footer">
+        <div class="footer-visuals">
+            <div class="f-visual f-dots"></div>
+            <div class="f-visual f-lines"></div>
+            <div class="f-visual f-circles"></div>
+        </div>
+        
+        <div class="character-group">
+            <div class="character-illustration student-waving"></div>
+            <div class="character-illustration student-sitting"></div>
+            <div class="character-illustration student-standing"></div>
+        </div>
+        
+        <div class="site-footer::before"></div>
+        
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h3 class="footer-title">Student RTI Portal</h3>
+                        <p class="footer-description">India's dedicated platform for students to access educational information under the Right to Information Act, 2005.</p>
+                        <div class="footer-social">
+                            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3 class="footer-title">Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="index.html" class="footer-link">Home</a></li>
+                            <li><a href="guide.html" class="footer-link">RTI Guide</a></li>
+                            <li><a href="forms.html" class="footer-link">File RTI</a></li>
+                            <li><a href="track.html" class="footer-link">Track Status</a></li>
+                            <li><a href="resources.html" class="footer-link">Resources</a></li>
+                            <li><a href="templates/index.html" class="footer-link">Templates</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3 class="footer-title">Student Resources</h3>
+                        <ul class="footer-links">
+                            <li><a href="guide/exam.html" class="footer-link">Exam Information</a></li>
+                            <li><a href="guide/scholarship.html" class="footer-link">Scholarships</a></li>
+                            <li><a href="guide/admission.html" class="footer-link">Admission Process</a></li>
+                            <li><a href="guide/faq.html" class="footer-link">FAQ</a></li>
+                            <li><a href="success-stories.html" class="footer-link">Success Stories</a></li>
+                            <li><a href="forum.html" class="footer-link">Community Forum</a></li>
+                        </ul>
+            </div>
+            
+                    <div class="footer-col">
+                        <h3 class="footer-title">Contact Us</h3>
+                        <ul class="footer-contact">
+                            <li><i class="fas fa-map-marker-alt"></i> <span>Department of Education<br>Ministry of Education, Government of India<br>New Delhi, India</span></li>
+                            <li><i class="fas fa-envelope"></i> <a href="mailto:support@studentrti.gov.in">support@studentrti.gov.in</a></li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:+911123386626">+91-11-2338-6626</a></li>
+                            <li><i class="fas fa-clock"></i> <span>Monday to Friday: 9:30 AM - 6:00 PM</span></li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+        <div class="footer-middle">
+            <div class="container">
+                <div class="newsletter">
+                    <h3 class="newsletter-title">Subscribe to RTI Updates</h3>
+                    <p class="newsletter-text">Stay updated with the latest RTI news, case studies, and guidelines for students.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email Address" class="newsletter-input" required>
+                        <button type="submit" class="newsletter-button">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p class="copyright">© 2023 Student RTI Portal. All Rights Reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="privacy.html" class="footer-bottom-link">Privacy Policy</a>
+                        <a href="terms.html" class="footer-bottom-link">Terms of Service</a>
+                        <a href="sitemap.html" class="footer-bottom-link">Sitemap</a>
+                        <a href="accessibility.html" class="footer-bottom-link">Accessibility</a>
+                    </div>
+                </div>
+                <p class="disclaimer">This website is designed for educational purposes to help students access information under the RTI Act.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -613,7 +568,65 @@
                     window.location.href = '../index.html';
                 });
             }
+            
+            // FAQ toggle functionality
+            const categories = document.querySelectorAll('.authority-category');
+            categories.forEach(category => {
+                const header = category.querySelector('.category-header');
+                header.addEventListener('click', () => {
+                    category.classList.toggle('active');
+                });
+            });
+            
+            // Navigation menu toggle functionality for sidebar
+            const navParents = document.querySelectorAll('.nav-parent');
+            navParents.forEach(parent => {
+                const header = parent.querySelector('.nav-header');
+                header.addEventListener('click', () => {
+                    parent.classList.toggle('active');
+                    
+                    // Close other open menus
+                    navParents.forEach(otherParent => {
+                        if (otherParent !== parent && otherParent.classList.contains('active')) {
+                            otherParent.classList.remove('active');
+                        }
+                    });
+                });
+            });
+            
+            // Add scroll event listener for navbar effects
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Initialize animation triggers
+            animateOnScroll();
         });
+        
+        // Function to trigger animations when elements come into view
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.fade-in-up:not(.animated)');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+        }
     </script>
 </body>
 </html> 

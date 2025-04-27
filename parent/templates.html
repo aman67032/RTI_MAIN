@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffd700">
+    <title>Parent RTI Templates | RTI Education Portal</title>
+    <link rel="icon" href="../assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="../assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png?v=2">
+    <link rel="manifest" href="../manifest.json?v=2">
+
+    <link rel="stylesheet" href="../Waves.css">
+    <link rel="stylesheet" href="../loading-screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../decrypted-text.css">
+    <link rel="stylesheet" href="../GlitchText.css">
+    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="../rti-tools.css">
+    <link rel="stylesheet" href="style.css">
+
+    
+    <style>
+        .templates-container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .template-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .template-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            background: #f57c00;
+            color: white;
+            padding: 1.5rem;
+            position: relative;
+        }
+        
+        .card-header h3 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+        
+        .card-icon {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .card-icon i {
+            font-size: 1.5rem;
+            color: #f57c00;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .template-description {
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        
+        .template-highlights {
+            margin-bottom: 1.5rem;
+        }
+        
+        .template-highlights h4 {
+            color: #333;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlights-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+        
+        .highlights-list li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlights-list li:before {
+            content: "•";
+            color: #f57c00;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .template-link {
+            display: block;
+            background: #f5f5f5;
+            color: #333;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .template-link:hover {
+            background: #e0e0e0;
+        }
+        
+        .template-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .category-section {
+            margin-bottom: 3rem;
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .category-description {
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .search-box {
+            margin-bottom: 2rem;
+            background: #fff3e0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #f57c00;
+        }
+        
+        .search-title {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .search-form {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .search-btn {
+            background: #f57c00;
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .search-btn:hover {
+            background: #ef6c00;
+        }
+        
+        .tag-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .tag-filter {
+            background: #e0e0e0;
+            color: #333;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .tag-filter:hover {
+            background: #d0d0d0;
+        }
+        
+        .tag-filter.active {
+            background: #f57c00;
+            color: white;
+        }
+        
+        .featured-template {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            border-left: 5px solid #f57c00;
+        }
+        
+        .featured-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .featured-label {
+            display: inline-block;
+            background: #f57c00;
+            color: white;
+            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+        }
+        
+        .featured-title {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .featured-description {
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .featured-btn {
+            display: inline-block;
+            background: #f57c00;
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .featured-btn:hover {
+            background: #ef6c00;
+        }
+        
+        .featured-image {
+            flex: 0 0 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .featured-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar/Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>RTI Education</span>
+                <div class="logo-accent"></div>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">
+                    <span class="nav-icon"><i class="fas fa-home"></i></span>
+                    Home
+                </a>
+                <a href="../timeline.html">
+                    <span class="nav-icon"><i class="fas fa-history"></i></span>
+                    Timeline
+                </a>
+                <a href="../news.html">
+                    <span class="nav-icon"><i class="fas fa-newspaper"></i></span>
+                    News
+                </a>
+                <a href="../cases.html">
+                    <span class="nav-icon"><i class="fas fa-gavel"></i></span>
+                    Current Cases
+                </a>
+            </div>
+            <div class="auth-links">
+                <a href="../login.html" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </a>
+                <a href="../signup.html" class="signup-btn">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up
+                </a>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <div class="nav-decoration">
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+        </div>
+    </nav>
+
+    <!-- Parent Nav -->
+    <div class="secondary-nav">
+        <div class="secondary-nav-container">
+            <a href="index.html">Dashboard</a>
+            <a href="guide.html">RTI Guide</a>
+            <a href="forms.html">Forms</a>
+            <a href="templates.html" class="active">Templates</a>
+            <a href="resources.html">Resources</a>
+            <a href="fees.html">Fee Issues</a>
+            <a href="admission.html">Admissions</a>
+            <a href="safety.html">School Safety</a>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="container">
+        <div class="page-header">
+            <h1>Parent RTI Templates</h1>
+            <p>Ready-to-use RTI templates designed specifically for parents advocating for better education</p>
+        </div>
+        
+        <div class="templates-container">
+            <div class="featured-template">
+                <div class="featured-content">
+                    <span class="featured-label">Most Downloaded</span>
+                    <h2 class="featured-title">Complete School Compliance Check</h2>
+                    <p class="featured-description">This comprehensive template helps parents verify if their child's school is complying with all educational regulations, safety standards, teacher qualifications, and fee transparency requirements. Successfully used by parent associations across 50+ schools to drive positive changes.</p>
+                    <a href="#" class="featured-btn">View Template</a>
+                </div>
+                <div class="featured-image">
+                    <img src="../assets/images/illustrations/compliance-check.png" alt="School Compliance Check" onerror="this.src='https://via.placeholder.com/300x200?text=School+Compliance'">
+                </div>
+            </div>
+            
+            <div class="search-box">
+                <h3 class="search-title">Find Templates by Topic or Keyword</h3>
+                <form class="search-form">
+                    <input type="text" class="search-input" placeholder="Search for templates (e.g., 'safety', 'fees', 'RTE admission')">
+                    <button type="submit" class="search-btn">Search</button>
+                </form>
+                <div class="tag-filters">
+                    <span class="tag-filter active">All</span>
+                    <span class="tag-filter">Fee Issues</span>
+                    <span class="tag-filter">Admission</span>
+                    <span class="tag-filter">RTE</span>
+                    <span class="tag-filter">Safety</span>
+                    <span class="tag-filter">Infrastructure</span>
+                    <span class="tag-filter">Teacher Qualifications</span>
+                </div>
+            </div>
+            
+            <div class="category-section">
+                <h2 class="category-title">School Fee & Financial Templates</h2>
+                <p class="category-description">Templates to help parents verify fee structures, track fee increases, and ensure schools follow proper financial regulations.</p>
+                
+                <div class="templates-grid">
+                    <div class="template-card">
+                        <div class="card-header">
+                            <h3>Fee Structure Verification</h3>
+                            <div class="card-icon">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <p class="template-description">Request detailed breakdown of school fees, approval documentation, and utilization records to verify compliance with fee regulations.</p>
+                            
+                            <div class="template-highlights">
+                                <h4>Covers:</h4>
+                                <ul class="highlights-list">
+                                    <li>Detailed fee structure breakdown</li>
+                                    <li>Fee committee approvals</li>
+                                    <li>Development fee utilization</li>
+                                    <li>Financial statements for verification</li>
+                                </ul>
+                            </div>
+                            
+                            <a href="../templates/fee-structure.html" class="template-link">
+                                <i class="fas fa-download"></i> View Template
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card">
+                        <div class="card-header">
+                            <h3>Fee Hike Investigation</h3>
+                            <div class="card-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <p class="template-description">Request information about historical fee increases, their justification, approval process, and compliance with state fee regulation laws.</p>
+                            
+                            <div class="template-highlights">
+                                <h4>Covers:</h4>
+                                <ul class="highlights-list">
+                                    <li>Five-year fee increase history</li>
+                                    <li>Justification documents for increases</li>
+                                    <li>Parent consultation evidence</li>
+                                    <li>Regulatory approval documentation</li>
+                                </ul>
+                            </div>
+                            
+                            <a href="#" class="template-link">
+                                <i class="fas fa-download"></i> View Template
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card">
+                        <div class="card-header">
+                            <h3>School Fund Tracking</h3>
+                            <div class="card-icon">
+                                <i class="fas fa-money-check-alt"></i>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <p class="template-description">Request information about how different funds collected from parents (development fee, technology fee, etc.) are utilized and accounted for.</p>
+                            
+                            <div class="template-highlights">
+                                <h4>Covers:</h4>
+                                <ul class="highlights-list">
+                                    <li>Fund utilization statements</li>
+                                    <li>Separate fund maintenance proof</li>
+                                    <li>Audit reports of school accounts</li>
+                                    <li>Infrastructure development details</li>
+                                </ul>
+                            </div>
+                            
+                            <a href="../templates/fund-tracking.html" class="template-link">
+                                <i class="fas fa-download"></i> View Template
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-section">
+                <h2 class="category-title">Admission Process Templates</h2>
+                <p class="category-description">Templates to help parents understand admission procedures, verify fair selection processes, and check RTE quota implementation.</p>
+                
+                <div class="templates-grid">
+                    <div class="template-card">
+                        <div class="card-header">
+                            <h3>Admission Transparency</h3>
+                            <div class="card-icon">
+                                <i class="fas fa-door-open"></i>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <p class="template-description">Request detailed information about school admission criteria, selection process, weightage systems, and verification of fair implementation.</p>
+                            
+                            <div class="template-highlights">
+                                <h4>Covers:</h4>
+                                <ul class="highlights-list">
+                                    <li>Detailed admission criteria</li>
+                                    <li>Selection committee composition</li>
+                                    <li>Documented selection process</li>
+                                    <li>Interview/test evaluation methods</li>
+                                </ul>
+                            </div>
+                            
+                            <a href="../templates/admission.html" class="template-link">
+                                <i class="fas fa-download"></i> View Template
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card">
+                        <div class="card-header">
+                            <h3>RTE Quota Implementation</h3>
+                            <div class="card-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <p class="template-description">Request information about how the school implements the 25% RTE quota for economically weaker sections, including selection process and reimbursements.</p>
+                            
+                            <div class="template-highlights">
+                                <h4>Covers:</h4>
+                                <ul class="highlights-list">
+                                    <li>RTE seat allocation details</li>
+                                    <li>Selection process documentation</li>
+                                    <li>Government reimbursement records</li>
+                                    <li>RTE student integration measures</li>
+                                </ul>
+                            </div>
+                            
+                            <a href="#" class="template-link">
+                                <i class="fas fa-download"></i> View Template
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card">
+                        <div class="card-header">
+                            <h3>Waitlist Management</h3>
+                            <div class="card-icon">
+                                <i class="fas fa-list-ol"></i>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <p class="template-description">Request information about how waitlists are managed, the criteria for moving students from waitlists, and verification of fair process implementation.</p>
+                            
+                            <div class="template-highlights">
+                                <h4>Covers:</h4>
+                                <ul class="highlights-list">
+                                    <li>Complete waitlist with rankings</li>
+                                    <li>Movement recording process</li>
+                                    <li>Criteria for selecting from waitlist</li>
+                                    <li>Transparency in notifications</li>
+                                </ul>
+                            </div>
+                            
+                            <a href="#" class="template-link">
+                                <i class="fas fa-download"></i> View Template
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-section">
+                <h2 class="category-title">School Safety & Infrastructure Templates</h2>
+                <p class="category-description">Templates to help parents verify school safety measures, infrastructure quality, and compliance with safety regulations.</p>
+                
+                <div class="templates-grid">
+                    <div class="template-card">
+                        <div class="card-header">
+                            <h3>Safety Compliance Check</h3>
+                            <div class="card-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <p class="template-description">Request detailed information about school safety certificates, staff verification processes, CCTV systems, and emergency protocols.</p>
+                            
+                            <div class="template-highlights">
+                                <h4>Covers:</h4>
+                                <ul class="highlights-list">
+                                    <li>Safety certificates from authorities</li>
+                                    <li>Background verification protocols</li>
+                                    <li>Emergency response plans</li>
+                                    <li>Safety audit reports</li>
+                                </ul>
+                            </div>
+                            
+                            <a href="#" class="template-link">
+                                <i class="fas fa-download"></i> View Template
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card">
+                        <div class="card-header">
+                            <h3>Infrastructure Verification</h3>
+                            <div class="card-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <p class="template-description">Request information about building safety, classroom size compliance, playground facilities, and laboratory equipment as per regulatory requirements.</p>
+                            
+                            <div class="template-highlights">
+                                <h4>Covers:</h4>
+                                <ul class="highlights-list">
+                                    <li>Building safety certificates</li>
+                                    <li>Area per student ratios</li>
+                                    <li>Laboratory equipment inventory</li>
+                                    <li>Facility maintenance records</li>
+                                </ul>
+                            </div>
+                            
+                            <a href="#" class="template-link">
+                                <i class="fas fa-download"></i> View Template
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card">
+                        <div class="card-header">
+                            <h3>Teacher Qualification Audit</h3>
+                            <div class="card-icon">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <p class="template-description">Request information about teacher qualifications, experience, training, and verification of compliance with minimum qualification requirements.</p>
+                            
+                            <div class="template-highlights">
+                                <h4>Covers:</h4>
+                                <ul class="highlights-list">
+                                    <li>Teacher qualification details</li>
+                                    <li>Student-teacher ratio compliance</li>
+                                    <li>Teacher training records</li>
+                                    <li>Regulatory compliance documentation</li>
+                                </ul>
+                            </div>
+                            
+                            <a href="#" class="template-link">
+                                <i class="fas fa-download"></i> View Template
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>RTI Education</span>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <a href="#">RTI Act Guidelines</a>
+                    <a href="#">Templates</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Success Stories</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Portals</h3>
+                    <a href="../student/index.html">Student Section</a>
+                    <a href="index.html">Parent Section</a>
+                    <a href="../teacher/index.html">Teacher Section</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Community</h3>
+                    <a href="#">Forums</a>
+                    <a href="#">Events</a>
+                    <a href="#">Newsletter</a>
+                </div>
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <a href="#">About Us</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 RTI Education Portal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="visual-effects.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tag filter functionality
+            const tagFilters = document.querySelectorAll('.tag-filter');
+            
+            tagFilters.forEach(filter => {
+                filter.addEventListener('click', function() {
+                    // Remove active class from all filters
+                    tagFilters.forEach(f => f.classList.remove('active'));
+                    
+                    // Add active class to clicked filter
+                    this.classList.add('active');
+                    
+                    // Here you would typically filter the templates
+                    // For now, we'll just console log the selected filter
+                    console.log('Selected filter:', this.textContent);
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

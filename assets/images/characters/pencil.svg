@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+  <!-- Pencil body -->
+  <rect x="112" y="96" width="288" height="64" rx="8" fill="#ffd700" stroke="#333" stroke-width="8"/>
+  
+  <!-- Pencil tip -->
+  <path d="M112 96L48 256l64 160h32V96z" fill="#ff6b6b" stroke="#333" stroke-width="8"/>
+  
+  <!-- Lead tip -->
+  <path d="M48 256l16-32v64z" fill="#333"/>
+  
+  <!-- Eraser end -->
+  <rect x="400" y="96" width="64" height="64" rx="8" fill="#ff6b6b" stroke="#333" stroke-width="8"/>
+  
+  <!-- Metal band -->
+  <rect x="368" y="96" width="32" height="64" fill="#d9d9d9" stroke="#333" stroke-width="8"/>
+  
+  <!-- Writing lines coming from pencil -->
+  <path d="M48 256c0 0 32-16 64-16s96 32 160 32 96-16 96-16" stroke="#333" stroke-width="3" fill="none" stroke-dasharray="8 8"/>
+  
+  <!-- RTI text -->
+  <text x="218" y="142" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#333">RTI</text>
+  
+  <!-- Decorative wood grain -->
+  <path d="M132 96v64M172 96v64M212 96v64M252 96v64M292 96v64M332 96v64" stroke="#333" stroke-width="1" stroke-opacity="0.3"/>
+  
+  <!-- Highlight shine -->
+  <path d="M112 104h288" stroke="#fff" stroke-width="4" stroke-opacity="0.6"/>
+</svg> 

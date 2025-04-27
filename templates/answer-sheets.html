@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffd700">
+    <title>Answer Sheet RTI Template | RTI Education Portal</title>
+    <link rel="icon" href="../assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="../assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png?v=2">
+    <link rel="manifest" href="../manifest.json?v=2">
+
+    <link rel="stylesheet" href="../Waves.css">
+    <link rel="stylesheet" href="../loading-screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../main.css">
+    <style>
+        /* Page-specific styles */
+        .template-section {
+            background-color: var(--bg-color);
+            padding: 4rem 0;
+        }
+        
+        .template-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+        
+        @media (max-width: 992px) {
+            .template-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .template-preview {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+        
+        .template-title {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .template-content {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.8;
+            color: #333;
+            border: 1px solid #ddd;
+            padding: 2rem;
+            background: #fcfcfc;
+            font-size: 1rem;
+        }
+        
+        .template-date {
+            text-align: right;
+            margin-bottom: 2rem;
+        }
+        
+        .template-address {
+            margin-bottom: 2rem;
+        }
+        
+        .template-subject {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-decoration: underline;
+        }
+        
+        .template-body {
+            margin-bottom: 2rem;
+        }
+        
+        .template-footer {
+            margin-top: 3rem;
+        }
+        
+        .template-signature {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        
+        .template-editable {
+            background-color: #fff8dc;
+            padding: 0.2rem 0.5rem;
+            border-bottom: 1px dashed #ccc;
+            display: inline-block;
+            min-width: 100px;
+            color: #333;
+        }
+        
+        .template-sidebar {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            padding: 1.5rem;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .sidebar-tip {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .sidebar-tip:last-child {
+            border-bottom: none;
+        }
+        
+        .tip-icon {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .tip-content h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        
+        .tip-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .legal-reference {
+            background: #f5f5f5;
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .legal-reference h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        
+        .legal-reference p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .template-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .template-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .template-button:hover {
+            background-color: var(--accent-dark);
+        }
+        
+        .template-button.secondary {
+            background-color: #f5f5f5;
+            color: var(--text-color);
+        }
+        
+        .template-button.secondary:hover {
+            background-color: #e9e9e9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar/Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>RTI Education</span>
+                <div class="logo-accent"></div>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">
+                    <span class="nav-icon"><i class="fas fa-home"></i></span>
+                    Home
+                </a>
+                <a href="../timeline.html">
+                    <span class="nav-icon"><i class="fas fa-history"></i></span>
+                    Timeline
+                </a>
+                <a href="../news.html">
+                    <span class="nav-icon"><i class="fas fa-newspaper"></i></span>
+                    News
+                </a>
+                <a href="../cases.html">
+                    <span class="nav-icon"><i class="fas fa-gavel"></i></span>
+                    Current Cases
+                </a>
+            </div>
+            <div class="auth-links">
+                <a href="../login.html" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </a>
+                <a href="../signup.html" class="signup-btn">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up
+                </a>
+            </div>
+            <div class="mobile-menu">
+            <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <div class="nav-decoration">
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Answer Sheet RTI Template</h1>
+            <p class="page-subtitle">Pre-filled template to request access to your evaluated answer sheets</p>
+            <div class="breadcrumbs">
+                <a href="../index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../index.html#rti-tools">RTI Tools</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Answer Sheet Template</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Template Section -->
+    <section class="template-section">
+        <div class="container">
+            <div class="template-container">
+                <div class="template-preview">
+                    <h2 class="template-title">RTI Application for Answer Sheet Access</h2>
+                    <p class="template-description">Use this template to request access to your evaluated answer sheet(s). Click on highlighted fields to customize them for your specific situation.</p>
+                    
+                    <div class="template-content" id="rti-template">
+                        <div class="template-date">Date: <span class="template-editable" contenteditable="true" data-placeholder="DD/MM/YYYY">DD/MM/YYYY</span></div>
+                        
+                        <div class="template-address">
+                            To,<br>
+                            The Public Information Officer,<br>
+                            <span class="template-editable" contenteditable="true" data-placeholder="Name of Education Board/University">Name of Education Board/University</span><br>
+                            <span class="template-editable" contenteditable="true" data-placeholder="Complete Address">Complete Address</span>
+                        </div>
+                        
+                        <div class="template-subject">
+                            Subject: Application under Right to Information Act, 2005 for obtaining copy of evaluated answer sheet(s)
+                        </div>
+                        
+                        <div class="template-body">
+                            <p>Respected Sir/Madam,</p>
+                            
+                            <p>I, <span class="template-editable" contenteditable="true" data-placeholder="Your Full Name">Your Full Name</span>, a student of <span class="template-editable" contenteditable="true" data-placeholder="School/College Name">School/College Name</span> with Roll No. <span class="template-editable" contenteditable="true" data-placeholder="Your Roll No.">Your Roll No.</span>, would like to request the following information under the Right to Information Act, 2005:</p>
+                            
+                            <ol>
+                                <li>A certified copy of my evaluated answer sheet(s) for the following examination:<br>
+                                Examination: <span class="template-editable" contenteditable="true" data-placeholder="Name of Examination">Name of Examination</span><br>
+                                Subject(s): <span class="template-editable" contenteditable="true" data-placeholder="Subject Name(s)">Subject Name(s)</span><br>
+                                Examination Date(s): <span class="template-editable" contenteditable="true" data-placeholder="DD/MM/YYYY">DD/MM/YYYY</span><br>
+                                Result Declared on: <span class="template-editable" contenteditable="true" data-placeholder="DD/MM/YYYY">DD/MM/YYYY</span>
+                                </li>
+                                
+                                <li>A copy of the evaluation scheme/marking scheme/model answers used for the evaluation of the above answer sheet(s).</li>
+                                
+                                <li>Names and designations of the examiner(s) who evaluated my answer sheet(s).</li>
+                                
+                                <li>Details of the process through which I can apply for re-evaluation, if I find any discrepancy.</li>
+                            </ol>
+                            
+                            <p>I am enclosing a Demand Draft/Indian Postal Order/Payment Receipt No. <span class="template-editable" contenteditable="true" data-placeholder="Payment Details">Payment Details</span> of Rs. <span class="template-editable" contenteditable="true" data-placeholder="Amount">10</span> as the application fee.</p>
+                            
+                            <p>I hereby state that the information sought does not fall within the restrictions contained under Section 8 and 9 of the RTI Act and to the best of my knowledge, it pertains to your office.</p>
+                            
+                            <p>As per the Supreme Court judgment in CBSE vs. Aditya Bandopadhyay & Others (Civil Appeal No. 6454 of 2011), evaluated answer sheets are subject to disclosure under the RTI Act, 2005.</p>
+                        </div>
+                        
+                        <div class="template-footer">
+                            <div class="template-signature">
+                                <p>Yours sincerely,</p>
+                                <p style="margin-top: 30px;"><span class="template-editable" contenteditable="true" data-placeholder="Your Name">Your Name</span></p>
+                                <p>Address: <span class="template-editable" contenteditable="true" data-placeholder="Your Complete Address">Your Complete Address</span></p>
+                                <p>Phone: <span class="template-editable" contenteditable="true" data-placeholder="Your Contact Number">Your Contact Number</span></p>
+                                <p>Email: <span class="template-editable" contenteditable="true" data-placeholder="Your Email">Your Email</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="template-actions">
+                        <button class="template-button" id="download-btn">
+                            <i class="fas fa-download"></i> Download as PDF
+                        </button>
+                        <button class="template-button secondary" id="copy-btn">
+                            <i class="fas fa-copy"></i> Copy Text
+                        </button>
+                        <button class="template-button secondary" id="print-btn">
+                            <i class="fas fa-print"></i> Print
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="template-sidebar">
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">Tips for Success</h3>
+                        
+                        <div class="sidebar-tip">
+                            <div class="tip-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="tip-content">
+                                <h4>Be Specific</h4>
+                                <p>Clearly mention all details of your examination including roll number, exam date, and subject. This helps in quick retrieval of your answer sheets.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="sidebar-tip">
+                            <div class="tip-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="tip-content">
+                                <h4>File Promptly</h4>
+                                <p>Submit your RTI application as soon as results are declared. Some institutions have time limits for answer sheet preservation.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="sidebar-tip">
+                            <div class="tip-icon">
+                                <i class="fas fa-receipt"></i>
+                            </div>
+                            <div class="tip-content">
+                                <h4>Keep Receipts</h4>
+                                <p>Always keep a copy of your RTI application and proof of submission (postal receipt or acknowledgment) for follow-up.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">Legal Backing</h3>
+                        
+                        <div class="legal-reference">
+                            <h4>CBSE vs. Aditya Bandopadhyay Case (2011)</h4>
+                            <p>The Supreme Court ruled that evaluated answer sheets are "information" under the RTI Act, and students have the right to access their own answer sheets through RTI applications.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">What Next?</h3>
+                        
+                        <div class="sidebar-tip">
+                            <div class="tip-icon">
+                                <i class="fas fa-hourglass-half"></i>
+                            </div>
+                            <div class="tip-content">
+                                <h4>Wait Period</h4>
+                                <p>Expect a response within 30 days (35 days if sent by post). If no response is received, you can file a first appeal.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="sidebar-tip">
+                            <div class="tip-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="tip-content">
+                                <h4>Review Carefully</h4>
+                                <p>Once you receive your answer sheets, check them thoroughly against the marking scheme for any discrepancies.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="sidebar-tip">
+                            <div class="tip-icon">
+                                <i class="fas fa-gavel"></i>
+                            </div>
+                            <div class="tip-content">
+                                <h4>Re-evaluation</h4>
+                                <p>If you find discrepancies, apply for re-evaluation following the institution's procedures and timelines.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Templates Section -->
+    <section class="related-templates-section">
+        <div class="container">
+            <h2>Related RTI Templates</h2>
+            
+            <div class="templates-grid">
+                <a href="admission.html" class="template-card">
+                    <div class="template-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="template-info">
+                        <h3>Admission Transparency RTI</h3>
+                        <p>For requesting details about admission criteria and selection process</p>
+                    </div>
+                    <div class="template-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+                
+                <a href="fee-structure.html" class="template-card">
+                    <div class="template-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <div class="template-info">
+                        <h3>Fee Structure RTI</h3>
+                        <p>For requesting details about school/college fee structure and components</p>
+                    </div>
+                    <div class="template-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+                
+                <a href="scholarship.html" class="template-card">
+                    <div class="template-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="template-info">
+                        <h3>Scholarship Status RTI</h3>
+                        <p>For tracking scholarship application and disbursement status</p>
+                    </div>
+                    <div class="template-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Dedicated to promoting transparency in education through the Right to Information Act.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../timeline.html">Timeline</a></li>
+                        <li><a href="../news.html">News</a></li>
+                        <li><a href="../cases.html">Current Cases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: info@rtieducation.org</p>
+                    <p>Phone: +91 1234567890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RTI Education Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Highlight editable fields on focus
+            const editableFields = document.querySelectorAll('.template-editable');
+            
+            editableFields.forEach(field => {
+                // Check if field has default placeholder text
+                if (field.textContent === field.getAttribute('data-placeholder')) {
+                    field.style.color = '#999';
+                }
+                
+                field.addEventListener('focus', function() {
+                    if (this.textContent === this.getAttribute('data-placeholder')) {
+                        this.textContent = '';
+                        this.style.color = '#333';
+                    }
+                    this.style.backgroundColor = '#fffaf0';
+                });
+                
+                field.addEventListener('blur', function() {
+                    if (this.textContent.trim() === '') {
+                        this.textContent = this.getAttribute('data-placeholder');
+                        this.style.color = '#999';
+                    }
+                    this.style.backgroundColor = '#fff8dc';
+                });
+            });
+            
+            // Copy text button
+            const copyBtn = document.getElementById('copy-btn');
+            if (copyBtn) {
+                copyBtn.addEventListener('click', function() {
+                    const tempElement = document.createElement('div');
+                    tempElement.innerHTML = document.getElementById('rti-template').innerHTML;
+                    
+                    // Remove styling classes from the cloned content
+                    const editables = tempElement.querySelectorAll('.template-editable');
+                    editables.forEach(el => {
+                        el.removeAttribute('class');
+                        el.removeAttribute('contenteditable');
+                        el.removeAttribute('data-placeholder');
+                    });
+                    
+                    // Create a temporary textarea to copy from
+                    const textarea = document.createElement('textarea');
+                    textarea.value = tempElement.innerText;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    
+                    // Show feedback
+                    this.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fas fa-copy"></i> Copy Text';
+                    }, 2000);
+                });
+            }
+            
+            // Print button
+            const printBtn = document.getElementById('print-btn');
+            if (printBtn) {
+                printBtn.addEventListener('click', function() {
+                    window.print();
+                });
+            }
+            
+            // Download as PDF button (this would require a PDF library in a real implementation)
+            const downloadBtn = document.getElementById('download-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', function() {
+                    alert('In a real implementation, this would generate and download a PDF of your RTI application.');
+                    
+                    // Here you would use a library like jsPDF or html2pdf.js
+                    // Example code with html2pdf.js would be:
+                    // html2pdf().from(document.getElementById('rti-template')).save('rti-application.pdf');
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

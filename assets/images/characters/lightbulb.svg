@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+  <!-- Light rays -->
+  <path d="M256 64V32M384 128l22-22M128 128l-22-22M64 256H32M448 256h32" stroke="#ffd700" stroke-width="16" stroke-linecap="round"/>
+  
+  <!-- Lightbulb top glow -->
+  <circle cx="256" cy="256" r="112" fill="rgba(255, 215, 0, 0.3)"/>
+  
+  <!-- Lightbulb body -->
+  <path d="M328 256a72 72 0 1 0-144 0c0 20 8 38.4 21.6 52c13.6 13.6 21.6 32 21.6 52v16h79.6v-16c0-20 8-38.4 21.6-52 13.6-13.6 21.6-32 21.6-52z" fill="#ffd700" stroke="#333" stroke-width="8"/>
+  
+  <!-- Lightbulb base -->
+  <path d="M227.2 376h57.6c3.2 0 6.4 2.4 6.4 5.6v22.4c0 3.2-3.2 6.4-6.4 6.4h-57.6c-3.2 0-6.4-3.2-6.4-6.4v-22.4c0-3.2 3.2-5.6 6.4-5.6z" fill="#d9d9d9" stroke="#333" stroke-width="4"/>
+  
+  <!-- Filament -->
+  <path d="M246 246c0-4 4-10 10-10s10 6 10 10-4 10-10 10" stroke="#333" stroke-width="3" fill="none"/>
+  
+  <!-- RTI sparkle -->
+  <text x="256" y="256" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#333">RTI</text>
+  
+  <!-- Inner glow -->
+  <circle cx="256" cy="220" r="40" fill="rgba(255, 255, 255, 0.4)"/>
+</svg> 

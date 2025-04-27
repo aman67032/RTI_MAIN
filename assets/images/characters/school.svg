@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+  <!-- Building base -->
+  <rect x="96" y="192" width="320" height="224" fill="#f5f5f5" stroke="#333" stroke-width="8"/>
+  
+  <!-- Building roof -->
+  <path d="M256 64l-192 128h384z" fill="#ffd700" stroke="#333" stroke-width="8"/>
+  
+  <!-- School bell tower -->
+  <rect x="216" y="96" width="80" height="96" fill="#f5f5f5" stroke="#333" stroke-width="8"/>
+  <path d="M216 96l-32-32h144l-32 32" fill="#d9d9d9" stroke="#333" stroke-width="8"/>
+  
+  <!-- Bell -->
+  <path d="M256 128a16 16 0 0 0-16 16v16l-8 8h48l-8-8v-16a16 16 0 0 0-16-16z" fill="#ffd700" stroke="#333" stroke-width="4"/>
+  <circle cx="256" cy="152" r="4" fill="#333"/>
+  
+  <!-- Steps -->
+  <rect x="192" y="384" width="128" height="32" fill="#d9d9d9" stroke="#333" stroke-width="4"/>
+  
+  <!-- Front door -->
+  <rect x="224" y="320" width="64" height="96" rx="8" fill="#a52a2a" stroke="#333" stroke-width="4"/>
+  <circle cx="272" cy="368" r="4" fill="#ffd700"/>
+  
+  <!-- Windows -->
+  <rect x="128" y="256" width="48" height="48" fill="#87ceeb" stroke="#333" stroke-width="4"/>
+  <path d="M128 280h48M152 256v48" stroke="#333" stroke-width="2"/>
+  
+  <rect x="232" y="240" width="48" height="48" fill="#87ceeb" stroke="#333" stroke-width="4"/>
+  <path d="M232 264h48M256 240v48" stroke="#333" stroke-width="2"/>
+  
+  <rect x="336" y="256" width="48" height="48" fill="#87ceeb" stroke="#333" stroke-width="4"/>
+  <path d="M336 280h48M360 256v48" stroke="#333" stroke-width="2"/>
+  
+  <!-- Flag pole -->
+  <line x1="384" y1="128" x2="384" y2="192" stroke="#333" stroke-width="4"/>
+  <rect x="384" y="128" width="32" height="24" fill="#ffd700"/>
+  
+  <!-- RTI text -->
+  <rect x="192" y="192" width="128" height="24" fill="#ffd700"/>
+  <text x="256" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333">RTI SCHOOL</text>
+</svg> 

@@ -21,13 +21,13 @@
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: #FEF4E8;
+            color: #1B3A4B;
             line-height: 1.6;
         }
 
         header {
-            background: var(--secondary-color);
+            background: linear-gradient(135deg, #5E8B7E, #7FA99B);
             color: white;
             padding: 1rem 2rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -67,11 +67,12 @@
         }
 
         nav a:hover {
-            background-color: rgba(255,255,255,0.1);
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
         }
 
         .hero-section {
-            background: linear-gradient(135deg, #1a237e, #283593);
+            background: linear-gradient(135deg, #D27D2D, #5E8B7E);
             color: white;
             padding: 6rem 2rem;
             position: relative;
@@ -95,7 +96,7 @@
             position: absolute;
             width: 4px;
             height: 4px;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.6);
             border-radius: 50%;
             animation: float-particle 8s infinite;
         }
@@ -120,13 +121,18 @@
             max-width: 1000px;
             margin: 0 auto;
             text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .hero-title {
             font-size: clamp(2.5rem, 6vw, 4.5rem);
             margin-bottom: 1.5rem;
             color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         .hero-description {
@@ -146,12 +152,12 @@
         }
 
         .feature-card {
-            background: rgba(255,255,255,0.1);
+            background: rgba(210, 125, 45, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 2.5rem;
             text-align: center;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(244, 162, 97, 0.3);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
@@ -164,7 +170,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            background: linear-gradient(45deg, transparent, rgba(244, 162, 97, 0.1), transparent);
             transform: translateX(-100%);
             transition: 0.5s;
         }
@@ -175,56 +181,63 @@
 
         .feature-card:hover {
             transform: translateY(-10px);
-            background: rgba(255,255,255,0.15);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            background: rgba(210, 125, 45, 0.15);
+            box-shadow: 0 15px 30px rgba(210, 125, 45, 0.2);
         }
 
         .feature-icon {
             font-size: 3rem;
-            color: white;
+            color: #D27D2D;
             margin-bottom: 1.5rem;
-            text-shadow: 0 0 20px rgba(255,255,255,0.5);
+            text-shadow: 0 0 20px rgba(244, 162, 97, 0.3);
         }
 
         .feature-title {
             font-size: 1.4rem;
-            color: white;
+            color: #1B3A4B;
             margin-bottom: 1rem;
         }
 
         .feature-description {
-            color: rgba(255,255,255,0.8);
+            color: #3D5A6C;
             font-size: 1rem;
             line-height: 1.6;
             margin-bottom: 1.5rem;
         }
 
-        .cta-button {
+        .btn {
             display: inline-flex;
             align-items: center;
-            padding: 1rem 2rem;
-            background: white;
-            color: var(--portal-primary);
-            border-radius: 30px;
-            font-weight: 600;
+            gap: 0.5rem;
+            padding: 0.8rem 2rem;
+            background: #D27D2D;
+            color: white;
             text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
             transition: all 0.3s ease;
             border: 2px solid transparent;
         }
 
-        .cta-button:hover {
-            background: transparent;
-            color: white;
-            border-color: white;
+        .btn:hover {
+            background: #F4A261;
             transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(210, 125, 45, 0.2);
         }
 
-        .cta-button i {
-            margin-left: 0.5rem;
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #F4A261;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: #F4A261;
+            color: white;
         }
 
         .info-section {
-            background: #fff;
+            background: #FEF4E8;
             padding: 6rem 2rem;
             position: relative;
         }
@@ -241,9 +254,9 @@
             background: white;
             border-radius: 20px;
             padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(210, 125, 45, 0.1);
             transition: all 0.4s ease;
-            border: 1px solid rgba(26,35,126,0.1);
+            border: 1px solid rgba(244, 162, 97, 0.2);
             position: relative;
             overflow: hidden;
         }
@@ -255,7 +268,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: var(--portal-gradient);
+            background: linear-gradient(to right, #D27D2D, #F4A261);
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.4s ease;
@@ -265,20 +278,15 @@
             transform: scaleX(1);
         }
 
-        .info-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(26,35,126,0.15);
-        }
-
         .info-icon {
             font-size: 2.5rem;
-            color: var(--portal-primary);
+            color: #D27D2D;
             margin-bottom: 1.5rem;
         }
 
         .info-title {
             font-size: 1.8rem;
-            color: #333;
+            color: #1B3A4B;
             margin-bottom: 1.5rem;
             font-weight: 600;
         }
@@ -293,22 +301,22 @@
             display: flex;
             align-items: center;
             margin-bottom: 1rem;
-            color: #666;
+            color: #3D5A6C;
             transition: all 0.3s ease;
         }
 
         .info-item:hover {
-            color: var(--portal-primary);
+            color: #D27D2D;
             transform: translateX(10px);
         }
 
         .info-item i {
-            color: var(--portal-primary);
+            color: #D27D2D;
             margin-right: 1rem;
         }
 
         .faq-section {
-            background: #f8f9fa;
+            background: #FFF8F4;
             padding: 6rem 2rem;
         }
 
@@ -320,7 +328,7 @@
         .faq-title {
             text-align: center;
             font-size: 2.5rem;
-            color: #333;
+            color: #1B3A4B;
             margin-bottom: 3rem;
         }
 
@@ -329,24 +337,24 @@
             border-radius: 10px;
             padding: 1.5rem;
             margin-bottom: 1rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(210, 125, 45, 0.1);
             transition: all 0.3s ease;
         }
 
         .faq-item:hover {
             transform: translateX(10px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            box-shadow: 0 5px 15px rgba(210, 125, 45, 0.15);
         }
 
         .faq-question {
             font-size: 1.2rem;
-            color: #333;
+            color: #1B3A4B;
             margin-bottom: 1rem;
             font-weight: 600;
         }
 
         .faq-answer {
-            color: #666;
+            color: #3D5A6C;
             line-height: 1.6;
         }
 
@@ -366,6 +374,15 @@
                 padding: 2rem;
             }
         }
+
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(210, 125, 45, 0.15);
+        }
     </style>
 </head>
 <body class="general-theme">
@@ -384,21 +401,21 @@
                     <i class="fas fa-file-alt feature-icon"></i>
                     <h3 class="feature-title">File RTI</h3>
                     <p class="feature-description">Submit RTI applications online with guided assistance</p>
-                    <a href="file-rti.html" class="cta-button">Start Now <i class="fas fa-arrow-right"></i></a>
+                    <a href="file-rti.html" class="btn">Start Now <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
                 <div class="feature-card">
                     <i class="fas fa-search feature-icon"></i>
                     <h3 class="feature-title">Track Status</h3>
                     <p class="feature-description">Monitor your RTI application progress</p>
-                    <a href="track.html" class="cta-button">Track RTI <i class="fas fa-arrow-right"></i></a>
+                    <a href="track.html" class="btn">Track RTI <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
                 <div class="feature-card">
                     <i class="fas fa-book feature-icon"></i>
                     <h3 class="feature-title">RTI Guide</h3>
                     <p class="feature-description">Learn about RTI process and best practices</p>
-                    <a href="guide.html" class="cta-button">Read Guide <i class="fas fa-arrow-right"></i></a>
+                    <a href="guide.html" class="btn">Read Guide <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>

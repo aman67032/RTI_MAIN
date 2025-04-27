@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffd700">
+    <title>Interactive RTI Guide | RTI Education Portal</title>
+    <link rel="icon" href="assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/images/favicon.png?v=2">
+    <link rel="manifest" href="manifest.json?v=2">
+
+    <link rel="stylesheet" href="Waves.css">
+    <link rel="stylesheet" href="loading-screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="decrypted-text.css">
+    <link rel="stylesheet" href="GlitchText.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="rti-tools.css">
+    <script src="FuzzyText.js"></script>
+    <script src="loading-screen.js"></script>
+    <script src="favicon-refresh.js"></script>
+    
+    <style>
+        .guide-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .step-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            background: #f5f5f5;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        
+        .step-btn {
+            background: transparent;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: 500;
+            color: #555;
+            white-space: nowrap;
+            transition: all 0.3s;
+        }
+        
+        .step-btn.active {
+            background: #4285f4;
+            color: white;
+        }
+        
+        .step-btn:hover:not(.active) {
+            background: #e0e0e0;
+        }
+        
+        .step-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .step-number {
+            background: #4285f4;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+        
+        .step-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin: 0;
+        }
+        
+        .step-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .step-details {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .step-details h3 {
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .step-details ul, .step-details ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .step-details li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        
+        .nav-btn {
+            background: #4285f4;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .nav-btn:hover {
+            background: #3367d6;
+        }
+        
+        .nav-btn.disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .completion-badge {
+            display: inline-block;
+            background: #4caf50;
+            color: white;
+            padding: 0.3rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-left: 1rem;
+        }
+        
+        .resources-section {
+            margin-top: 3rem;
+        }
+        
+        .resources-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .resource-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .resource-image {
+            height: 140px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+        
+        .resource-image i {
+            font-size: 3rem;
+        }
+        
+        .resource-content {
+            padding: 1.5rem;
+        }
+        
+        .resource-title {
+            font-size: 1.2rem;
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        
+        .resource-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .resource-link {
+            color: #4285f4;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        
+        .resource-link i {
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar/Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>RTI Education</span>
+                <div class="logo-accent"></div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">
+                    <span class="nav-icon"><i class="fas fa-home"></i></span>
+                    Home
+                </a>
+                <a href="timeline.html">
+                    <span class="nav-icon"><i class="fas fa-history"></i></span>
+                    Timeline
+                </a>
+                <a href="news.html">
+                    <span class="nav-icon"><i class="fas fa-newspaper"></i></span>
+                    News
+                </a>
+                <a href="cases.html">
+                    <span class="nav-icon"><i class="fas fa-gavel"></i></span>
+                    Current Cases
+                </a>
+            </div>
+            <div class="auth-links">
+                <a href="login.html" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </a>
+                <a href="signup.html" class="signup-btn">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up
+                </a>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <div class="nav-decoration">
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+        </div>
+    </nav>
+
+    <!-- Guide Content -->
+    <div class="container">
+        <div class="page-header">
+            <h1>Interactive RTI Filing Guide</h1>
+            <p>A step-by-step guide to help you file effective RTI applications for educational matters</p>
+        </div>
+        
+        <div class="guide-container">
+            <div class="step-navigation">
+                <button class="step-btn active" onclick="showStep(1)">1. Identify Information</button>
+                <button class="step-btn" onclick="showStep(2)">2. Find the Right Authority</button>
+                <button class="step-btn" onclick="showStep(3)">3. Draft Application</button>
+                <button class="step-btn" onclick="showStep(4)">4. Submit Application</button>
+                <button class="step-btn" onclick="showStep(5)">5. Track & Follow Up</button>
+                <button class="step-btn" onclick="showStep(6)">6. Appeal Process</button>
+            </div>
+            
+            <div id="step1" class="step-content">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <h2 class="step-title">Identify the Information You Need</h2>
+                </div>
+                
+                <p class="step-description">The first step in filing an effective RTI application is to clearly identify what information you need. Being specific helps you get relevant answers faster.</p>
+                
+                <div class="step-details">
+                    <h3>Key Actions:</h3>
+                    <ul>
+                        <li>Define your objective: What problem are you trying to solve?</li>
+                        <li>Be specific about the documents or information you need</li>
+                        <li>Determine the time period for which you need information</li>
+                        <li>Break down complex queries into simple, direct questions</li>
+                    </ul>
+                    
+                    <h3>Examples of Specific Information Requests:</h3>
+                    <ul>
+                        <li>Instead of "Give me information about admissions," ask for "Complete admission criteria and weightage for Class XI Science stream for the academic year 2024-25"</li>
+                        <li>Instead of "Tell me about school fees," ask for "Detailed breakdown of fee structure for Class VIII, including all components, for the academic year 2024-25"</li>
+                    </ul>
+                </div>
+                
+                <div class="navigation-buttons">
+                    <button class="nav-btn disabled" disabled>Previous</button>
+                    <button class="nav-btn" onclick="showStep(2)">Next</button>
+                </div>
+            </div>
+            
+            <div id="step2" class="step-content" style="display: none;">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <h2 class="step-title">Find the Right Public Authority</h2>
+                </div>
+                
+                <p class="step-description">Identify the correct public authority that holds the information you're seeking. This ensures your application reaches the right department without delays.</p>
+                
+                <div class="step-details">
+                    <h3>Key Actions:</h3>
+                    <ul>
+                        <li>Research which educational institution or department would have the information</li>
+                        <li>Identify the Public Information Officer (PIO) of that institution</li>
+                        <li>Check the official website of the institution for RTI details</li>
+                        <li>For schools, determine if they fall under RTI Act (government/aided schools do; many private schools don't unless they receive government aid)</li>
+                    </ul>
+                    
+                    <h3>Common Educational Authorities:</h3>
+                    <ul>
+                        <li><strong>School-level information:</strong> The school's PIO or District Education Officer</li>
+                        <li><strong>Board exams/results:</strong> CBSE, ICSE, State Education Boards</li>
+                        <li><strong>Higher education:</strong> University Registrar, UGC, AICTE</li>
+                        <li><strong>Scholarships/funds:</strong> Ministry of Education, Department of School Education & Literacy</li>
+                    </ul>
+                </div>
+                
+                <div class="navigation-buttons">
+                    <button class="nav-btn" onclick="showStep(1)">Previous</button>
+                    <button class="nav-btn" onclick="showStep(3)">Next</button>
+                </div>
+            </div>
+            
+            <div id="step3" class="step-content" style="display: none;">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <h2 class="step-title">Draft Your RTI Application</h2>
+                </div>
+                
+                <p class="step-description">A well-drafted RTI application is clear, concise, and follows the prescribed format. This helps in quick processing and comprehensive responses.</p>
+                
+                <div class="step-details">
+                    <h3>Key Components:</h3>
+                    <ol>
+                        <li><strong>Addressee:</strong> The PIO of the relevant institution</li>
+                        <li><strong>Applicant details:</strong> Your name, address, contact information</li>
+                        <li><strong>Subject line:</strong> Clearly stating it's an RTI application</li>
+                        <li><strong>Information requested:</strong> Clear, numbered points of information you seek</li>
+                        <li><strong>Time period:</strong> Specify the academic year or date range</li>
+                        <li><strong>Application fee statement:</strong> Mention you're enclosing the required fee</li>
+                        <li><strong>Declaration:</strong> You're an Indian citizen (required for RTI Act)</li>
+                        <li><strong>Date and signature</strong></li>
+                    </ol>
+                    
+                    <h3>Tips for Effective Drafting:</h3>
+                    <ul>
+                        <li>Use simple, straightforward language</li>
+                        <li>Ask specific questions rather than making general requests</li>
+                        <li>Number your questions for easy reference</li>
+                        <li>Stick to 10 or fewer questions per application for best results</li>
+                        <li>Avoid asking for opinions; ask for documents and facts</li>
+                    </ul>
+                    
+                    <h3>Sample Templates:</h3>
+                    <ul>
+                        <li><a href="templates/admission.html">Admission Process RTI Template</a></li>
+                        <li><a href="templates/fee-structure.html">Fee Structure RTI Template</a></li>
+                        <li><a href="templates/fund-tracking.html">Fund Tracking RTI Template</a></li>
+                    </ul>
+                </div>
+                
+                <div class="navigation-buttons">
+                    <button class="nav-btn" onclick="showStep(2)">Previous</button>
+                    <button class="nav-btn" onclick="showStep(4)">Next</button>
+                </div>
+            </div>
+            
+            <div id="step4" class="step-content" style="display: none;">
+                <div class="step-header">
+                    <div class="step-number">4</div>
+                    <h2 class="step-title">Submit Your Application</h2>
+                </div>
+                
+                <p class="step-description">Properly submitting your RTI application with the correct fee and through the right channel ensures it gets processed without delays.</p>
+                
+                <div class="step-details">
+                    <h3>Submission Methods:</h3>
+                    <ol>
+                        <li><strong>In-person:</strong> Visit the office of the public authority and submit directly</li>
+                        <li><strong>By post:</strong> Send by registered post/speed post for proof of delivery</li>
+                        <li><strong>Online:</strong> Use the RTI Online Portal (https://rtionline.gov.in/) for central government authorities</li>
+                        <li><strong>State RTI portals:</strong> Many states have their own online RTI submission systems</li>
+                    </ol>
+                    
+                    <h3>Application Fee:</h3>
+                    <ul>
+                        <li><strong>Central Government:</strong> ₹10</li>
+                        <li><strong>State Governments:</strong> Varies by state (typically ₹10-50)</li>
+                        <li><strong>Payment methods:</strong> 
+                            <ul>
+                                <li>Cash (when submitting in person)</li>
+                                <li>Postal order/Demand Draft</li>
+                                <li>Court fee stamp</li>
+                                <li>Online payment (for online submissions)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Fee exemption:</strong> BPL (Below Poverty Line) category citizens are exempt from paying the application fee</li>
+                    </ul>
+                    
+                    <h3>What to Include:</h3>
+                    <ul>
+                        <li>The RTI application (original plus one copy for your records)</li>
+                        <li>Application fee</li>
+                        <li>Self-addressed envelope (if applying by post)</li>
+                        <li>Cover letter requesting acknowledgment</li>
+                    </ul>
+                </div>
+                
+                <div class="navigation-buttons">
+                    <button class="nav-btn" onclick="showStep(3)">Previous</button>
+                    <button class="nav-btn" onclick="showStep(5)">Next</button>
+                </div>
+            </div>
+            
+            <div id="step5" class="step-content" style="display: none;">
+                <div class="step-header">
+                    <div class="step-number">5</div>
+                    <h2 class="step-title">Track and Follow Up</h2>
+                </div>
+                
+                <p class="step-description">After submitting your RTI application, it's important to track its progress and follow up appropriately to ensure you receive a timely response.</p>
+                
+                <div class="step-details">
+                    <h3>Timeline to Remember:</h3>
+                    <ul>
+                        <li><strong>30 days:</strong> Maximum time for the PIO to respond to your application</li>
+                        <li><strong>48 hours:</strong> When information concerns life or liberty of a person</li>
+                        <li><strong>35 days:</strong> When application is transferred to another public authority</li>
+                        <li><strong>40 days:</strong> When third party information is involved</li>
+                    </ul>
+                    
+                    <h3>Tracking Methods:</h3>
+                    <ul>
+                        <li>Keep your application reference number or acknowledgment receipt safe</li>
+                        <li>For postal applications, use tracking services to confirm delivery</li>
+                        <li>For online applications, use the portal's tracking feature</li>
+                        <li>Call the PIO office after 15-20 days to inquire about status</li>
+                    </ul>
+                    
+                    <h3>Follow-up Actions:</h3>
+                    <ul>
+                        <li>If no response after 30 days, prepare for first appeal</li>
+                        <li>If information is incomplete, write to the PIO asking for complete information</li>
+                        <li>If additional fee is requested, pay promptly to avoid delays</li>
+                        <li>Keep records of all communications</li>
+                    </ul>
+                </div>
+                
+                <div class="navigation-buttons">
+                    <button class="nav-btn" onclick="showStep(4)">Previous</button>
+                    <button class="nav-btn" onclick="showStep(6)">Next</button>
+                </div>
+            </div>
+            
+            <div id="step6" class="step-content" style="display: none;">
+                <div class="step-header">
+                    <div class="step-number">6</div>
+                    <h2 class="step-title">Appeal Process</h2>
+                </div>
+                
+                <p class="step-description">If your RTI application is denied, provides incomplete information, or if you receive no response within 30 days, you have the right to appeal.</p>
+                
+                <div class="step-details">
+                    <h3>Two-Level Appeal System:</h3>
+                    <ol>
+                        <li><strong>First Appeal:</strong> 
+                            <ul>
+                                <li>Filed with the First Appellate Authority (senior officer to the PIO)</li>
+                                <li>Must be filed within 30 days of receiving response or the 30-day deadline</li>
+                                <li>No fee required for first appeal</li>
+                                <li>Decision should come within 30-45 days</li>
+                            </ul>
+                        </li>
+                        <li><strong>Second Appeal:</strong> 
+                            <ul>
+                                <li>Filed with the Central/State Information Commission</li>
+                                <li>Must be filed within 90 days of first appeal decision or deadline</li>
+                                <li>More formal process, may involve hearings</li>
+                                <li>Commission has powers to impose penalties on PIOs</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    
+                    <h3>Drafting an Appeal:</h3>
+                    <ul>
+                        <li>Include original RTI application details and reference numbers</li>
+                        <li>Clearly state grounds for appeal (no response, incomplete information, etc.)</li>
+                        <li>Attach copies of all previous correspondence</li>
+                        <li>Specify the relief sought (what information you still need)</li>
+                    </ul>
+                    
+                    <h3>Tips for Successful Appeals:</h3>
+                    <ul>
+                        <li>Be factual and avoid emotional arguments</li>
+                        <li>Focus on how the PIO failed to fulfill RTI Act obligations</li>
+                        <li>Highlight any relevant court judgments or previous Information Commission orders</li>
+                        <li>For education-related matters, emphasize the public interest in transparency</li>
+                    </ul>
+                </div>
+                
+                <div class="navigation-buttons">
+                    <button class="nav-btn" onclick="showStep(5)">Previous</button>
+                    <button class="nav-btn disabled" disabled>Next</button>
+                </div>
+            </div>
+            
+            <div class="resources-section">
+                <h2 class="resources-title">Additional Resources</h2>
+                
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <div class="resource-image">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="resource-content">
+                            <h3 class="resource-title">RTI Act Full Text</h3>
+                            <p class="resource-description">Complete text of the Right to Information Act, 2005 with all sections and rules.</p>
+                            <a href="#" class="resource-link">Download PDF <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-image">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="resource-content">
+                            <h3 class="resource-title">Video Tutorials</h3>
+                            <p class="resource-description">Step-by-step video guides on filing RTI applications for educational matters.</p>
+                            <a href="#" class="resource-link">Watch Videos <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-image">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <div class="resource-content">
+                            <h3 class="resource-title">FAQ Guide</h3>
+                            <p class="resource-description">Answers to frequently asked questions about using RTI in education sector.</p>
+                            <a href="#" class="resource-link">Read FAQs <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-image">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <div class="resource-content">
+                            <h3 class="resource-title">Important Judgments</h3>
+                            <p class="resource-description">Key court rulings related to RTI in educational institutions.</p>
+                            <a href="#" class="resource-link">View Cases <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>RTI Education</span>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <a href="#">RTI Act Guidelines</a>
+                    <a href="#">Templates</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Success Stories</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Portals</h3>
+                    <a href="student/index.html">Student Section</a>
+                    <a href="parent/index.html">Parent Section</a>
+                    <a href="teacher/index.html">Teacher Section</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Community</h3>
+                    <a href="#">Forums</a>
+                    <a href="#">Events</a>
+                    <a href="#">Newsletter</a>
+                </div>
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <a href="#">About Us</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 RTI Education Portal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function showStep(stepNumber) {
+            // Hide all steps
+            document.querySelectorAll('.step-content').forEach(step => {
+                step.style.display = 'none';
+            });
+            
+            // Show the selected step
+            document.getElementById('step' + stepNumber).style.display = 'block';
+            
+            // Update active button
+            document.querySelectorAll('.step-btn').forEach((btn, index) => {
+                if (index + 1 === stepNumber) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            // Scroll to top of the step
+            window.scrollTo({
+                top: document.querySelector('.step-navigation').offsetTop - 100,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html> 
