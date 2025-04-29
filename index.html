@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ffd700">
-    <title>RTI Education Portal</title>
+    <title>RTI4Edu</title>
     <link rel="icon" href="assets/images/favicon.ico?v=2" sizes="any">
     <link rel="icon" href="assets/images/favicon.svg?v=2" type="image/svg+xml">
     <link rel="apple-touch-icon" href="assets/images/favicon.png?v=2">
@@ -19,9 +19,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.css">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="rti-tools.css">
+    <link rel="stylesheet" hre>
     <script src="FuzzyText.js"></script>
     <script src="loading-screen.js"></script>
     <script src="favicon-refresh.js"></script>
+
 
     
 </head>
@@ -30,8 +32,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <i class="fas fa-graduation-cap"></i>
-                <span>RTI Education</span>
+                <img src="assets/images/LOGO.png" alt="RTI4Edu Logo" height="110">
                 <div class="logo-accent"></div>
             </div>
             <div class="nav-links">
@@ -115,7 +116,9 @@
                         </a>
                     </div>
                     <div class="character-visual parent-character">
-                        <img src="assets/images/characters/Parents.png" alt="Parent Character">
+                        <a href="parent/index.html">
+                            <img src="assets/images/characters/Parents.png" alt="Parent Character">
+                        </a>
                     </div>
                 </div>
                 
@@ -140,7 +143,9 @@
                         </a>
                     </div>
                     <div class="character-visual student-character">
-                        <img src="assets/images/characters/Student.png" alt="Student Character">
+                        <a href="student/index.html">
+                            <img src="assets/images/characters/Student.png" alt="Student Character">
+                        </a>
                     </div>
                 </div>
                 
@@ -165,12 +170,16 @@
                         </a>
                     </div>
                     <div class="character-visual teacher-character">
-                        <img src="assets/images/characters/Teacher.png" alt="Teacher Character">
+                        <a href="teacher/index.html">
+                            <img src="assets/images/characters/Teacher.png" alt="Teacher Character">
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="portal-scene">
-                <img src="assets/images/characters/Blessing.png" alt="Teachers and Parents blessing Student" class="blessing-scene">
+                <a href="index.html">
+                    <img src="assets/images/characters/Blessing.png" alt="Teachers and Parents blessing Student" class="blessing-scene">
+                </a>
                 <div class="blessing-tagline">Together, we guide tomorrow's changemakers through knowledge and transparency</div>
             </div>
         </div>
@@ -1172,7 +1181,7 @@
     <!-- Help Section -->
     <section id="help" class="help-section">
         <div class="container">
-            <h2 class="section-title">Help</h2>
+            <h2 class="section-title">Help & Support Center</h2>
             <div class="help-visual">
                 <img src="assets/images/3d/support.svg" alt="Support Visual" class="help-3d-element">
                 <div class="help-badge">24/7 Support</div>
@@ -1184,7 +1193,7 @@
                     </div>
                     <h3>RTI Guide</h3>
                     <p>Comprehensive guide to understanding RTI</p>
-                    <a href="#" class="help-link">Read More</a>
+                    <a href="rti-basics.html" class="help-link">Read More <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="help-card">
                     <div class="help-icon">
@@ -1192,7 +1201,7 @@
                     </div>
                     <h3>File RTI</h3>
                     <p>Step-by-step process to file an RTI</p>
-                    <a href="#" class="help-link">Start Now</a>
+                    <a href="filing-guide.html" class="help-link">Start Now <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="help-card">
                     <div class="help-icon">
@@ -1200,7 +1209,7 @@
                     </div>
                     <h3>Track Status</h3>
                     <p>Check the status of your RTI application</p>
-                    <a href="#" class="help-link">Track Now</a>
+                    <a href="shared/track.html" class="help-link">Track Now <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="help-card">
                     <div class="help-icon">
@@ -1208,7 +1217,117 @@
                     </div>
                     <h3>Contact Support</h3>
                     <p>Get assistance with your RTI journey</p>
-                    <a href="#" class="help-link">Contact Us</a>
+                    <a href="contact.html" class="help-link">Contact Us <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- FAQ Accordion -->
+            <div class="help-faq-section">
+                <h3 class="faq-title">Frequently Asked Questions</h3>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>What is the Right to Information (RTI) Act?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p>The Right to Information Act is a law enacted by the Parliament of India that provides citizens the right to request access to information from public authorities. It aims to promote transparency and accountability in the working of every public authority.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>How can I file an RTI application?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p>You can file an RTI application by writing a simple letter or filling out a form and submitting it to the Public Information Officer (PIO) of the relevant department along with the prescribed fee. Alternatively, you can file online through the RTI Online Portal. Our platform provides detailed guides and templates for each method.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>What information can I request through RTI?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p>You can request any information held by public authorities such as government departments, schools, colleges, and universities funded by the government. This includes documents, records, opinions, advices, circulars, orders, and more. However, certain information related to national security, personal privacy, and other exemptions specified in Section 8 of the RTI Act may not be disclosed.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>How much does it cost to file an RTI application?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p>The application fee is ₹10 for central government departments. State governments may have different fee structures. Additionally, you may be charged for photocopying documents (usually ₹2 per page). Persons below poverty line (BPL) are exempt from paying any fee. Payment methods include cash, demand draft, court fee stamps, or online payment depending on the filing method.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>How can I track the status of my RTI application?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p>For applications filed online, you can track status through the RTI Online Portal using your registration number. For applications filed offline, you can contact the concerned PIO directly or send a follow-up email/letter. Our "Track Status" tool can help you with the process and provide templates for follow-up communications.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Options -->
+            <div class="contact-options-section">
+                <h3 class="contact-title">Contact Options</h3>
+                <div class="contact-options">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Helpline</h4>
+                            <p>Call our dedicated RTI helpline for assistance</p>
+                            <a href="tel:1800-11-5555" class="contact-link">1800-11-5555</a>
+                            <p class="contact-hours">Available Mon-Fri, 10:00 AM - 5:00 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email Support</h4>
+                            <p>Send your queries to our support team</p>
+                            <a href="mailto:info@rti4edu.org" class="contact-link">info@rti4edu.org</a>
+                            <p class="contact-hours">Response within 24-48 hours</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Live Chat</h4>
+                            <p>Chat with our RTI experts in real-time</p>
+                            <button class="start-chat-btn">Start Chat</button>
+                            <p class="contact-hours">Available 24/7</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Video Consultation</h4>
+                            <p>Schedule a video call with our RTI specialists</p>
+                            <a href="schedule-call.html" class="contact-link">Book Appointment</a>
+                            <p class="contact-hours">Available by appointment</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1255,12 +1374,12 @@
                 </div>
                 <div class="footer-section">
                     <h3>Contact</h3>
-                    <p>Email: info@rtieducation.org</p>
+                    <p>Email: info@rti4edu.org</p>
                     <p>Phone: +91 1234567890</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 RTI Education Portal. All rights reserved.</p>
+                <p>&copy; 2025 RTI4Edu. All rights reserved.</p>
             </div>
         </div>
     </footer>

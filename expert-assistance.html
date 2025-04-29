@@ -13,51 +13,51 @@
     <link rel="stylesheet" href="rti-journey.css">
 </head>
 <body>
-    <header class="main-header">
-        <div class="container">
-            <div class="logo-container">
-                <a href="index.html" class="logo">
-                    <img src="assets/images/logo.svg" alt="RTI Education Logo">
-                    <span class="logo-text">RTI <span class="logo-edu">Education</span></span>
+       <!-- Navbar/Header -->
+       <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="assets/images/LOGO.png" alt="RTI4Edu Logo" height="110">
+                <div class="logo-accent"></div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="active">
+                    <span class="nav-icon"><i class="fas fa-home"></i></span>
+                    Home
+                </a>
+                <a href="timeline.html">
+                    <span class="nav-icon"><i class="fas fa-history"></i></span>
+                    Timeline
+                </a>
+                <a href="news.html">
+                    <span class="nav-icon"><i class="fas fa-newspaper"></i></span>
+                    News
+                </a>
+                <a href="cases.html">
+                    <span class="nav-icon"><i class="fas fa-gavel"></i></span>
+                    Case Studies
                 </a>
             </div>
-            <nav class="main-nav">
-                <button class="mobile-menu" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="rti-basics.html">About RTI</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle">Resources <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="templates/admission.html">Templates</a></li>
-                            <li><a href="interactive-guide.html">Interactive Guide</a></li>
-                            <li><a href="rti-myths.html">RTI Myths vs Facts</a></li>
-                            <li><a href="cases.html">Landmark Cases</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="news.html">News & Updates</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle">Portals <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="student/index.html">Student</a></li>
-                            <li><a href="parent/index.html">Parent</a></li>
-                            <li><a href="teacher/index.html">Teacher</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="auth-links">
-                    <a href="login.html" class="login-btn">Login</a>
-                    <a href="signup.html" class="signup-btn">Sign Up</a>
-                </div>
-            </nav>
+            <div class="auth-links">
+                <a href="login.html" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </a>
+                <a href="signup.html" class="signup-btn">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up
+                </a>
+            </div>
+            <div class="mobile-menu">
+            <i class="fas fa-bars"></i>
+            </div>
         </div>
-    </header>
-
+        <div class="nav-decoration">
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+        </div>
+    </nav>
     <section class="page-hero">
         <div class="container">
             <h1 class="hero-title">Expert RTI Assistance</h1>

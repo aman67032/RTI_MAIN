@@ -20,7 +20,7 @@ class LoadingScreen {
       primaryColor: "rgba(210, 125, 45, 0.9)",
       secondaryColor: "rgba(94, 139, 126, 0.9)"
     } : {
-      primaryColor: "rgba(50, 205, 50, 0.9)",
+      primaryColor: "rgba(250, 113, 21, 0.9)",
       secondaryColor: "rgba(15, 224, 255, 0.9)"
     };
     

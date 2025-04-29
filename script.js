@@ -2180,4 +2180,150 @@ function initializeWebinarTabs() {
 document.addEventListener('DOMContentLoaded', () => {
     // ... existing code ...
     initializeWebinarTabs();
+});
+
+// Help Section Accordion Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Accordion functionality
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    
+    if (accordionItems.length > 0) {
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            const content = item.querySelector('.accordion-content');
+            
+            if (header && content) {
+                header.addEventListener('click', () => {
+                    // Toggle current item
+                    item.classList.toggle('active');
+                    
+                    // Update icon
+                    const icon = header.querySelector('i');
+                    if (item.classList.contains('active')) {
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    } else {
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                        content.style.maxHeight = null;
+                    }
+                });
+            }
+        });
+    }
+
+    // Live Chat Button Functionality
+    const chatButton = document.querySelector('.start-chat-btn');
+    if (chatButton) {
+        chatButton.addEventListener('click', function() {
+            // Create chat widget
+            const chatWidget = document.createElement('div');
+            chatWidget.className = 'chat-widget';
+            chatWidget.innerHTML = `
+                <div class="chat-header">
+                    <h4>RTI4Edu Support</h4>
+                    <button class="close-chat"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="chat-messages">
+                    <div class="message support">
+                        <div class="message-content">
+                            <p>Hello! How can I help you with RTI today?</p>
+                            <span class="message-time">${getCurrentTime()}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" placeholder="Type your message..." id="chat-message-input">
+                    <button class="send-message"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            `;
+            
+            document.body.appendChild(chatWidget);
+            
+            // Focus on input
+            setTimeout(() => {
+                document.getElementById('chat-message-input').focus();
+            }, 100);
+            
+            // Close chat functionality
+            const closeButton = chatWidget.querySelector('.close-chat');
+            closeButton.addEventListener('click', function() {
+                chatWidget.classList.add('closing');
+                setTimeout(() => {
+                    chatWidget.remove();
+                }, 300);
+            });
+            
+            // Send message functionality
+            const sendButton = chatWidget.querySelector('.send-message');
+            const messageInput = chatWidget.querySelector('#chat-message-input');
+            const messagesContainer = chatWidget.querySelector('.chat-messages');
+            
+            const sendMessage = () => {
+                const message = messageInput.value.trim();
+                if (message) {
+                    // Add user message
+                    messagesContainer.innerHTML += `
+                        <div class="message user">
+                            <div class="message-content">
+                                <p>${message}</p>
+                                <span class="message-time">${getCurrentTime()}</span>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Clear input
+                    messageInput.value = '';
+                    
+                    // Scroll to bottom
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                    
+                    // Simulate response after delay
+                    setTimeout(() => {
+                        const responses = [
+                            "Thank you for your question. Let me check that for you.",
+                            "I understand your concern. Here's what you need to know about RTI applications.",
+                            "That's a great question about the RTI process. Let me help you with that.",
+                            "I'd be happy to assist you with that RTI query.",
+                            "Let me guide you through the process of filing an RTI application."
+                        ];
+                        
+                        const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                        
+                        messagesContainer.innerHTML += `
+                            <div class="message support">
+                                <div class="message-content">
+                                    <p>${randomResponse}</p>
+                                    <span class="message-time">${getCurrentTime()}</span>
+                                </div>
+                            </div>
+                        `;
+                        
+                        // Scroll to bottom
+                        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                    }, 1000);
+                }
+            };
+            
+            sendButton.addEventListener('click', sendMessage);
+            
+            messageInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+        });
+    }
+    
+    // Helper function to get current time
+    function getCurrentTime() {
+        const now = new Date();
+        let hours = now.getHours();
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // Convert 0 to 12
+        return `${hours}:${minutes} ${ampm}`;
+    }
 }); 

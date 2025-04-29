@@ -26,15 +26,14 @@
         <div class="container">
             <div class="search-container">
                 <h2>Track Your Application</h2>
-                <div class="track-form">
+                <form class="track-form">
                     <div class="form-group">
-                        <label for="registration-number">Registration Number</label>
-                        <input type="text" id="registration-number" placeholder="Enter RTI Registration Number">
+                        <input type="text" id="registration-number" placeholder="Enter RTI Registration Number" required>
                     </div>
                     <div class="form-actions">
-                        <button class="btn-primary"><i class="fas fa-search"></i> Track Status</button>
+                        <button type="submit" class="btn-primary"><i class="fas fa-search"></i> Track</button>
                     </div>
-                </div>
+                </form>
             </div>
             
             <div class="content-card">
@@ -142,12 +141,172 @@
         </div>
     </section>
 
+    <!-- Help & Support Section -->
+    <section class="help-section">
+        <div class="container">
+            <h2><i class="fas fa-question-circle"></i> Help & Support</h2>
+            <p class="section-subtitle">Get answers to common questions and find resources to help with tracking your RTI applications</p>
+            
+            <div class="help-content">
+                <!-- FAQ Accordion -->
+                <div class="help-faqs">
+                    <h3>Frequently Asked Questions</h3>
+                    
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>What information do I need to track my RTI application?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <p>To track your RTI application, you'll need your registration number which is provided in your acknowledgment receipt. In some cases, you may also need the password or PIN that was created during the filing process.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>How long does it take to get a response to my RTI application?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <p>According to the RTI Act, the Public Information Officer (PIO) is required to provide information within 30 days of receiving the application. In case the information concerns the life or liberty of a person, it should be provided within 48 hours.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>What should I do if I don't receive any response to my RTI application?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <p>If you don't receive a response within the stipulated time period (30 days), you can file a first appeal with the First Appellate Authority (FAA) of the concerned department. The FAA is required to respond to your appeal within 30 days.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Can I track multiple RTI applications with the same account?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <p>Yes, if you've filed multiple RTI applications through the RTI Online Portal using the same account, you can track all of them by logging into your account. Each application will have its own unique registration number for individual tracking.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>What happens if my RTI application is transferred to another department?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <p>If your application is transferred to another department under Section 6(3) of the RTI Act, the 30-day timeline will start from the date the application is received by the appropriate authority. You should receive a notification about the transfer, and you can continue tracking using the same registration number.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Support Contact -->
+                <div class="help-contact">
+                    <h3>Need Further Assistance?</h3>
+                    
+                    <div class="contact-options">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Helpline</h4>
+                                <p>Call our dedicated RTI helpline for tracking assistance</p>
+                                <a href="tel:1800-11-5555" class="contact-link">1800-11-5555</a>
+                                <p class="contact-hours">Available Mon-Fri, 10:00 AM - 5:00 PM</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope-open-text"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email Support</h4>
+                                <p>Send your tracking queries to our support team</p>
+                                <a href="mailto:help@rti4edu.org" class="contact-link">help@rti4edu.org</a>
+                                <p class="contact-hours">Response within 24-48 hours</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Helpful Resources -->
+            <div class="helpful-resources">
+                <h3>Additional Resources</h3>
+                
+                <div class="resources-grid">
+                    <a href="#" class="resource-link">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>RTI Act Guidelines PDF</span>
+                    </a>
+                    <a href="#" class="resource-link">
+                        <i class="fas fa-video"></i>
+                        <span>Video Tutorial: Tracking Your Application</span>
+                    </a>
+                    <a href="#" class="resource-link">
+                        <i class="fas fa-book"></i>
+                        <span>Common RTI Terminology Glossary</span>
+                    </a>
+                    <a href="#" class="resource-link">
+                        <i class="fas fa-clipboard-list"></i>
+                        <span>RTI Status Code Reference</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script src="../shared/nav.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const headerContainer = document.getElementById('header-container');
             headerContainer.innerHTML = Navigation.createHeader('Teacher RTI Portal');
             new Navigation('teacher');
+            
+            // Form submission handling
+            document.querySelector('.track-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const regNumber = document.getElementById('registration-number').value;
+                if (regNumber.trim()) {
+                    // Here you would add the actual tracking logic
+                    console.log('Tracking registration number:', regNumber);
+                    alert('Tracking request submitted for: ' + regNumber);
+                } else {
+                    alert('Please enter a valid registration number');
+                }
+            });
+            
+            // Accordion functionality
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                const content = item.querySelector('.accordion-content');
+                
+                header.addEventListener('click', () => {
+                    // Toggle current item
+                    item.classList.toggle('active');
+                    
+                    // Update icon
+                    const icon = header.querySelector('i');
+                    if (item.classList.contains('active')) {
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    } else {
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                        content.style.maxHeight = null;
+                    }
+                });
+            });
         });
     </script>
 </body>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#D27D2D">
-    <title>Student RTI Portal - Right to Information in India</title>
+    <title>Student Portal | RTI4Edu</title>
     <link rel="icon" href="../assets/images/favicon.ico?v=2" sizes="any">
     <link rel="icon" href="../assets/images/favicon.svg?v=2" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../assets/images/favicon.png?v=2">
@@ -13,12 +13,59 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Lato:wght@300;400;700&display=swap">
     <link rel="stylesheet" href="styles/style.css">
+    <style>
+        /* Adding custom style to position student character on the right side */
+        .student-character {
+            position: absolute;
+            left: 80%;
+            bottom: 0;
+            max-width: 150px;
+            z-index: 2;
+            transform: translateY(10px);
+            animation: floatParent 4s ease-in-out infinite;
+        }
+
+        /* Adjusting hero content to align left instead of right */
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            max-width: 60%;
+            margin-left: 5%;
+            position: relative;
+            z-index: 5;
+        }
+
+        @media (max-width: 992px) {
+            .student-character {
+                right: 2%;
+                max-width: 150px;
+            }
+            
+            .hero-content {
+                max-width: 70%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .student-character {
+                display: none;
+            }
+            
+            .hero-content {
+                max-width: 90%;
+                margin: 0 auto;
+                align-items: center;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body class="student-theme">
     <!-- New one-line navbar -->
     <nav class="navbar">
         <div class="navbar-container">
-            <a href="index.html" class="navbar-logo">Student RTI Portal</a>
+            <a href="index.html" class="navbar-logo">RTI4Edu - Student Portal</a>
             <button class="mobile-toggle">
                 <i class="fas fa-bars"></i>
             </button>
@@ -162,7 +209,7 @@
         </div>
         <div class="hero-content">
             <div class="hero-text fade-in-up">
-                <h1 class="hero-title">Student RTI Portal</h1>
+                <h1 class="hero-title">RTI4Edu Student Portal</h1>
                 <p>Access educational transparency tools and resources designed for students</p>
             </div>
             
@@ -933,7 +980,7 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="footer-bottom-content">
-                    <p class="copyright">© 2023 Student RTI Portal. All Rights Reserved.</p>
+                    <p class="copyright">© 2025 Student RTI Portal. All Rights Reserved.</p>
                     <div class="footer-bottom-links">
                         <a href="privacy.html" class="footer-bottom-link">Privacy Policy</a>
                         <a href="terms.html" class="footer-bottom-link">Terms of Service</a>

@@ -1104,74 +1104,466 @@ body {
     }
 }
 
-/* Help Section */
+/* Enhanced Help Section Styling */
 .help-section {
-    padding: 5rem 0;
-    background-color: var(--secondary-color);
+    background-color: #f9f7f2;
+    padding: 4rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.help-visual {
+    position: relative;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.help-3d-element {
+    max-width: 200px;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+    animation: float 3s ease-in-out infinite;
+}
+
+.help-badge {
+    position: absolute;
+    top: 20px;
+    right: calc(50% - 140px);
+    background: linear-gradient(135deg, #b48608, #e3b23c);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transform: rotate(10deg);
 }
 
 .help-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
 }
 
 .help-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 5px 15px var(--shadow-color);
-    transition: transform 0.3s ease;
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.help-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #b48608, #e3b23c);
 }
 
 .help-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .help-icon {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: var(--accent-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.5rem;
-}
-
-.help-icon i {
-    font-size: 2.5rem;
-    color: white;
+    font-size: 2rem;
+    color: #b48608;
+    margin-bottom: 1.5rem;
 }
 
 .help-card h3 {
+    font-size: 1.3rem;
     margin: 0 0 1rem;
-    color: var(--text-color);
-    font-size: 1.8rem;
+    color: #333;
 }
 
 .help-card p {
-    margin: 0 0 1.5rem;
-    color: var(--text-light);
-    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    flex-grow: 1;
 }
 
 .help-link {
-    display: inline-block;
-    padding: 0.5rem 1.5rem;
-    border-radius: 25px;
-    background-color: var(--accent-color);
-    color: white;
+    display: inline-flex;
+    align-items: center;
+    color: #b48608;
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.3s ease;
-    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.help-link i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
 }
 
 .help-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px var(--shadow-color);
+    color: #8c6700;
+}
+
+.help-link:hover i {
+    transform: translateX(5px);
+}
+
+/* FAQ Section Styling */
+.help-faq-section, .contact-options-section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+.faq-title, .contact-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+.faq-title::after, .contact-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: #b48608;
+}
+
+/* Accordion Styling */
+.accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.accordion-item {
+    border: 1px solid #eee;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.accordion-item.active {
+    border-color: #b48608;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.accordion-header {
+    padding: 1rem 1.25rem;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.accordion-item.active .accordion-header {
+    color: #b48608;
+}
+
+.accordion-header:hover {
+    background-color: #f9f9f9;
+}
+
+.accordion-header i {
+    color: #b48608;
+    transition: transform 0.3s ease;
+}
+
+.accordion-content {
+    padding: 0 1.25rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.accordion-content p {
+    padding: 0.5rem 0 1.25rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Contact Options Styling */
+.contact-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.contact-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    border-color: #b48608;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: rgba(180, 134, 8, 0.1);
+    color: #b48608;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.contact-details {
+    flex: 1;
+}
+
+.contact-details h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.contact-details p {
+    color: #666;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+}
+
+.contact-link {
+    display: inline-block;
+    color: #b48608;
+    font-weight: 600;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+    color: #8c6700;
+    text-decoration: underline;
+}
+
+.contact-hours {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 0 !important;
+}
+
+.start-chat-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    background-color: #b48608;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.start-chat-btn:hover {
+    background-color: #8c6700;
+}
+
+/* Chat Widget Styling */
+.chat-widget {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 320px;
+    height: 400px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    overflow: hidden;
+    animation: slideIn 0.3s ease forwards;
+}
+
+.chat-widget.closing {
+    animation: slideOut 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+}
+
+.chat-header {
+    background: linear-gradient(135deg, #b48608, #e3b23c);
+    color: white;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-header h4 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.close-chat {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.close-chat:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.message {
+    display: flex;
+    margin-bottom: 0.5rem;
+}
+
+.message.user {
+    justify-content: flex-end;
+}
+
+.message-content {
+    max-width: 80%;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    position: relative;
+}
+
+.message.support .message-content {
+    background-color: #f0f0f0;
+    border-top-left-radius: 0;
+}
+
+.message.user .message-content {
+    background-color: #f1ebd6;
+    border-top-right-radius: 0;
+    text-align: right;
+}
+
+.message-content p {
+    margin: 0 0 0.25rem;
+    color: #333;
+}
+
+.message-time {
+    font-size: 0.75rem;
+    color: #888;
+    display: block;
+}
+
+.chat-input {
+    padding: 0.75rem;
+    display: flex;
+    border-top: 1px solid #eee;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+}
+
+.chat-input input:focus {
+    border-color: #b48608;
+}
+
+.send-message {
+    background-color: #b48608;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    padding: 0 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.send-message:hover {
+    background-color: #8c6700;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .help-grid, 
+    .contact-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .help-faq-section, 
+    .contact-options-section {
+        padding: 1.5rem;
+    }
+    
+    .chat-widget {
+        width: 85%;
+        max-width: 320px;
+        height: 400px;
+        bottom: 1rem;
+        right: 1rem;
+    }
 }
 
 /* Sidebar Styles */
@@ -1602,13 +1994,29 @@ body {
     background-color: transparent;
     border: 2px solid var(--border-color);
     border-radius: 50px;
-    color: var(--text-color);
+    color: #000000;
     font-weight: 600;
     font-size: 1.1rem;
     text-decoration: none;
     transition: all 0.3s ease;
     margin-top: auto;
     align-self: center;
+}
+
+.portal-button:hover {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.portal-button i {
+    transition: transform 0.3s ease;
+}
+
+.portal-button:hover i {
+    transform: translateX(5px);
 }
 
 /* Responsive styles for portal categories */
@@ -1736,7 +2144,10 @@ body {
     bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
-    height: 190px;
+    height: 220px; /* Increased from 190px */
+    filter: drop-shadow(0 0 15px rgba(127, 169, 155, 0.5)); /* Added glow effect */
+    animation: studentFloat 5s ease-in-out infinite; /* Custom animation */
+    z-index: 10; /* Increased z-index for better visibility */
 }
 
 .teacher-character {
@@ -1752,6 +2163,25 @@ body {
     transition: transform 0.3s ease;
 }
 
+/* Custom animation for student character */
+@keyframes studentFloat {
+    0% {
+        transform: translateY(0) translateX(-50%) scale(1);
+    }
+    50% {
+        transform: translateY(-20px) translateX(-50%) scale(1.05);
+    }
+    100% {
+        transform: translateY(0) translateX(-50%) scale(1);
+    }
+}
+
+.character-visual a {
+    display: block;
+    height: 100%;
+    cursor: pointer;
+}
+
 .portal-category:hover .character-visual img {
     transform: translateY(-10px);
 }
@@ -1760,6 +2190,11 @@ body {
     text-align: center;
     margin-top: 40px;
     position: relative;
+}
+
+.portal-scene a {
+    display: inline-block;
+    cursor: pointer;
 }
 
 .blessing-scene {

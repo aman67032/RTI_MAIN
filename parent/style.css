@@ -544,123 +544,187 @@ body {
     font-size: 1.2rem;
 }
 
-/* Features Grid Enhancements */
+/* Features Grid - Enhanced spacing and design */
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Wider cards */
-    gap: 2.5rem; /* More space between cards */
-    margin: 5rem auto; /* More vertical space */
-    max-width: 1280px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem; /* Increased gap between cards */
+    margin: 3.5rem auto;
+    max-width: 1200px;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 5;
 }
 
+/* Feature Card - Improved styling with more space */
 .feature-card {
-    background: #FFFFFF;
-    border-radius: 20px;
-    padding: 2.5rem; /* More padding */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 1px solid rgba(138, 185, 241, 0.2);
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    padding: 2.5rem; /* Increased padding */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
-    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 350px; /* Set minimum height for consistency */
+    border-top: 5px solid transparent;
 }
 
+/* Enhanced background gradient effect */
 .feature-card::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, 
-        rgba(37, 99, 235, 0.05) 0%, 
-        rgba(139, 92, 246, 0.05) 100%);
-    border-radius: 20px;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.5s ease;
+    height: 5px;
+    background: linear-gradient(90deg, 
+        var(--parent-primary) 0%, 
+        var(--parent-accent) 50%, 
+        var(--parent-highlight) 100%);
+    background-size: 200% 100%;
+    transition: all 0.5s ease;
+    opacity: 0.85;
 }
 
+/* Improved hover effect */
 .feature-card:hover {
-    transform: translateY(-15px) scale(1.03);
-    z-index: 5;
+    transform: translateY(-15px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    border-color: var(--parent-accent);
 }
 
+/* Animate gradient on hover */
 .feature-card:hover::before {
+    background-position: right center;
     opacity: 1;
 }
 
+/* Feature icons styling */
 .feature-icon {
-    font-size: 3.5rem; /* Larger icon */
+    font-size: 3rem;
     color: var(--parent-primary);
     margin-bottom: 1.5rem;
-    background: rgba(138, 185, 241, 0.1);
-    width: 100px; /* Larger icon background */
-    height: 100px; /* Larger icon background */
+    position: relative;
+    width: 90px;
+    height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.feature-card:hover .feature-icon {
-    transform: scale(1.1) translateY(-10px);
-}
-
-.feature-title {
-    font-size: 1.8rem; /* Larger heading */
-    color: var(--parent-primary);
-    margin-bottom: 1rem;
+    background: rgba(210, 125, 44, 0.1);
     transition: all 0.3s ease;
-    font-weight: 600;
 }
 
+/* Improve icon hover effect */
+.feature-card:hover .feature-icon {
+    background: rgba(210, 125, 44, 0.2);
+    transform: scale(1.1) rotate(5deg);
+    color: var(--parent-accent);
+}
+
+/* Title styling */
+.feature-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--parent-primary);
+    margin: 0 0 1.2rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Description styling */
 .feature-description {
-    font-size: 1.3rem; /* Larger text */
-    color: var(--parent-text);
+    color: var(--parent-muted);
+    font-size: 1.1rem;
+    line-height: 1.6;
     margin-bottom: 2rem;
-    flex-grow: 1;
-    line-height: 1.7;
+    flex-grow: 1; /* Allow description to fill space */
 }
 
+/* CTA button styling */
 .cta-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem 2rem; /* Larger padding */
-    background: var(--parent-primary);
-    color: white;
+    padding: 0.9rem 1.8rem;
+    background: white;
+    color: var(--parent-primary);
     text-decoration: none;
-    border-radius: 30px;
+    border-radius: 50px;
     font-weight: 600;
-    font-size: 1.3rem; /* Larger text */
-    transition: all 0.3s ease;
     border: 2px solid var(--parent-primary);
-    margin-top: auto;
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    width: 80%; /* Make button wider */
-    align-self: center; /* Center the button */
+    z-index: 1;
+    font-size: 1rem;
+    width: auto;
+    margin-top: auto; /* Push to bottom of card */
 }
 
+/* Improved button hover effect */
 .cta-button:hover {
-    background: transparent;
-    color: var(--parent-primary);
+    background: var(--parent-primary);
+    color: white;
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(32, 84, 147, 0.15);
+    box-shadow: 0 5px 15px rgba(210, 125, 44, 0.3);
 }
 
+/* Arrow icon styling */
 .cta-button i {
-    margin-left: 0.5rem;
+    margin-left: 8px;
     transition: transform 0.3s ease;
 }
 
+/* Animate arrow on hover */
 .cta-button:hover i {
     transform: translateX(5px);
+}
+
+/* Responsive layout adjustments */
+@media (max-width: 1200px) {
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+    
+    .feature-card {
+        padding: 2rem;
+        min-height: 320px;
+    }
+}
+
+@media (max-width: 992px) {
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 2.5rem auto;
+    }
+    
+    .feature-card {
+        min-height: auto;
+    }
+    
+    .feature-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 2.5rem;
+    }
+    
+    .feature-title {
+        font-size: 1.6rem;
+    }
 }
 
 /* Information Section */
