@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffd700">
+    <title>RTI Templates Hub | RTI4Edu</title>
+    <link rel="icon" href="../assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="../assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png?v=2">
+    <link rel="manifest" href="../manifest.json?v=2">
+
+    <link rel="stylesheet" href="../Waves.css">
+    <link rel="stylesheet" href="../loading-screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../decrypted-text.css">
+    <link rel="stylesheet" href="../GlitchText.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.css">
+    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="../rti-tools.css">
+    
+    <style>
+        .template-category {
+            margin-bottom: 40px;
+        }
+        
+        .template-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .template-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .template-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .template-header {
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            color: white;
+            padding: 15px 20px;
+            position: relative;
+        }
+        
+        .template-title {
+            font-size: 1.2rem;
+            margin: 0;
+            padding-right: 30px;
+        }
+        
+        .template-icon {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            width: 32px;
+            height: 32px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .template-content {
+            padding: 20px;
+        }
+        
+        .template-description {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .template-use-cases {
+            margin: 0;
+            padding: 0 0 0 20px;
+            list-style-type: none;
+            margin-bottom: 20px;
+        }
+        
+        .template-use-cases li {
+            position: relative;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+        
+        .template-use-cases li::before {
+            content: '•';
+            color: var(--accent-color);
+            position: absolute;
+            left: -15px;
+            font-size: 1.2rem;
+        }
+        
+        .template-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .template-btn {
+            padding: 8px 15px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .view-btn {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .download-btn {
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        .view-btn:hover, .download-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        .filter-controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .filter-btn {
+            border: none;
+            background: #f5f5f5;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .filter-btn.active {
+            background: var(--accent-color);
+            color: white;
+        }
+        
+        .search-bar {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            padding-left: 45px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        
+        .search-input:focus {
+            border-color: var(--accent-color);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+        
+        @media (max-width: 768px) {
+            .template-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar/Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../assets/images/LOGO.png" alt="RTI4Edu Logo" height="110">
+                <div class="logo-accent"></div>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">
+                    <span class="nav-icon"><i class="fas fa-home"></i></span>
+                    Home
+                </a>
+                <a href="../timeline.html">
+                    <span class="nav-icon"><i class="fas fa-history"></i></span>
+                    Timeline
+                </a>
+                <a href="../news.html">
+                    <span class="nav-icon"><i class="fas fa-newspaper"></i></span>
+                    News
+                </a>
+                <a href="../cases.html">
+                    <span class="nav-icon"><i class="fas fa-gavel"></i></span>
+                    Case Studies
+                </a>
+            </div>
+            <div class="auth-links">
+                <a href="../login.html" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </a>
+                <a href="../signup.html" class="signup-btn">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up
+                </a>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <div class="nav-decoration">
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">RTI Templates Hub</h1>
+            <p class="page-description">Find, customize, and use ready-made RTI templates for various educational purposes</p>
+        </div>
+    </section>
+
+    <!-- Templates Hub Main Content -->
+    <section class="templates-hub-section">
+        <div class="container">
+            <div class="search-bar">
+                <span class="search-icon"><i class="fas fa-search"></i></span>
+                <input type="text" id="template-search" class="search-input" placeholder="Search for templates...">
+            </div>
+            
+            <div class="filter-controls">
+                <button class="filter-btn active" data-filter="all">All Templates</button>
+                <button class="filter-btn" data-filter="student">Student</button>
+                <button class="filter-btn" data-filter="parent">Parent</button>
+                <button class="filter-btn" data-filter="teacher">Teacher</button>
+                <button class="filter-btn" data-filter="admission">Admission</button>
+                <button class="filter-btn" data-filter="evaluation">Evaluation</button>
+                <button class="filter-btn" data-filter="financial">Financial</button>
+            </div>
+            
+            <div class="template-category">
+                <h2>Most Popular Templates</h2>
+                <div class="template-cards">
+                    <div class="template-card" data-categories="student evaluation">
+                        <div class="template-header">
+                            <h3 class="template-title">Answer Sheet Access Request</h3>
+                            <div class="template-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                        </div>
+                        <div class="template-content">
+                            <p class="template-description">Request access to your evaluated answer sheets from educational boards or institutions.</p>
+                            <ul class="template-use-cases">
+                                <li>Reviewing board exam evaluations</li>
+                                <li>Checking university semester papers</li>
+                                <li>Competitive exam score verification</li>
+                            </ul>
+                            <div class="template-actions">
+                                <a href="answer-sheets.html" class="template-btn view-btn">
+                                    <i class="fas fa-eye"></i> View Template
+                                </a>
+                                <a href="answer-sheets.html#download" class="template-btn download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card" data-categories="parent admission">
+                        <div class="template-header">
+                            <h3 class="template-title">School Admission Transparency</h3>
+                            <div class="template-icon">
+                                <i class="fas fa-school"></i>
+                            </div>
+                        </div>
+                        <div class="template-content">
+                            <p class="template-description">Request information about admission criteria, selection process, and waitlist details.</p>
+                            <ul class="template-use-cases">
+                                <li>Understanding admission point systems</li>
+                                <li>Verifying reservation policy implementation</li>
+                                <li>Checking waitlist movement and procedures</li>
+                            </ul>
+                            <div class="template-actions">
+                                <a href="admission.html" class="template-btn view-btn">
+                                    <i class="fas fa-eye"></i> View Template
+                                </a>
+                                <a href="admission.html#download" class="template-btn download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card" data-categories="parent financial">
+                        <div class="template-header">
+                            <h3 class="template-title">Fee Structure Disclosure</h3>
+                            <div class="template-icon">
+                                <i class="fas fa-rupee-sign"></i>
+                            </div>
+                        </div>
+                        <div class="template-content">
+                            <p class="template-description">Request detailed breakdown of academic fees, annual increases, and financial records.</p>
+                            <ul class="template-use-cases">
+                                <li>Understanding fee component breakdown</li>
+                                <li>Verifying fee hike justifications</li>
+                                <li>Checking institutional financial transparency</li>
+                            </ul>
+                            <div class="template-actions">
+                                <a href="fee-structure.html" class="template-btn view-btn">
+                                    <i class="fas fa-eye"></i> View Template
+                                </a>
+                                <a href="fee-structure.html#download" class="template-btn download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card" data-categories="teacher financial">
+                        <div class="template-header">
+                            <h3 class="template-title">Fund Tracking & Utilization</h3>
+                            <div class="template-icon">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                        </div>
+                        <div class="template-content">
+                            <p class="template-description">Track educational funds, grants, scholarships, and their utilization in institutions.</p>
+                            <ul class="template-use-cases">
+                                <li>Monitoring scholarship disbursement</li>
+                                <li>Tracking infrastructure development funds</li>
+                                <li>Following special program allocations</li>
+                            </ul>
+                            <div class="template-actions">
+                                <a href="fund-tracking.html" class="template-btn view-btn">
+                                    <i class="fas fa-eye"></i> View Template
+                                </a>
+                                <a href="fund-tracking.html#download" class="template-btn download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="template-category">
+                <h2>Role-Specific Templates</h2>
+                <div class="template-cards">
+                    <div class="template-card" data-categories="student">
+                        <div class="template-header">
+                            <h3 class="template-title">Student Templates Collection</h3>
+                            <div class="template-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                        </div>
+                        <div class="template-content">
+                            <p class="template-description">Complete collection of templates for student needs including evaluation, scholarships, and more.</p>
+                            <ul class="template-use-cases">
+                                <li>Examination and evaluation related RTIs</li>
+                                <li>Scholarship and financial aid tracking</li>
+                                <li>Admission transparency and verification</li>
+                            </ul>
+                            <div class="template-actions">
+                                <a href="../student/templates.html" class="template-btn view-btn">
+                                    <i class="fas fa-external-link-alt"></i> Go to Student Templates
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card" data-categories="parent">
+                        <div class="template-header">
+                            <h3 class="template-title">Parent Templates Collection</h3>
+                            <div class="template-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="template-content">
+                            <p class="template-description">Complete collection of templates for parent needs including fees, safety, and infrastructure.</p>
+                            <ul class="template-use-cases">
+                                <li>Fee structure and increase verification</li>
+                                <li>Safety compliance and measures</li>
+                                <li>Infrastructure and facilities auditing</li>
+                            </ul>
+                            <div class="template-actions">
+                                <a href="../parent/templates.html" class="template-btn view-btn">
+                                    <i class="fas fa-external-link-alt"></i> Go to Parent Templates
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card" data-categories="teacher">
+                        <div class="template-header">
+                            <h3 class="template-title">Teacher Templates Collection</h3>
+                            <div class="template-icon">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                        </div>
+                        <div class="template-content">
+                            <p class="template-description">Complete collection of templates for teacher needs including training, resources, and policies.</p>
+                            <ul class="template-use-cases">
+                                <li>Professional development funding</li>
+                                <li>Teaching resource allocation</li>
+                                <li>Recruitment and transfer policies</li>
+                            </ul>
+                            <div class="template-actions">
+                                <a href="../teacher/templates.html" class="template-btn view-btn">
+                                    <i class="fas fa-external-link-alt"></i> Go to Teacher Templates
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="template-hub-help">
+                <h3>Need Help Customizing Templates?</h3>
+                <p>Our template generation wizard can help you create personalized RTI applications based on your specific needs.</p>
+                <a href="../filing-guide.html#template-wizard" class="primary-btn">Use Template Wizard</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Dedicated to promoting transparency in education through the Right to Information Act.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../timeline.html">Timeline</a></li>
+                        <li><a href="../news.html">News</a></li>
+                        <li><a href="../cases.html">Current Cases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: info@rti4edu.org</p>
+                    <p>Phone: +91 1234567890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RTI4Edu. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filter functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const templateCards = document.querySelectorAll('.template-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    const filter = button.getAttribute('data-filter');
+                    
+                    // Show/hide templates based on filter
+                    templateCards.forEach(card => {
+                        if (filter === 'all') {
+                            card.style.display = 'block';
+                        } else {
+                            const categories = card.getAttribute('data-categories');
+                            if (categories && categories.includes(filter)) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.getElementById('template-search');
+            
+            searchInput.addEventListener('input', () => {
+                const searchTerm = searchInput.value.toLowerCase();
+                
+                templateCards.forEach(card => {
+                    const title = card.querySelector('.template-title').textContent.toLowerCase();
+                    const description = card.querySelector('.template-description').textContent.toLowerCase();
+                    const useCases = card.querySelector('.template-use-cases').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm) || useCases.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

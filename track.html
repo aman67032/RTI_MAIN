@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffd700">
+    <title>Track Your RTI Application | RTI4Edu</title>
+    <link rel="icon" href="assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/images/favicon.png?v=2">
+    <link rel="manifest" href="manifest.json?v=2">
+
+    <link rel="stylesheet" href="Waves.css">
+    <link rel="stylesheet" href="loading-screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="decrypted-text.css">
+    <link rel="stylesheet" href="GlitchText.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.css">
+    <link rel="stylesheet" href="main.css">
+    
+    <style>
+        .tracking-section {
+            padding: 60px 0;
+            background-color: var(--bg-light);
+        }
+        
+        .tracking-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .tracking-header {
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .tracking-header h2 {
+            font-size: 1.8rem;
+            margin: 0 0 10px;
+        }
+        
+        .tracking-header p {
+            opacity: 0.9;
+            margin: 0;
+        }
+        
+        .tracking-form {
+            padding: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+        
+        .tracking-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tracking-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .tracking-info {
+            padding: 30px;
+        }
+        
+        .info-section {
+            margin-bottom: 30px;
+        }
+        
+        .info-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .info-section h3 {
+            font-size: 1.3rem;
+            color: var(--text-color);
+            margin: 0 0 15px;
+        }
+        
+        .tracking-steps {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .tracking-step {
+            position: relative;
+            padding-bottom: 30px;
+        }
+        
+        .tracking-step:last-child {
+            padding-bottom: 0;
+        }
+        
+        .step-indicator {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: #eee;
+            border-radius: 50%;
+            left: -40px;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+        
+        .step-indicator::after {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: calc(100% - 15px);
+            background-color: #eee;
+            z-index: 1;
+        }
+        
+        .tracking-step:last-child .step-indicator::after {
+            display: none;
+        }
+        
+        .tracking-step.completed .step-indicator {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .tracking-step.completed .step-indicator::after {
+            background-color: #4CAF50;
+        }
+        
+        .tracking-step.active .step-indicator {
+            background-color: var(--accent-color);
+            color: white;
+            box-shadow: 0 0 0 5px rgba(255, 191, 0, 0.2);
+        }
+        
+        .step-content {
+            padding-right: 20px;
+        }
+        
+        .step-content h4 {
+            margin: 0 0 5px;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+        
+        .step-date {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 10px;
+        }
+        
+        .step-description {
+            margin: 0;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+        
+        .tracking-empty {
+            padding: 30px;
+            text-align: center;
+            display: none;
+        }
+        
+        .tracking-empty i {
+            font-size: 3rem;
+            color: #ddd;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .tracking-empty h3 {
+            font-size: 1.3rem;
+            color: var(--text-color);
+            margin: 0 0 10px;
+        }
+        
+        .tracking-empty p {
+            color: var(--text-light);
+            margin: 0 0 20px;
+        }
+        
+        .tracking-resources {
+            margin-top: 40px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+        }
+        
+        .tracking-resources h3 {
+            margin-top: 0;
+            font-size: 1.3rem;
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+        
+        .resource-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .resource-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #f9f9f9;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+        
+        .resource-link:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+        
+        .resource-link i {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+        
+        @media (max-width: 768px) {
+            .tracking-container {
+                margin: 0 15px;
+            }
+            
+            .tracking-header {
+                padding: 20px;
+            }
+            
+            .tracking-form, .tracking-info {
+                padding: 20px;
+            }
+            
+            .resource-links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar/Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="assets/images/LOGO.png" alt="RTI4Edu Logo" height="110">
+                <div class="logo-accent"></div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">
+                    <span class="nav-icon"><i class="fas fa-home"></i></span>
+                    Home
+                </a>
+                <a href="timeline.html">
+                    <span class="nav-icon"><i class="fas fa-history"></i></span>
+                    Timeline
+                </a>
+                <a href="news.html">
+                    <span class="nav-icon"><i class="fas fa-newspaper"></i></span>
+                    News
+                </a>
+                <a href="cases.html">
+                    <span class="nav-icon"><i class="fas fa-gavel"></i></span>
+                    Case Studies
+                </a>
+            </div>
+            <div class="auth-links">
+                <a href="login.html" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </a>
+                <a href="signup.html" class="signup-btn">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up
+                </a>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <div class="nav-decoration">
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Track Your RTI Application</h1>
+            <p class="page-description">Monitor the status and progress of your RTI applications in real-time</p>
+        </div>
+    </section>
+
+    <!-- Tracking Section -->
+    <section class="tracking-section">
+        <div class="container">
+            <div class="tracking-container">
+                <div class="tracking-header">
+                    <h2>RTI Application Tracker</h2>
+                    <p>Enter your RTI application details to check its current status</p>
+                </div>
+                
+                <div class="tracking-form">
+                    <form id="rti-tracking-form">
+                        <div class="form-group">
+                            <label for="tracking-id">RTI Application Number / Tracking ID</label>
+                            <input type="text" id="tracking-id" class="form-control" placeholder="Enter your application number" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="applicant-name">Applicant Name</label>
+                            <input type="text" id="applicant-name" class="form-control" placeholder="Enter your full name as in application">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="authority">Public Authority</label>
+                            <select id="authority" class="form-control">
+                                <option value="">Select Public Authority</option>
+                                <option value="cbse">Central Board of Secondary Education (CBSE)</option>
+                                <option value="ugc">University Grants Commission (UGC)</option>
+                                <option value="aicte">All India Council for Technical Education (AICTE)</option>
+                                <option value="mhrd">Ministry of Education (formerly MHRD)</option>
+                                <option value="state">State Education Department</option>
+                                <option value="university">University / College</option>
+                                <option value="other">Other Authority</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group text-center">
+                            <button type="submit" class="tracking-btn">
+                                <i class="fas fa-search"></i> Track Application
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="tracking-info" id="tracking-result">
+                    <div class="info-section">
+                        <h3>Application Details</h3>
+                        <table class="info-table">
+                            <tr>
+                                <td><strong>Tracking ID:</strong></td>
+                                <td id="result-tracking-id">RTI2023CBSE12345</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Applicant:</strong></td>
+                                <td id="result-applicant">Rahul Sharma</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Filed On:</strong></td>
+                                <td id="result-filing-date">15 June 2023</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Authority:</strong></td>
+                                <td id="result-authority">Central Board of Secondary Education (CBSE)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Current Status:</strong></td>
+                                <td id="result-status"><span class="badge badge-success">In Progress</span></td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3>Application Timeline</h3>
+                        <div class="tracking-steps">
+                            <div class="tracking-step completed">
+                                <div class="step-indicator"><i class="fas fa-check"></i></div>
+                                <div class="step-content">
+                                    <h4>Application Filed</h4>
+                                    <div class="step-date">15 June 2023</div>
+                                    <p class="step-description">Your RTI application has been successfully submitted to Central Board of Secondary Education (CBSE).</p>
+                                </div>
+                            </div>
+                            
+                            <div class="tracking-step completed">
+                                <div class="step-indicator"><i class="fas fa-check"></i></div>
+                                <div class="step-content">
+                                    <h4>Application Received</h4>
+                                    <div class="step-date">17 June 2023</div>
+                                    <p class="step-description">Your application has been received by the Public Information Officer (PIO) of CBSE.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="tracking-step active">
+                                <div class="step-indicator"><i class="fas fa-sync-alt"></i></div>
+                                <div class="step-content">
+                                    <h4>Information Being Collected</h4>
+                                    <div class="step-date">Current Step</div>
+                                    <p class="step-description">The PIO is currently collecting the requested information from concerned departments.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="tracking-step">
+                                <div class="step-indicator"><i class="fas fa-hourglass-half"></i></div>
+                                <div class="step-content">
+                                    <h4>Information Review</h4>
+                                    <div class="step-date">Pending</div>
+                                    <p class="step-description">The collected information will be reviewed for completeness and accuracy.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="tracking-step">
+                                <div class="step-indicator"><i class="fas fa-paper-plane"></i></div>
+                                <div class="step-content">
+                                    <h4>Response Sent</h4>
+                                    <div class="step-date">Pending</div>
+                                    <p class="step-description">The final response will be sent to your registered address or email.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3>Additional Information</h3>
+                        <p>The expected timeframe for response is 30 days from the date of filing. The deadline for your application response is <strong>15 July 2023</strong>.</p>
+                        <p>If you have any questions about your application, you can contact the PIO at <a href="mailto:pio@cbse.gov.in">pio@cbse.gov.in</a> or call at +91-11-22509256.</p>
+                    </div>
+                </div>
+                
+                <div class="tracking-empty" id="tracking-empty">
+                    <i class="fas fa-search"></i>
+                    <h3>No Records Found</h3>
+                    <p>We couldn't find any records matching the information you provided. Please verify your application details and try again.</p>
+                    <a href="filing-guide.html" class="tracking-btn">
+                        <i class="fas fa-file-alt"></i> File a New RTI
+                    </a>
+                </div>
+            </div>
+            
+            <div class="tracking-resources">
+                <h3>Helpful Resources</h3>
+                <div class="resource-links">
+                    <a href="filing-guide.html" class="resource-link">
+                        <i class="fas fa-file-alt"></i>
+                        <span>RTI Filing Guide</span>
+                    </a>
+                    <a href="timeline.html" class="resource-link">
+                        <i class="fas fa-clock"></i>
+                        <span>RTI Timeline Expectations</span>
+                    </a>
+                    <a href="templates/index.html" class="resource-link">
+                        <i class="fas fa-copy"></i>
+                        <span>RTI Templates</span>
+                    </a>
+                    <a href="impact-analysis.html" class="resource-link">
+                        <i class="fas fa-chart-line"></i>
+                        <span>RTI Impact Analysis</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Dedicated to promoting transparency in education through the Right to Information Act.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="timeline.html">Timeline</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="cases.html">Current Cases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: info@rti4edu.org</p>
+                    <p>Phone: +91 1234567890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RTI4Edu. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const trackingForm = document.getElementById('rti-tracking-form');
+            const trackingResult = document.getElementById('tracking-result');
+            const trackingEmpty = document.getElementById('tracking-empty');
+            
+            // Initially hide both result containers
+            trackingResult.style.display = 'none';
+            trackingEmpty.style.display = 'none';
+            
+            trackingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const trackingId = document.getElementById('tracking-id').value;
+                const applicantName = document.getElementById('applicant-name').value;
+                const authority = document.getElementById('authority').value;
+                
+                // Demo functionality - in a real app, this would be an API call
+                if (trackingId === 'RTI2023CBSE12345' || (trackingId.length > 5 && applicantName.length > 3)) {
+                    // Show tracking result with demo data
+                    trackingResult.style.display = 'block';
+                    trackingEmpty.style.display = 'none';
+                    
+                    // Fill in any custom data if needed
+                    if (trackingId !== 'RTI2023CBSE12345') {
+                        document.getElementById('result-tracking-id').textContent = trackingId;
+                        document.getElementById('result-applicant').textContent = applicantName || 'Not specified';
+                        
+                        // Set a random date within the last 30 days
+                        const now = new Date();
+                        const days = Math.floor(Math.random() * 30);
+                        now.setDate(now.getDate() - days);
+                        const randomDate = `${now.getDate()} ${['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][now.getMonth()]} ${now.getFullYear()}`;
+                        document.getElementById('result-filing-date').textContent = randomDate;
+                        
+                        // Set authority based on selection
+                        const authoritySelect = document.getElementById('authority');
+                        const authorityText = authoritySelect.options[authoritySelect.selectedIndex].text;
+                        document.getElementById('result-authority').textContent = authorityText !== 'Select Public Authority' ? authorityText : 'Not specified';
+                    }
+                } else {
+                    // Show empty state
+                    trackingResult.style.display = 'none';
+                    trackingEmpty.style.display = 'block';
+                }
+                
+                // Scroll to results
+                const resultSection = trackingResult.style.display === 'block' ? trackingResult : trackingEmpty;
+                resultSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html> 

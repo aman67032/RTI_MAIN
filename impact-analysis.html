@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="rti-journey.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
         <!-- Navbar/Header -->
@@ -114,26 +113,170 @@
 
             <div class="charts-section">
                 <h2>Impact Metrics</h2>
-                <div class="charts-grid">
-                    <div class="chart-container">
+                <div class="charts-grid static-charts">
+                    <div class="chart-container static-chart">
                         <h3>RTI Applications by Category</h3>
-                        <canvas id="categoryChart"></canvas>
+                        <div class="pie-chart-container">
+                            <div class="pie-chart-svg">
+                                <canvas id="categoryPieChart" width="220" height="220"></canvas>
+                            </div>
+                            <div class="pie-chart-legend">
+                                <div class="legend-item"><span class="legend-color" style="background-color: #4e73df;"></span>Fee Structure (28%)</div>
+                                <div class="legend-item"><span class="legend-color" style="background-color: #1cc88a;"></span>Admissions (24%)</div>
+                                <div class="legend-item"><span class="legend-color" style="background-color: #36b9cc;"></span>Examination (18%)</div>
+                                <div class="legend-item"><span class="legend-color" style="background-color: #f6c23e;"></span>Scholarships (12%)</div>
+                                <div class="legend-item"><span class="legend-color" style="background-color: #e74a3b;"></span>Infrastructure (10%)</div>
+                                <div class="legend-item"><span class="legend-color" style="background-color: #858796;"></span>Teacher Recruitment (8%)</div>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="chart-container">
+                    <div class="chart-container static-chart">
                         <h3>Success Rate Year-on-Year</h3>
-                        <canvas id="successRateChart"></canvas>
+                        <div class="success-rate-table">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Year</th>
+                                        <th>Success Rate</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2018</td>
+                                        <td>62%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2019</td>
+                                        <td>65%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2020</td>
+                                        <td>68%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2021</td>
+                                        <td>71%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2022</td>
+                                        <td>74%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2023</td>
+                                        <td>76%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="trend-indicator">
+                                <i class="fas fa-arrow-up"></i> Increasing trend with 14% improvement since 2018
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="chart-container">
+                    <div class="chart-container static-chart">
                         <h3>RTI Impact Areas</h3>
-                        <canvas id="impactAreasChart"></canvas>
+                        <div class="impact-areas-visual">
+                            <div class="impact-area-item">
+                                <div class="impact-area-label">Admissions</div>
+                                <div class="impact-area-bar">
+                                    <div class="impact-fill" style="width: 85%;"></div>
+                                    <span class="impact-value">85%</span>
+                                </div>
+                            </div>
+                            <div class="impact-area-item">
+                                <div class="impact-area-label">Fee Regulation</div>
+                                <div class="impact-area-bar">
+                                    <div class="impact-fill" style="width: 72%;"></div>
+                                    <span class="impact-value">72%</span>
+                                </div>
+                            </div>
+                            <div class="impact-area-item">
+                                <div class="impact-area-label">Examination</div>
+                                <div class="impact-area-bar">
+                                    <div class="impact-fill" style="width: 90%;"></div>
+                                    <span class="impact-value">90%</span>
+                                </div>
+                            </div>
+                            <div class="impact-area-item">
+                                <div class="impact-area-label">Infrastructure</div>
+                                <div class="impact-area-bar">
+                                    <div class="impact-fill" style="width: 65%;"></div>
+                                    <span class="impact-value">65%</span>
+                                </div>
+                            </div>
+                            <div class="impact-area-item">
+                                <div class="impact-area-label">Teacher Recruitment</div>
+                                <div class="impact-area-bar">
+                                    <div class="impact-fill" style="width: 78%;"></div>
+                                    <span class="impact-value">78%</span>
+                                </div>
+                            </div>
+                            <div class="impact-area-item">
+                                <div class="impact-area-label">Scholarships</div>
+                                <div class="impact-area-bar">
+                                    <div class="impact-fill" style="width: 81%;"></div>
+                                    <span class="impact-value">81%</span>
+                                </div>
+                            </div>
                     </div>
-                    
-                    <div class="chart-container">
-                        <h3>Geographic Distribution</h3>
-                        <canvas id="geographicChart"></canvas>
                     </div>
+                </div>
+            </div>
+
+            <div class="regional-data-section">
+                <h2>Geographic Impact Distribution</h2>
+                <p class="section-subtitle">RTI applications filed across different regions of India (2023)</p>
+                
+                <div class="regional-data-table">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Region</th>
+                                <th>Applications Filed</th>
+                                <th>Success Rate</th>
+                                <th>Major Impact Areas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>North India</td>
+                                <td>28,562</td>
+                                <td>78%</td>
+                                <td>Fee Regulation, Admission Transparency</td>
+                            </tr>
+                            <tr>
+                                <td>South India</td>
+                                <td>24,685</td>
+                                <td>82%</td>
+                                <td>Examination Reforms, Scholarship Distribution</td>
+                            </tr>
+                            <tr>
+                                <td>East India</td>
+                                <td>12,365</td>
+                                <td>71%</td>
+                                <td>Infrastructure Improvements, Teacher Recruitment</td>
+                            </tr>
+                            <tr>
+                                <td>West India</td>
+                                <td>15,632</td>
+                                <td>76%</td>
+                                <td>Fee Regulation, Infrastructure Improvements</td>
+                            </tr>
+                            <tr>
+                                <td>Central India</td>
+                                <td>8,945</td>
+                                <td>68%</td>
+                                <td>Scholarship Distribution, RTE Implementation</td>
+                            </tr>
+                            <tr>
+                                <td>North-East India</td>
+                                <td>4,785</td>
+                                <td>74%</td>
+                                <td>Teacher Recruitment, Digital Education Access</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
@@ -477,132 +620,215 @@
             animateCounter('institutionsCounter', 12486);
             animateCounter('policyCounter', 43);
             
-            // Charts initialization
-            // Category Chart
-            const categoryCtx = document.getElementById('categoryChart').getContext('2d');
-            new Chart(categoryCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Fee Structure', 'Admissions', 'Examination', 'Scholarships', 'Infrastructure', 'Teacher Recruitment'],
-                    datasets: [{
-                        label: 'RTI Applications',
-                        data: [28, 24, 18, 12, 10, 8],
-                        backgroundColor: [
-                            '#4e73df',
-                            '#1cc88a',
-                            '#36b9cc',
-                            '#f6c23e',
-                            '#e74a3b',
-                            '#858796'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
-                        }
-                    }
-                }
-            });
+            // Draw category pie chart
+            function drawPieChart() {
+                const canvas = document.getElementById('categoryPieChart');
+                if (!canvas || !canvas.getContext) return;
+                
+                const ctx = canvas.getContext('2d');
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                const radius = Math.min(centerX, centerY) * 0.85;
+                
+                // Category data
+                const data = [
+                    { label: 'Fee Structure', value: 28, color: '#4e73df' },
+                    { label: 'Admissions', value: 24, color: '#1cc88a' },
+                    { label: 'Examination', value: 18, color: '#36b9cc' },
+                    { label: 'Scholarships', value: 12, color: '#f6c23e' },
+                    { label: 'Infrastructure', value: 10, color: '#e74a3b' },
+                    { label: 'Teacher Recruitment', value: 8, color: '#858796' }
+                ];
+                
+                // Calculate total
+                const total = data.reduce((sum, item) => sum + item.value, 0);
+                
+                // Draw pie slices
+                let startAngle = -Math.PI / 2; // Start from top (12 o'clock position)
+                
+                // Draw background circle first
+                ctx.fillStyle = '#f8f9fc';
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Draw each slice
+                data.forEach(item => {
+                    const sliceAngle = (item.value / total) * Math.PI * 2;
+                    const endAngle = startAngle + sliceAngle;
+                    
+                    // Draw slice
+                    ctx.fillStyle = item.color;
+                    ctx.beginPath();
+                    ctx.moveTo(centerX, centerY);
+                    ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+                    ctx.closePath();
+                    ctx.fill();
+                    
+                    // Add white border between slices for clarity
+                    ctx.strokeStyle = '#ffffff';
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(centerX, centerY);
+                    ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+                    ctx.closePath();
+                    ctx.stroke();
+                    
+                    // Prepare for next slice
+                    startAngle = endAngle;
+                });
+                
+                // Add inner white circle to create donut effect (optional)
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius * 0.5, 0, Math.PI * 2);
+                ctx.fill();
+            }
             
-            // Success Rate Chart
-            const successRateCtx = document.getElementById('successRateChart').getContext('2d');
-            new Chart(successRateCtx, {
-                type: 'line',
-                data: {
-                    labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
-                    datasets: [{
-                        label: 'Success Rate %',
-                        data: [62, 65, 68, 71, 74, 76],
-                        backgroundColor: 'rgba(28, 200, 138, 0.2)',
-                        borderColor: 'rgba(28, 200, 138, 1)',
-                        borderWidth: 2,
-                        tension: 0.3
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: false,
-                            min: 50,
-                            max: 80
-                        }
-                    }
-                }
-            });
+            // Call the function to draw the pie chart
+            drawPieChart();
             
-            // Impact Areas Chart
-            const impactAreasCtx = document.getElementById('impactAreasChart').getContext('2d');
-            new Chart(impactAreasCtx, {
-                type: 'radar',
-                data: {
-                    labels: ['Admissions', 'Fee Regulation', 'Examination', 'Infrastructure', 'Teacher Recruitment', 'Scholarships'],
-                    datasets: [{
-                        label: 'Impact Score',
-                        data: [85, 72, 90, 65, 78, 81],
-                        backgroundColor: 'rgba(78, 115, 223, 0.2)',
-                        borderColor: 'rgba(78, 115, 223, 1)',
-                        pointBackgroundColor: 'rgba(78, 115, 223, 1)',
-                        pointBorderColor: '#fff',
-                        pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: 'rgba(78, 115, 223, 1)'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        r: {
-                            angleLines: {
-                                display: true
-                            },
-                            suggestedMin: 0,
-                            suggestedMax: 100
-                        }
-                    }
+            // Add CSS for static charts
+            const style = document.createElement('style');
+            style.textContent = `
+                .static-charts {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                    gap: 2rem;
                 }
-            });
-            
-            // Geographic Chart
-            const geographicCtx = document.getElementById('geographicChart').getContext('2d');
-            new Chart(geographicCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['North India', 'South India', 'East India', 'West India', 'Central India', 'North-East India'],
-                    datasets: [{
-                        label: 'RTI Applications',
-                        data: [28562, 24685, 12365, 15632, 8945, 4785],
-                        backgroundColor: [
-                            'rgba(78, 115, 223, 0.8)',
-                            'rgba(28, 200, 138, 0.8)',
-                            'rgba(54, 185, 204, 0.8)',
-                            'rgba(246, 194, 62, 0.8)',
-                            'rgba(231, 74, 59, 0.8)',
-                            'rgba(133, 135, 150, 0.8)'
-                        ],
-                        borderColor: [
-                            'rgba(78, 115, 223, 1)',
-                            'rgba(28, 200, 138, 1)',
-                            'rgba(54, 185, 204, 1)',
-                            'rgba(246, 194, 62, 1)',
-                            'rgba(231, 74, 59, 1)',
-                            'rgba(133, 135, 150, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
+                
+                .static-chart {
+                    background-color: #fff;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    padding: 1.5rem;
                 }
-            });
+                
+                .pie-chart-container {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 1rem;
+                }
+                
+                .pie-chart-svg {
+                    width: 220px;
+                    height: 220px;
+                    position: relative;
+                }
+                
+                .pie-chart-svg canvas {
+                    display: block;
+                    margin: 0 auto;
+                }
+                
+                .pie-chart-legend {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    margin-top: 1rem;
+                    width: 100%;
+                }
+                
+                .legend-item {
+                    display: flex;
+                    align-items: center;
+                    font-size: 0.9rem;
+                }
+                
+                .legend-color {
+                    display: inline-block;
+                    width: 16px;
+                    height: 16px;
+                    border-radius: 4px;
+                    margin-right: 8px;
+                }
+                
+                .static-image {
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 1rem;
+                }
+                
+                .static-image img {
+                    max-width: 100%;
+                    height: auto;
+                }
+                
+                .success-rate-table {
+                    width: 100%;
+                }
+                
+                .data-table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+                
+                .data-table th,
+                .data-table td {
+                    padding: 0.75rem;
+                    text-align: left;
+                    border-bottom: 1px solid #e3e6f0;
+                }
+                
+                .data-table th {
+                    background-color: #f8f9fc;
+                    font-weight: 700;
+                }
+                
+                .trend-indicator {
+                    display: flex;
+                    align-items: center;
+                    margin-top: 1rem;
+                    color: #1cc88a;
+                    font-weight: 600;
+                }
+                
+                .trend-indicator i {
+                    margin-right: 0.5rem;
+                }
+                
+                .impact-areas-visual {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                }
+                
+                .impact-area-item {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.25rem;
+                }
+                
+                .impact-area-label {
+                    font-weight: 600;
+                }
+                
+                .impact-area-bar {
+                    background-color: #f8f9fc;
+                    border-radius: 4px;
+                    height: 24px;
+                    position: relative;
+                    overflow: hidden;
+                }
+                
+                .impact-fill {
+                    background-color: #4e73df;
+                    height: 100%;
+                    border-radius: 4px;
+                }
+                
+                .impact-value {
+                    position: absolute;
+                    right: 8px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    font-weight: 600;
+                    color: #fff;
+                    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+                }
+            `;
+            document.head.appendChild(style);
         });
     </script>
 </body>

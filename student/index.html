@@ -59,25 +59,202 @@
                 text-align: center;
             }
         }
+
+        /* Updated navbar styling to match teacher portal */
+        .navbar {
+            background: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .navbar-container {
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 50px;
+        }
+        
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #D27D2D;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        
+        .navbar-logo i {
+            margin-right: 8px;
+            font-size: 1.3rem;
+            color: #D27D2D;
+        }
+        
+        .navbar-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-grow: 1;
+        }
+        
+        .navbar-links li {
+            margin: 0;
+        }
+        
+        .navbar-links a {
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            height: 50px;
+            color: #555;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .navbar-links a i {
+            margin-right: 5px;
+            color: #666;
+        }
+        
+        .navbar-links a:hover {
+            color: #D27D2D;
+            background-color: rgba(210, 125, 45, 0.05);
+        }
+        
+        .navbar-links a.active {
+            color: #D27D2D;
+            border-bottom: 3px solid #D27D2D;
+            background-color: rgba(210, 125, 45, 0.05);
+        }
+        
+        .navbar-links a.active i {
+            color: #D27D2D;
+        }
+        
+        .main-portal-btn {
+            display: flex;
+            align-items: center;
+            background-color: rgba(210, 125, 45, 0.1);
+            color: #D27D2D;
+            padding: 6px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            margin-left: 15px;
+        }
+        
+        .main-portal-btn i {
+            margin-right: 5px;
+        }
+        
+        .main-portal-btn:hover {
+            background-color: rgba(210, 125, 45, 0.2);
+        }
+        
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #555;
+            cursor: pointer;
+        }
+        
+        /* Add padding to the body to prevent content from being hidden under the fixed navbar */
+        body {
+            padding-top: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+                order: 1;
+            }
+            
+            .navbar-container {
+                justify-content: space-between;
+            }
+            
+            .navbar-links {
+                position: fixed;
+                top: 50px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .navbar-links.active {
+                max-height: 500px;
+            }
+            
+            .navbar-links a {
+                height: 50px;
+                width: 100%;
+                padding: 0 20px;
+                border-bottom: none;
+            }
+            
+            .navbar-links a.active {
+                border-left: 3px solid #D27D2D;
+                border-bottom: none;
+            }
+            
+            .main-portal-btn {
+                margin-left: auto;
+            }
+        }
     </style>
 </head>
 <body class="student-theme">
     <!-- New one-line navbar -->
     <nav class="navbar">
         <div class="navbar-container">
-            <a href="index.html" class="navbar-logo">RTI4Edu - Student Portal</a>
+            <a href="index.html" class="navbar-logo">
+                <i class="fas fa-user-graduate"></i> Student RTI Portal
+            </a>
             <button class="mobile-toggle">
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="navbar-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="guide.html">RTI Guide</a></li>
-                <li><a href="forms.html">Forms</a></li>
-                <li><a href="track.html">Track Status</a></li>
-                <li><a href="resources.html">Resources</a></li>
-                <li><a href="templates/index.html">Templates</a></li>
-                <li><a href="#" id="change-portal-link" class="change-portal-link">Change Portal <i class="fas fa-exchange-alt"></i></a></li>
+                <li><a href="index.html" class="active">
+                    <i class="fas fa-home"></i> Home
+                </a></li>
+                <li><a href="guide.html">
+                    <i class="fas fa-info-circle"></i> Guide
+                </a></li>
+                <li><a href="forms.html">
+                    <i class="fas fa-file-alt"></i> Forms
+                </a></li>
+                <li><a href="track.html">
+                    <i class="fas fa-search"></i> Track
+                </a></li>
+                <li><a href="resources.html">
+                    <i class="fas fa-folder-open"></i> Resources
+                </a></li>
             </ul>
+            <a href="../index.html" class="main-portal-btn">
+                <i class="fas fa-home"></i> Main Portal
+            </a>
         </div>
     </nav>
 
@@ -701,14 +878,6 @@
             if (mobileToggle) {
                 mobileToggle.addEventListener('click', () => {
                     navbarLinks.classList.toggle('active');
-                });
-            }
-            
-            // Change portal link
-            const changePortalLink = document.getElementById('change-portal-link');
-            if (changePortalLink) {
-                changePortalLink.addEventListener('click', () => {
-                    window.location.href = '../index.html';
                 });
             }
             

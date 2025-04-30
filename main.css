@@ -2231,8 +2231,8 @@ body {
 .journey-visual {
     position: relative;
     text-align: center;
-    margin: 30px 0;
-    min-height: 200px;
+    margin: 50px 0;
+    min-height: 280px;
 }
 
 .journey-path {
@@ -2244,9 +2244,10 @@ body {
 .journey-character {
     position: absolute;
     bottom: 20px;
-    left: 10%;
-    height: 180px;
+    left: 8%;
+    height: 160px;
     animation: float 3s ease-in-out infinite;
+    z-index: 4;
 }
 
 .journey-character img {
@@ -2263,6 +2264,140 @@ body {
     }
     100% {
         transform: translateY(0px);
+    }
+}
+
+/* Responsive adjustments for journey visual */
+@media (max-width: 992px) {
+    .journey-character {
+        height: 140px;
+        bottom: 30px;
+    }
+    
+    #milestone-1 {
+        left: 8%;
+    }
+    
+    #milestone-2 {
+        left: 22%;
+    }
+    
+    #milestone-3 {
+        left: 40%;
+    }
+    
+    #milestone-4 {
+        left: 58%;
+    }
+    
+    #milestone-5 {
+        left: 73%;
+    }
+    
+    #milestone-6 {
+        left: 86%;
+    }
+}
+
+@media (max-width: 768px) {
+    .journey-character {
+        left: 5%;
+        bottom: 40px;
+    }
+    
+    .milestone-icon img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .milestone-icon span {
+        font-size: 10px;
+        padding: 2px 6px;
+    }
+    
+    #milestone-1 {
+        top: 40%;
+        left: 5%;
+    }
+    
+    #milestone-2 {
+        top: 28%;
+        left: 20%;
+    }
+    
+    #milestone-3 {
+        top: 28%;
+        left: 38%;
+    }
+    
+    #milestone-4 {
+        top: 40%;
+        left: 56%;
+    }
+    
+    #milestone-5 {
+        top: 28%;
+        left: 72%;
+    }
+    
+    #milestone-6 {
+        top: 28%;
+        left: 85%;
+    }
+}
+
+@media (max-width: 576px) {
+    .journey-visual {
+        margin: 30px 0;
+        min-height: 240px;
+    }
+    
+    .journey-character {
+        position: absolute;
+        left: 3%;
+        bottom: 50px;
+        height: 100px;
+    }
+    
+    .milestone-icon span {
+        display: none;
+    }
+    
+    .milestone-icon:hover span {
+        display: block;
+        position: absolute;
+        top: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .milestone-icon img {
+        width: 30px;
+        height: 30px;
+    }
+    
+    #milestone-1 {
+        left: 3%;
+    }
+    
+    #milestone-2 {
+        left: 18%;
+    }
+    
+    #milestone-3 {
+        left: 36%;
+    }
+    
+    #milestone-4 {
+        left: 54%;
+    }
+    
+    #milestone-5 {
+        left: 70%;
+    }
+    
+    #milestone-6 {
+        left: 84%;
     }
 }
 
@@ -2524,7 +2659,7 @@ body {
     100% { transform: translateX(100%) rotate(45deg); }
 }
 
-/* Milestone Icons */
+/* Milestone Icons - Improved positioning */
 .milestone-icons {
     position: absolute;
     width: 100%;
@@ -2532,6 +2667,7 @@ body {
     top: 0;
     left: 0;
     pointer-events: none;
+    z-index: 5;
 }
 
 .milestone-icon {
@@ -2541,6 +2677,7 @@ body {
     align-items: center;
     pointer-events: all;
     transition: transform 0.3s ease;
+    z-index: 10;
 }
 
 .milestone-icon:hover {
@@ -2564,34 +2701,35 @@ body {
     white-space: nowrap;
 }
 
+/* Fixed positioning for each milestone */
 #milestone-1 {
-    top: 45%;
-    left: 6%;
+    top: 38%;
+    left: 10%;
 }
 
 #milestone-2 {
-    top: 42%;
+    top: 25%;
     left: 25%;
 }
 
 #milestone-3 {
-    top: 30%;
-    left: 44%;
+    top: 25%;
+    left: 42%;
 }
 
 #milestone-4 {
-    top: 45%;
-    left: 62%;
+    top: 38%;
+    left: 60%;
 }
 
 #milestone-5 {
-    top: 28%;
-    left: 80%;
+    top: 25%;
+    left: 75%;
 }
 
 #milestone-6 {
-    top: 30%;
-    left: 94%;
+    top: 25%;
+    left: 88%;
 }
 
 /* Help Visual */
