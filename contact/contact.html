@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - RTI India Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">RTI India Portal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../about/about.html">About RTI</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../rti-filing/file-rti.html">File RTI</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../rules/rti-rules-regulations.html">Rules & Regulations</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="contact-header py-5 text-center text-white">
+        <div class="container">
+            <h1 class="display-4">Contact Us</h1>
+            <p class="lead">We're here to assist you with your RTI queries and concerns</p>
+        </div>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="contact-section py-5">
+        <div class="container">
+            <div class="row g-5">
+                <!-- Contact Form -->
+                <div class="col-lg-7">
+                    <div class="contact-form-card">
+                        <h2 class="mb-4"><i class="fas fa-envelope me-2"></i>Send Us a Message</h2>
+                        <form id="contactForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="name" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="subject" class="form-label">Subject</label>
+                                    <select class="form-select" id="subject" required>
+                                        <option value="" selected disabled>Select a subject</option>
+                                        <option value="rti-filing">RTI Filing Help</option>
+                                        <option value="status-inquiry">Application Status</option>
+                                        <option value="appeal-process">Appeal Process</option>
+                                        <option value="technical-issue">Technical Issue</option>
+                                        <option value="feedback">Feedback</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="message" class="form-label">Your Message</label>
+                                    <textarea class="form-control" id="message" rows="5" required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-paper-plane me-2"></i>Send Message
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="col-lg-5">
+                    <div class="contact-info-card">
+                        <h2 class="mb-4"><i class="fas fa-info-circle me-2"></i>Contact Information</h2>
+                        
+                        <div class="contact-item">
+                            <h3><i class="fas fa-phone-alt me-2"></i>Helpline Numbers</h3>
+                            <p>Toll-Free: <a href="tel:1800110111">1800-110-111</a></p>
+                            <p>Direct Line: <a href="tel:01123392726">011-2339-2726</a></p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <h3><i class="fas fa-envelope me-2"></i>Email Addresses</h3>
+                            <p>General Inquiries: <a href="mailto:help@rtiindia.gov.in">help@rtiindia.gov.in</a></p>
+                            <p>Technical Support: <a href="mailto:support@rtiindia.gov.in">support@rtiindia.gov.in</a></p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <h3><i class="fas fa-map-marker-alt me-2"></i>Office Addresses</h3>
+                            <div class="office-addresses">
+                                <div class="office-address">
+                                    <h4>Central Information Commission</h4>
+                                    <p>August Kranti Bhawan<br>
+                                    Bhikaji Cama Place<br>
+                                    New Delhi - 110066</p>
+                                </div>
+                                <div class="office-address">
+                                    <h4>RTI Portal Support Office</h4>
+                                    <p>Technology Bhawan<br>
+                                    Mehrauli Road<br>
+                                    New Delhi - 110016</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <h3><i class="fas fa-clock me-2"></i>Office Hours</h3>
+                            <p>Monday to Friday: 9:30 AM to 6:00 PM</p>
+                            <p>Saturday: 9:30 AM to 1:00 PM</p>
+                            <p>Sunday and National Holidays: Closed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4"><i class="fas fa-map-marked-alt me-2"></i>Find Us</h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.1027371949656!2d77.17940731507915!3d28.592910982433574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1da7dd42398f%3A0xa67be6b3bd1fe4bb!2sCentral%20Information%20Commission!5e0!3m2!1sen!2sin!4v1649057862476!5m2!1sen!2sin" 
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-4"><i class="fas fa-question-circle me-2"></i>Frequently Asked Questions</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="accordion" id="contactFAQ">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                    How can I check the status of my RTI application?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#contactFAQ">
+                                <div class="accordion-body">
+                                    You can check the status of your RTI application by visiting the "Track Application" section on our portal and entering your application reference number. Alternatively, you can call our helpline at 1800-110-111 for assistance.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    Whom should I contact if I face technical issues on the portal?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#contactFAQ">
+                                <div class="accordion-body">
+                                    For any technical issues related to the RTI portal, please email us at support@rtiindia.gov.in with screenshots and details of the problem you're experiencing. Our technical team will respond within 24 hours.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    How can I file a complaint if I'm not satisfied with the RTI response?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#contactFAQ">
+                                <div class="accordion-body">
+                                    If you're not satisfied with the response to your RTI application, you can file a first appeal to the First Appellate Authority of the concerned department. If still unsatisfied, you can file a second appeal to the Central Information Commission through our portal or by visiting the CIC office.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                                    What is the response time for queries sent through the contact form?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#contactFAQ">
+                                <div class="accordion-body">
+                                    We aim to respond to all inquiries sent through the contact form within 48 hours on working days. For urgent matters, we recommend calling our helpline for immediate assistance.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../about/about.html">About RTI</a></li>
+                        <li><a href="../rti-filing/file-rti.html">File RTI</a></li>
+                        <li><a href="../rules/rti-rules-regulations.html">Rules & Regulations</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Connect With Us</h5>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>Newsletter</h5>
+                    <p>Subscribe to get updates on RTI amendments and guidelines</p>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2023 RTI India Portal. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a href="#">Terms of Use</a></li>
+                        <li class="list-inline-item"><a href="#">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Show success message (in a real application, this would send data to a server)
+            const formElement = this;
+            const submitBtn = formElement.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+            submitBtn.disabled = true;
+            
+            setTimeout(function() {
+                const successAlert = document.createElement('div');
+                successAlert.className = 'alert alert-success mt-3';
+                successAlert.innerHTML = '<i class="fas fa-check-circle me-2"></i>Your message has been sent. We\'ll get back to you soon!';
+                formElement.appendChild(successAlert);
+                
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                
+                // Reset form
+                formElement.reset();
+                
+                // Remove success message after 5 seconds
+                setTimeout(function() {
+                    successAlert.remove();
+                }, 5000);
+            }, 1500);
+        });
+    </script>
+</body>
+</html> 

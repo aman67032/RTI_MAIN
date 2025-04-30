@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffd700">
+    <title>RTI Handbook - RTI4Edu</title>
+    <link rel="icon" href="../assets/images/favicon.ico?v=2" sizes="any">
+    <link rel="icon" href="../assets/images/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png?v=2">
+
+    <link rel="stylesheet" href="../Waves.css">
+    <link rel="stylesheet" href="../loading-screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="../rti-tools.css">
+
+    <style>
+        /* RTI Handbook Specific Styles */
+        :root {
+            --handbook-primary: #F4A261;
+            --handbook-secondary: #D27D2D;
+            --handbook-accent: #5E8B7E;
+            --handbook-light: #FEF4E8;
+            --handbook-dark: #1B3A4B;
+            --handbook-gradient: linear-gradient(135deg, #F4A261, #D27D2D);
+        }
+
+        /* Page Header */
+        .handbook-header {
+            background: var(--handbook-gradient);
+            color: white;
+            padding: 6rem 0 3rem;
+            text-align: center;
+            position: relative;
+            margin-bottom: 3rem;
+            overflow: hidden;
+        }
+
+        .handbook-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../assets/images/patterns/dot-pattern.svg');
+            background-size: 20px;
+            opacity: 0.1;
+        }
+
+        .handbook-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .handbook-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: white;
+            border-radius: 2px;
+        }
+
+        .handbook-subtitle {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .handbook-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .meta-item {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .meta-item i {
+            color: var(--handbook-light);
+        }
+
+        /* Handbook Overview */
+        .handbook-overview {
+            background-color: white;
+            border-radius: 10px;
+            padding: 3rem;
+            margin: -5rem auto 4rem;
+            max-width: 1100px;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .handbook-overview h2 {
+            color: var(--handbook-secondary);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .handbook-overview h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--handbook-accent);
+            border-radius: 2px;
+        }
+
+        .handbook-overview p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--handbook-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .handbook-overview .emphasis {
+            font-weight: 600;
+            color: var(--handbook-secondary);
+        }
+
+        /* Table of Contents */
+        .table-of-contents {
+            background-color: var(--handbook-light);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .table-of-contents h3 {
+            color: var(--handbook-secondary);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .toc-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .toc-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .toc-item h4 {
+            color: var(--handbook-dark);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toc-item h4 i {
+            color: var(--handbook-secondary);
+        }
+
+        .toc-item ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc-item ul li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .toc-item ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--handbook-accent);
+            font-weight: bold;
+        }
+
+        .toc-item a {
+            color: var(--handbook-dark);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .toc-item a:hover {
+            color: var(--handbook-secondary);
+        }
+
+        /* Content Sections */
+        .handbook-section {
+            padding: 4rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .handbook-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--handbook-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .section-icon i {
+            font-size: 1.8rem;
+            color: var(--handbook-secondary);
+        }
+
+        .section-titles {
+            flex: 1;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--handbook-dark);
+            margin: 0 0 0.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--handbook-accent);
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .section-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--handbook-dark);
+        }
+
+        .section-content h3 {
+            font-size: 1.6rem;
+            color: var(--handbook-secondary);
+            margin: 2rem 0 1rem;
+        }
+
+        .section-content h4 {
+            font-size: 1.3rem;
+            color: var(--handbook-dark);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .section-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-content ul, 
+        .section-content ol {
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-content ul li, 
+        .section-content ol li {
+            margin-bottom: 0.8rem;
+        }
+
+        .key-point {
+            background-color: var(--handbook-light);
+            border-left: 4px solid var(--handbook-secondary);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .key-point-title {
+            font-weight: 600;
+            color: var(--handbook-secondary);
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .case-study {
+            background-color: rgba(94, 139, 126, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .case-study::before {
+            content: 'Case Study';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background-color: var(--handbook-accent);
+            color: white;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .case-study-title {
+            color: var(--handbook-accent);
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Download Options */
+        .download-options {
+            background-color: var(--handbook-light);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .download-options h3 {
+            font-size: 1.8rem;
+            color: var(--handbook-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .download-options p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+
+        .download-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .download-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: white;
+            color: var(--handbook-dark);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .download-button:hover {
+            background-color: var(--handbook-secondary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .download-button i {
+            font-size: 1.2rem;
+        }
+
+        .feedback-section {
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .feedback-section h3 {
+            font-size: 1.8rem;
+            color: var(--handbook-dark);
+            margin-bottom: 1rem;
+        }
+
+        .feedback-section p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+
+        .feedback-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--handbook-secondary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .feedback-button:hover {
+            background-color: var(--handbook-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .handbook-header {
+                padding: 5rem 0 2rem;
+            }
+
+            .handbook-title {
+                font-size: 3rem;
+            }
+
+            .handbook-overview {
+                padding: 2rem;
+                margin-top: -3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .handbook-header {
+                padding: 4rem 0 2rem;
+            }
+
+            .handbook-title {
+                font-size: 2.5rem;
+            }
+
+            .handbook-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .handbook-meta {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+
+            .handbook-overview {
+                padding: 1.5rem;
+                margin-top: -2rem;
+            }
+
+            .handbook-overview h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .section-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar/Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../assets/images/LOGO.png" alt="RTI4Edu Logo" height="110">
+                <div class="logo-accent"></div>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">
+                    <span class="nav-icon"><i class="fas fa-home"></i></span>
+                    Home
+                </a>
+                <a href="../timeline.html">
+                    <span class="nav-icon"><i class="fas fa-history"></i></span>
+                    Timeline
+                </a>
+                <a href="../news.html">
+                    <span class="nav-icon"><i class="fas fa-newspaper"></i></span>
+                    News
+                </a>
+                <a href="../cases.html">
+                    <span class="nav-icon"><i class="fas fa-gavel"></i></span>
+                    Case Studies
+                </a>
+            </div>
+            <div class="auth-links">
+                <a href="../login.html" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </a>
+                <a href="../signup.html" class="signup-btn">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up
+                </a>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <div class="nav-decoration">
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+        </div>
+    </nav>
+
+    <!-- Handbook Header -->
+    <header class="handbook-header">
+        <div class="container">
+            <h1 class="handbook-title">RTI Handbook</h1>
+            <p class="handbook-subtitle">Comprehensive Guide to Using Right to Information in Education</p>
+            
+            <div class="handbook-meta">
+                <div class="meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>Last Updated: April 2025</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-file-alt"></i>
+                    <span>90+ Pages of Guidance</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-users"></i>
+                    <span>For Students, Parents & Teachers</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Handbook Overview -->
+        <section class="handbook-overview">
+            <h2>Your Complete Guide to RTI in Education</h2>
+            <p>Welcome to the RTI4Edu Handbook — your comprehensive resource for navigating the Right to Information Act and its applications in the education sector. This guide has been developed by legal experts, RTI activists, and education specialists to provide you with clear, practical information on how to effectively use RTI to promote transparency and accountability in educational institutions.</p>
+            
+            <p>The handbook is designed to be a reference companion for students, parents, teachers, and anyone interested in promoting transparency in education. It provides not just theoretical knowledge about RTI, but practical steps, real case studies, and ready-to-use templates to help you take action.</p>
+            
+            <p class="emphasis">Whether you're filing your first RTI application or looking to understand the nuances of the appeal process, this handbook will serve as your trusted guide throughout your RTI journey.</p>
+        </section>
+
+        <!-- Table of Contents -->
+        <section class="table-of-contents" id="toc">
+            <h3>Table of Contents</h3>
+            <div class="toc-grid">
+                <div class="toc-item">
+                    <h4><i class="fas fa-book"></i> Fundamentals</h4>
+                    <ul>
+                        <li><a href="#what-is-rti">What is RTI?</a></li>
+                        <li><a href="#legal-framework">Legal Framework & Evolution</a></li>
+                        <li><a href="#applicability">Applicability to Educational Institutions</a></li>
+                        <li><a href="#key-provisions">Key Provisions & Terminology</a></li>
+                        <li><a href="#exemptions">Understanding Exemptions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="toc-item">
+                    <h4><i class="fas fa-file-alt"></i> Filing Applications</h4>
+                    <ul>
+                        <li><a href="#preparing">Preparing Your Application</a></li>
+                        <li><a href="#drafting">Drafting Effective Questions</a></li>
+                        <li><a href="#submission">Submission Methods & Fees</a></li>
+                        <li><a href="#tracking">Tracking Your Application</a></li>
+                        <li><a href="#common-mistakes">Common Mistakes to Avoid</a></li>
+                    </ul>
+                </div>
+                
+                <div class="toc-item">
+                    <h4><i class="fas fa-university"></i> Education-Specific Guidance</h4>
+                    <ul>
+                        <li><a href="#admission-transparency">Admission Transparency</a></li>
+                        <li><a href="#fee-structure">Fee Structure Disclosures</a></li>
+                        <li><a href="#evaluation">Examination & Evaluation</a></li>
+                        <li><a href="#scholarships">Scholarships & Financial Aid</a></li>
+                        <li><a href="#infrastructure">Infrastructure & Safety</a></li>
+                    </ul>
+                </div>
+                
+                <div class="toc-item">
+                    <h4><i class="fas fa-gavel"></i> Appeals & Complaints</h4>
+                    <ul>
+                        <li><a href="#first-appeal">First Appeal Process</a></li>
+                        <li><a href="#second-appeal">Second Appeal to Commission</a></li>
+                        <li><a href="#complaints">Filing Complaints</a></li>
+                        <li><a href="#penalties">Penalties & Remedies</a></li>
+                        <li><a href="#judicial-review">Judicial Review</a></li>
+                    </ul>
+                </div>
+                
+                <div class="toc-item">
+                    <h4><i class="fas fa-landmark"></i> Success Stories</h4>
+                    <ul>
+                        <li><a href="#landmark-cases">Landmark Cases</a></li>
+                        <li><a href="#student-victories">Student Victories</a></li>
+                        <li><a href="#parent-impact">Parent-Led Initiatives</a></li>
+                        <li><a href="#teacher-reforms">Teacher-Initiated Reforms</a></li>
+                        <li><a href="#systemic-changes">Systemic Changes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="toc-item">
+                    <h4><i class="fas fa-tools"></i> Resources & Templates</h4>
+                    <ul>
+                        <li><a href="#templates">Ready-to-Use Templates</a></li>
+                        <li><a href="#sample-applications">Sample Applications</a></li>
+                        <li><a href="#checklists">Checklists & Worksheets</a></li>
+                        <li><a href="#further-reading">Further Reading</a></li>
+                        <li><a href="#support-contacts">Support Contacts</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fundamentals Section -->
+        <section class="handbook-section" id="what-is-rti">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="section-titles">
+                    <h2 class="section-title">What is RTI?</h2>
+                    <p class="section-subtitle">Understanding the Right to Information and its significance</p>
+                </div>
+            </div>
+            
+            <div class="section-content">
+                <p>The Right to Information (RTI) Act is a landmark legislation that empowers citizens to request information from public authorities, promoting transparency and accountability in governance. Enacted in 2005, it has transformed the relationship between citizens and the government by giving people the legal right to access information held by public authorities.</p>
+                
+                <h3>Core Principles of RTI</h3>
+                <p>The RTI Act is founded on the following core principles:</p>
+                <ul>
+                    <li><strong>Transparency:</strong> Government institutions should operate in an open manner, with their decisions and actions visible to the public.</li>
+                    <li><strong>Accountability:</strong> Officials and institutions should be answerable for their actions and decisions.</li>
+                    <li><strong>Citizen Empowerment:</strong> Citizens have the right to know how they are governed and how public resources are utilized.</li>
+                    <li><strong>Democratic Participation:</strong> Access to information enables meaningful citizen participation in democratic processes.</li>
+                </ul>
+                
+                <h3>RTI as a Fundamental Right</h3>
+                <p>The Right to Information stems from the fundamental right to freedom of speech and expression under Article 19(1)(a) of the Indian Constitution. The Supreme Court has recognized that the right to information is an integral part of the right to free speech, as without information, freedom of speech and expression cannot be meaningfully exercised.</p>
+                
+                <div class="key-point">
+                    <h4 class="key-point-title">Key Point: RTI Is Your Right, Not a Privilege</h4>
+                    <p>The RTI Act doesn't create a new right but formally recognizes and implements an existing fundamental right. This means that accessing information is not a favor granted by authorities, but a constitutional entitlement of every citizen.</p>
+                </div>
+                
+                <h3>Significance in the Education Sector</h3>
+                <p>In the education sector, RTI serves as a powerful tool for:</p>
+                <ul>
+                    <li>Ensuring fair and transparent admission processes</li>
+                    <li>Monitoring proper utilization of education funds</li>
+                    <li>Verifying compliance with regulatory standards</li>
+                    <li>Examining evaluation procedures and results</li>
+                    <li>Holding educational institutions accountable for their decisions</li>
+                    <li>Uncovering irregularities in appointments and promotions</li>
+                    <li>Ensuring implementation of scholarship and aid schemes</li>
+                </ul>
+                
+                <div class="case-study">
+                    <h4 class="case-study-title">Delhi University Admission Transparency (2022)</h4>
+                    <p>In 2022, a group of students used RTI to uncover discrepancies in Delhi University's admission process. Their applications revealed that several colleges had not followed the prescribed reservation quotas. The findings led to the implementation of a centralized online admission portal with real-time quota compliance tracking, benefiting thousands of students from marginalized backgrounds.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Legal Framework Section -->
+        <section class="handbook-section" id="legal-framework">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <div class="section-titles">
+                    <h2 class="section-title">Legal Framework & Evolution</h2>
+                    <p class="section-subtitle">The journey and structure of RTI legislation in India</p>
+                </div>
+            </div>
+            
+            <div class="section-content">
+                <p>The Right to Information Act, 2005 represents the culmination of a decades-long struggle for transparency in India. Understanding its evolution and structure is essential for effectively exercising your right to information.</p>
+                
+                <h3>Historical Evolution</h3>
+                <p>The journey toward RTI legislation in India includes several important milestones:</p>
+                <ul>
+                    <li><strong>1975:</strong> Supreme Court recognized the right to information as part of the right to free speech in State of UP v. Raj Narain.</li>
+                    <li><strong>1990:</strong> Grassroots movement for transparency began in Rajasthan with Mazdoor Kisan Shakti Sangathan (MKSS).</li>
+                    <li><strong>1997:</strong> Tamil Nadu became the first state to pass an RTI law.</li>
+                    <li><strong>2000:</strong> Freedom of Information Bill introduced in Parliament.</li>
+                    <li><strong>2002:</strong> Freedom of Information Act passed but never effectively implemented.</li>
+                    <li><strong>2004:</strong> National Advisory Council drafted a new RTI Bill.</li>
+                    <li><strong>2005:</strong> Right to Information Act passed in Parliament and came into force on October 12, 2005.</li>
+                    <li><strong>2019:</strong> RTI Amendment Act introduced changes to the terms and conditions of Information Commissioners.</li>
+                </ul>
+                
+                <h3>Structure of the RTI Act</h3>
+                <p>The RTI Act consists of 31 sections organized into six chapters:</p>
+                <ol>
+                    <li><strong>Chapter I:</strong> Preliminary definitions</li>
+                    <li><strong>Chapter II:</strong> Right to information and obligations of public authorities</li>
+                    <li><strong>Chapter III:</strong> The Central Information Commission</li>
+                    <li><strong>Chapter IV:</strong> The State Information Commission</li>
+                    <li><strong>Chapter V:</strong> Powers and functions of Information Commissions, appeals, and penalties</li>
+                    <li><strong>Chapter VI:</strong> Miscellaneous provisions</li>
+                </ol>
+                
+                <div class="key-point">
+                    <h4 class="key-point-title">Key Point: Framework for Educational Institutions</h4>
+                    <p>Educational institutions that are established, maintained, or funded by the government fall under the definition of "public authorities" in Section 2(h) of the RTI Act. This includes universities, colleges, schools, and other educational bodies that receive substantial government funding.</p>
+                </div>
+                
+                <h3>Key Amendments and Judicial Interpretations</h3>
+                <p>Over the years, the RTI Act has evolved through amendments and judicial interpretations:</p>
+                <ul>
+                    <li><strong>RTI Amendment Act, 2019:</strong> Changed the terms and conditions of appointment, salary, and tenure of Information Commissioners, giving the central government more control over these appointments.</li>
+                    <li><strong>Judicial Interpretations:</strong> Supreme Court judgments have clarified the scope of the RTI Act, including which institutions fall under its purview and what information can be sought.</li>
+                </ul>
+                
+                <h3>State RTI Rules</h3>
+                <p>While the RTI Act is a central legislation, each state has its own set of RTI Rules that specify procedural details such as application fees, formats, and appeal procedures. These rules may vary from state to state, so it's important to consult the relevant state rules when filing RTI applications with state public authorities.</p>
+            </div>
+        </section>
+        
+        <!-- Filing Applications Section (Preview) -->
+        <section class="handbook-section" id="preparing">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="section-titles">
+                    <h2 class="section-title">Preparing Your Application</h2>
+                    <p class="section-subtitle">Steps to take before drafting your RTI application</p>
+                </div>
+            </div>
+            
+            <div class="section-content">
+                <p>Preparing thoroughly before filing an RTI application increases your chances of receiving complete and relevant information. This section outlines the essential steps to take before drafting your application.</p>
+                
+                <h3>Research and Information Gathering</h3>
+                <p>Before drafting your RTI application, gather as much information as possible about the subject:</p>
+                <ul>
+                    <li>Identify the specific issue or problem you want to address</li>
+                    <li>Collect any available information from public sources (websites, annual reports, policy documents)</li>
+                    <li>Note specific dates, file numbers, or reference numbers if available</li>
+                    <li>Research similar RTI applications and their outcomes if possible</li>
+                    <li>Understand the organizational structure of the authority you're approaching</li>
+                </ul>
+                
+                <h3>Identifying the Correct Public Authority</h3>
+                <p>Sending your application to the right public authority is crucial for a timely response:</p>
+                <ul>
+                    <li>Determine whether the institution is central, state, or local</li>
+                    <li>For educational institutions, check if they are established by central act, state act, or are privately managed</li>
+                    <li>For private institutions, determine if they are substantially funded by the government</li>
+                    <li>Identify the specific department or office that likely holds the information</li>
+                </ul>
+                
+                <div class="key-point">
+                    <h4 class="key-point-title">Key Point: Substantially Funded Institutions</h4>
+                    <p>The Supreme Court has held that "substantially funded" typically means that the government funding is significant enough to substantially influence the functioning of the institution. This is generally considered to be funding of 20% or more of the total expenditure, though each case may be assessed individually.</p>
+                </div>
+                
+                <h3>Understanding Fee Requirements</h3>
+                <p>Different public authorities may have different fee structures:</p>
+                <ul>
+                    <li>Central Government bodies: ₹10 application fee</li>
+                    <li>State Government bodies: Check respective state RTI rules (ranges from ₹10 to ₹50)</li>
+                    <li>Additional costs for photocopying (typically ₹2 per page)</li>
+                    <li>Below Poverty Line (BPL) cardholders are exempt from fees</li>
+                    <li>Payment methods vary (postal order, demand draft, court fee stamp, online payment)</li>
+                </ul>
+                
+                <div class="case-study">
+                    <h4 class="case-study-title">CBSE Fee Structure Disclosure (2023)</h4>
+                    <p>A parent association in Mumbai meticulously researched CBSE's organizational structure before filing an RTI. Instead of addressing it generally to CBSE, they correctly identified the Finance Division as the department holding fee-related information. This resulted in receiving comprehensive data within 20 days, which revealed unjustified fee increases and led to a successful challenge of a proposed 40% hike.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Options -->
+        <section class="download-options">
+            <h3>Download the Complete RTI Handbook</h3>
+            <p>Get the full 90-page handbook with all chapters, case studies, templates, and resources for offline reference.</p>
+            <div class="download-buttons">
+                <a href="#" class="download-button">
+                    <i class="fas fa-file-pdf"></i> PDF Version (4.2 MB)
+                </a>
+                <a href="#" class="download-button">
+                    <i class="fas fa-file-word"></i> Word Document (3.8 MB)
+                </a>
+                <a href="#" class="download-button">
+                    <i class="fas fa-file-alt"></i> Text Only Version (1.1 MB)
+                </a>
+                <a href="#" class="download-button">
+                    <i class="fas fa-mobile-alt"></i> Mobile-Optimized Version (2.5 MB)
+                </a>
+            </div>
+        </section>
+
+        <!-- Feedback Section -->
+        <section class="feedback-section">
+            <h3>Help Us Improve This Handbook</h3>
+            <p>We are continuously working to improve this resource based on user feedback and evolving RTI practices. If you have suggestions, corrections, or would like to share your RTI success story for inclusion in future editions, we'd love to hear from you.</p>
+            <a href="#" class="feedback-button">
+                <i class="fas fa-comment-alt"></i> Share Your Feedback
+            </a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Dedicated to promoting transparency in education through the Right to Information Act.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../timeline.html">Timeline</a></li>
+                        <li><a href="../news.html">News</a></li>
+                        <li><a href="../cases.html">Current Cases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: info@rti4edu.org</p>
+                    <p>Phone: +91 1234567890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RTI4Edu. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html> 

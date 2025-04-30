@@ -24,6 +24,52 @@
     <script src="loading-screen.js"></script>
     <script src="favicon-refresh.js"></script>
 
+    <style>
+        /* Increase font size by 20% for RTI Guidelines and all sections after it */
+        #journey,
+        #rti-guidelines, 
+        #rti-tools,
+        #success-stories,
+        .resources-section,
+        #institution-directory,
+        #policy-tracker,
+        #statistics,
+        #help {
+            font-size: 170%;
+        }
+        
+        /* Adjust headings in these sections for better proportions */
+        #journey .section-title,
+        #rti-guidelines .section-title,
+        #rti-tools .section-title,
+        #success-stories .section-title,
+        .resources-section .section-title,
+        #institution-directory .section-title,
+        #policy-tracker .section-title,
+        #statistics .section-title,
+        #help .section-title {
+            font-size: 2.6em;
+        }
+        
+        #journey .section-subtitle,
+        #journey .journey-intro p,
+        #rti-guidelines .section-subtitle,
+        #rti-tools .section-subtitle,
+        #success-stories .section-subtitle,
+        .resources-section .section-subtitle,
+        #institution-directory .section-subtitle,
+        #policy-tracker .section-subtitle,
+        #statistics .section-subtitle,
+        #help .section-subtitle {
+            font-size: 1.2em;
+        }
+        
+        /* Add light theme background color for journey section */
+        .journey-section {
+            background-color: #f3b887;
+        }
+    </style>
+
 
     
 </head>
@@ -453,6 +499,197 @@
         </div>
     </section>
 
+
+    <!-- RTI Rules, Guidelines & Education Articles Section -->
+    <section id="rti-guidelines" class="rti-guidelines-section">
+        <div class="container">
+            <h2 class="section-title">RTI Rules & Guidelines</h2>
+            <p class="section-subtitle">Comprehensive resources on RTI laws, regulations, and education-specific applications</p>
+            
+            <div class="guidelines-grid">
+                <!-- Rules & Regulations Column -->
+                <div class="guidelines-column">
+                    <div class="guidelines-header">
+                        <div class="guidelines-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h3>RTI Laws & Regulations</h3>
+                    </div>
+                    <ul class="guidelines-list">
+                        <li class="guidelines-item">
+                            <a href="rules/rti-act-2005.html">
+                                <span class="item-title">RTI Act, 2005 (Full Text)</span>
+                                <span class="item-description">Complete legislation with all sections and provisions</span>
+                                <span class="item-meta">Last Updated: March 2025</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </li>
+                        <li class="guidelines-item">
+                            <a href="rules/rti-rules-2012.html">
+                                <span class="item-title">RTI Rules, 2012</span>
+                                <span class="item-description">Procedural rules for filing applications and appeals</span>
+                                <span class="item-meta">Last Updated: January 2025</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </li>
+                        <li class="guidelines-item">
+                            <a href="rules/rti-amendments.html">
+                                <span class="item-title">RTI Amendments & Updates</span>
+                                <span class="item-description">Changes to the original Act and implementation</span>
+                                <span class="item-meta">Last Updated: April 2025</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </li>
+                        <li class="guidelines-item">
+                            <a href="rules/state-rti-rules.html">
+                                <span class="item-title">State-specific RTI Rules</span>
+                                <span class="item-description">Variations in RTI implementation across Indian states</span>
+                                <span class="item-meta">Last Updated: February 2025</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </li>
+                        <li class="guidelines-item">
+                            <a href="rules/cic-decisions.html">
+                                <span class="item-title">CIC Key Decisions</span>
+                                <span class="item-description">Important rulings by Central Information Commission</span>
+                                <span class="item-meta">Last Updated: March 2025</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- RTI Guidelines Column -->
+                <div class="guidelines-column">
+                    <div class="guidelines-header">
+                        <div class="guidelines-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Official Guidelines & Circulars</h3>
+                    </div>
+                    <ul class="guidelines-list">
+                        <li class="guidelines-item">
+                            <a href="guidelines/dopt-guidelines.html">
+                                <span class="item-title">DoPT Guidelines on RTI</span>
+                                <span class="item-description">Official guidelines from Department of Personnel & Training</span>
+                                <span class="item-meta">Last Updated: April 2025</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </li>
+                        <li class="guidelines-item">
+                            <a href="guidelines/education-ministry-circulars.html">
+                                <span class="item-title">Education Ministry Circulars</span>
+                                <span class="item-description">Specific instructions for educational institutions</span>
+                                <span class="item-meta">Last Updated: March 2025</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </li>
+                        <li class="guidelines-item">
+                            <a href="guidelines/fee-disclosure.html">
+                                <span class="item-title">Fee Disclosure Requirements</span>
+                                <span class="item-description">Guidelines on transparent fee disclosure for institutions</span>
+                                <span class="item-meta">Last Updated: February 2025</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </li>
+                        <li class="guidelines-item">
+                            <a href="guidelines/exemptions.html">
+                                <span class="item-title">RTI Exemptions Guide</span>
+                                <span class="item-description">Understanding Section 8 exemptions in educational context</span>
+                                <span class="item-meta">Last Updated: January 2025</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </li>
+                        <li class="guidelines-item">
+                            <a href="guidelines/digital-compliance.html">
+                                <span class="item-title">Digital RTI Compliance</span>
+                                <span class="item-description">Online disclosure requirements for institutions</span>
+                                <span class="item-meta">Last Updated: April 2025</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Education-Specific RTI Column -->
+                <div class="guidelines-column">
+                    <div class="guidelines-header">
+                        <div class="guidelines-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Education-Specific RTI Resources</h3>
+                    </div>
+                    <ul class="guidelines-list">
+                        <li class="guidelines-item featured">
+                            <a href="edu-rti/rti-in-education.html">
+                                <span class="item-title">Comprehensive Guide: RTI in Education</span>
+                                <span class="item-description">Complete overview of how RTI applies to educational institutions</span>
+                                <span class="item-tag">Featured</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </li>
+                        <li class="guidelines-item">
+                            <a href="edu-rti/admission-transparency.html">
+                                <span class="item-title">Admission Process Transparency</span>
+                                <span class="item-description">RTI applications for admissions, reservations & selection</span>
+                                <span class="item-meta">Last Updated: March 2025</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </li>
+                        <li class="guidelines-item">
+                            <a href="edu-rti/evaluation-access.html">
+                                <span class="item-title">Answer Sheet & Evaluation Access</span>
+                                <span class="item-description">Guidelines for obtaining evaluated answer sheets</span>
+                                <span class="item-meta">Last Updated: February 2025</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </li>
+                        <li class="guidelines-item">
+                            <a href="edu-rti/scholarship-tracking.html">
+                                <span class="item-title">Scholarship & Fund Tracking</span>
+                                <span class="item-description">Using RTI to monitor disbursement of educational funds</span>
+                                <span class="item-meta">Last Updated: April 2025</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </li>
+                        <li class="guidelines-item">
+                            <a href="edu-rti/infrastructure-compliance.html">
+                                <span class="item-title">Infrastructure & Safety Compliance</span>
+                                <span class="item-description">Monitoring educational infrastructure through RTI</span>
+                                <span class="item-meta">Last Updated: January 2025</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="guidelines-resources">
+                <h3>Additional Resources</h3>
+                <div class="resources-grid">
+                    <a href="resources/rti-handbook.html" class="resource-item">
+                        <div class="resource-icon"><i class="fas fa-book"></i></div>
+                        <span>RTI Handbook</span>
+                    </a>
+                    <a href="resources/rti-checklist.html" class="resource-item">
+                        <div class="resource-icon"><i class="fas fa-tasks"></i></div>
+                        <span>RTI Checklist</span>
+                    </a>
+                    <a href="resources/glossary.html" class="resource-item">
+                        <div class="resource-icon"><i class="fas fa-clipboard-list"></i></div>
+                        <span>RTI Glossary</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="guidelines-cta">
+                <p>Need specific guidance on how to use RTI in educational matters?</p>
+                <a href="#" class="cta-button">
+                    <i class="fas fa-headset"></i> Get Expert Assistance
+                </a>
+            </div>
+        </div>
+    </section>
 
     <!-- RTI Tools & Templates Section -->
     <section id="rti-tools" class="rti-tools-section">
@@ -1384,8 +1621,198 @@
         </div>
     </footer>
 
+    <!-- Guide Chatbot -->
+    <div class="guide-chatbot" id="guide-chatbot">
+        <div class="chatbot-toggle" id="chatbot-toggle">
+            <div class="chatbot-avatar">
+                <img src="assets/images/characters/guide-character.svg" alt="Guide">
+            </div>
+            <div class="chatbot-label">Need help? Ask me</div>
+        </div>
+        <div class="chatbot-container" id="chatbot-container">
+            <div class="chatbot-header">
+                <div class="chatbot-title">RTI Guide Assistant</div>
+                <button class="chatbot-close" id="chatbot-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chatbot-body">
+                <div class="chatbot-messages" id="chatbot-messages">
+                    <div class="message bot">
+                        <div class="message-content">
+                            <p>Hello! I'm your RTI Guide Assistant. How can I help you today?</p>
+                            <p>I can explain any section of this website. What would you like to know about?</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chatbot-suggestions">
+                    <button class="suggestion-btn" data-section="hero">Home Page</button>
+                    <button class="suggestion-btn" data-section="portals">User Portals</button>
+                    <button class="suggestion-btn" data-section="journey">RTI Journey</button>
+                    <button class="suggestion-btn" data-section="guidelines">RTI Guidelines</button>
+                    <button class="suggestion-btn" data-section="tools">RTI Tools</button>
+                    <button class="suggestion-btn" data-section="stories">Success Stories</button>
+                </div>
+                <div class="chatbot-input-container">
+                    <input 
+                        type="text" 
+                        id="chatbot-input" 
+                        class="chatbot-input" 
+                        placeholder="Type your question here..."
+                    >
+                    <button class="chatbot-send" id="chatbot-send">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
     <script src="script.js"></script>
     <script src="slider.js"></script>
+    
+    <!-- Guide Chatbot Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Chatbot elements
+            const chatbot = document.getElementById('guide-chatbot');
+            const chatbotToggle = document.getElementById('chatbot-toggle');
+            const chatbotContainer = document.getElementById('chatbot-container');
+            const chatbotClose = document.getElementById('chatbot-close');
+            const chatbotMessages = document.getElementById('chatbot-messages');
+            const chatbotInput = document.getElementById('chatbot-input');
+            const chatbotSend = document.getElementById('chatbot-send');
+            const suggestionButtons = document.querySelectorAll('.suggestion-btn');
+            
+            // Toggle chatbot visibility
+            chatbotToggle.addEventListener('click', function() {
+                chatbotContainer.classList.toggle('active');
+                chatbotToggle.classList.toggle('hidden');
+            });
+            
+            // Close chatbot
+            chatbotClose.addEventListener('click', function() {
+                chatbotContainer.classList.remove('active');
+                chatbotToggle.classList.remove('hidden');
+            });
+            
+            // Send message function
+            function sendMessage() {
+                const message = chatbotInput.value.trim();
+                if (message.length === 0) return;
+                
+                // Add user message to chat
+                addMessage(message, 'user');
+                
+                // Clear input
+                chatbotInput.value = '';
+                
+                // Process the message and respond
+                processMessage(message);
+            }
+            
+            // Send message on button click
+            chatbotSend.addEventListener('click', sendMessage);
+            
+            // Send message on Enter key
+            chatbotInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+            
+            // Handle suggestion buttons
+            suggestionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const section = this.getAttribute('data-section');
+                    addMessage(`Tell me about the ${this.textContent} section`, 'user');
+                    processMessage(section);
+                });
+            });
+            
+            // Add message to chat
+            function addMessage(text, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message', sender);
+                
+                const messageContent = document.createElement('div');
+                messageContent.classList.add('message-content');
+                
+                const paragraph = document.createElement('p');
+                paragraph.textContent = text;
+                
+                messageContent.appendChild(paragraph);
+                messageDiv.appendChild(messageContent);
+                chatbotMessages.appendChild(messageDiv);
+                
+                // Scroll to bottom
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+            
+            // Process user message and generate response
+            function processMessage(message) {
+                // Simulate thinking
+                setTimeout(() => {
+                    let response;
+                    
+                    // Simple keyword-based responses
+                    const messageLower = message.toLowerCase();
+                    
+                    // Check for section-specific questions using keywords
+                    if (messageLower === 'hero' || messageLower.includes('home page')) {
+                        response = "The Home Page provides an overview of the RTI4Edu platform. It showcases the latest impact stories and provides navigation to different sections of the website. It's designed to give you a quick understanding of how RTI can help in educational matters.";
+                    }
+                    else if (messageLower === 'portals' || messageLower.includes('user portal')) {
+                        response = "The User Portals section allows you to choose a specific view tailored to your role: Parent, Student, or Teacher. Each portal provides specialized tools, templates, and resources relevant to your specific needs and concerns in the education sector.";
+                    }
+                    else if (messageLower === 'journey' || messageLower.includes('rti journey')) {
+                        response = "The RTI Education Journey section guides you through the complete process of using RTI effectively. It includes understanding your rights, filing applications, tracking progress, and learning from success stories. It's a step-by-step roadmap for your RTI experience.";
+                    }
+                    else if (messageLower === 'guidelines' || messageLower.includes('rti guidelines')) {
+                        response = "The RTI Rules & Guidelines section provides comprehensive resources on RTI laws, regulations, and education-specific applications. Here you'll find the full text of the RTI Act, rules, amendments, state-specific variations, and important CIC decisions.";
+                    }
+                    else if (messageLower === 'tools' || messageLower.includes('rti tools')) {
+                        response = "The RTI Tools & Templates section offers practical resources to simplify your RTI journey. This includes downloadable templates for common requests, guides to debunk RTI myths, interactive guides for filing, and methods for confidential filing.";
+                    }
+                    else if (messageLower === 'stories' || messageLower.includes('success stories')) {
+                        response = "The Success Stories section showcases real cases where RTI has made a difference in education. Stories are categorized by Student, Parent, and Teacher experiences, as well as landmark legal cases that have set important precedents for educational transparency.";
+                    }
+                    else if (messageLower.includes('hello') || messageLower.includes('hi')) {
+                        response = "Hello! I'm your RTI Guide Assistant. How can I help you today? Feel free to ask about any section of the website.";
+                    }
+                    else if (messageLower.includes('thank')) {
+                        response = "You're welcome! Is there anything else you'd like to know about RTI or our website?";
+                    }
+                    else if (messageLower.includes('directory') || messageLower.includes('institution')) {
+                        response = "The Educational Institutions Directory provides verified information on schools and educational institutions. You can search for institutions, check their verification status, safety ratings, fee structures, and RTI history. It's a valuable tool for transparency in education.";
+                    }
+                    else if (messageLower.includes('policy') || messageLower.includes('tracker')) {
+                        response = "The Policy Tracker & RTI Updates section keeps you informed about the latest education policies and RTI developments. You can view recent updates, court decisions, policy changes, and implementation reports affecting education transparency.";
+                    }
+                    else if (messageLower.includes('statistics') || messageLower.includes('stats')) {
+                        response = "The RTI Statistics & Insights section provides real-time data on RTI applications in the education sector. You can view success rates, track trends, and understand the impact of RTI across different educational domains through interactive visualizations.";
+                    }
+                    else if (messageLower.includes('help') || messageLower.includes('support')) {
+                        response = "The Help & Support Center offers various ways to get assistance with your RTI queries. This includes an RTI guide, step-by-step filing instructions, application status tracking, and direct contact options with RTI experts through multiple channels.";
+                    }
+                    else if (messageLower.includes('file') || messageLower.includes('filing')) {
+                        response = "To file an RTI application, visit our Filing Guide section where you'll find step-by-step instructions, document requirements, fee structures, and common mistakes to avoid. You can also use our templates for specific education-related queries in the RTI Tools section.";
+                    }
+                    else {
+                        response = "I'm not sure I understand your question. Could you rephrase it? Or choose one of the suggested topics to learn about specific sections of the website.";
+                    }
+                    
+                    // Add bot response
+                    addMessage(response, 'bot');
+                }, 600);
+            }
+            
+            // Show chatbot toggle with a delay after page load
+            setTimeout(() => {
+                chatbotToggle.classList.add('visible');
+            }, 3000);
+        });
+    </script>
 </body>
 </html> 

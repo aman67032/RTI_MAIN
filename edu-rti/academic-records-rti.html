@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Records & RTI | RTI Portal</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="../acts.css">
+</head>
+<body>
+    <!-- Navbar/Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../assets/images/LOGO.png" alt="RTI4Edu Logo" height="110">
+                <div class="logo-accent"></div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">
+                    <span class="nav-icon"><i class="fas fa-home"></i></span>
+                    Home
+                </a>
+                <a href="timeline.html">
+                    <span class="nav-icon"><i class="fas fa-history"></i></span>
+                    Timeline
+                </a>
+                <a href="news.html">
+                    <span class="nav-icon"><i class="fas fa-newspaper"></i></span>
+                    News
+                </a>
+                <a href="cases.html">
+                    <span class="nav-icon"><i class="fas fa-gavel"></i></span>
+                    Case Studies
+                </a>
+            </div>
+            <div class="auth-links">
+                <a href="login.html" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </a>
+                <a href="signup.html" class="signup-btn">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up
+                </a>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <div class="nav-decoration">
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header bg-info text-white py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="fw-bold">Academic Records & RTI</h1>
+                    <p class="lead">A comprehensive guide on accessing, verifying, and appealing academic records through the Right to Information Act.</p>
+                </div>
+                <div class="col-lg-4">
+                    <img src="https://via.placeholder.com/400x300" alt="Academic Records Illustration" class="img-fluid rounded shadow-lg">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="container my-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="rti-in-education.html">RTI in Education</a></li>
+                <li class="breadcrumb-item active">Academic Records</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <div class="row g-4">
+            <!-- Left Column -->
+            <div class="col-lg-8">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title mb-4">Accessing Academic Records Through RTI</h2>
+                        
+                        <p>One of the most powerful applications of the Right to Information Act in the education sector is the ability to access and verify academic records. This applies to both current students seeking information about their own academic journey and third parties seeking verification of academic credentials (with appropriate considerations for privacy).</p>
+                        
+                        <div class="alert alert-primary">
+                            <i class="fas fa-lightbulb me-2"></i> <strong>Key Principle:</strong> Academic records maintained by educational institutions that qualify as "public authorities" under the RTI Act are accessible to the information seeker, subject to the exemptions provided under Section A of the Act.
+                        </div>
+                        
+                        <h3 class="mt-4">Types of Academic Records Accessible Through RTI</h3>
+                        
+                        <div class="row mt-3">
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100 border-info">
+                                    <div class="card-header bg-info text-white">Examination Records</div>
+                                    <div class="card-body">
+                                        <ul>
+                                            <li>Evaluated answer sheets</li>
+                                            <li>Marks/grade sheets</li>
+                                            <li>Moderation details</li>
+                                            <li>Re-evaluation results</li>
+                                            <li>Examination committee decisions</li>
+                                            <li>Merit list rankings</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100 border-success">
+                                    <div class="card-header bg-success text-white">Certification Records</div>
+                                    <div class="card-body">
+                                        <ul>
+                                            <li>Degree/diploma verification</li>
+                                            <li>Certificate issuance details</li>
+                                            <li>Transcript records</li>
+                                            <li>Authentication of credentials</li>
+                                            <li>Professional certification details</li>
+                                            <li>Degree conferral minutes</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100 border-warning">
+                                    <div class="card-header bg-warning text-dark">Attendance & Progress</div>
+                                    <div class="card-body">
+                                        <ul>
+                                            <li>Attendance records</li>
+                                            <li>Internship completion details</li>
+                                            <li>Project submission records</li>
+                                            <li>Academic progression details</li>
+                                            <li>Course completion status</li>
+                                            <li>Academic standing information</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100 border-danger">
+                                    <div class="card-header bg-danger text-white">Administrative Records</div>
+                                    <div class="card-body">
+                                        <ul>
+                                            <li>Enrollment verification</li>
+                                            <li>Transfer certificate details</li>
+                                            <li>Migration certificate information</li>
+                                            <li>Academic calendar adherence</li>
+                                            <li>Name/detail correction applications</li>
+                                            <li>Special consideration decisions</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title">Legal Framework for Academic Record Access</h3>
+                        
+                        <div class="table-responsive mt-4">
+                            <table class="table table-bordered">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Legal Provision</th>
+                                        <th>Relevance to Academic Records</th>
+                                        <th>Important Case Law</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Section 2(f) of RTI Act</strong></td>
+                                        <td>Defines "information" to include academic records, exam sheets, and related documents</td>
+                                        <td>CBSE vs. Aditya Bandopadhyay (2011)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Section 8(1)(e)</strong></td>
+                                        <td>Fiduciary relationship exception - but academic evaluation is not considered purely fiduciary</td>
+                                        <td>ICAI vs. Shaunak H. Satya (2011)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Section 8(1)(j)</strong></td>
+                                        <td>Privacy protection - balancing disclosure with privacy concerns in academic records</td>
+                                        <td>University of Delhi vs. CIC (2017)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Section 11</strong></td>
+                                        <td>Third-party information procedure for records involving other students</td>
+                                        <td>R.K. Jain vs. Union of India (2013)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Section 19</strong></td>
+                                        <td>Appeal process for denied academic record requests</td>
+                                        <td>Manohar vs. Delhi University (2014)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="alert alert-warning mt-4">
+                            <i class="fas fa-exclamation-triangle me-2"></i> <strong>Important:</strong> While academic records are generally accessible, there are limitations on accessing records of other students due to privacy concerns under Section 8(1)(j). However, non-personal academic statistical information can be accessed.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title">Process of Accessing Academic Records</h3>
+                        
+                        <div class="row mt-4">
+                            <div class="col-lg-12">
+                                <div class="steps-container">
+                                    <!-- Step 1 -->
+                                    <div class="step-item">
+                                        <div class="step-number">1</div>
+                                        <div class="step-content">
+                                            <h5>Identify the Public Information Officer (PIO)</h5>
+                                            <p>Locate the designated PIO of the educational institution who handles RTI requests. Most institutions display this information on their websites or notice boards.</p>
+                                            <div class="step-tip">
+                                                <i class="fas fa-info-circle"></i>
+                                                <span>Universities and boards usually have dedicated RTI cells or officers.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Step 2 -->
+                                    <div class="step-item">
+                                        <div class="step-number">2</div>
+                                        <div class="step-content">
+                                            <h5>Draft Your Application</h5>
+                                            <p>Prepare a clear and specific RTI application requesting the academic records you seek. Be precise about the nature of records, time periods, and other identifying details.</p>
+                                            <div class="step-tip">
+                                                <i class="fas fa-lightbulb"></i>
+                                                <span>Example: "I request a certified copy of my answer sheet for Subject X, Course Y, Roll Number Z, conducted on [date]."</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Step 3 -->
+                                    <div class="step-item">
+                                        <div class="step-number">3</div>
+                                        <div class="step-content">
+                                            <h5>Pay the Requisite Fee</h5>
+                                            <p>Attach the application fee (₹10) by postal order, demand draft, or as prescribed by the institution. For BPL category applicants, no fee is required with proper documentation.</p>
+                                            <div class="step-tip">
+                                                <i class="fas fa-rupee-sign"></i>
+                                                <span>Additional charges may apply for photocopies of answer sheets or voluminous records (₹2 per page).</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Step 4 -->
+                                    <div class="step-item">
+                                        <div class="step-number">4</div>
+                                        <div class="step-content">
+                                            <h5>Submit Your Application</h5>
+                                            <p>Submit the application either in person, by post, or through the online RTI portal if the institution is integrated with it.</p>
+                                            <div class="step-tip">
+                                                <i class="fas fa-globe"></i>
+                                                <span>Central institutions can receive applications through <a href="https://rtionline.gov.in" target="_blank">rtionline.gov.in</a></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Step 5 -->
+                                    <div class="step-item">
+                                        <div class="step-number">5</div>
+                                        <div class="step-content">
+                                            <h5>Track Your Application</h5>
+                                            <p>Note the unique application number provided for tracking purposes. The PIO must respond within 30 days (or 35 days if transferred to another public authority).</p>
+                                            <div class="step-tip">
+                                                <i class="fas fa-clock"></i>
+                                                <span>If information concerns life or liberty, the response time is 48 hours.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Step 6 -->
+                                    <div class="step-item">
+                                        <div class="step-number">6</div>
+                                        <div class="step-content">
+                                            <h5>File Appeal If Necessary</h5>
+                                            <p>If your request is denied or you receive incomplete information, you can file a first appeal to the First Appellate Authority within 30 days.</p>
+                                            <div class="step-tip">
+                                                <i class="fas fa-gavel"></i>
+                                                <span>If still unsatisfied, you can file a second appeal with the Information Commission within 90 days of the first appeal decision.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title">Sample RTI Application for Academic Records</h3>
+                        
+                        <div class="sample-rti-container p-4 border rounded bg-light mt-3">
+                            <div class="text-center mb-3">
+                                <h5>APPLICATION UNDER RIGHT TO INFORMATION ACT, 2005</h5>
+                            </div>
+                            
+                            <div class="rti-sample-content">
+                                <p><strong>To,</strong><br>
+                                The Public Information Officer<br>
+                                [Name of Educational Institution]<br>
+                                [Complete Address]</p>
+                                
+                                <p><strong>Subject:</strong> Request for information under RTI Act, 2005</p>
+                                
+                                <p>1. <strong>Name of the Applicant:</strong> [Your Name]</p>
+                                <p>2. <strong>Address:</strong> [Your Complete Postal Address]</p>
+                                <p>3. <strong>Contact Details:</strong> [Phone Number and Email]</p>
+                                <p>4. <strong>Details of Information Sought:</strong></p>
+                                <ol type="a" class="mb-3">
+                                    <li>Please provide a certified copy of my answer sheet for [Subject Name], [Course Name], held on [Examination Date] with Roll Number [Your Roll Number].</li>
+                                    <li>Please provide the marking scheme/model answers used for evaluation of the above answer sheet.</li>
+                                    <li>Please provide details of the moderation process applied, if any, for the above examination.</li>
+                                    <li>Please provide information regarding the qualifications of the examiner who evaluated my answer sheet.</li>
+                                    <li>Please provide copies of any rules, regulations, or guidelines that govern the evaluation process for the aforementioned examination.</li>
+                                </ol>
+                                
+                                <p>5. <strong>Period to which the information relates:</strong> [Academic Year/Semester]</p>
+                                <p>6. <strong>Description of the purpose for seeking information:</strong> To ensure transparency and fairness in evaluation and for personal academic improvement.</p>
+                                <p>7. <strong>Whether information is required by post or in person:</strong> By post/in person/email</p>
+                                
+                                <p>8. I am enclosing an application fee of ₹10/- by [mode of payment].</p>
+                                <p>9. I hereby state that the information sought does not fall within the restrictions contained in Section 8 and 9 of the RTI Act and to the best of my knowledge, it pertains to your office.</p>
+                                
+                                <div class="d-flex justify-content-between mt-4">
+                                    <div>
+                                        <p><strong>Date:</strong> [Current Date]</p>
+                                        <p><strong>Place:</strong> [Your City]</p>
+                                    </div>
+                                    <div class="text-end">
+                                        <p><strong>Signature of the Applicant</strong></p>
+                                        <p>[Your Name]</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center mt-4">
+                                <a href="#" class="btn btn-primary"><i class="fas fa-download me-2"></i> Download Template</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column -->
+            <div class="col-lg-4">
+                <!-- Quick Navigation -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Educational RTI Topics</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><a href="rti-in-education.html" class="text-decoration-none"><i class="fas fa-graduation-cap me-2"></i> RTI in Education Overview</a></li>
+                            <li class="list-group-item active"><a href="academic-records-rti.html" class="text-decoration-none"><i class="fas fa-book me-2"></i> Academic Records Access</a></li>
+                            <li class="list-group-item"><a href="admission-transparency.html" class="text-decoration-none"><i class="fas fa-user-plus me-2"></i> Admission Transparency</a></li>
+                            <li class="list-group-item"><a href="scholarship-tracking.html" class="text-decoration-none"><i class="fas fa-donate me-2"></i> Scholarship Tracking</a></li>
+                            <li class="list-group-item"><a href="infrastructure-compliance.html" class="text-decoration-none"><i class="fas fa-building me-2"></i> Infrastructure Compliance</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Success Stories -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Success Stories</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group list-group-flush">
+                            <div class="list-group-item">
+                                <h6 class="mb-1">Marks Verification Success</h6>
+                                <p class="small mb-2">A student discovered calculation errors in their final semester marks through RTI, leading to grade improvement and better job prospects.</p>
+                                <a href="#" class="btn btn-sm btn-outline-success">Read More</a>
+                            </div>
+                            <div class="list-group-item">
+                                <h6 class="mb-1">Degree Authentication</h6>
+                                <p class="small mb-2">An employer verified an employee's claimed educational credentials through RTI, preventing potential fraud in a sensitive position.</p>
+                                <a href="#" class="btn btn-sm btn-outline-success">Read More</a>
+                            </div>
+                            <div class="list-group-item">
+                                <h6 class="mb-1">Evaluation Transparency</h6>
+                                <p class="small mb-2">A group of students used RTI to expose inconsistent evaluation practices, leading to reforms in the examination department.</p>
+                                <a href="#" class="btn btn-sm btn-outline-success">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Common Challenges -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="mb-0">Common Challenges & Solutions</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="accordion" id="challengesAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        "Records are destroyed" Response
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#challengesAccordion">
+                                    <div class="accordion-body">
+                                        <p>Educational institutions sometimes claim that records older than a certain period have been destroyed.</p>
+                                        <p><strong>Solution:</strong> Request for the record retention policy under RTI first. Most institutions have mandatory retention periods (typically 3-5 years for answer sheets and permanent for degree records). Also ask for destruction certificates if records were legitimately destroyed.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        "Fiduciary Relationship" Exemption
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#challengesAccordion">
+                                    <div class="accordion-body">
+                                        <p>Institutions often claim exemption under Section 8(1)(e) arguing that evaluation creates a fiduciary relationship.</p>
+                                        <p><strong>Solution:</strong> Cite the Supreme Court decision in CBSE vs. Aditya Bandopadhyay which clearly established that evaluation does not create a fiduciary relationship, and students have a right to access their evaluated answer sheets.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Excessive Fee Demands
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#challengesAccordion">
+                                    <div class="accordion-body">
+                                        <p>Some institutions charge excessive fees for providing academic records, particularly for answer sheets.</p>
+                                        <p><strong>Solution:</strong> The standard fee is ₹2 per page for photocopies. If excessive fees are demanded, file a complaint with the Information Commission. Also, request to inspect records first (which costs nothing) and then identify specific pages for copies.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFour">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                        Transfer of Application
+                                    </button>
+                                </h2>
+                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#challengesAccordion">
+                                    <div class="accordion-body">
+                                        <p>Applications are sometimes transferred between departments or institutions causing delays.</p>
+                                        <p><strong>Solution:</strong> Track your application diligently. If transferred, the new authority must respond within 35 days of the original application. For unnecessary transfers, mention this in your first appeal, as it is a violation of the RTI Act.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Important Resources -->
+                <div class="card shadow-sm">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">Important Resources</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="fas fa-file-pdf text-danger me-2"></i>
+                                    <a href="#" class="text-decoration-none">Supreme Court Judgment on Answer Sheets</a>
+                                </div>
+                                <span><i class="fas fa-download"></i></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="fas fa-file-word text-primary me-2"></i>
+                                    <a href="#" class="text-decoration-none">RTI Template for Mark Sheet Verification</a>
+                                </div>
+                                <span><i class="fas fa-download"></i></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="fas fa-file-word text-primary me-2"></i>
+                                    <a href="#" class="text-decoration-none">First Appeal Format for Denied Records</a>
+                                </div>
+                                <span><i class="fas fa-download"></i></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="fas fa-link text-success me-2"></i>
+                                    <a href="#" class="text-decoration-none">UGC Guidelines on Record Retention</a>
+                                </div>
+                                <span><i class="fas fa-external-link-alt"></i></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="fas fa-file-pdf text-danger me-2"></i>
+                                    <a href="#" class="text-decoration-none">CIC Orders on Academic Records</a>
+                                </div>
+                                <span><i class="fas fa-download"></i></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/common.js"></script>
+</body>
+</html> 
